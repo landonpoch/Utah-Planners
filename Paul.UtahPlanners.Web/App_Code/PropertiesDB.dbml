@@ -1,0 +1,149 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Database Name="Properties2" EntityNamespace="com.landonpoch.entities" ContextNamespace="com.landonpoch.data" Class="PropertiesDBDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=SICKBASTARD\SQLEXPRESS;Initial Catalog=Properties2;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="Properties2ConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Address" Member="Addresses">
+    <Type Name="Address">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="street1" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="street2" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="city" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="state" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="zip" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="country" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Association Name="Property_Address" Member="Property" ThisKey="id" OtherKey="id" Type="Property" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.StreetTypes" Member="StreetTypes">
+    <Type Name="StreetType">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="description" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Association Name="StreetType_Property" Member="Properties" ThisKey="id" OtherKey="streetCode" Type="Property" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Pictures" Member="Pictures">
+    <Type Name="Picture">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="frontPage" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="mainPicture" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="secondaryPicture" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="binaryData" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="mimeType" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="property_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Property_Picture" Member="Property" ThisKey="property_id" OtherKey="id" Type="Property" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PropertyTypes" Member="PropertyTypes">
+    <Type Name="PropertyType">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="description" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Association Name="PropertyType_Property" Member="Properties" ThisKey="id" OtherKey="typeCode" Type="Property" />
+    </Type>
+  </Table>
+  <Table Name="dbo.NeighborhoodCodes" Member="NeighborhoodCodes">
+    <Type Name="NeighborhoodCode">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="description" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="weight" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="NeighborhoodCode_Property" Member="Properties" ThisKey="id" OtherKey="neighCondition" Type="Property" />
+    </Type>
+  </Table>
+  <Table Name="dbo.SocioEconCodes" Member="SocioEconCodes">
+    <Type Name="SocioEconCode">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="description" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Association Name="SocioEconCode_Property" Member="Properties" ThisKey="id" OtherKey="socioEcon" Type="Property" />
+    </Type>
+  </Table>
+  <Table Name="dbo.StreetconnCodes" Member="StreetconnCodes">
+    <Type Name="StreetconnCode">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="description" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="weight" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="StreetconnCode_Property" Member="Properties" ThisKey="id" OtherKey="streetConn" Type="Property" />
+    </Type>
+  </Table>
+  <Table Name="dbo.StreetwalkCodes" Member="StreetwalkCodes">
+    <Type Name="StreetwalkCode">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="description" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="weight" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="StreetwalkCode_Property" Member="Properties" ThisKey="id" OtherKey="streetWalk" Type="Property" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Weights" Member="Weights">
+    <Type Name="Weight">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="streetWalk" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="walkscore" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="twoFiftySingleFam" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="buildingEnclosure" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="streetConn" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="commonAreas" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="streetSaftey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="neighCondition" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="twoFiftyApts" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CommonCodes" Member="CommonCodes">
+    <Type Name="CommonCode">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="description" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="weight" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="CommonCode_Property" Member="Properties" ThisKey="id" OtherKey="commonAreas" Type="Property" />
+    </Type>
+  </Table>
+  <Table Name="dbo.EnclosureCodes" Member="EnclosureCodes">
+    <Type Name="EnclosureCode">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="description" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="weight" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="EnclosureCode_Property" Member="Properties" ThisKey="id" OtherKey="buildingEnclosure" Type="Property" />
+    </Type>
+  </Table>
+  <Table Name="dbo.StreetSafteyCodes" Member="StreetSafteyCodes">
+    <Type Name="StreetSafteyCode">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="description" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="weight" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="StreetSafteyCode_Property" Member="Properties" ThisKey="id" OtherKey="streetSaftey" Type="Property" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Properties" Member="Properties">
+    <Type Name="Property">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="typeCode" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="density" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="area" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="units" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="streetCode" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="yearBuilt" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="socioEcon" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="streetSaftey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="buildingEnclosure" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="commonAreas" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="streetConn" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="streetWalk" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="walkscore" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="neighCondition" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="twoFiftySingleFam" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="twoFiftyApts" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="notes" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="adminNotes" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="walkscoreNotes" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="notFinished" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="latitude" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="longitude" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Association Name="Property_Address" Member="Address" ThisKey="id" OtherKey="id" Type="Address" Cardinality="One" />
+      <Association Name="Property_Picture" Member="Pictures" ThisKey="id" OtherKey="property_id" Type="Picture" />
+      <Association Name="EnclosureCode_Property" Member="EnclosureCode" ThisKey="buildingEnclosure" OtherKey="id" Type="EnclosureCode" IsForeignKey="true" />
+      <Association Name="CommonCode_Property" Member="CommonCode" ThisKey="commonAreas" OtherKey="id" Type="CommonCode" IsForeignKey="true" />
+      <Association Name="NeighborhoodCode_Property" Member="NeighborhoodCode" ThisKey="neighCondition" OtherKey="id" Type="NeighborhoodCode" IsForeignKey="true" />
+      <Association Name="PropertyType_Property" Member="PropertyType" ThisKey="typeCode" OtherKey="id" Type="PropertyType" IsForeignKey="true" />
+      <Association Name="StreetType_Property" Member="StreetType" ThisKey="streetCode" OtherKey="id" Type="StreetType" IsForeignKey="true" />
+      <Association Name="SocioEconCode_Property" Member="SocioEconCode" ThisKey="socioEcon" OtherKey="id" Type="SocioEconCode" IsForeignKey="true" />
+      <Association Name="StreetconnCode_Property" Member="StreetconnCode" ThisKey="streetConn" OtherKey="id" Type="StreetconnCode" IsForeignKey="true" />
+      <Association Name="StreetSafteyCode_Property" Member="StreetSafteyCode" ThisKey="streetSaftey" OtherKey="id" Type="StreetSafteyCode" IsForeignKey="true" />
+      <Association Name="StreetwalkCode_Property" Member="StreetwalkCode" ThisKey="streetWalk" OtherKey="id" Type="StreetwalkCode" IsForeignKey="true" />
+    </Type>
+  </Table>
+</Database>

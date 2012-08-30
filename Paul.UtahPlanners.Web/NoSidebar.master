@@ -1,0 +1,78 @@
+﻿<%@ Master Language="VB" CodeFile="NoSidebar.master.vb" Inherits="NoSidebar" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>Utah Planners - A Project by Paul Anderson</title>
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <asp:ContentPlaceHolder id="head" runat="server">
+    </asp:ContentPlaceHolder>
+    
+    <%
+        Dim theme As String
+        theme = "default"
+        Try
+            If Profile.Theme.Equals("") Then
+                Profile.Theme = "Default"
+            End If
+            theme = Profile.Theme
+        Catch e As Exception
+            ' User not logged in, fallback to default theme
+        End Try
+        Response.Write("<link href=""" & Me.ResolveUrl("~") & "styles/" & theme & ".css"" rel=""stylesheet"" type=""text/css"" />")
+    %>
+    
+    <link href="styles/custom.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <div id="wrapper">
+        <form id="form1" runat="server">
+            <asp:SiteMapDataSource ID="SiteMapDataSource1" runat="server" ShowStartingNode="False" />
+            <div id="header">
+                <div id="logo">
+                    <h1><asp:HyperLink ID="HyperLink1" NavigateUrl="~/Default.aspx" runat="server">UtahPlanners.com</asp:HyperLink></h1>
+                    <h2><a href="#">A Project by Paul Anderson</a></h2>
+                </div>
+                <div id="menu">
+                    <ul>
+                        <%  
+                            Dim nodes = SiteMapDataSource1.Provider.RootNode.ChildNodes
+                            Dim x As Integer
+                            x = 0
+                            While x < nodes.Count
+                                Dim node = nodes.Item(x)
+                                Dim title = node.Title
+                                Dim url = node.Url
+                                Dim url2 = Request.RawUrl
+                                Dim li = "<li>"
+                                If url.Equals(url2) Then li = "<li class=""active"">"
+                                Response.Write(li & "<a href=""" & node.Url & """>" & node.Title & "</a></li>")
+                                x = x + 1
+                            End While
+                        %>
+                    </ul>
+                    <asp:LoginStatus ID="LoginStatus1" runat="server" LogoutPageUrl="Default.aspx" LogoutAction="Redirect" />
+                </div>
+                <div class="floatright"><asp:LoginName ID="LoginName1" runat="server" FormatString="Welcome {0}!" /></div>
+            </div>
+            <div id="page">
+                <div id="page-bgtop">
+                    <div id="Content">
+                        <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
+                        
+                        </asp:ContentPlaceHolder>
+                    </div>
+                </div>
+                <div style="clear: both; height: 1px"></div>
+            </div>
+        </form>
+    </div>
+    <div id="footer">
+        <p id="legal">Copyright &copy; 2010 Paul Anderson. All Rights Reserved. Designed by <a href="http://www.freecsstemplates.org/">Free CSS Templates</a>.</p>
+		<p id="links"><a href="#">Privacy Policy</a> | <a href="#">Terms of Use</a></p>
+    </div>
+</body>
+</html>

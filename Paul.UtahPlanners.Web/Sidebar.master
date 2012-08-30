@@ -1,0 +1,159 @@
+﻿<%@ Master Language="VB" CodeFile="Sidebar.master.vb" Inherits="Sidebar" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>Utah Properties - A Project by Paul Anderson</title>
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+    
+    <!-- Load custom css theme for user profile -->
+    <%
+        Dim theme As String
+        theme = "default"
+        Try
+            If Profile.Theme.Equals("") Then
+                Profile.Theme = "Default"
+            End If
+            theme = Profile.Theme
+        Catch e As Exception
+            ' User not logged in, fallback to default theme
+        End Try
+        Response.Write("<link href=""" & Me.ResolveUrl("~") & "styles/" & theme & ".css"" rel=""stylesheet"" type=""text/css"" />")
+    %>
+    <!-- End load custom css theme for user profile -->
+    
+    <link href="styles/custom.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <div id="wrapper">
+        
+        <form id="form1" runat="server">
+        <asp:SiteMapDataSource ID="SiteMapDataSource1" runat="server" ShowStartingNode="False" />
+        <div id="header">
+            <div id="logo">
+                <h1><asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/Default.aspx">UtahPlanners.com</asp:HyperLink></h1>
+                <h2><a href="#">A Project by Paul Anderson</a></h2>
+            </div>
+            <div id="menu">
+                <ul>
+                    <!-- Custom sitemap node generation to support needed css tags -->
+                    <%  
+                        Dim nodes = SiteMapDataSource1.Provider.RootNode.ChildNodes
+                        Dim x As Integer
+                        x = 0
+                        While x < nodes.Count
+                            Dim node = nodes.Item(x)
+                            Dim title = node.Title
+                            Dim url = node.Url
+                            Dim url2 = Request.RawUrl
+                            Dim li = "<li>"
+                            If url.Equals(url2) Then li = "<li class=""active"">"
+                            Response.Write(li & "<a href=""" & node.Url & """>" & node.Title & "</a></li>")
+                            x = x + 1
+                        End While
+                    %>
+                    <!-- End custom sitemap node generation to support needed css tags -->
+                </ul>
+                <asp:LoginStatus ID="LoginStatus1" runat="server" LogoutPageUrl="Default.aspx" LogoutAction="Redirect" />
+            </div>
+            <!-- Try to get this to align on the right side -->
+            <div class="floatright"><asp:LoginName ID="LoginName1" runat="server" FormatString="Welcome {0}!" /></div>
+        </div>
+        
+        <div id="page">
+            <div id="page-bgtop">
+                <div id="content">
+                    <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                    </asp:ContentPlaceHolder>
+                </div>                
+                <div id="sidebar">
+                    <ul>
+                        <!--
+				        <li id="search">
+					        <h2>Search</h2>
+					        <fieldset>
+					        <input type="text" id="seach-text" name="s" value="" />
+					        <input type="submit" id="search-submit" value="Search" />
+					        </fieldset>
+				        </li>
+				        -->
+				        <li>
+					        <h2>Condo Type</h2>
+                        <ul>
+                            <li>
+                                <asp:HyperLink ID="HyperLink7" runat="server" NavigateUrl="Index.aspx?proptype=%25Stacked%20Flat%25">Stacked Flats
+                                </asp:HyperLink>
+                            </li>
+                            <li>
+                                <asp:HyperLink ID="HyperLink8" runat="server" NavigateUrl="Index.aspx?proptype=%25Twin%20Home%25">Twin Homes
+                                </asp:HyperLink>
+                            </li>
+                            <li>
+                                <asp:HyperLink ID="HyperLink9" runat="server" NavigateUrl="Index.aspx?proptype=%25Townhouse%25">Townhomes
+                                </asp:HyperLink>
+                            </li>
+                            <li>
+                                <asp:HyperLink ID="HyperLink10" runat="server" NavigateUrl="Default.aspx">Mixed Units
+                                </asp:HyperLink>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <h2>Density</h2>
+                        <h3>Units per Acre</h3>
+                        <ul>
+                            <li>
+                                <asp:HyperLink ID="HyperLink2" runat="server" NavigateUrl="Index.aspx?highdensity=9.9">Less than 10
+                                </asp:HyperLink>
+                            </li>
+                            <li>
+                                <asp:HyperLink ID="HyperLink3" runat="server" NavigateUrl="Index.aspx?lowdensity=10&highdensity=13.9">10 to 13
+                                </asp:HyperLink>
+                            </li>
+                            <li>
+                                <asp:HyperLink ID="HyperLink4" runat="server" NavigateUrl="Index.aspx?lowdensity=14&highdensity=16.9">14 to 16
+                                </asp:HyperLink>
+                            </li>
+                            <li>
+                                <asp:HyperLink ID="HyperLink5" runat="server" NavigateUrl="Index.aspx?lowdensity=17&highdensity=20">17 to 20
+                                </asp:HyperLink>
+                            </li>
+                            <li><asp:HyperLink ID="HyperLink6" runat="server" NavigateUrl="Index.aspx?lowdensity=20.1">More than 20
+                                </asp:HyperLink>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <h2>Local Services</h2>
+                        <ul>
+                            <li>
+                                <asp:HyperLink ID="HyperLink11" runat="server" NavigateUrl="Index.aspx?lowwalk=66">High
+                                </asp:HyperLink>
+                            </li>
+                            <li>
+                                <asp:HyperLink ID="HyperLink12" runat="server" NavigateUrl="Index.aspx?lowwalk=33&highwalk=65">Medium
+                                </asp:HyperLink>
+                            </li>
+                            <li>
+                                <asp:HyperLink ID="HyperLink13" runat="server" NavigateUrl="Index.aspx?highwalk=32">Low
+                                </asp:HyperLink>
+                            </li>
+                        </ul>
+				        </li>
+			        </ul>
+                </div>
+                <div style="clear: both; height: 1px"></div>
+            </div>
+        </div>
+        </form>
+    </div>
+    <div id="footer">
+        <p id="legal">Copyright &copy; 2010 Paul Anderson. All Rights Reserved. Designed by <a href="http://www.freecsstemplates.org/">Free CSS Templates</a>.</p>
+		<p id="links"><a href="#">Privacy Policy</a> | <a href="#">Terms of Use</a></p>
+    </div>
+</body>
+</html>

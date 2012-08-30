@@ -1,0 +1,960 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Properties2Model.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="Properties2ModelStoreContainer">
+          <EntitySet Name="Address" EntityType="Properties2Model.Store.Address" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="CommonCodes" EntityType="Properties2Model.Store.CommonCodes" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="EnclosureCodes" EntityType="Properties2Model.Store.EnclosureCodes" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="NeighborhoodCodes" EntityType="Properties2Model.Store.NeighborhoodCodes" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Pictures" EntityType="Properties2Model.Store.Pictures" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Properties" EntityType="Properties2Model.Store.Properties" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="PropertyTypes" EntityType="Properties2Model.Store.PropertyTypes" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="SocioEconCodes" EntityType="Properties2Model.Store.SocioEconCodes" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="StreetconnCodes" EntityType="Properties2Model.Store.StreetconnCodes" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="StreetSafteyCodes" EntityType="Properties2Model.Store.StreetSafteyCodes" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="StreetTypes" EntityType="Properties2Model.Store.StreetTypes" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="StreetwalkCodes" EntityType="Properties2Model.Store.StreetwalkCodes" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Weights" EntityType="Properties2Model.Store.Weights" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="PropertiesIndex" EntityType="Properties2Model.Store.PropertiesIndex" store:Type="Views" store:Schema="dbo" store:Name="PropertiesIndex">
+            <DefiningQuery>SELECT 
+      [PropertiesIndex].[city] AS [city], 
+      [PropertiesIndex].[id] AS [id], 
+      [PropertiesIndex].[OverallScore] AS [OverallScore], 
+      [PropertiesIndex].[PropertyTypeDescription] AS [PropertyTypeDescription], 
+      [PropertiesIndex].[density] AS [density], 
+      [PropertiesIndex].[units] AS [units], 
+      [PropertiesIndex].[yearBuilt] AS [yearBuilt], 
+      [PropertiesIndex].[StreetTypeDescription] AS [StreetTypeDescription], 
+      [PropertiesIndex].[StreetWalkDescription] AS [StreetWalkDescription], 
+      [PropertiesIndex].[walkscore] AS [walkscore], 
+      [PropertiesIndex].[SocioEconDescription] AS [SocioEconDescription], 
+      [PropertiesIndex].[twoFiftySingleFam] AS [twoFiftySingleFam]
+      FROM [dbo].[PropertiesIndex] AS [PropertiesIndex]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_address_id" Association="Properties2Model.Store.FK_address_id">
+            <End Role="Properties" EntitySet="Properties" />
+            <End Role="Address" EntitySet="Address" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BuildingEnclosure" Association="Properties2Model.Store.FK_BuildingEnclosure">
+            <End Role="EnclosureCodes" EntitySet="EnclosureCodes" />
+            <End Role="Properties" EntitySet="Properties" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CommonAreas" Association="Properties2Model.Store.FK_CommonAreas">
+            <End Role="CommonCodes" EntitySet="CommonCodes" />
+            <End Role="Properties" EntitySet="Properties" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NeighCondition" Association="Properties2Model.Store.FK_NeighCondition">
+            <End Role="NeighborhoodCodes" EntitySet="NeighborhoodCodes" />
+            <End Role="Properties" EntitySet="Properties" />
+          </AssociationSet>
+          <AssociationSet Name="FK_pictures_pid" Association="Properties2Model.Store.FK_pictures_pid">
+            <End Role="Properties" EntitySet="Properties" />
+            <End Role="Pictures" EntitySet="Pictures" />
+          </AssociationSet>
+          <AssociationSet Name="FK_properties_ptid" Association="Properties2Model.Store.FK_properties_ptid">
+            <End Role="PropertyTypes" EntitySet="PropertyTypes" />
+            <End Role="Properties" EntitySet="Properties" />
+          </AssociationSet>
+          <AssociationSet Name="FK_properties_stid" Association="Properties2Model.Store.FK_properties_stid">
+            <End Role="StreetTypes" EntitySet="StreetTypes" />
+            <End Role="Properties" EntitySet="Properties" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SocioEcon" Association="Properties2Model.Store.FK_SocioEcon">
+            <End Role="SocioEconCodes" EntitySet="SocioEconCodes" />
+            <End Role="Properties" EntitySet="Properties" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Streetconn" Association="Properties2Model.Store.FK_Streetconn">
+            <End Role="StreetconnCodes" EntitySet="StreetconnCodes" />
+            <End Role="Properties" EntitySet="Properties" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StreetSaftey" Association="Properties2Model.Store.FK_StreetSaftey">
+            <End Role="StreetSafteyCodes" EntitySet="StreetSafteyCodes" />
+            <End Role="Properties" EntitySet="Properties" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StreetWalk" Association="Properties2Model.Store.FK_StreetWalk">
+            <End Role="StreetwalkCodes" EntitySet="StreetwalkCodes" />
+            <End Role="Properties" EntitySet="Properties" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Address">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="street1" Type="nvarchar(max)" />
+          <Property Name="street2" Type="nvarchar(max)" />
+          <Property Name="city" Type="nvarchar(max)" />
+          <Property Name="state" Type="nvarchar(max)" />
+          <Property Name="zip" Type="nvarchar(max)" />
+          <Property Name="country" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="CommonCodes">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="description" Type="nvarchar(max)" />
+          <Property Name="weight" Type="int" />
+        </EntityType>
+        <EntityType Name="EnclosureCodes">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="description" Type="nvarchar(max)" />
+          <Property Name="weight" Type="int" />
+        </EntityType>
+        <EntityType Name="NeighborhoodCodes">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="description" Type="nvarchar(max)" />
+          <Property Name="weight" Type="int" />
+        </EntityType>
+        <EntityType Name="Pictures">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="frontPage" Type="smallint" />
+          <Property Name="mainPicture" Type="smallint" />
+          <Property Name="secondaryPicture" Type="smallint" />
+          <Property Name="binaryData" Type="varbinary(max)" />
+          <Property Name="mimeType" Type="nvarchar(max)" />
+          <Property Name="property_id" Type="int" />
+        </EntityType>
+        <EntityType Name="Properties">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="typeCode" Type="int" />
+          <Property Name="density" Type="float" />
+          <Property Name="area" Type="int" />
+          <Property Name="units" Type="int" />
+          <Property Name="streetCode" Type="int" />
+          <Property Name="yearBuilt" Type="int" />
+          <Property Name="socioEcon" Type="int" />
+          <Property Name="streetSaftey" Type="int" />
+          <Property Name="buildingEnclosure" Type="int" />
+          <Property Name="commonAreas" Type="int" />
+          <Property Name="streetConn" Type="int" />
+          <Property Name="streetWalk" Type="int" />
+          <Property Name="walkscore" Type="int" />
+          <Property Name="neighCondition" Type="int" />
+          <Property Name="twoFiftySingleFam" Type="int" />
+          <Property Name="twoFiftyApts" Type="int" />
+          <Property Name="notes" Type="nvarchar(max)" />
+          <Property Name="adminNotes" Type="nvarchar(max)" />
+          <Property Name="walkscoreNotes" Type="nvarchar(max)" />
+          <Property Name="notFinished" Type="nvarchar(max)" />
+          <Property Name="latitude" Type="float" />
+          <Property Name="longitude" Type="float" />
+        </EntityType>
+        <EntityType Name="PropertyTypes">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="description" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="SocioEconCodes">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="description" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="StreetconnCodes">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="description" Type="nvarchar(max)" />
+          <Property Name="weight" Type="int" />
+        </EntityType>
+        <EntityType Name="StreetSafteyCodes">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="description" Type="nvarchar(max)" />
+          <Property Name="weight" Type="int" />
+        </EntityType>
+        <EntityType Name="StreetTypes">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="description" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="StreetwalkCodes">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="description" Type="nvarchar(max)" />
+          <Property Name="weight" Type="int" />
+        </EntityType>
+        <EntityType Name="Weights">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="streetWalk" Type="int" />
+          <Property Name="walkscore" Type="int" />
+          <Property Name="twoFiftySingleFam" Type="int" />
+          <Property Name="buildingEnclosure" Type="int" />
+          <Property Name="streetConn" Type="int" />
+          <Property Name="commonAreas" Type="int" />
+          <Property Name="streetSaftey" Type="int" />
+          <Property Name="neighCondition" Type="int" />
+          <Property Name="twoFiftyApts" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'Properties2.dbo.PropertiesIndex' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="PropertiesIndex">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="city" Type="nvarchar(max)" />
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="OverallScore" Type="int" />
+          <Property Name="PropertyTypeDescription" Type="nvarchar(max)" />
+          <Property Name="density" Type="float" />
+          <Property Name="units" Type="int" />
+          <Property Name="yearBuilt" Type="int" />
+          <Property Name="StreetTypeDescription" Type="nvarchar(max)" />
+          <Property Name="StreetWalkDescription" Type="nvarchar(max)" />
+          <Property Name="walkscore" Type="int" />
+          <Property Name="SocioEconDescription" Type="nvarchar(max)" />
+          <Property Name="twoFiftySingleFam" Type="int" />
+        </EntityType>
+        <Association Name="FK_address_id">
+          <End Role="Properties" Type="Properties2Model.Store.Properties" Multiplicity="1" />
+          <End Role="Address" Type="Properties2Model.Store.Address" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Properties">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Address">
+              <PropertyRef Name="id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BuildingEnclosure">
+          <End Role="EnclosureCodes" Type="Properties2Model.Store.EnclosureCodes" Multiplicity="0..1" />
+          <End Role="Properties" Type="Properties2Model.Store.Properties" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EnclosureCodes">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Properties">
+              <PropertyRef Name="buildingEnclosure" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CommonAreas">
+          <End Role="CommonCodes" Type="Properties2Model.Store.CommonCodes" Multiplicity="0..1" />
+          <End Role="Properties" Type="Properties2Model.Store.Properties" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CommonCodes">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Properties">
+              <PropertyRef Name="commonAreas" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NeighCondition">
+          <End Role="NeighborhoodCodes" Type="Properties2Model.Store.NeighborhoodCodes" Multiplicity="0..1" />
+          <End Role="Properties" Type="Properties2Model.Store.Properties" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NeighborhoodCodes">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Properties">
+              <PropertyRef Name="neighCondition" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_pictures_pid">
+          <End Role="Properties" Type="Properties2Model.Store.Properties" Multiplicity="0..1" />
+          <End Role="Pictures" Type="Properties2Model.Store.Pictures" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Properties">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Pictures">
+              <PropertyRef Name="property_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_properties_ptid">
+          <End Role="PropertyTypes" Type="Properties2Model.Store.PropertyTypes" Multiplicity="0..1" />
+          <End Role="Properties" Type="Properties2Model.Store.Properties" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PropertyTypes">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Properties">
+              <PropertyRef Name="typeCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_properties_stid">
+          <End Role="StreetTypes" Type="Properties2Model.Store.StreetTypes" Multiplicity="0..1" />
+          <End Role="Properties" Type="Properties2Model.Store.Properties" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StreetTypes">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Properties">
+              <PropertyRef Name="streetCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SocioEcon">
+          <End Role="SocioEconCodes" Type="Properties2Model.Store.SocioEconCodes" Multiplicity="0..1" />
+          <End Role="Properties" Type="Properties2Model.Store.Properties" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SocioEconCodes">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Properties">
+              <PropertyRef Name="socioEcon" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Streetconn">
+          <End Role="StreetconnCodes" Type="Properties2Model.Store.StreetconnCodes" Multiplicity="0..1" />
+          <End Role="Properties" Type="Properties2Model.Store.Properties" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StreetconnCodes">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Properties">
+              <PropertyRef Name="streetConn" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StreetSaftey">
+          <End Role="StreetSafteyCodes" Type="Properties2Model.Store.StreetSafteyCodes" Multiplicity="0..1" />
+          <End Role="Properties" Type="Properties2Model.Store.Properties" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StreetSafteyCodes">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Properties">
+              <PropertyRef Name="streetSaftey" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StreetWalk">
+          <End Role="StreetwalkCodes" Type="Properties2Model.Store.StreetwalkCodes" Multiplicity="0..1" />
+          <End Role="Properties" Type="Properties2Model.Store.Properties" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StreetwalkCodes">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Properties">
+              <PropertyRef Name="streetWalk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Properties2Model" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="PropertiesDB" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Addresses" EntityType="Properties2Model.Address" />
+          <EntitySet Name="CommonCodes" EntityType="Properties2Model.CommonCode" />
+          <EntitySet Name="EnclosureCodes" EntityType="Properties2Model.EnclosureCode" />
+          <EntitySet Name="NeighborhoodCodes" EntityType="Properties2Model.NeighborhoodCode" />
+          <EntitySet Name="Pictures" EntityType="Properties2Model.Picture" />
+          <EntitySet Name="Properties" EntityType="Properties2Model.Property" />
+          <EntitySet Name="PropertyTypes" EntityType="Properties2Model.PropertyType" />
+          <EntitySet Name="SocioEconCodes" EntityType="Properties2Model.SocioEconCode" />
+          <EntitySet Name="StreetconnCodes" EntityType="Properties2Model.StreetconnCode" />
+          <EntitySet Name="StreetSafteyCodes" EntityType="Properties2Model.StreetSafteyCode" />
+          <EntitySet Name="StreetTypes" EntityType="Properties2Model.StreetType" />
+          <EntitySet Name="StreetwalkCodes" EntityType="Properties2Model.StreetwalkCode" />
+          <EntitySet Name="Weights" EntityType="Properties2Model.Weight" />
+          <AssociationSet Name="FK_address_id" Association="Properties2Model.FK_address_id">
+            <End Role="Properties" EntitySet="Properties" />
+            <End Role="Address" EntitySet="Addresses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CommonAreas" Association="Properties2Model.FK_CommonAreas">
+            <End Role="CommonCodes" EntitySet="CommonCodes" />
+            <End Role="Properties" EntitySet="Properties" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BuildingEnclosure" Association="Properties2Model.FK_BuildingEnclosure">
+            <End Role="EnclosureCodes" EntitySet="EnclosureCodes" />
+            <End Role="Properties" EntitySet="Properties" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NeighCondition" Association="Properties2Model.FK_NeighCondition">
+            <End Role="NeighborhoodCodes" EntitySet="NeighborhoodCodes" />
+            <End Role="Properties" EntitySet="Properties" />
+          </AssociationSet>
+          <AssociationSet Name="FK_pictures_pid" Association="Properties2Model.FK_pictures_pid">
+            <End Role="Properties" EntitySet="Properties" />
+            <End Role="Pictures" EntitySet="Pictures" />
+          </AssociationSet>
+          <AssociationSet Name="FK_properties_ptid" Association="Properties2Model.FK_properties_ptid">
+            <End Role="PropertyTypes" EntitySet="PropertyTypes" />
+            <End Role="Properties" EntitySet="Properties" />
+          </AssociationSet>
+          <AssociationSet Name="FK_properties_stid" Association="Properties2Model.FK_properties_stid">
+            <End Role="StreetTypes" EntitySet="StreetTypes" />
+            <End Role="Properties" EntitySet="Properties" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SocioEcon" Association="Properties2Model.FK_SocioEcon">
+            <End Role="SocioEconCodes" EntitySet="SocioEconCodes" />
+            <End Role="Properties" EntitySet="Properties" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Streetconn" Association="Properties2Model.FK_Streetconn">
+            <End Role="StreetconnCodes" EntitySet="StreetconnCodes" />
+            <End Role="Properties" EntitySet="Properties" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StreetSaftey" Association="Properties2Model.FK_StreetSaftey">
+            <End Role="StreetSafteyCodes" EntitySet="StreetSafteyCodes" />
+            <End Role="Properties" EntitySet="Properties" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StreetWalk" Association="Properties2Model.FK_StreetWalk">
+            <End Role="StreetwalkCodes" EntitySet="StreetwalkCodes" />
+            <End Role="Properties" EntitySet="Properties" />
+          </AssociationSet>
+          <EntitySet Name="PropertiesIndexes" EntityType="Properties2Model.PropertiesIndex" />
+        </EntityContainer>
+        <EntityType Name="Address">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="street1" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="street2" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="city" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="state" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="zip" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="country" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Property" Relationship="Properties2Model.FK_address_id" FromRole="Address" ToRole="Properties" />
+        </EntityType>
+        <EntityType Name="CommonCode">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="description" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="weight" Type="Int32" />
+          <NavigationProperty Name="Properties" Relationship="Properties2Model.FK_CommonAreas" FromRole="CommonCodes" ToRole="Properties" />
+        </EntityType>
+        <EntityType Name="EnclosureCode">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="description" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="weight" Type="Int32" />
+          <NavigationProperty Name="Properties" Relationship="Properties2Model.FK_BuildingEnclosure" FromRole="EnclosureCodes" ToRole="Properties" />
+        </EntityType>
+        <EntityType Name="NeighborhoodCode">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="description" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="weight" Type="Int32" />
+          <NavigationProperty Name="Properties" Relationship="Properties2Model.FK_NeighCondition" FromRole="NeighborhoodCodes" ToRole="Properties" />
+        </EntityType>
+        <EntityType Name="Picture">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="frontPage" Type="Int16" />
+          <Property Name="mainPicture" Type="Int16" />
+          <Property Name="secondaryPicture" Type="Int16" />
+          <Property Name="binaryData" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="mimeType" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="property_id" Type="Int32" />
+          <NavigationProperty Name="Property" Relationship="Properties2Model.FK_pictures_pid" FromRole="Pictures" ToRole="Properties" />
+        </EntityType>
+        <EntityType Name="Property">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="typeCode" Type="Int32" />
+          <Property Name="density" Type="Double" />
+          <Property Name="area" Type="Int32" />
+          <Property Name="units" Type="Int32" />
+          <Property Name="streetCode" Type="Int32" />
+          <Property Name="yearBuilt" Type="Int32" />
+          <Property Name="socioEcon" Type="Int32" />
+          <Property Name="streetSaftey" Type="Int32" />
+          <Property Name="buildingEnclosure" Type="Int32" />
+          <Property Name="commonAreas" Type="Int32" />
+          <Property Name="streetConn" Type="Int32" />
+          <Property Name="streetWalk" Type="Int32" />
+          <Property Name="walkscore" Type="Int32" />
+          <Property Name="neighCondition" Type="Int32" />
+          <Property Name="twoFiftySingleFam" Type="Int32" />
+          <Property Name="twoFiftyApts" Type="Int32" />
+          <Property Name="notes" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="adminNotes" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="walkscoreNotes" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="notFinished" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="latitude" Type="Double" />
+          <Property Name="longitude" Type="Double" />
+          <NavigationProperty Name="Address" Relationship="Properties2Model.FK_address_id" FromRole="Properties" ToRole="Address" />
+          <NavigationProperty Name="CommonCode" Relationship="Properties2Model.FK_CommonAreas" FromRole="Properties" ToRole="CommonCodes" />
+          <NavigationProperty Name="EnclosureCode" Relationship="Properties2Model.FK_BuildingEnclosure" FromRole="Properties" ToRole="EnclosureCodes" />
+          <NavigationProperty Name="NeighborhoodCode" Relationship="Properties2Model.FK_NeighCondition" FromRole="Properties" ToRole="NeighborhoodCodes" />
+          <NavigationProperty Name="Pictures" Relationship="Properties2Model.FK_pictures_pid" FromRole="Properties" ToRole="Pictures" />
+          <NavigationProperty Name="PropertyType" Relationship="Properties2Model.FK_properties_ptid" FromRole="Properties" ToRole="PropertyTypes" />
+          <NavigationProperty Name="StreetType" Relationship="Properties2Model.FK_properties_stid" FromRole="Properties" ToRole="StreetTypes" />
+          <NavigationProperty Name="SocioEconCode" Relationship="Properties2Model.FK_SocioEcon" FromRole="Properties" ToRole="SocioEconCodes" />
+          <NavigationProperty Name="StreetconnCode" Relationship="Properties2Model.FK_Streetconn" FromRole="Properties" ToRole="StreetconnCodes" />
+          <NavigationProperty Name="StreetSafteyCode" Relationship="Properties2Model.FK_StreetSaftey" FromRole="Properties" ToRole="StreetSafteyCodes" />
+          <NavigationProperty Name="StreetwalkCode" Relationship="Properties2Model.FK_StreetWalk" FromRole="Properties" ToRole="StreetwalkCodes" />
+        </EntityType>
+        <EntityType Name="PropertyType">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="description" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Properties" Relationship="Properties2Model.FK_properties_ptid" FromRole="PropertyTypes" ToRole="Properties" />
+        </EntityType>
+        <EntityType Name="SocioEconCode">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="description" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Properties" Relationship="Properties2Model.FK_SocioEcon" FromRole="SocioEconCodes" ToRole="Properties" />
+        </EntityType>
+        <EntityType Name="StreetconnCode">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="description" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="weight" Type="Int32" />
+          <NavigationProperty Name="Properties" Relationship="Properties2Model.FK_Streetconn" FromRole="StreetconnCodes" ToRole="Properties" />
+        </EntityType>
+        <EntityType Name="StreetSafteyCode">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="description" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="weight" Type="Int32" />
+          <NavigationProperty Name="Properties" Relationship="Properties2Model.FK_StreetSaftey" FromRole="StreetSafteyCodes" ToRole="Properties" />
+        </EntityType>
+        <EntityType Name="StreetType">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="description" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Properties" Relationship="Properties2Model.FK_properties_stid" FromRole="StreetTypes" ToRole="Properties" />
+        </EntityType>
+        <EntityType Name="StreetwalkCode">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="description" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="weight" Type="Int32" />
+          <NavigationProperty Name="Properties" Relationship="Properties2Model.FK_StreetWalk" FromRole="StreetwalkCodes" ToRole="Properties" />
+        </EntityType>
+        <EntityType Name="Weight">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="streetWalk" Type="Int32" />
+          <Property Name="walkscore" Type="Int32" />
+          <Property Name="twoFiftySingleFam" Type="Int32" />
+          <Property Name="buildingEnclosure" Type="Int32" />
+          <Property Name="streetConn" Type="Int32" />
+          <Property Name="commonAreas" Type="Int32" />
+          <Property Name="streetSaftey" Type="Int32" />
+          <Property Name="neighCondition" Type="Int32" />
+          <Property Name="twoFiftyApts" Type="Int32" />
+        </EntityType>
+        <Association Name="FK_address_id">
+          <End Role="Properties" Type="Properties2Model.Property" Multiplicity="1" />
+          <End Role="Address" Type="Properties2Model.Address" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Properties">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Address">
+              <PropertyRef Name="id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CommonAreas">
+          <End Role="CommonCodes" Type="Properties2Model.CommonCode" Multiplicity="0..1" />
+          <End Role="Properties" Type="Properties2Model.Property" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CommonCodes">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Properties">
+              <PropertyRef Name="commonAreas" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BuildingEnclosure">
+          <End Role="EnclosureCodes" Type="Properties2Model.EnclosureCode" Multiplicity="0..1" />
+          <End Role="Properties" Type="Properties2Model.Property" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EnclosureCodes">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Properties">
+              <PropertyRef Name="buildingEnclosure" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NeighCondition">
+          <End Role="NeighborhoodCodes" Type="Properties2Model.NeighborhoodCode" Multiplicity="0..1" />
+          <End Role="Properties" Type="Properties2Model.Property" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NeighborhoodCodes">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Properties">
+              <PropertyRef Name="neighCondition" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_pictures_pid">
+          <End Role="Properties" Type="Properties2Model.Property" Multiplicity="0..1" />
+          <End Role="Pictures" Type="Properties2Model.Picture" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Properties">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Pictures">
+              <PropertyRef Name="property_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_properties_ptid">
+          <End Role="PropertyTypes" Type="Properties2Model.PropertyType" Multiplicity="0..1" />
+          <End Role="Properties" Type="Properties2Model.Property" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PropertyTypes">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Properties">
+              <PropertyRef Name="typeCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_properties_stid">
+          <End Role="StreetTypes" Type="Properties2Model.StreetType" Multiplicity="0..1" />
+          <End Role="Properties" Type="Properties2Model.Property" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StreetTypes">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Properties">
+              <PropertyRef Name="streetCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SocioEcon">
+          <End Role="SocioEconCodes" Type="Properties2Model.SocioEconCode" Multiplicity="0..1" />
+          <End Role="Properties" Type="Properties2Model.Property" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SocioEconCodes">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Properties">
+              <PropertyRef Name="socioEcon" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Streetconn">
+          <End Role="StreetconnCodes" Type="Properties2Model.StreetconnCode" Multiplicity="0..1" />
+          <End Role="Properties" Type="Properties2Model.Property" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StreetconnCodes">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Properties">
+              <PropertyRef Name="streetConn" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StreetSaftey">
+          <End Role="StreetSafteyCodes" Type="Properties2Model.StreetSafteyCode" Multiplicity="0..1" />
+          <End Role="Properties" Type="Properties2Model.Property" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StreetSafteyCodes">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Properties">
+              <PropertyRef Name="streetSaftey" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StreetWalk">
+          <End Role="StreetwalkCodes" Type="Properties2Model.StreetwalkCode" Multiplicity="0..1" />
+          <End Role="Properties" Type="Properties2Model.Property" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StreetwalkCodes">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Properties">
+              <PropertyRef Name="streetWalk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="PropertiesIndex">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Type="String" Name="city" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="Int32" Name="OverallScore" />
+          <Property Type="String" Name="PropertyTypeDescription" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="Double" Name="density" />
+          <Property Type="Int32" Name="units" />
+          <Property Type="Int32" Name="yearBuilt" />
+          <Property Type="String" Name="StreetTypeDescription" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="StreetWalkDescription" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="walkscore" />
+          <Property Type="String" Name="SocioEconDescription" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="twoFiftySingleFam" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Properties2ModelStoreContainer" CdmEntityContainer="PropertiesDB">
+          <EntitySetMapping Name="Addresses"><EntityTypeMapping TypeName="Properties2Model.Address"><MappingFragment StoreEntitySet="Address">
+            <ScalarProperty Name="id" ColumnName="id" />
+            <ScalarProperty Name="street1" ColumnName="street1" />
+            <ScalarProperty Name="street2" ColumnName="street2" />
+            <ScalarProperty Name="city" ColumnName="city" />
+            <ScalarProperty Name="state" ColumnName="state" />
+            <ScalarProperty Name="zip" ColumnName="zip" />
+            <ScalarProperty Name="country" ColumnName="country" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="CommonCodes"><EntityTypeMapping TypeName="Properties2Model.CommonCode"><MappingFragment StoreEntitySet="CommonCodes">
+            <ScalarProperty Name="id" ColumnName="id" />
+            <ScalarProperty Name="description" ColumnName="description" />
+            <ScalarProperty Name="weight" ColumnName="weight" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="EnclosureCodes"><EntityTypeMapping TypeName="Properties2Model.EnclosureCode"><MappingFragment StoreEntitySet="EnclosureCodes">
+            <ScalarProperty Name="id" ColumnName="id" />
+            <ScalarProperty Name="description" ColumnName="description" />
+            <ScalarProperty Name="weight" ColumnName="weight" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="NeighborhoodCodes"><EntityTypeMapping TypeName="Properties2Model.NeighborhoodCode"><MappingFragment StoreEntitySet="NeighborhoodCodes">
+            <ScalarProperty Name="id" ColumnName="id" />
+            <ScalarProperty Name="description" ColumnName="description" />
+            <ScalarProperty Name="weight" ColumnName="weight" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Pictures"><EntityTypeMapping TypeName="Properties2Model.Picture"><MappingFragment StoreEntitySet="Pictures">
+            <ScalarProperty Name="id" ColumnName="id" />
+            <ScalarProperty Name="frontPage" ColumnName="frontPage" />
+            <ScalarProperty Name="mainPicture" ColumnName="mainPicture" />
+            <ScalarProperty Name="secondaryPicture" ColumnName="secondaryPicture" />
+            <ScalarProperty Name="binaryData" ColumnName="binaryData" />
+            <ScalarProperty Name="mimeType" ColumnName="mimeType" />
+            <ScalarProperty Name="property_id" ColumnName="property_id" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Properties"><EntityTypeMapping TypeName="Properties2Model.Property"><MappingFragment StoreEntitySet="Properties">
+            <ScalarProperty Name="id" ColumnName="id" />
+            <ScalarProperty Name="typeCode" ColumnName="typeCode" />
+            <ScalarProperty Name="density" ColumnName="density" />
+            <ScalarProperty Name="area" ColumnName="area" />
+            <ScalarProperty Name="units" ColumnName="units" />
+            <ScalarProperty Name="streetCode" ColumnName="streetCode" />
+            <ScalarProperty Name="yearBuilt" ColumnName="yearBuilt" />
+            <ScalarProperty Name="socioEcon" ColumnName="socioEcon" />
+            <ScalarProperty Name="streetSaftey" ColumnName="streetSaftey" />
+            <ScalarProperty Name="buildingEnclosure" ColumnName="buildingEnclosure" />
+            <ScalarProperty Name="commonAreas" ColumnName="commonAreas" />
+            <ScalarProperty Name="streetConn" ColumnName="streetConn" />
+            <ScalarProperty Name="streetWalk" ColumnName="streetWalk" />
+            <ScalarProperty Name="walkscore" ColumnName="walkscore" />
+            <ScalarProperty Name="neighCondition" ColumnName="neighCondition" />
+            <ScalarProperty Name="twoFiftySingleFam" ColumnName="twoFiftySingleFam" />
+            <ScalarProperty Name="twoFiftyApts" ColumnName="twoFiftyApts" />
+            <ScalarProperty Name="notes" ColumnName="notes" />
+            <ScalarProperty Name="adminNotes" ColumnName="adminNotes" />
+            <ScalarProperty Name="walkscoreNotes" ColumnName="walkscoreNotes" />
+            <ScalarProperty Name="notFinished" ColumnName="notFinished" />
+            <ScalarProperty Name="latitude" ColumnName="latitude" />
+            <ScalarProperty Name="longitude" ColumnName="longitude" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="PropertyTypes"><EntityTypeMapping TypeName="Properties2Model.PropertyType"><MappingFragment StoreEntitySet="PropertyTypes">
+            <ScalarProperty Name="id" ColumnName="id" />
+            <ScalarProperty Name="description" ColumnName="description" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="SocioEconCodes"><EntityTypeMapping TypeName="Properties2Model.SocioEconCode"><MappingFragment StoreEntitySet="SocioEconCodes">
+            <ScalarProperty Name="id" ColumnName="id" />
+            <ScalarProperty Name="description" ColumnName="description" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="StreetconnCodes"><EntityTypeMapping TypeName="Properties2Model.StreetconnCode"><MappingFragment StoreEntitySet="StreetconnCodes">
+            <ScalarProperty Name="id" ColumnName="id" />
+            <ScalarProperty Name="description" ColumnName="description" />
+            <ScalarProperty Name="weight" ColumnName="weight" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="StreetSafteyCodes"><EntityTypeMapping TypeName="Properties2Model.StreetSafteyCode"><MappingFragment StoreEntitySet="StreetSafteyCodes">
+            <ScalarProperty Name="id" ColumnName="id" />
+            <ScalarProperty Name="description" ColumnName="description" />
+            <ScalarProperty Name="weight" ColumnName="weight" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="StreetTypes"><EntityTypeMapping TypeName="Properties2Model.StreetType"><MappingFragment StoreEntitySet="StreetTypes">
+            <ScalarProperty Name="id" ColumnName="id" />
+            <ScalarProperty Name="description" ColumnName="description" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="StreetwalkCodes"><EntityTypeMapping TypeName="Properties2Model.StreetwalkCode"><MappingFragment StoreEntitySet="StreetwalkCodes">
+            <ScalarProperty Name="id" ColumnName="id" />
+            <ScalarProperty Name="description" ColumnName="description" />
+            <ScalarProperty Name="weight" ColumnName="weight" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Weights"><EntityTypeMapping TypeName="Properties2Model.Weight"><MappingFragment StoreEntitySet="Weights">
+            <ScalarProperty Name="id" ColumnName="id" />
+            <ScalarProperty Name="streetWalk" ColumnName="streetWalk" />
+            <ScalarProperty Name="walkscore" ColumnName="walkscore" />
+            <ScalarProperty Name="twoFiftySingleFam" ColumnName="twoFiftySingleFam" />
+            <ScalarProperty Name="buildingEnclosure" ColumnName="buildingEnclosure" />
+            <ScalarProperty Name="streetConn" ColumnName="streetConn" />
+            <ScalarProperty Name="commonAreas" ColumnName="commonAreas" />
+            <ScalarProperty Name="streetSaftey" ColumnName="streetSaftey" />
+            <ScalarProperty Name="neighCondition" ColumnName="neighCondition" />
+            <ScalarProperty Name="twoFiftyApts" ColumnName="twoFiftyApts" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="PropertiesIndexes">
+            <EntityTypeMapping TypeName="Properties2Model.PropertiesIndex">
+              <MappingFragment StoreEntitySet="PropertiesIndex">
+                <ScalarProperty Name="twoFiftySingleFam" ColumnName="twoFiftySingleFam" />
+                <ScalarProperty Name="SocioEconDescription" ColumnName="SocioEconDescription" />
+                <ScalarProperty Name="walkscore" ColumnName="walkscore" />
+                <ScalarProperty Name="StreetWalkDescription" ColumnName="StreetWalkDescription" />
+                <ScalarProperty Name="StreetTypeDescription" ColumnName="StreetTypeDescription" />
+                <ScalarProperty Name="yearBuilt" ColumnName="yearBuilt" />
+                <ScalarProperty Name="units" ColumnName="units" />
+                <ScalarProperty Name="density" ColumnName="density" />
+                <ScalarProperty Name="PropertyTypeDescription" ColumnName="PropertyTypeDescription" />
+                <ScalarProperty Name="OverallScore" ColumnName="OverallScore" />
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="city" ColumnName="city" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="Repository" ZoomLevel="71">
+        <EntityTypeShape EntityType="Properties2Model.Address" Width="1.5" PointX="5.25" PointY="2" Height="2.5571907552083335" IsExpanded="true" />
+        <EntityTypeShape EntityType="Properties2Model.CommonCode" Width="1.5" PointX="0.75" PointY="4.125" Height="1.7879850260416674" IsExpanded="true" />
+        <EntityTypeShape EntityType="Properties2Model.EnclosureCode" Width="1.5" PointX="0.75" PointY="7.5" Height="1.7879850260416674" IsExpanded="true" />
+        <EntityTypeShape EntityType="Properties2Model.NeighborhoodCode" Width="1.5" PointX="0.75" PointY="10" Height="1.7879850260416674" IsExpanded="true" />
+        <EntityTypeShape EntityType="Properties2Model.Picture" Width="1.5" PointX="5.25" PointY="5.375" Height="2.5571907552083317" IsExpanded="true" />
+        <EntityTypeShape EntityType="Properties2Model.Property" Width="1.5" PointX="3" PointY="1.25" Height="7.5570279947916656" IsExpanded="true" />
+        <EntityTypeShape EntityType="Properties2Model.PropertyType" Width="1.5" PointX="0.75" PointY="12.625" Height="1.5956835937499996" IsExpanded="true" />
+        <EntityTypeShape EntityType="Properties2Model.SocioEconCode" Width="1.5" PointX="0.75" PointY="15" Height="1.5956835937499978" IsExpanded="true" />
+        <EntityTypeShape EntityType="Properties2Model.StreetconnCode" Width="1.5" PointX="0.75" PointY="17.25" Height="1.7879850260416674" IsExpanded="true" />
+        <EntityTypeShape EntityType="Properties2Model.StreetSafteyCode" Width="1.5" PointX="0.75" PointY="19.875" Height="1.7879850260416674" IsExpanded="true" />
+        <EntityTypeShape EntityType="Properties2Model.StreetType" Width="1.5" PointX="0.75" PointY="22.375" Height="1.5956835937500031" IsExpanded="true" />
+        <EntityTypeShape EntityType="Properties2Model.StreetwalkCode" Width="1.5" PointX="0.75" PointY="24.75" Height="1.7879850260416745" IsExpanded="true" />
+        <EntityTypeShape EntityType="Properties2Model.Weight" Width="1.5" PointX="7.75" PointY="0.75" Height="2.9417936197916674" IsExpanded="true" />
+        <AssociationConnector Association="Properties2Model.FK_address_id" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.5" PointY="3.2785953776041667" />
+          <ConnectorPoint PointX="5.25" PointY="3.2785953776041667" />
+        </AssociationConnector>
+        <AssociationConnector Association="Properties2Model.FK_CommonAreas" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="5.0189925130208337" />
+          <ConnectorPoint PointX="3" PointY="5.0189925130208337" />
+        </AssociationConnector>
+        <AssociationConnector Association="Properties2Model.FK_BuildingEnclosure" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="8.1535139973958337" />
+          <ConnectorPoint PointX="3" PointY="8.1535139973958337" />
+        </AssociationConnector>
+        <AssociationConnector Association="Properties2Model.FK_NeighCondition" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="10.893992513020834" />
+          <ConnectorPoint PointX="3.0572879166666667" PointY="10.893992513020834" />
+          <ConnectorPoint PointX="3.2239545833333336" PointY="10.893992513020834" />
+          <ConnectorPoint PointX="3.2604141666666666" PointY="10.893992513020834" />
+          <ConnectorPoint PointX="3.4270808333333336" PointY="10.893992513020834" />
+          <ConnectorPoint PointX="3.4635404166666666" PointY="10.893992513020834" />
+          <ConnectorPoint PointX="3.6302070833333335" PointY="10.893992513020834" />
+          <ConnectorPoint PointX="3.75" PointY="10.893992513020834" />
+          <ConnectorPoint PointX="3.75" PointY="8.8070279947916656" />
+        </AssociationConnector>
+        <AssociationConnector Association="Properties2Model.FK_pictures_pid" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.5" PointY="6.6535953776041659" />
+          <ConnectorPoint PointX="5.25" PointY="6.6535953776041659" />
+        </AssociationConnector>
+        <AssociationConnector Association="Properties2Model.FK_properties_ptid" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="13.422841796875" />
+          <ConnectorPoint PointX="3.0572879166666667" PointY="13.422841796875" />
+          <ConnectorPoint PointX="3.2239545833333336" PointY="13.422841796875" />
+          <ConnectorPoint PointX="3.3437475" PointY="13.422841796875" />
+          <ConnectorPoint PointX="3.3437475" PointY="8.8070279947916656" />
+        </AssociationConnector>
+        <AssociationConnector Association="Properties2Model.FK_properties_stid" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="23.172841796875" />
+          <ConnectorPoint PointX="4.054689375" PointY="23.172841796875" />
+          <ConnectorPoint PointX="4.054689375" PointY="8.8070279947916656" />
+        </AssociationConnector>
+        <AssociationConnector Association="Properties2Model.FK_SocioEcon" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="15.797841796874998" />
+          <ConnectorPoint PointX="3.14062125" PointY="15.797841796874998" />
+          <ConnectorPoint PointX="3.14062125" PointY="8.8070279947916656" />
+        </AssociationConnector>
+        <AssociationConnector Association="Properties2Model.FK_Streetconn" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="18.143992513020834" />
+          <ConnectorPoint PointX="3.54687375" PointY="18.143992513020834" />
+          <ConnectorPoint PointX="3.54687375" PointY="8.8070279947916656" />
+        </AssociationConnector>
+        <AssociationConnector Association="Properties2Model.FK_StreetSaftey" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="20.768992513020834" />
+          <ConnectorPoint PointX="3.9023446875" PointY="20.768992513020834" />
+          <ConnectorPoint PointX="3.9023446875" PointY="8.8070279947916656" />
+        </AssociationConnector>
+        <AssociationConnector Association="Properties2Model.FK_StreetWalk" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="25.643992513020837" />
+          <ConnectorPoint PointX="4.3593787499999994" PointY="25.643992513020837" />
+          <ConnectorPoint PointX="4.3593787499999994" PointY="8.8070279947916656" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="Properties2Model.PropertiesIndex" Width="1.5" PointX="7.375" PointY="4.75" Height="3.3263964843750031" />
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>

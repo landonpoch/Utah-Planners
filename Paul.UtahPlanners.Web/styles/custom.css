@@ -1,0 +1,185 @@
+﻿.left
+{
+	float:left;
+	width:392px;
+	height:293px;
+	padding:10px;
+	/*border:2px solid gray;*/
+}
+
+.searchLeft
+{
+	float:left;
+	width:390px;
+	height:250px;
+	padding:10px;
+	/*border:2px solid gray;*/
+}
+
+.leftpicture
+{
+	float:left;
+	width:412px;
+	height:308px;
+	/*border:1px solid gray;*/
+}
+
+.right
+{
+	float:right;
+	width:392px;
+	height:293px;
+	padding:10px;
+	/*border:2px solid red;*/
+}
+
+.searchRight
+{
+	float:right;
+	width:390px;
+	height:250px;
+	padding:10px;
+	/*border:2px solid red;*/
+}
+
+
+.rightpicture
+{
+	float:right;
+	width:417px;
+	height:308px;
+	/*border:2px solid red;*/
+}
+
+.resize
+{
+	width: 412px;
+	height: auto;
+	border: 0px;
+}
+
+.editresize
+{
+	width: 250px;
+	height: auto;
+}
+
+.builddetail
+{
+width: 7.2em;
+float: left;
+text-align: right;
+margin-right: 0.5em;
+display: block;
+font-weight:bold;
+}
+
+.scoredetail
+{
+width: 13em;
+float: left;
+text-align: right;
+margin-right: 0.5em;
+display: block;
+font-weight:bold;
+}
+
+.center
+{
+	text-align: center;
+}
+
+.floatright
+{
+	float:right;
+	margin-right:32px;
+}
+
+.resizePortrait
+{
+	width: 85px;
+	height: auto;
+	float: left;
+	margin-top: 5px;
+	margin-right: 12px;
+	margin-bottom: 8px;
+}
+
+.resizeMainPicture
+{
+	width: 565px;
+	height: auto;
+	border-width: 0px;
+}
+
+.newproperty
+{
+	width: 11em;
+	float: left;
+	text-align: right;
+	margin-right: 0.5em;
+	display: block;
+	font-weight:bold;
+}
+
+.newwidth
+{
+	width: 170px;
+}
+
+.smallwidth
+{
+	width: 66px;
+}
+
+.searchLabel
+{
+	width: 14em;
+	float: left;
+	text-align: right;
+	margin-right: 0.5em;
+	display: block;
+	font-weight:bold;
+}
+
+.searchInput
+{
+	width: 170px;
+}
+
+h2.trigger {
+	padding: 0 0 0 50px;
+	margin: 0 0 5px 0;
+	background: url(h2_trigger_a.gif) no-repeat;
+	height: 46px;
+	line-height: 46px;
+	width: 782px;
+	font-size: 2em;
+	font-weight: normal;
+	/*float: left;*/
+}
+
+h2.trigger a {
+	color: #fff;
+	text-decoration: none;
+	display: block;
+}
+
+h2.trigger a:hover { color: #ccc; }
+h2.active {background-position: left bottom;} /*--When toggle is triggered, it will shift the image to the bottom to show its "opened" state--*/
+
+.toggle_container {
+	margin: 0 0 5px;
+	padding: 0;
+	border-top: 1px solid #d6d6d6;
+	background: #f0f0f0 url(toggle_block_stretch.gif) repeat-y left top;
+	overflow: hidden;
+	/*font-size: 1.2em;*/
+	width: 832px;
+	clear: both;
+}
+.toggle_container .block {
+	/*padding: 20px; /*--Padding of Container--*/
+	padding-top: 20px;
+	/*background: url(toggle_block_btm.gif) no-repeat left bottom; /*--Bottom rounded corners--*/
+}

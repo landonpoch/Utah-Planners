@@ -1,0 +1,44 @@
+﻿<%@ Master Language="C#" MasterPageFile="~/Views/Shared/Base.Master" Inherits="System.Web.Mvc.ViewMasterPage" %>
+
+<asp:Content ID="PageContent" ContentPlaceHolderID="PageContent" runat="server">
+<div id="page-bgtop">
+			<div id="content">
+				<asp:ContentPlaceHolder ID="MainContent" runat="server"></asp:ContentPlaceHolder> 
+			</div>
+			<!-- end div#content -->
+			<div id="sidebar">
+				<ul>
+					<li>
+						<h2>Condo Type</h2>
+						<ul>
+							<li><asp:HyperLink ID="HyperLink3" runat="server" NavigateUrl="/Index/stacked">Stacked Flats</asp:HyperLink></li>
+							<li><asp:HyperLink ID="HyperLink4" runat="server" NavigateUrl="/Index/twin">Twin Homes</asp:HyperLink></li>
+							<li><asp:HyperLink ID="HyperLink5" runat="server" NavigateUrl="/Index/town">Townhomes</asp:HyperLink></li>
+							<li><asp:HyperLink ID="HyperLink6" runat="server" NavigateUrl="/Index/mixed">Mixed Units</asp:HyperLink></li>
+						</ul>
+					</li>
+					<li>
+						<h2>Density</h2>
+                        <h3>Units per Acre</h3>
+						<ul>
+							<li><asp:HyperLink ID="HyperLink7" runat="server" NavigateUrl="/Index">Less than 10</asp:HyperLink></li>
+							<li><asp:HyperLink ID="HyperLink8" runat="server" NavigateUrl="/Index">10 to 13</asp:HyperLink></li>
+							<li><asp:HyperLink ID="HyperLink9" runat="server" NavigateUrl="/Index">14 to 16</asp:HyperLink></li>
+							<li><asp:HyperLink ID="HyperLink10" runat="server" NavigateUrl="/Index">17 to 20</asp:HyperLink></li>
+							<li><asp:HyperLink ID="HyperLink11" runat="server" NavigateUrl="/Index">More than 20</asp:HyperLink></li>
+						</ul>
+					</li>
+					<li>
+						<h2>Local Services</h2>
+						<ul>
+							<li><asp:HyperLink ID="HyperLink12" runat="server" NavigateUrl="/Index">High</asp:HyperLink></li>
+							<li><asp:HyperLink ID="HyperLink13" runat="server" NavigateUrl="/Index">Medium</asp:HyperLink></li>
+							<li><asp:HyperLink ID="HyperLink14" runat="server" NavigateUrl="/Index">Low</asp:HyperLink></li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+			<!-- end div#sidebar -->
+			<div style="clear: both; height: 1px"></div>
+		</div>
+</asp:Content>

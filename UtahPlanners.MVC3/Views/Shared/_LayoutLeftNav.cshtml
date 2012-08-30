@@ -1,0 +1,42 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutNoLeftNav.cshtml";
+}
+
+@RenderBody()
+	
+@section LeftNav {
+    <div id="sidebar">
+		<ul>
+			<li>
+				<h2>Condo Type</h2>
+				<ul>
+					<li><a href="#">Stacked Flats</a></li>
+					<li><a href="#">Twin Homes</a></li>
+					<li><a href="#">Townhomes</a></li>
+					<li><a href="#">Mixed Units</a></li>
+				</ul>
+			</li>
+			<li>
+				<h2>Density</h2>
+                <h3>Units per Acre</h3>
+				<ul>
+					<li><a href="#">Less than 10</a></li>
+					<li><a href="#">10 to 13</a></li>
+					<li><a href="#">14 to 16</a></li>
+					<li><a href="#">17 to 20</a></li>
+					<li><a href="#">More than 20</a></li>
+				</ul>
+			</li>
+			<li>
+				<h2>Local Services</h2>
+				<ul>
+					<li><a href="#">High</a></li>
+					<li><a href="#">Medium</a></li>
+					<li><a href="#">Low</a></li>
+				</ul>
+			</li>
+		</ul>
+	</div>
+	<!-- end div#sidebar -->
+	<div style="clear: both; height: 1px"></div>
+}
