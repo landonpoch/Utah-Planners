@@ -18,21 +18,21 @@ using System.Runtime.Serialization;
 [assembly: EdmSchemaAttribute()]
 #region EDM Relationship Metadata
 
-[assembly: EdmRelationshipAttribute("Properties2Model", "FK_address_id", "Properties", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(UtahPlanners.Repository.PropertyExtensions), "Address", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(UtahPlanners.Repository.Address), true)]
-[assembly: EdmRelationshipAttribute("Properties2Model", "FK_CommonAreas", "CommonCodes", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(UtahPlanners.Repository.CommonCode), "Properties", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(UtahPlanners.Repository.PropertyExtensions), true)]
-[assembly: EdmRelationshipAttribute("Properties2Model", "FK_BuildingEnclosure", "EnclosureCodes", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(UtahPlanners.Repository.EnclosureCode), "Properties", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(UtahPlanners.Repository.PropertyExtensions), true)]
-[assembly: EdmRelationshipAttribute("Properties2Model", "FK_NeighCondition", "NeighborhoodCodes", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(UtahPlanners.Repository.NeighborhoodCode), "Properties", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(UtahPlanners.Repository.PropertyExtensions), true)]
-[assembly: EdmRelationshipAttribute("Properties2Model", "FK_pictures_pid", "Properties", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(UtahPlanners.Repository.PropertyExtensions), "Pictures", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(UtahPlanners.Repository.Picture), true)]
-[assembly: EdmRelationshipAttribute("Properties2Model", "FK_properties_ptid", "PropertyTypes", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(UtahPlanners.Repository.PropertyType), "Properties", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(UtahPlanners.Repository.PropertyExtensions), true)]
-[assembly: EdmRelationshipAttribute("Properties2Model", "FK_properties_stid", "StreetTypes", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(UtahPlanners.Repository.StreetType), "Properties", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(UtahPlanners.Repository.PropertyExtensions), true)]
-[assembly: EdmRelationshipAttribute("Properties2Model", "FK_SocioEcon", "SocioEconCodes", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(UtahPlanners.Repository.SocioEconCode), "Properties", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(UtahPlanners.Repository.PropertyExtensions), true)]
-[assembly: EdmRelationshipAttribute("Properties2Model", "FK_Streetconn", "StreetconnCodes", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(UtahPlanners.Repository.StreetconnCode), "Properties", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(UtahPlanners.Repository.PropertyExtensions), true)]
-[assembly: EdmRelationshipAttribute("Properties2Model", "FK_StreetSaftey", "StreetSafteyCodes", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(UtahPlanners.Repository.StreetSafteyCode), "Properties", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(UtahPlanners.Repository.PropertyExtensions), true)]
-[assembly: EdmRelationshipAttribute("Properties2Model", "FK_StreetWalk", "StreetwalkCodes", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(UtahPlanners.Repository.StreetwalkCode), "Properties", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(UtahPlanners.Repository.PropertyExtensions), true)]
+[assembly: EdmRelationshipAttribute("UtahPlanners.Infrastructure", "FK_address_id", "Properties", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(UtahPlanners.Infrastructure.Property), "Address", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(UtahPlanners.Infrastructure.Address), true)]
+[assembly: EdmRelationshipAttribute("UtahPlanners.Infrastructure", "FK_CommonAreas", "CommonCodes", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(UtahPlanners.Infrastructure.CommonCode), "Properties", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(UtahPlanners.Infrastructure.Property), true)]
+[assembly: EdmRelationshipAttribute("UtahPlanners.Infrastructure", "FK_BuildingEnclosure", "EnclosureCodes", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(UtahPlanners.Infrastructure.EnclosureCode), "Properties", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(UtahPlanners.Infrastructure.Property), true)]
+[assembly: EdmRelationshipAttribute("UtahPlanners.Infrastructure", "FK_NeighCondition", "NeighborhoodCodes", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(UtahPlanners.Infrastructure.NeighborhoodCode), "Properties", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(UtahPlanners.Infrastructure.Property), true)]
+[assembly: EdmRelationshipAttribute("UtahPlanners.Infrastructure", "FK_pictures_pid", "Properties", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(UtahPlanners.Infrastructure.Property), "Pictures", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(UtahPlanners.Infrastructure.Picture), true)]
+[assembly: EdmRelationshipAttribute("UtahPlanners.Infrastructure", "FK_properties_ptid", "PropertyTypes", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(UtahPlanners.Infrastructure.PropertyType), "Properties", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(UtahPlanners.Infrastructure.Property), true)]
+[assembly: EdmRelationshipAttribute("UtahPlanners.Infrastructure", "FK_properties_stid", "StreetTypes", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(UtahPlanners.Infrastructure.StreetType), "Properties", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(UtahPlanners.Infrastructure.Property), true)]
+[assembly: EdmRelationshipAttribute("UtahPlanners.Infrastructure", "FK_SocioEcon", "SocioEconCodes", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(UtahPlanners.Infrastructure.SocioEconCode), "Properties", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(UtahPlanners.Infrastructure.Property), true)]
+[assembly: EdmRelationshipAttribute("UtahPlanners.Infrastructure", "FK_Streetconn", "StreetconnCodes", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(UtahPlanners.Infrastructure.StreetconnCode), "Properties", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(UtahPlanners.Infrastructure.Property), true)]
+[assembly: EdmRelationshipAttribute("UtahPlanners.Infrastructure", "FK_StreetSaftey", "StreetSafteyCodes", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(UtahPlanners.Infrastructure.StreetSafteyCode), "Properties", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(UtahPlanners.Infrastructure.Property), true)]
+[assembly: EdmRelationshipAttribute("UtahPlanners.Infrastructure", "FK_StreetWalk", "StreetwalkCodes", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(UtahPlanners.Infrastructure.StreetwalkCode), "Properties", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(UtahPlanners.Infrastructure.Property), true)]
 
 #endregion
 
-namespace UtahPlanners.Repository
+namespace UtahPlanners.Infrastructure
 {
     #region Contexts
     
@@ -163,18 +163,18 @@ namespace UtahPlanners.Repository
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        public ObjectSet<PropertyExtensions> Properties
+        public ObjectSet<Property> Properties
         {
             get
             {
                 if ((_Properties == null))
                 {
-                    _Properties = base.CreateObjectSet<PropertyExtensions>("Properties");
+                    _Properties = base.CreateObjectSet<Property>("Properties");
                 }
                 return _Properties;
             }
         }
-        private ObjectSet<PropertyExtensions> _Properties;
+        private ObjectSet<Property> _Properties;
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -350,7 +350,7 @@ namespace UtahPlanners.Repository
         /// <summary>
         /// Deprecated Method for adding a new object to the Properties EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
         /// </summary>
-        public void AddToProperties(PropertyExtensions property)
+        public void AddToProperties(Property property)
         {
             base.AddObject("Properties", property);
         }
@@ -430,7 +430,7 @@ namespace UtahPlanners.Repository
     /// <summary>
     /// No Metadata Documentation available.
     /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="Properties2Model", Name="Address")]
+    [EdmEntityTypeAttribute(NamespaceName="UtahPlanners.Infrastructure", Name="Address")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
     public partial class Address : EntityObject
@@ -632,16 +632,16 @@ namespace UtahPlanners.Repository
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("Properties2Model", "FK_address_id", "Properties")]
-        public PropertyExtensions Property
+        [EdmRelationshipNavigationPropertyAttribute("UtahPlanners.Infrastructure", "FK_address_id", "Properties")]
+        public Property Property
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<PropertyExtensions>("Properties2Model.FK_address_id", "Properties").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Property>("UtahPlanners.Infrastructure.FK_address_id", "Properties").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<PropertyExtensions>("Properties2Model.FK_address_id", "Properties").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Property>("UtahPlanners.Infrastructure.FK_address_id", "Properties").Value = value;
             }
         }
         /// <summary>
@@ -649,17 +649,17 @@ namespace UtahPlanners.Repository
         /// </summary>
         [BrowsableAttribute(false)]
         [DataMemberAttribute()]
-        public EntityReference<PropertyExtensions> PropertyReference
+        public EntityReference<Property> PropertyReference
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<PropertyExtensions>("Properties2Model.FK_address_id", "Properties");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Property>("UtahPlanners.Infrastructure.FK_address_id", "Properties");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<PropertyExtensions>("Properties2Model.FK_address_id", "Properties", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Property>("UtahPlanners.Infrastructure.FK_address_id", "Properties", value);
                 }
             }
         }
@@ -670,7 +670,7 @@ namespace UtahPlanners.Repository
     /// <summary>
     /// No Metadata Documentation available.
     /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="Properties2Model", Name="CommonCode")]
+    [EdmEntityTypeAttribute(NamespaceName="UtahPlanners.Infrastructure", Name="CommonCode")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
     public partial class CommonCode : EntityObject
@@ -776,18 +776,18 @@ namespace UtahPlanners.Repository
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("Properties2Model", "FK_CommonAreas", "Properties")]
-        public EntityCollection<PropertyExtensions> Properties
+        [EdmRelationshipNavigationPropertyAttribute("UtahPlanners.Infrastructure", "FK_CommonAreas", "Properties")]
+        public EntityCollection<Property> Properties
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<PropertyExtensions>("Properties2Model.FK_CommonAreas", "Properties");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Property>("UtahPlanners.Infrastructure.FK_CommonAreas", "Properties");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<PropertyExtensions>("Properties2Model.FK_CommonAreas", "Properties", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Property>("UtahPlanners.Infrastructure.FK_CommonAreas", "Properties", value);
                 }
             }
         }
@@ -798,7 +798,7 @@ namespace UtahPlanners.Repository
     /// <summary>
     /// No Metadata Documentation available.
     /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="Properties2Model", Name="EnclosureCode")]
+    [EdmEntityTypeAttribute(NamespaceName="UtahPlanners.Infrastructure", Name="EnclosureCode")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
     public partial class EnclosureCode : EntityObject
@@ -904,18 +904,18 @@ namespace UtahPlanners.Repository
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("Properties2Model", "FK_BuildingEnclosure", "Properties")]
-        public EntityCollection<PropertyExtensions> Properties
+        [EdmRelationshipNavigationPropertyAttribute("UtahPlanners.Infrastructure", "FK_BuildingEnclosure", "Properties")]
+        public EntityCollection<Property> Properties
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<PropertyExtensions>("Properties2Model.FK_BuildingEnclosure", "Properties");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Property>("UtahPlanners.Infrastructure.FK_BuildingEnclosure", "Properties");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<PropertyExtensions>("Properties2Model.FK_BuildingEnclosure", "Properties", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Property>("UtahPlanners.Infrastructure.FK_BuildingEnclosure", "Properties", value);
                 }
             }
         }
@@ -926,7 +926,7 @@ namespace UtahPlanners.Repository
     /// <summary>
     /// No Metadata Documentation available.
     /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="Properties2Model", Name="NeighborhoodCode")]
+    [EdmEntityTypeAttribute(NamespaceName="UtahPlanners.Infrastructure", Name="NeighborhoodCode")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
     public partial class NeighborhoodCode : EntityObject
@@ -1032,18 +1032,18 @@ namespace UtahPlanners.Repository
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("Properties2Model", "FK_NeighCondition", "Properties")]
-        public EntityCollection<PropertyExtensions> Properties
+        [EdmRelationshipNavigationPropertyAttribute("UtahPlanners.Infrastructure", "FK_NeighCondition", "Properties")]
+        public EntityCollection<Property> Properties
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<PropertyExtensions>("Properties2Model.FK_NeighCondition", "Properties");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Property>("UtahPlanners.Infrastructure.FK_NeighCondition", "Properties");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<PropertyExtensions>("Properties2Model.FK_NeighCondition", "Properties", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Property>("UtahPlanners.Infrastructure.FK_NeighCondition", "Properties", value);
                 }
             }
         }
@@ -1054,7 +1054,7 @@ namespace UtahPlanners.Repository
     /// <summary>
     /// No Metadata Documentation available.
     /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="Properties2Model", Name="Picture")]
+    [EdmEntityTypeAttribute(NamespaceName="UtahPlanners.Infrastructure", Name="Picture")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
     public partial class Picture : EntityObject
@@ -1256,16 +1256,16 @@ namespace UtahPlanners.Repository
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("Properties2Model", "FK_pictures_pid", "Properties")]
-        public PropertyExtensions Property
+        [EdmRelationshipNavigationPropertyAttribute("UtahPlanners.Infrastructure", "FK_pictures_pid", "Properties")]
+        public Property Property
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<PropertyExtensions>("Properties2Model.FK_pictures_pid", "Properties").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Property>("UtahPlanners.Infrastructure.FK_pictures_pid", "Properties").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<PropertyExtensions>("Properties2Model.FK_pictures_pid", "Properties").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Property>("UtahPlanners.Infrastructure.FK_pictures_pid", "Properties").Value = value;
             }
         }
         /// <summary>
@@ -1273,17 +1273,17 @@ namespace UtahPlanners.Repository
         /// </summary>
         [BrowsableAttribute(false)]
         [DataMemberAttribute()]
-        public EntityReference<PropertyExtensions> PropertyReference
+        public EntityReference<Property> PropertyReference
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<PropertyExtensions>("Properties2Model.FK_pictures_pid", "Properties");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Property>("UtahPlanners.Infrastructure.FK_pictures_pid", "Properties");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<PropertyExtensions>("Properties2Model.FK_pictures_pid", "Properties", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Property>("UtahPlanners.Infrastructure.FK_pictures_pid", "Properties", value);
                 }
             }
         }
@@ -1294,7 +1294,7 @@ namespace UtahPlanners.Repository
     /// <summary>
     /// No Metadata Documentation available.
     /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="Properties2Model", Name="PropertiesIndex")]
+    [EdmEntityTypeAttribute(NamespaceName="UtahPlanners.Infrastructure", Name="PropertiesIndex")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
     public partial class PropertiesIndex : EntityObject
@@ -1613,10 +1613,10 @@ namespace UtahPlanners.Repository
     /// <summary>
     /// No Metadata Documentation available.
     /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="Properties2Model", Name="Property")]
+    [EdmEntityTypeAttribute(NamespaceName="UtahPlanners.Infrastructure", Name="Property")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
-    public partial class PropertyExtensions : EntityObject
+    public partial class Property : EntityObject
     {
         #region Factory Method
     
@@ -1624,9 +1624,9 @@ namespace UtahPlanners.Repository
         /// Create a new Property object.
         /// </summary>
         /// <param name="id">Initial value of the id property.</param>
-        public static PropertyExtensions CreateProperty(global::System.Int32 id)
+        public static Property CreateProperty(global::System.Int32 id)
         {
-            PropertyExtensions property = new PropertyExtensions();
+            Property property = new Property();
             property.id = id;
             return property;
         }
@@ -2199,16 +2199,16 @@ namespace UtahPlanners.Repository
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("Properties2Model", "FK_address_id", "Address")]
+        [EdmRelationshipNavigationPropertyAttribute("UtahPlanners.Infrastructure", "FK_address_id", "Address")]
         public Address Address
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Address>("Properties2Model.FK_address_id", "Address").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Address>("UtahPlanners.Infrastructure.FK_address_id", "Address").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Address>("Properties2Model.FK_address_id", "Address").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Address>("UtahPlanners.Infrastructure.FK_address_id", "Address").Value = value;
             }
         }
         /// <summary>
@@ -2220,13 +2220,13 @@ namespace UtahPlanners.Repository
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Address>("Properties2Model.FK_address_id", "Address");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Address>("UtahPlanners.Infrastructure.FK_address_id", "Address");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Address>("Properties2Model.FK_address_id", "Address", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Address>("UtahPlanners.Infrastructure.FK_address_id", "Address", value);
                 }
             }
         }
@@ -2237,16 +2237,16 @@ namespace UtahPlanners.Repository
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("Properties2Model", "FK_CommonAreas", "CommonCodes")]
+        [EdmRelationshipNavigationPropertyAttribute("UtahPlanners.Infrastructure", "FK_CommonAreas", "CommonCodes")]
         public CommonCode CommonCode
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<CommonCode>("Properties2Model.FK_CommonAreas", "CommonCodes").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<CommonCode>("UtahPlanners.Infrastructure.FK_CommonAreas", "CommonCodes").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<CommonCode>("Properties2Model.FK_CommonAreas", "CommonCodes").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<CommonCode>("UtahPlanners.Infrastructure.FK_CommonAreas", "CommonCodes").Value = value;
             }
         }
         /// <summary>
@@ -2258,13 +2258,13 @@ namespace UtahPlanners.Repository
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<CommonCode>("Properties2Model.FK_CommonAreas", "CommonCodes");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<CommonCode>("UtahPlanners.Infrastructure.FK_CommonAreas", "CommonCodes");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<CommonCode>("Properties2Model.FK_CommonAreas", "CommonCodes", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<CommonCode>("UtahPlanners.Infrastructure.FK_CommonAreas", "CommonCodes", value);
                 }
             }
         }
@@ -2275,16 +2275,16 @@ namespace UtahPlanners.Repository
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("Properties2Model", "FK_BuildingEnclosure", "EnclosureCodes")]
+        [EdmRelationshipNavigationPropertyAttribute("UtahPlanners.Infrastructure", "FK_BuildingEnclosure", "EnclosureCodes")]
         public EnclosureCode EnclosureCode
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<EnclosureCode>("Properties2Model.FK_BuildingEnclosure", "EnclosureCodes").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<EnclosureCode>("UtahPlanners.Infrastructure.FK_BuildingEnclosure", "EnclosureCodes").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<EnclosureCode>("Properties2Model.FK_BuildingEnclosure", "EnclosureCodes").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<EnclosureCode>("UtahPlanners.Infrastructure.FK_BuildingEnclosure", "EnclosureCodes").Value = value;
             }
         }
         /// <summary>
@@ -2296,13 +2296,13 @@ namespace UtahPlanners.Repository
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<EnclosureCode>("Properties2Model.FK_BuildingEnclosure", "EnclosureCodes");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<EnclosureCode>("UtahPlanners.Infrastructure.FK_BuildingEnclosure", "EnclosureCodes");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<EnclosureCode>("Properties2Model.FK_BuildingEnclosure", "EnclosureCodes", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<EnclosureCode>("UtahPlanners.Infrastructure.FK_BuildingEnclosure", "EnclosureCodes", value);
                 }
             }
         }
@@ -2313,16 +2313,16 @@ namespace UtahPlanners.Repository
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("Properties2Model", "FK_NeighCondition", "NeighborhoodCodes")]
+        [EdmRelationshipNavigationPropertyAttribute("UtahPlanners.Infrastructure", "FK_NeighCondition", "NeighborhoodCodes")]
         public NeighborhoodCode NeighborhoodCode
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<NeighborhoodCode>("Properties2Model.FK_NeighCondition", "NeighborhoodCodes").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<NeighborhoodCode>("UtahPlanners.Infrastructure.FK_NeighCondition", "NeighborhoodCodes").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<NeighborhoodCode>("Properties2Model.FK_NeighCondition", "NeighborhoodCodes").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<NeighborhoodCode>("UtahPlanners.Infrastructure.FK_NeighCondition", "NeighborhoodCodes").Value = value;
             }
         }
         /// <summary>
@@ -2334,13 +2334,13 @@ namespace UtahPlanners.Repository
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<NeighborhoodCode>("Properties2Model.FK_NeighCondition", "NeighborhoodCodes");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<NeighborhoodCode>("UtahPlanners.Infrastructure.FK_NeighCondition", "NeighborhoodCodes");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<NeighborhoodCode>("Properties2Model.FK_NeighCondition", "NeighborhoodCodes", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<NeighborhoodCode>("UtahPlanners.Infrastructure.FK_NeighCondition", "NeighborhoodCodes", value);
                 }
             }
         }
@@ -2351,18 +2351,18 @@ namespace UtahPlanners.Repository
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("Properties2Model", "FK_pictures_pid", "Pictures")]
+        [EdmRelationshipNavigationPropertyAttribute("UtahPlanners.Infrastructure", "FK_pictures_pid", "Pictures")]
         public EntityCollection<Picture> Pictures
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Picture>("Properties2Model.FK_pictures_pid", "Pictures");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Picture>("UtahPlanners.Infrastructure.FK_pictures_pid", "Pictures");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Picture>("Properties2Model.FK_pictures_pid", "Pictures", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Picture>("UtahPlanners.Infrastructure.FK_pictures_pid", "Pictures", value);
                 }
             }
         }
@@ -2373,16 +2373,16 @@ namespace UtahPlanners.Repository
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("Properties2Model", "FK_properties_ptid", "PropertyTypes")]
+        [EdmRelationshipNavigationPropertyAttribute("UtahPlanners.Infrastructure", "FK_properties_ptid", "PropertyTypes")]
         public PropertyType PropertyType
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<PropertyType>("Properties2Model.FK_properties_ptid", "PropertyTypes").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<PropertyType>("UtahPlanners.Infrastructure.FK_properties_ptid", "PropertyTypes").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<PropertyType>("Properties2Model.FK_properties_ptid", "PropertyTypes").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<PropertyType>("UtahPlanners.Infrastructure.FK_properties_ptid", "PropertyTypes").Value = value;
             }
         }
         /// <summary>
@@ -2394,13 +2394,13 @@ namespace UtahPlanners.Repository
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<PropertyType>("Properties2Model.FK_properties_ptid", "PropertyTypes");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<PropertyType>("UtahPlanners.Infrastructure.FK_properties_ptid", "PropertyTypes");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<PropertyType>("Properties2Model.FK_properties_ptid", "PropertyTypes", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<PropertyType>("UtahPlanners.Infrastructure.FK_properties_ptid", "PropertyTypes", value);
                 }
             }
         }
@@ -2411,16 +2411,16 @@ namespace UtahPlanners.Repository
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("Properties2Model", "FK_properties_stid", "StreetTypes")]
+        [EdmRelationshipNavigationPropertyAttribute("UtahPlanners.Infrastructure", "FK_properties_stid", "StreetTypes")]
         public StreetType StreetType
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<StreetType>("Properties2Model.FK_properties_stid", "StreetTypes").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<StreetType>("UtahPlanners.Infrastructure.FK_properties_stid", "StreetTypes").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<StreetType>("Properties2Model.FK_properties_stid", "StreetTypes").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<StreetType>("UtahPlanners.Infrastructure.FK_properties_stid", "StreetTypes").Value = value;
             }
         }
         /// <summary>
@@ -2432,13 +2432,13 @@ namespace UtahPlanners.Repository
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<StreetType>("Properties2Model.FK_properties_stid", "StreetTypes");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<StreetType>("UtahPlanners.Infrastructure.FK_properties_stid", "StreetTypes");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<StreetType>("Properties2Model.FK_properties_stid", "StreetTypes", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<StreetType>("UtahPlanners.Infrastructure.FK_properties_stid", "StreetTypes", value);
                 }
             }
         }
@@ -2449,16 +2449,16 @@ namespace UtahPlanners.Repository
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("Properties2Model", "FK_SocioEcon", "SocioEconCodes")]
+        [EdmRelationshipNavigationPropertyAttribute("UtahPlanners.Infrastructure", "FK_SocioEcon", "SocioEconCodes")]
         public SocioEconCode SocioEconCode
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<SocioEconCode>("Properties2Model.FK_SocioEcon", "SocioEconCodes").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<SocioEconCode>("UtahPlanners.Infrastructure.FK_SocioEcon", "SocioEconCodes").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<SocioEconCode>("Properties2Model.FK_SocioEcon", "SocioEconCodes").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<SocioEconCode>("UtahPlanners.Infrastructure.FK_SocioEcon", "SocioEconCodes").Value = value;
             }
         }
         /// <summary>
@@ -2470,13 +2470,13 @@ namespace UtahPlanners.Repository
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<SocioEconCode>("Properties2Model.FK_SocioEcon", "SocioEconCodes");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<SocioEconCode>("UtahPlanners.Infrastructure.FK_SocioEcon", "SocioEconCodes");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<SocioEconCode>("Properties2Model.FK_SocioEcon", "SocioEconCodes", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<SocioEconCode>("UtahPlanners.Infrastructure.FK_SocioEcon", "SocioEconCodes", value);
                 }
             }
         }
@@ -2487,16 +2487,16 @@ namespace UtahPlanners.Repository
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("Properties2Model", "FK_Streetconn", "StreetconnCodes")]
+        [EdmRelationshipNavigationPropertyAttribute("UtahPlanners.Infrastructure", "FK_Streetconn", "StreetconnCodes")]
         public StreetconnCode StreetconnCode
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<StreetconnCode>("Properties2Model.FK_Streetconn", "StreetconnCodes").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<StreetconnCode>("UtahPlanners.Infrastructure.FK_Streetconn", "StreetconnCodes").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<StreetconnCode>("Properties2Model.FK_Streetconn", "StreetconnCodes").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<StreetconnCode>("UtahPlanners.Infrastructure.FK_Streetconn", "StreetconnCodes").Value = value;
             }
         }
         /// <summary>
@@ -2508,13 +2508,13 @@ namespace UtahPlanners.Repository
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<StreetconnCode>("Properties2Model.FK_Streetconn", "StreetconnCodes");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<StreetconnCode>("UtahPlanners.Infrastructure.FK_Streetconn", "StreetconnCodes");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<StreetconnCode>("Properties2Model.FK_Streetconn", "StreetconnCodes", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<StreetconnCode>("UtahPlanners.Infrastructure.FK_Streetconn", "StreetconnCodes", value);
                 }
             }
         }
@@ -2525,16 +2525,16 @@ namespace UtahPlanners.Repository
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("Properties2Model", "FK_StreetSaftey", "StreetSafteyCodes")]
+        [EdmRelationshipNavigationPropertyAttribute("UtahPlanners.Infrastructure", "FK_StreetSaftey", "StreetSafteyCodes")]
         public StreetSafteyCode StreetSafteyCode
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<StreetSafteyCode>("Properties2Model.FK_StreetSaftey", "StreetSafteyCodes").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<StreetSafteyCode>("UtahPlanners.Infrastructure.FK_StreetSaftey", "StreetSafteyCodes").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<StreetSafteyCode>("Properties2Model.FK_StreetSaftey", "StreetSafteyCodes").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<StreetSafteyCode>("UtahPlanners.Infrastructure.FK_StreetSaftey", "StreetSafteyCodes").Value = value;
             }
         }
         /// <summary>
@@ -2546,13 +2546,13 @@ namespace UtahPlanners.Repository
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<StreetSafteyCode>("Properties2Model.FK_StreetSaftey", "StreetSafteyCodes");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<StreetSafteyCode>("UtahPlanners.Infrastructure.FK_StreetSaftey", "StreetSafteyCodes");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<StreetSafteyCode>("Properties2Model.FK_StreetSaftey", "StreetSafteyCodes", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<StreetSafteyCode>("UtahPlanners.Infrastructure.FK_StreetSaftey", "StreetSafteyCodes", value);
                 }
             }
         }
@@ -2563,16 +2563,16 @@ namespace UtahPlanners.Repository
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("Properties2Model", "FK_StreetWalk", "StreetwalkCodes")]
+        [EdmRelationshipNavigationPropertyAttribute("UtahPlanners.Infrastructure", "FK_StreetWalk", "StreetwalkCodes")]
         public StreetwalkCode StreetwalkCode
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<StreetwalkCode>("Properties2Model.FK_StreetWalk", "StreetwalkCodes").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<StreetwalkCode>("UtahPlanners.Infrastructure.FK_StreetWalk", "StreetwalkCodes").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<StreetwalkCode>("Properties2Model.FK_StreetWalk", "StreetwalkCodes").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<StreetwalkCode>("UtahPlanners.Infrastructure.FK_StreetWalk", "StreetwalkCodes").Value = value;
             }
         }
         /// <summary>
@@ -2584,13 +2584,13 @@ namespace UtahPlanners.Repository
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<StreetwalkCode>("Properties2Model.FK_StreetWalk", "StreetwalkCodes");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<StreetwalkCode>("UtahPlanners.Infrastructure.FK_StreetWalk", "StreetwalkCodes");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<StreetwalkCode>("Properties2Model.FK_StreetWalk", "StreetwalkCodes", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<StreetwalkCode>("UtahPlanners.Infrastructure.FK_StreetWalk", "StreetwalkCodes", value);
                 }
             }
         }
@@ -2601,7 +2601,7 @@ namespace UtahPlanners.Repository
     /// <summary>
     /// No Metadata Documentation available.
     /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="Properties2Model", Name="PropertyType")]
+    [EdmEntityTypeAttribute(NamespaceName="UtahPlanners.Infrastructure", Name="PropertyType")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
     public partial class PropertyType : EntityObject
@@ -2683,18 +2683,18 @@ namespace UtahPlanners.Repository
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("Properties2Model", "FK_properties_ptid", "Properties")]
-        public EntityCollection<PropertyExtensions> Properties
+        [EdmRelationshipNavigationPropertyAttribute("UtahPlanners.Infrastructure", "FK_properties_ptid", "Properties")]
+        public EntityCollection<Property> Properties
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<PropertyExtensions>("Properties2Model.FK_properties_ptid", "Properties");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Property>("UtahPlanners.Infrastructure.FK_properties_ptid", "Properties");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<PropertyExtensions>("Properties2Model.FK_properties_ptid", "Properties", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Property>("UtahPlanners.Infrastructure.FK_properties_ptid", "Properties", value);
                 }
             }
         }
@@ -2705,7 +2705,7 @@ namespace UtahPlanners.Repository
     /// <summary>
     /// No Metadata Documentation available.
     /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="Properties2Model", Name="SocioEconCode")]
+    [EdmEntityTypeAttribute(NamespaceName="UtahPlanners.Infrastructure", Name="SocioEconCode")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
     public partial class SocioEconCode : EntityObject
@@ -2787,18 +2787,18 @@ namespace UtahPlanners.Repository
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("Properties2Model", "FK_SocioEcon", "Properties")]
-        public EntityCollection<PropertyExtensions> Properties
+        [EdmRelationshipNavigationPropertyAttribute("UtahPlanners.Infrastructure", "FK_SocioEcon", "Properties")]
+        public EntityCollection<Property> Properties
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<PropertyExtensions>("Properties2Model.FK_SocioEcon", "Properties");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Property>("UtahPlanners.Infrastructure.FK_SocioEcon", "Properties");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<PropertyExtensions>("Properties2Model.FK_SocioEcon", "Properties", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Property>("UtahPlanners.Infrastructure.FK_SocioEcon", "Properties", value);
                 }
             }
         }
@@ -2809,7 +2809,7 @@ namespace UtahPlanners.Repository
     /// <summary>
     /// No Metadata Documentation available.
     /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="Properties2Model", Name="StreetconnCode")]
+    [EdmEntityTypeAttribute(NamespaceName="UtahPlanners.Infrastructure", Name="StreetconnCode")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
     public partial class StreetconnCode : EntityObject
@@ -2915,18 +2915,18 @@ namespace UtahPlanners.Repository
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("Properties2Model", "FK_Streetconn", "Properties")]
-        public EntityCollection<PropertyExtensions> Properties
+        [EdmRelationshipNavigationPropertyAttribute("UtahPlanners.Infrastructure", "FK_Streetconn", "Properties")]
+        public EntityCollection<Property> Properties
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<PropertyExtensions>("Properties2Model.FK_Streetconn", "Properties");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Property>("UtahPlanners.Infrastructure.FK_Streetconn", "Properties");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<PropertyExtensions>("Properties2Model.FK_Streetconn", "Properties", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Property>("UtahPlanners.Infrastructure.FK_Streetconn", "Properties", value);
                 }
             }
         }
@@ -2937,7 +2937,7 @@ namespace UtahPlanners.Repository
     /// <summary>
     /// No Metadata Documentation available.
     /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="Properties2Model", Name="StreetSafteyCode")]
+    [EdmEntityTypeAttribute(NamespaceName="UtahPlanners.Infrastructure", Name="StreetSafteyCode")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
     public partial class StreetSafteyCode : EntityObject
@@ -3043,18 +3043,18 @@ namespace UtahPlanners.Repository
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("Properties2Model", "FK_StreetSaftey", "Properties")]
-        public EntityCollection<PropertyExtensions> Properties
+        [EdmRelationshipNavigationPropertyAttribute("UtahPlanners.Infrastructure", "FK_StreetSaftey", "Properties")]
+        public EntityCollection<Property> Properties
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<PropertyExtensions>("Properties2Model.FK_StreetSaftey", "Properties");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Property>("UtahPlanners.Infrastructure.FK_StreetSaftey", "Properties");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<PropertyExtensions>("Properties2Model.FK_StreetSaftey", "Properties", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Property>("UtahPlanners.Infrastructure.FK_StreetSaftey", "Properties", value);
                 }
             }
         }
@@ -3065,7 +3065,7 @@ namespace UtahPlanners.Repository
     /// <summary>
     /// No Metadata Documentation available.
     /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="Properties2Model", Name="StreetType")]
+    [EdmEntityTypeAttribute(NamespaceName="UtahPlanners.Infrastructure", Name="StreetType")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
     public partial class StreetType : EntityObject
@@ -3147,18 +3147,18 @@ namespace UtahPlanners.Repository
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("Properties2Model", "FK_properties_stid", "Properties")]
-        public EntityCollection<PropertyExtensions> Properties
+        [EdmRelationshipNavigationPropertyAttribute("UtahPlanners.Infrastructure", "FK_properties_stid", "Properties")]
+        public EntityCollection<Property> Properties
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<PropertyExtensions>("Properties2Model.FK_properties_stid", "Properties");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Property>("UtahPlanners.Infrastructure.FK_properties_stid", "Properties");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<PropertyExtensions>("Properties2Model.FK_properties_stid", "Properties", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Property>("UtahPlanners.Infrastructure.FK_properties_stid", "Properties", value);
                 }
             }
         }
@@ -3169,7 +3169,7 @@ namespace UtahPlanners.Repository
     /// <summary>
     /// No Metadata Documentation available.
     /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="Properties2Model", Name="StreetwalkCode")]
+    [EdmEntityTypeAttribute(NamespaceName="UtahPlanners.Infrastructure", Name="StreetwalkCode")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
     public partial class StreetwalkCode : EntityObject
@@ -3275,18 +3275,18 @@ namespace UtahPlanners.Repository
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("Properties2Model", "FK_StreetWalk", "Properties")]
-        public EntityCollection<PropertyExtensions> Properties
+        [EdmRelationshipNavigationPropertyAttribute("UtahPlanners.Infrastructure", "FK_StreetWalk", "Properties")]
+        public EntityCollection<Property> Properties
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<PropertyExtensions>("Properties2Model.FK_StreetWalk", "Properties");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Property>("UtahPlanners.Infrastructure.FK_StreetWalk", "Properties");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<PropertyExtensions>("Properties2Model.FK_StreetWalk", "Properties", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Property>("UtahPlanners.Infrastructure.FK_StreetWalk", "Properties", value);
                 }
             }
         }
@@ -3297,7 +3297,7 @@ namespace UtahPlanners.Repository
     /// <summary>
     /// No Metadata Documentation available.
     /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="Properties2Model", Name="Weight")]
+    [EdmEntityTypeAttribute(NamespaceName="UtahPlanners.Infrastructure", Name="Weight")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
     public partial class Weight : EntityObject

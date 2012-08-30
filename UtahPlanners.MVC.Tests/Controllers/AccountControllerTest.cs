@@ -9,7 +9,7 @@ using UtahPlanners.MVC;
 using UtahPlanners.MVC.Controllers;
 using UtahPlanners.MVC.Models;
 
-namespace UtahPlanners.MVC.Tests.Controllers
+namespace UtahPlanners.Tests.Controllers
 {
 
     [TestClass]

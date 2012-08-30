@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using UtahPlanners.Repository;
+using UtahPlanners.Infrastructure;
 
 namespace UtahPlanners.Manager
 {

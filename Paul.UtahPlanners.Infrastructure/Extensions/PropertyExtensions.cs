@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace UtahPlanners.Repository
+namespace UtahPlanners.Infrastructure
 {
-    public partial class PropertyExtensions
+    public partial class Property
     {
         public int Score
         {

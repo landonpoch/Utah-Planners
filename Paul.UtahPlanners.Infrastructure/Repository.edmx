@@ -371,66 +371,66 @@
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="Properties2Model" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+      <Schema Namespace="UtahPlanners.Infrastructure" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
         <EntityContainer Name="PropertiesDB" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Addresses" EntityType="Properties2Model.Address" />
-          <EntitySet Name="CommonCodes" EntityType="Properties2Model.CommonCode" />
-          <EntitySet Name="EnclosureCodes" EntityType="Properties2Model.EnclosureCode" />
-          <EntitySet Name="NeighborhoodCodes" EntityType="Properties2Model.NeighborhoodCode" />
-          <EntitySet Name="Pictures" EntityType="Properties2Model.Picture" />
-          <EntitySet Name="Properties" EntityType="Properties2Model.Property" />
-          <EntitySet Name="PropertyTypes" EntityType="Properties2Model.PropertyType" />
-          <EntitySet Name="SocioEconCodes" EntityType="Properties2Model.SocioEconCode" />
-          <EntitySet Name="StreetconnCodes" EntityType="Properties2Model.StreetconnCode" />
-          <EntitySet Name="StreetSafteyCodes" EntityType="Properties2Model.StreetSafteyCode" />
-          <EntitySet Name="StreetTypes" EntityType="Properties2Model.StreetType" />
-          <EntitySet Name="StreetwalkCodes" EntityType="Properties2Model.StreetwalkCode" />
-          <EntitySet Name="Weights" EntityType="Properties2Model.Weight" />
-          <AssociationSet Name="FK_address_id" Association="Properties2Model.FK_address_id">
+          <EntitySet Name="Addresses" EntityType="UtahPlanners.Infrastructure.Address" />
+          <EntitySet Name="CommonCodes" EntityType="UtahPlanners.Infrastructure.CommonCode" />
+          <EntitySet Name="EnclosureCodes" EntityType="UtahPlanners.Infrastructure.EnclosureCode" />
+          <EntitySet Name="NeighborhoodCodes" EntityType="UtahPlanners.Infrastructure.NeighborhoodCode" />
+          <EntitySet Name="Pictures" EntityType="UtahPlanners.Infrastructure.Picture" />
+          <EntitySet Name="Properties" EntityType="UtahPlanners.Infrastructure.Property" />
+          <EntitySet Name="PropertyTypes" EntityType="UtahPlanners.Infrastructure.PropertyType" />
+          <EntitySet Name="SocioEconCodes" EntityType="UtahPlanners.Infrastructure.SocioEconCode" />
+          <EntitySet Name="StreetconnCodes" EntityType="UtahPlanners.Infrastructure.StreetconnCode" />
+          <EntitySet Name="StreetSafteyCodes" EntityType="UtahPlanners.Infrastructure.StreetSafteyCode" />
+          <EntitySet Name="StreetTypes" EntityType="UtahPlanners.Infrastructure.StreetType" />
+          <EntitySet Name="StreetwalkCodes" EntityType="UtahPlanners.Infrastructure.StreetwalkCode" />
+          <EntitySet Name="Weights" EntityType="UtahPlanners.Infrastructure.Weight" />
+          <AssociationSet Name="FK_address_id" Association="UtahPlanners.Infrastructure.FK_address_id">
             <End Role="Properties" EntitySet="Properties" />
             <End Role="Address" EntitySet="Addresses" />
           </AssociationSet>
-          <AssociationSet Name="FK_CommonAreas" Association="Properties2Model.FK_CommonAreas">
+          <AssociationSet Name="FK_CommonAreas" Association="UtahPlanners.Infrastructure.FK_CommonAreas">
             <End Role="CommonCodes" EntitySet="CommonCodes" />
             <End Role="Properties" EntitySet="Properties" />
           </AssociationSet>
-          <AssociationSet Name="FK_BuildingEnclosure" Association="Properties2Model.FK_BuildingEnclosure">
+          <AssociationSet Name="FK_BuildingEnclosure" Association="UtahPlanners.Infrastructure.FK_BuildingEnclosure">
             <End Role="EnclosureCodes" EntitySet="EnclosureCodes" />
             <End Role="Properties" EntitySet="Properties" />
           </AssociationSet>
-          <AssociationSet Name="FK_NeighCondition" Association="Properties2Model.FK_NeighCondition">
+          <AssociationSet Name="FK_NeighCondition" Association="UtahPlanners.Infrastructure.FK_NeighCondition">
             <End Role="NeighborhoodCodes" EntitySet="NeighborhoodCodes" />
             <End Role="Properties" EntitySet="Properties" />
           </AssociationSet>
-          <AssociationSet Name="FK_pictures_pid" Association="Properties2Model.FK_pictures_pid">
+          <AssociationSet Name="FK_pictures_pid" Association="UtahPlanners.Infrastructure.FK_pictures_pid">
             <End Role="Properties" EntitySet="Properties" />
             <End Role="Pictures" EntitySet="Pictures" />
           </AssociationSet>
-          <AssociationSet Name="FK_properties_ptid" Association="Properties2Model.FK_properties_ptid">
+          <AssociationSet Name="FK_properties_ptid" Association="UtahPlanners.Infrastructure.FK_properties_ptid">
             <End Role="PropertyTypes" EntitySet="PropertyTypes" />
             <End Role="Properties" EntitySet="Properties" />
           </AssociationSet>
-          <AssociationSet Name="FK_properties_stid" Association="Properties2Model.FK_properties_stid">
+          <AssociationSet Name="FK_properties_stid" Association="UtahPlanners.Infrastructure.FK_properties_stid">
             <End Role="StreetTypes" EntitySet="StreetTypes" />
             <End Role="Properties" EntitySet="Properties" />
           </AssociationSet>
-          <AssociationSet Name="FK_SocioEcon" Association="Properties2Model.FK_SocioEcon">
+          <AssociationSet Name="FK_SocioEcon" Association="UtahPlanners.Infrastructure.FK_SocioEcon">
             <End Role="SocioEconCodes" EntitySet="SocioEconCodes" />
             <End Role="Properties" EntitySet="Properties" />
           </AssociationSet>
-          <AssociationSet Name="FK_Streetconn" Association="Properties2Model.FK_Streetconn">
+          <AssociationSet Name="FK_Streetconn" Association="UtahPlanners.Infrastructure.FK_Streetconn">
             <End Role="StreetconnCodes" EntitySet="StreetconnCodes" />
             <End Role="Properties" EntitySet="Properties" />
           </AssociationSet>
-          <AssociationSet Name="FK_StreetSaftey" Association="Properties2Model.FK_StreetSaftey">
+          <AssociationSet Name="FK_StreetSaftey" Association="UtahPlanners.Infrastructure.FK_StreetSaftey">
             <End Role="StreetSafteyCodes" EntitySet="StreetSafteyCodes" />
             <End Role="Properties" EntitySet="Properties" />
           </AssociationSet>
-          <AssociationSet Name="FK_StreetWalk" Association="Properties2Model.FK_StreetWalk">
+          <AssociationSet Name="FK_StreetWalk" Association="UtahPlanners.Infrastructure.FK_StreetWalk">
             <End Role="StreetwalkCodes" EntitySet="StreetwalkCodes" />
             <End Role="Properties" EntitySet="Properties" />
           </AssociationSet>
-          <EntitySet Name="PropertiesIndexes" EntityType="Properties2Model.PropertiesIndex" />
+          <EntitySet Name="PropertiesIndexes" EntityType="UtahPlanners.Infrastructure.PropertiesIndex" />
         </EntityContainer>
         <EntityType Name="Address">
           <Key>
@@ -443,7 +443,7 @@
           <Property Name="state" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
           <Property Name="zip" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
           <Property Name="country" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
-          <NavigationProperty Name="Property" Relationship="Properties2Model.FK_address_id" FromRole="Address" ToRole="Properties" />
+          <NavigationProperty Name="Property" Relationship="UtahPlanners.Infrastructure.FK_address_id" FromRole="Address" ToRole="Properties" />
         </EntityType>
         <EntityType Name="CommonCode">
           <Key>
@@ -452,7 +452,7 @@
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="description" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
           <Property Name="weight" Type="Int32" />
-          <NavigationProperty Name="Properties" Relationship="Properties2Model.FK_CommonAreas" FromRole="CommonCodes" ToRole="Properties" />
+          <NavigationProperty Name="Properties" Relationship="UtahPlanners.Infrastructure.FK_CommonAreas" FromRole="CommonCodes" ToRole="Properties" />
         </EntityType>
         <EntityType Name="EnclosureCode">
           <Key>
@@ -461,7 +461,7 @@
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="description" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
           <Property Name="weight" Type="Int32" />
-          <NavigationProperty Name="Properties" Relationship="Properties2Model.FK_BuildingEnclosure" FromRole="EnclosureCodes" ToRole="Properties" />
+          <NavigationProperty Name="Properties" Relationship="UtahPlanners.Infrastructure.FK_BuildingEnclosure" FromRole="EnclosureCodes" ToRole="Properties" />
         </EntityType>
         <EntityType Name="NeighborhoodCode">
           <Key>
@@ -470,7 +470,7 @@
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="description" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
           <Property Name="weight" Type="Int32" />
-          <NavigationProperty Name="Properties" Relationship="Properties2Model.FK_NeighCondition" FromRole="NeighborhoodCodes" ToRole="Properties" />
+          <NavigationProperty Name="Properties" Relationship="UtahPlanners.Infrastructure.FK_NeighCondition" FromRole="NeighborhoodCodes" ToRole="Properties" />
         </EntityType>
         <EntityType Name="Picture">
           <Key>
@@ -483,7 +483,7 @@
           <Property Name="binaryData" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="mimeType" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
           <Property Name="property_id" Type="Int32" />
-          <NavigationProperty Name="Property" Relationship="Properties2Model.FK_pictures_pid" FromRole="Pictures" ToRole="Properties" />
+          <NavigationProperty Name="Property" Relationship="UtahPlanners.Infrastructure.FK_pictures_pid" FromRole="Pictures" ToRole="Properties" />
         </EntityType>
         <EntityType Name="Property">
           <Key>
@@ -512,17 +512,17 @@
           <Property Name="notFinished" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
           <Property Name="latitude" Type="Double" />
           <Property Name="longitude" Type="Double" />
-          <NavigationProperty Name="Address" Relationship="Properties2Model.FK_address_id" FromRole="Properties" ToRole="Address" />
-          <NavigationProperty Name="CommonCode" Relationship="Properties2Model.FK_CommonAreas" FromRole="Properties" ToRole="CommonCodes" />
-          <NavigationProperty Name="EnclosureCode" Relationship="Properties2Model.FK_BuildingEnclosure" FromRole="Properties" ToRole="EnclosureCodes" />
-          <NavigationProperty Name="NeighborhoodCode" Relationship="Properties2Model.FK_NeighCondition" FromRole="Properties" ToRole="NeighborhoodCodes" />
-          <NavigationProperty Name="Pictures" Relationship="Properties2Model.FK_pictures_pid" FromRole="Properties" ToRole="Pictures" />
-          <NavigationProperty Name="PropertyType" Relationship="Properties2Model.FK_properties_ptid" FromRole="Properties" ToRole="PropertyTypes" />
-          <NavigationProperty Name="StreetType" Relationship="Properties2Model.FK_properties_stid" FromRole="Properties" ToRole="StreetTypes" />
-          <NavigationProperty Name="SocioEconCode" Relationship="Properties2Model.FK_SocioEcon" FromRole="Properties" ToRole="SocioEconCodes" />
-          <NavigationProperty Name="StreetconnCode" Relationship="Properties2Model.FK_Streetconn" FromRole="Properties" ToRole="StreetconnCodes" />
-          <NavigationProperty Name="StreetSafteyCode" Relationship="Properties2Model.FK_StreetSaftey" FromRole="Properties" ToRole="StreetSafteyCodes" />
-          <NavigationProperty Name="StreetwalkCode" Relationship="Properties2Model.FK_StreetWalk" FromRole="Properties" ToRole="StreetwalkCodes" />
+          <NavigationProperty Name="Address" Relationship="UtahPlanners.Infrastructure.FK_address_id" FromRole="Properties" ToRole="Address" />
+          <NavigationProperty Name="CommonCode" Relationship="UtahPlanners.Infrastructure.FK_CommonAreas" FromRole="Properties" ToRole="CommonCodes" />
+          <NavigationProperty Name="EnclosureCode" Relationship="UtahPlanners.Infrastructure.FK_BuildingEnclosure" FromRole="Properties" ToRole="EnclosureCodes" />
+          <NavigationProperty Name="NeighborhoodCode" Relationship="UtahPlanners.Infrastructure.FK_NeighCondition" FromRole="Properties" ToRole="NeighborhoodCodes" />
+          <NavigationProperty Name="Pictures" Relationship="UtahPlanners.Infrastructure.FK_pictures_pid" FromRole="Properties" ToRole="Pictures" />
+          <NavigationProperty Name="PropertyType" Relationship="UtahPlanners.Infrastructure.FK_properties_ptid" FromRole="Properties" ToRole="PropertyTypes" />
+          <NavigationProperty Name="StreetType" Relationship="UtahPlanners.Infrastructure.FK_properties_stid" FromRole="Properties" ToRole="StreetTypes" />
+          <NavigationProperty Name="SocioEconCode" Relationship="UtahPlanners.Infrastructure.FK_SocioEcon" FromRole="Properties" ToRole="SocioEconCodes" />
+          <NavigationProperty Name="StreetconnCode" Relationship="UtahPlanners.Infrastructure.FK_Streetconn" FromRole="Properties" ToRole="StreetconnCodes" />
+          <NavigationProperty Name="StreetSafteyCode" Relationship="UtahPlanners.Infrastructure.FK_StreetSaftey" FromRole="Properties" ToRole="StreetSafteyCodes" />
+          <NavigationProperty Name="StreetwalkCode" Relationship="UtahPlanners.Infrastructure.FK_StreetWalk" FromRole="Properties" ToRole="StreetwalkCodes" />
         </EntityType>
         <EntityType Name="PropertyType">
           <Key>
@@ -530,7 +530,7 @@
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="description" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
-          <NavigationProperty Name="Properties" Relationship="Properties2Model.FK_properties_ptid" FromRole="PropertyTypes" ToRole="Properties" />
+          <NavigationProperty Name="Properties" Relationship="UtahPlanners.Infrastructure.FK_properties_ptid" FromRole="PropertyTypes" ToRole="Properties" />
         </EntityType>
         <EntityType Name="SocioEconCode">
           <Key>
@@ -538,7 +538,7 @@
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="description" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
-          <NavigationProperty Name="Properties" Relationship="Properties2Model.FK_SocioEcon" FromRole="SocioEconCodes" ToRole="Properties" />
+          <NavigationProperty Name="Properties" Relationship="UtahPlanners.Infrastructure.FK_SocioEcon" FromRole="SocioEconCodes" ToRole="Properties" />
         </EntityType>
         <EntityType Name="StreetconnCode">
           <Key>
@@ -547,7 +547,7 @@
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="description" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
           <Property Name="weight" Type="Int32" />
-          <NavigationProperty Name="Properties" Relationship="Properties2Model.FK_Streetconn" FromRole="StreetconnCodes" ToRole="Properties" />
+          <NavigationProperty Name="Properties" Relationship="UtahPlanners.Infrastructure.FK_Streetconn" FromRole="StreetconnCodes" ToRole="Properties" />
         </EntityType>
         <EntityType Name="StreetSafteyCode">
           <Key>
@@ -556,7 +556,7 @@
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="description" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
           <Property Name="weight" Type="Int32" />
-          <NavigationProperty Name="Properties" Relationship="Properties2Model.FK_StreetSaftey" FromRole="StreetSafteyCodes" ToRole="Properties" />
+          <NavigationProperty Name="Properties" Relationship="UtahPlanners.Infrastructure.FK_StreetSaftey" FromRole="StreetSafteyCodes" ToRole="Properties" />
         </EntityType>
         <EntityType Name="StreetType">
           <Key>
@@ -564,7 +564,7 @@
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="description" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
-          <NavigationProperty Name="Properties" Relationship="Properties2Model.FK_properties_stid" FromRole="StreetTypes" ToRole="Properties" />
+          <NavigationProperty Name="Properties" Relationship="UtahPlanners.Infrastructure.FK_properties_stid" FromRole="StreetTypes" ToRole="Properties" />
         </EntityType>
         <EntityType Name="StreetwalkCode">
           <Key>
@@ -573,7 +573,7 @@
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="description" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
           <Property Name="weight" Type="Int32" />
-          <NavigationProperty Name="Properties" Relationship="Properties2Model.FK_StreetWalk" FromRole="StreetwalkCodes" ToRole="Properties" />
+          <NavigationProperty Name="Properties" Relationship="UtahPlanners.Infrastructure.FK_StreetWalk" FromRole="StreetwalkCodes" ToRole="Properties" />
         </EntityType>
         <EntityType Name="Weight">
           <Key>
@@ -591,8 +591,8 @@
           <Property Name="twoFiftyApts" Type="Int32" />
         </EntityType>
         <Association Name="FK_address_id">
-          <End Role="Properties" Type="Properties2Model.Property" Multiplicity="1" />
-          <End Role="Address" Type="Properties2Model.Address" Multiplicity="0..1" />
+          <End Role="Properties" Type="UtahPlanners.Infrastructure.Property" Multiplicity="1" />
+          <End Role="Address" Type="UtahPlanners.Infrastructure.Address" Multiplicity="0..1" />
           <ReferentialConstraint>
             <Principal Role="Properties">
               <PropertyRef Name="id" />
@@ -603,8 +603,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_CommonAreas">
-          <End Role="CommonCodes" Type="Properties2Model.CommonCode" Multiplicity="0..1" />
-          <End Role="Properties" Type="Properties2Model.Property" Multiplicity="*" />
+          <End Role="CommonCodes" Type="UtahPlanners.Infrastructure.CommonCode" Multiplicity="0..1" />
+          <End Role="Properties" Type="UtahPlanners.Infrastructure.Property" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="CommonCodes">
               <PropertyRef Name="id" />
@@ -615,8 +615,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_BuildingEnclosure">
-          <End Role="EnclosureCodes" Type="Properties2Model.EnclosureCode" Multiplicity="0..1" />
-          <End Role="Properties" Type="Properties2Model.Property" Multiplicity="*" />
+          <End Role="EnclosureCodes" Type="UtahPlanners.Infrastructure.EnclosureCode" Multiplicity="0..1" />
+          <End Role="Properties" Type="UtahPlanners.Infrastructure.Property" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="EnclosureCodes">
               <PropertyRef Name="id" />
@@ -627,8 +627,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_NeighCondition">
-          <End Role="NeighborhoodCodes" Type="Properties2Model.NeighborhoodCode" Multiplicity="0..1" />
-          <End Role="Properties" Type="Properties2Model.Property" Multiplicity="*" />
+          <End Role="NeighborhoodCodes" Type="UtahPlanners.Infrastructure.NeighborhoodCode" Multiplicity="0..1" />
+          <End Role="Properties" Type="UtahPlanners.Infrastructure.Property" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="NeighborhoodCodes">
               <PropertyRef Name="id" />
@@ -639,8 +639,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_pictures_pid">
-          <End Role="Properties" Type="Properties2Model.Property" Multiplicity="0..1" />
-          <End Role="Pictures" Type="Properties2Model.Picture" Multiplicity="*" />
+          <End Role="Properties" Type="UtahPlanners.Infrastructure.Property" Multiplicity="0..1" />
+          <End Role="Pictures" Type="UtahPlanners.Infrastructure.Picture" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Properties">
               <PropertyRef Name="id" />
@@ -651,8 +651,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_properties_ptid">
-          <End Role="PropertyTypes" Type="Properties2Model.PropertyType" Multiplicity="0..1" />
-          <End Role="Properties" Type="Properties2Model.Property" Multiplicity="*" />
+          <End Role="PropertyTypes" Type="UtahPlanners.Infrastructure.PropertyType" Multiplicity="0..1" />
+          <End Role="Properties" Type="UtahPlanners.Infrastructure.Property" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="PropertyTypes">
               <PropertyRef Name="id" />
@@ -663,8 +663,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_properties_stid">
-          <End Role="StreetTypes" Type="Properties2Model.StreetType" Multiplicity="0..1" />
-          <End Role="Properties" Type="Properties2Model.Property" Multiplicity="*" />
+          <End Role="StreetTypes" Type="UtahPlanners.Infrastructure.StreetType" Multiplicity="0..1" />
+          <End Role="Properties" Type="UtahPlanners.Infrastructure.Property" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="StreetTypes">
               <PropertyRef Name="id" />
@@ -675,8 +675,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_SocioEcon">
-          <End Role="SocioEconCodes" Type="Properties2Model.SocioEconCode" Multiplicity="0..1" />
-          <End Role="Properties" Type="Properties2Model.Property" Multiplicity="*" />
+          <End Role="SocioEconCodes" Type="UtahPlanners.Infrastructure.SocioEconCode" Multiplicity="0..1" />
+          <End Role="Properties" Type="UtahPlanners.Infrastructure.Property" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="SocioEconCodes">
               <PropertyRef Name="id" />
@@ -687,8 +687,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Streetconn">
-          <End Role="StreetconnCodes" Type="Properties2Model.StreetconnCode" Multiplicity="0..1" />
-          <End Role="Properties" Type="Properties2Model.Property" Multiplicity="*" />
+          <End Role="StreetconnCodes" Type="UtahPlanners.Infrastructure.StreetconnCode" Multiplicity="0..1" />
+          <End Role="Properties" Type="UtahPlanners.Infrastructure.Property" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="StreetconnCodes">
               <PropertyRef Name="id" />
@@ -699,8 +699,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_StreetSaftey">
-          <End Role="StreetSafteyCodes" Type="Properties2Model.StreetSafteyCode" Multiplicity="0..1" />
-          <End Role="Properties" Type="Properties2Model.Property" Multiplicity="*" />
+          <End Role="StreetSafteyCodes" Type="UtahPlanners.Infrastructure.StreetSafteyCode" Multiplicity="0..1" />
+          <End Role="Properties" Type="UtahPlanners.Infrastructure.Property" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="StreetSafteyCodes">
               <PropertyRef Name="id" />
@@ -711,8 +711,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_StreetWalk">
-          <End Role="StreetwalkCodes" Type="Properties2Model.StreetwalkCode" Multiplicity="0..1" />
-          <End Role="Properties" Type="Properties2Model.Property" Multiplicity="*" />
+          <End Role="StreetwalkCodes" Type="UtahPlanners.Infrastructure.StreetwalkCode" Multiplicity="0..1" />
+          <End Role="Properties" Type="UtahPlanners.Infrastructure.Property" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="StreetwalkCodes">
               <PropertyRef Name="id" />
@@ -745,7 +745,7 @@
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="Properties2ModelStoreContainer" CdmEntityContainer="PropertiesDB">
-          <EntitySetMapping Name="Addresses"><EntityTypeMapping TypeName="Properties2Model.Address"><MappingFragment StoreEntitySet="Address">
+          <EntitySetMapping Name="Addresses"><EntityTypeMapping TypeName="UtahPlanners.Infrastructure.Address"><MappingFragment StoreEntitySet="Address">
             <ScalarProperty Name="id" ColumnName="id" />
             <ScalarProperty Name="street1" ColumnName="street1" />
             <ScalarProperty Name="street2" ColumnName="street2" />
@@ -754,22 +754,22 @@
             <ScalarProperty Name="zip" ColumnName="zip" />
             <ScalarProperty Name="country" ColumnName="country" />
           </MappingFragment></EntityTypeMapping></EntitySetMapping>
-          <EntitySetMapping Name="CommonCodes"><EntityTypeMapping TypeName="Properties2Model.CommonCode"><MappingFragment StoreEntitySet="CommonCodes">
+          <EntitySetMapping Name="CommonCodes"><EntityTypeMapping TypeName="UtahPlanners.Infrastructure.CommonCode"><MappingFragment StoreEntitySet="CommonCodes">
             <ScalarProperty Name="id" ColumnName="id" />
             <ScalarProperty Name="description" ColumnName="description" />
             <ScalarProperty Name="weight" ColumnName="weight" />
           </MappingFragment></EntityTypeMapping></EntitySetMapping>
-          <EntitySetMapping Name="EnclosureCodes"><EntityTypeMapping TypeName="Properties2Model.EnclosureCode"><MappingFragment StoreEntitySet="EnclosureCodes">
+          <EntitySetMapping Name="EnclosureCodes"><EntityTypeMapping TypeName="UtahPlanners.Infrastructure.EnclosureCode"><MappingFragment StoreEntitySet="EnclosureCodes">
             <ScalarProperty Name="id" ColumnName="id" />
             <ScalarProperty Name="description" ColumnName="description" />
             <ScalarProperty Name="weight" ColumnName="weight" />
           </MappingFragment></EntityTypeMapping></EntitySetMapping>
-          <EntitySetMapping Name="NeighborhoodCodes"><EntityTypeMapping TypeName="Properties2Model.NeighborhoodCode"><MappingFragment StoreEntitySet="NeighborhoodCodes">
+          <EntitySetMapping Name="NeighborhoodCodes"><EntityTypeMapping TypeName="UtahPlanners.Infrastructure.NeighborhoodCode"><MappingFragment StoreEntitySet="NeighborhoodCodes">
             <ScalarProperty Name="id" ColumnName="id" />
             <ScalarProperty Name="description" ColumnName="description" />
             <ScalarProperty Name="weight" ColumnName="weight" />
           </MappingFragment></EntityTypeMapping></EntitySetMapping>
-          <EntitySetMapping Name="Pictures"><EntityTypeMapping TypeName="Properties2Model.Picture"><MappingFragment StoreEntitySet="Pictures">
+          <EntitySetMapping Name="Pictures"><EntityTypeMapping TypeName="UtahPlanners.Infrastructure.Picture"><MappingFragment StoreEntitySet="Pictures">
             <ScalarProperty Name="id" ColumnName="id" />
             <ScalarProperty Name="frontPage" ColumnName="frontPage" />
             <ScalarProperty Name="mainPicture" ColumnName="mainPicture" />
@@ -778,7 +778,7 @@
             <ScalarProperty Name="mimeType" ColumnName="mimeType" />
             <ScalarProperty Name="property_id" ColumnName="property_id" />
           </MappingFragment></EntityTypeMapping></EntitySetMapping>
-          <EntitySetMapping Name="Properties"><EntityTypeMapping TypeName="Properties2Model.Property"><MappingFragment StoreEntitySet="Properties">
+          <EntitySetMapping Name="Properties"><EntityTypeMapping TypeName="UtahPlanners.Infrastructure.Property"><MappingFragment StoreEntitySet="Properties">
             <ScalarProperty Name="id" ColumnName="id" />
             <ScalarProperty Name="typeCode" ColumnName="typeCode" />
             <ScalarProperty Name="density" ColumnName="density" />
@@ -803,34 +803,34 @@
             <ScalarProperty Name="latitude" ColumnName="latitude" />
             <ScalarProperty Name="longitude" ColumnName="longitude" />
           </MappingFragment></EntityTypeMapping></EntitySetMapping>
-          <EntitySetMapping Name="PropertyTypes"><EntityTypeMapping TypeName="Properties2Model.PropertyType"><MappingFragment StoreEntitySet="PropertyTypes">
+          <EntitySetMapping Name="PropertyTypes"><EntityTypeMapping TypeName="UtahPlanners.Infrastructure.PropertyType"><MappingFragment StoreEntitySet="PropertyTypes">
             <ScalarProperty Name="id" ColumnName="id" />
             <ScalarProperty Name="description" ColumnName="description" />
           </MappingFragment></EntityTypeMapping></EntitySetMapping>
-          <EntitySetMapping Name="SocioEconCodes"><EntityTypeMapping TypeName="Properties2Model.SocioEconCode"><MappingFragment StoreEntitySet="SocioEconCodes">
+          <EntitySetMapping Name="SocioEconCodes"><EntityTypeMapping TypeName="UtahPlanners.Infrastructure.SocioEconCode"><MappingFragment StoreEntitySet="SocioEconCodes">
             <ScalarProperty Name="id" ColumnName="id" />
             <ScalarProperty Name="description" ColumnName="description" />
           </MappingFragment></EntityTypeMapping></EntitySetMapping>
-          <EntitySetMapping Name="StreetconnCodes"><EntityTypeMapping TypeName="Properties2Model.StreetconnCode"><MappingFragment StoreEntitySet="StreetconnCodes">
-            <ScalarProperty Name="id" ColumnName="id" />
-            <ScalarProperty Name="description" ColumnName="description" />
-            <ScalarProperty Name="weight" ColumnName="weight" />
-          </MappingFragment></EntityTypeMapping></EntitySetMapping>
-          <EntitySetMapping Name="StreetSafteyCodes"><EntityTypeMapping TypeName="Properties2Model.StreetSafteyCode"><MappingFragment StoreEntitySet="StreetSafteyCodes">
+          <EntitySetMapping Name="StreetconnCodes"><EntityTypeMapping TypeName="UtahPlanners.Infrastructure.StreetconnCode"><MappingFragment StoreEntitySet="StreetconnCodes">
             <ScalarProperty Name="id" ColumnName="id" />
             <ScalarProperty Name="description" ColumnName="description" />
             <ScalarProperty Name="weight" ColumnName="weight" />
           </MappingFragment></EntityTypeMapping></EntitySetMapping>
-          <EntitySetMapping Name="StreetTypes"><EntityTypeMapping TypeName="Properties2Model.StreetType"><MappingFragment StoreEntitySet="StreetTypes">
-            <ScalarProperty Name="id" ColumnName="id" />
-            <ScalarProperty Name="description" ColumnName="description" />
-          </MappingFragment></EntityTypeMapping></EntitySetMapping>
-          <EntitySetMapping Name="StreetwalkCodes"><EntityTypeMapping TypeName="Properties2Model.StreetwalkCode"><MappingFragment StoreEntitySet="StreetwalkCodes">
+          <EntitySetMapping Name="StreetSafteyCodes"><EntityTypeMapping TypeName="UtahPlanners.Infrastructure.StreetSafteyCode"><MappingFragment StoreEntitySet="StreetSafteyCodes">
             <ScalarProperty Name="id" ColumnName="id" />
             <ScalarProperty Name="description" ColumnName="description" />
             <ScalarProperty Name="weight" ColumnName="weight" />
           </MappingFragment></EntityTypeMapping></EntitySetMapping>
-          <EntitySetMapping Name="Weights"><EntityTypeMapping TypeName="Properties2Model.Weight"><MappingFragment StoreEntitySet="Weights">
+          <EntitySetMapping Name="StreetTypes"><EntityTypeMapping TypeName="UtahPlanners.Infrastructure.StreetType"><MappingFragment StoreEntitySet="StreetTypes">
+            <ScalarProperty Name="id" ColumnName="id" />
+            <ScalarProperty Name="description" ColumnName="description" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="StreetwalkCodes"><EntityTypeMapping TypeName="UtahPlanners.Infrastructure.StreetwalkCode"><MappingFragment StoreEntitySet="StreetwalkCodes">
+            <ScalarProperty Name="id" ColumnName="id" />
+            <ScalarProperty Name="description" ColumnName="description" />
+            <ScalarProperty Name="weight" ColumnName="weight" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Weights"><EntityTypeMapping TypeName="UtahPlanners.Infrastructure.Weight"><MappingFragment StoreEntitySet="Weights">
             <ScalarProperty Name="id" ColumnName="id" />
             <ScalarProperty Name="streetWalk" ColumnName="streetWalk" />
             <ScalarProperty Name="walkscore" ColumnName="walkscore" />
@@ -843,7 +843,7 @@
             <ScalarProperty Name="twoFiftyApts" ColumnName="twoFiftyApts" />
           </MappingFragment></EntityTypeMapping></EntitySetMapping>
           <EntitySetMapping Name="PropertiesIndexes">
-            <EntityTypeMapping TypeName="Properties2Model.PropertiesIndex">
+            <EntityTypeMapping TypeName="UtahPlanners.Infrastructure.PropertiesIndex">
               <MappingFragment StoreEntitySet="PropertiesIndex">
                 <ScalarProperty Name="twoFiftySingleFam" ColumnName="twoFiftySingleFam" />
                 <ScalarProperty Name="SocioEconDescription" ColumnName="SocioEconDescription" />
@@ -881,32 +881,32 @@
     <!-- Diagram content (shape and connector positions) -->
     <Diagrams>
       <Diagram Name="Repository" ZoomLevel="71">
-        <EntityTypeShape EntityType="Properties2Model.Address" Width="1.5" PointX="5.25" PointY="2" Height="2.5571907552083335" IsExpanded="true" />
-        <EntityTypeShape EntityType="Properties2Model.CommonCode" Width="1.5" PointX="0.75" PointY="4.125" Height="1.7879850260416674" IsExpanded="true" />
-        <EntityTypeShape EntityType="Properties2Model.EnclosureCode" Width="1.5" PointX="0.75" PointY="7.5" Height="1.7879850260416674" IsExpanded="true" />
-        <EntityTypeShape EntityType="Properties2Model.NeighborhoodCode" Width="1.5" PointX="0.75" PointY="10" Height="1.7879850260416674" IsExpanded="true" />
-        <EntityTypeShape EntityType="Properties2Model.Picture" Width="1.5" PointX="5.25" PointY="5.375" Height="2.5571907552083317" IsExpanded="true" />
-        <EntityTypeShape EntityType="Properties2Model.Property" Width="1.5" PointX="3" PointY="1.25" Height="7.5570279947916656" IsExpanded="true" />
-        <EntityTypeShape EntityType="Properties2Model.PropertyType" Width="1.5" PointX="0.75" PointY="12.625" Height="1.5956835937499996" IsExpanded="true" />
-        <EntityTypeShape EntityType="Properties2Model.SocioEconCode" Width="1.5" PointX="0.75" PointY="15" Height="1.5956835937499978" IsExpanded="true" />
-        <EntityTypeShape EntityType="Properties2Model.StreetconnCode" Width="1.5" PointX="0.75" PointY="17.25" Height="1.7879850260416674" IsExpanded="true" />
-        <EntityTypeShape EntityType="Properties2Model.StreetSafteyCode" Width="1.5" PointX="0.75" PointY="19.875" Height="1.7879850260416674" IsExpanded="true" />
-        <EntityTypeShape EntityType="Properties2Model.StreetType" Width="1.5" PointX="0.75" PointY="22.375" Height="1.5956835937500031" IsExpanded="true" />
-        <EntityTypeShape EntityType="Properties2Model.StreetwalkCode" Width="1.5" PointX="0.75" PointY="24.75" Height="1.7879850260416745" IsExpanded="true" />
-        <EntityTypeShape EntityType="Properties2Model.Weight" Width="1.5" PointX="7.75" PointY="0.75" Height="2.9417936197916674" IsExpanded="true" />
-        <AssociationConnector Association="Properties2Model.FK_address_id" ManuallyRouted="false">
+        <EntityTypeShape EntityType="UtahPlanners.Infrastructure.Address" Width="1.5" PointX="5.25" PointY="2" Height="2.5571907552083335" IsExpanded="true" />
+        <EntityTypeShape EntityType="UtahPlanners.Infrastructure.CommonCode" Width="1.5" PointX="0.75" PointY="4.125" Height="1.7879850260416674" IsExpanded="true" />
+        <EntityTypeShape EntityType="UtahPlanners.Infrastructure.EnclosureCode" Width="1.5" PointX="0.75" PointY="7.5" Height="1.7879850260416674" IsExpanded="true" />
+        <EntityTypeShape EntityType="UtahPlanners.Infrastructure.NeighborhoodCode" Width="1.5" PointX="0.75" PointY="10" Height="1.7879850260416674" IsExpanded="true" />
+        <EntityTypeShape EntityType="UtahPlanners.Infrastructure.Picture" Width="1.5" PointX="5.25" PointY="5.375" Height="2.5571907552083317" IsExpanded="true" />
+        <EntityTypeShape EntityType="UtahPlanners.Infrastructure.Property" Width="1.5" PointX="3" PointY="1.25" Height="7.5570279947916656" IsExpanded="true" />
+        <EntityTypeShape EntityType="UtahPlanners.Infrastructure.PropertyType" Width="1.5" PointX="0.75" PointY="12.625" Height="1.5956835937499996" IsExpanded="true" />
+        <EntityTypeShape EntityType="UtahPlanners.Infrastructure.SocioEconCode" Width="1.5" PointX="0.75" PointY="15" Height="1.5956835937499978" IsExpanded="true" />
+        <EntityTypeShape EntityType="UtahPlanners.Infrastructure.StreetconnCode" Width="1.5" PointX="0.75" PointY="17.25" Height="1.7879850260416674" IsExpanded="true" />
+        <EntityTypeShape EntityType="UtahPlanners.Infrastructure.StreetSafteyCode" Width="1.5" PointX="0.75" PointY="19.875" Height="1.7879850260416674" IsExpanded="true" />
+        <EntityTypeShape EntityType="UtahPlanners.Infrastructure.StreetType" Width="1.5" PointX="0.75" PointY="22.375" Height="1.5956835937500031" IsExpanded="true" />
+        <EntityTypeShape EntityType="UtahPlanners.Infrastructure.StreetwalkCode" Width="1.5" PointX="0.75" PointY="24.75" Height="1.7879850260416745" IsExpanded="true" />
+        <EntityTypeShape EntityType="UtahPlanners.Infrastructure.Weight" Width="1.5" PointX="7.75" PointY="0.75" Height="2.9417936197916674" IsExpanded="true" />
+        <AssociationConnector Association="UtahPlanners.Infrastructure.FK_address_id" ManuallyRouted="false">
           <ConnectorPoint PointX="4.5" PointY="3.2785953776041667" />
           <ConnectorPoint PointX="5.25" PointY="3.2785953776041667" />
         </AssociationConnector>
-        <AssociationConnector Association="Properties2Model.FK_CommonAreas" ManuallyRouted="false">
+        <AssociationConnector Association="UtahPlanners.Infrastructure.FK_CommonAreas" ManuallyRouted="false">
           <ConnectorPoint PointX="2.25" PointY="5.0189925130208337" />
           <ConnectorPoint PointX="3" PointY="5.0189925130208337" />
         </AssociationConnector>
-        <AssociationConnector Association="Properties2Model.FK_BuildingEnclosure" ManuallyRouted="false">
+        <AssociationConnector Association="UtahPlanners.Infrastructure.FK_BuildingEnclosure" ManuallyRouted="false">
           <ConnectorPoint PointX="2.25" PointY="8.1535139973958337" />
           <ConnectorPoint PointX="3" PointY="8.1535139973958337" />
         </AssociationConnector>
-        <AssociationConnector Association="Properties2Model.FK_NeighCondition" ManuallyRouted="false">
+        <AssociationConnector Association="UtahPlanners.Infrastructure.FK_NeighCondition" ManuallyRouted="false">
           <ConnectorPoint PointX="2.25" PointY="10.893992513020834" />
           <ConnectorPoint PointX="3.0572879166666667" PointY="10.893992513020834" />
           <ConnectorPoint PointX="3.2239545833333336" PointY="10.893992513020834" />
@@ -917,43 +917,43 @@
           <ConnectorPoint PointX="3.75" PointY="10.893992513020834" />
           <ConnectorPoint PointX="3.75" PointY="8.8070279947916656" />
         </AssociationConnector>
-        <AssociationConnector Association="Properties2Model.FK_pictures_pid" ManuallyRouted="false">
+        <AssociationConnector Association="UtahPlanners.Infrastructure.FK_pictures_pid" ManuallyRouted="false">
           <ConnectorPoint PointX="4.5" PointY="6.6535953776041659" />
           <ConnectorPoint PointX="5.25" PointY="6.6535953776041659" />
         </AssociationConnector>
-        <AssociationConnector Association="Properties2Model.FK_properties_ptid" ManuallyRouted="false">
+        <AssociationConnector Association="UtahPlanners.Infrastructure.FK_properties_ptid" ManuallyRouted="false">
           <ConnectorPoint PointX="2.25" PointY="13.422841796875" />
           <ConnectorPoint PointX="3.0572879166666667" PointY="13.422841796875" />
           <ConnectorPoint PointX="3.2239545833333336" PointY="13.422841796875" />
           <ConnectorPoint PointX="3.3437475" PointY="13.422841796875" />
           <ConnectorPoint PointX="3.3437475" PointY="8.8070279947916656" />
         </AssociationConnector>
-        <AssociationConnector Association="Properties2Model.FK_properties_stid" ManuallyRouted="false">
+        <AssociationConnector Association="UtahPlanners.Infrastructure.FK_properties_stid" ManuallyRouted="false">
           <ConnectorPoint PointX="2.25" PointY="23.172841796875" />
           <ConnectorPoint PointX="4.054689375" PointY="23.172841796875" />
           <ConnectorPoint PointX="4.054689375" PointY="8.8070279947916656" />
         </AssociationConnector>
-        <AssociationConnector Association="Properties2Model.FK_SocioEcon" ManuallyRouted="false">
+        <AssociationConnector Association="UtahPlanners.Infrastructure.FK_SocioEcon" ManuallyRouted="false">
           <ConnectorPoint PointX="2.25" PointY="15.797841796874998" />
           <ConnectorPoint PointX="3.14062125" PointY="15.797841796874998" />
           <ConnectorPoint PointX="3.14062125" PointY="8.8070279947916656" />
         </AssociationConnector>
-        <AssociationConnector Association="Properties2Model.FK_Streetconn" ManuallyRouted="false">
+        <AssociationConnector Association="UtahPlanners.Infrastructure.FK_Streetconn" ManuallyRouted="false">
           <ConnectorPoint PointX="2.25" PointY="18.143992513020834" />
           <ConnectorPoint PointX="3.54687375" PointY="18.143992513020834" />
           <ConnectorPoint PointX="3.54687375" PointY="8.8070279947916656" />
         </AssociationConnector>
-        <AssociationConnector Association="Properties2Model.FK_StreetSaftey" ManuallyRouted="false">
+        <AssociationConnector Association="UtahPlanners.Infrastructure.FK_StreetSaftey" ManuallyRouted="false">
           <ConnectorPoint PointX="2.25" PointY="20.768992513020834" />
           <ConnectorPoint PointX="3.9023446875" PointY="20.768992513020834" />
           <ConnectorPoint PointX="3.9023446875" PointY="8.8070279947916656" />
         </AssociationConnector>
-        <AssociationConnector Association="Properties2Model.FK_StreetWalk" ManuallyRouted="false">
+        <AssociationConnector Association="UtahPlanners.Infrastructure.FK_StreetWalk" ManuallyRouted="false">
           <ConnectorPoint PointX="2.25" PointY="25.643992513020837" />
           <ConnectorPoint PointX="4.3593787499999994" PointY="25.643992513020837" />
           <ConnectorPoint PointX="4.3593787499999994" PointY="8.8070279947916656" />
         </AssociationConnector>
-        <EntityTypeShape EntityType="Properties2Model.PropertiesIndex" Width="1.5" PointX="7.375" PointY="4.75" Height="3.3263964843750031" />
+        <EntityTypeShape EntityType="UtahPlanners.Infrastructure.PropertiesIndex" Width="1.5" PointX="7.375" PointY="4.75" Height="3.3263964843750031" />
       </Diagram>
     </Diagrams>
   </Designer>

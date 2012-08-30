@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using UtahPlanners.Repository;
+using UtahPlanners.Infrastructure;
 using System.Configuration;
 using System.Web.Configuration;
 using UtahPlanners.MVC3.Models.Home;
@@ -30,7 +30,7 @@ namespace UtahPlanners.MVC3.Controllers
             props = SortAndFilter(props);
 
             //Execute query and return the correct list of results according to the sort/filter
-            return View(props.ToList<PropertiesIndex>());
+            return View(props.ToList());
         }
 
         public ActionResult Property(int id)

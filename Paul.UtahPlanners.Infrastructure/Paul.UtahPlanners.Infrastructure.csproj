@@ -8,8 +8,8 @@
     <ProjectGuid>{7498DE95-BE40-467F-906E-08F3D9630DAB}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>UtahPlanners.Repository</RootNamespace>
-    <AssemblyName>UtahPlanners.Repository</AssemblyName>
+    <RootNamespace>UtahPlanners.Infrastructure</RootNamespace>
+    <AssemblyName>UtahPlanners.Infrastructure</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -57,6 +57,7 @@
     <EntityDeploy Include="Repository.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Repository.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>UtahPlanners.Infrastructure</CustomToolNamespace>
     </EntityDeploy>
     <None Include="Properties\DataSources\PropertiesDB.datasource" />
   </ItemGroup>

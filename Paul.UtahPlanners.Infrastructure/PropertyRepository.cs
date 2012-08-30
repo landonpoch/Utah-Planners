@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace UtahPlanners.Repository
+namespace UtahPlanners.Infrastructure
 {
     public class PropertyRepository
     {
@@ -31,25 +31,25 @@ namespace UtahPlanners.Repository
             return _db.PropertiesIndexes;
         }
 
-        public IQueryable<PropertyExtensions> GetAllProperties()
+        public IQueryable<Property> GetAllProperties()
         {
             return _db.Properties;
         }
 
-        public PropertyExtensions GetPropertyById(int id)
+        public Property GetPropertyById(int id)
         {
             return (from prop in _db.Properties
                     where prop.id == id
-                    select prop).First<PropertyExtensions>();
+                    select prop).First<Property>();
         }
 
-        public void AddProperty(PropertyExtensions property)
+        public void AddProperty(Property property)
         {
             _db.Properties.AddObject(property);
             _db.SaveChanges();
         }
 
-        public void DeleteProperty(PropertyExtensions property)
+        public void DeleteProperty(Property property)
         {
             _db.Properties.DeleteObject(property);
             _db.SaveChanges();

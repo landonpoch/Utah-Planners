@@ -14,6 +14,7 @@
     <AssemblyName>UtahPlanners.MVC3</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>false</UseIISExpress>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -143,9 +144,9 @@
     <Content Include="Views\Admin\Login.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Paul.UtahPlanners.Repository\Paul.UtahPlanners.Repository.csproj">
+    <ProjectReference Include="..\Paul.UtahPlanners.Infrastructure\Paul.UtahPlanners.Infrastructure.csproj">
       <Project>{7498DE95-BE40-467F-906E-08F3D9630DAB}</Project>
-      <Name>Paul.UtahPlanners.Repository</Name>
+      <Name>Paul.UtahPlanners.Infrastructure</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
