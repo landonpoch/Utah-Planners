@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using UtahPlanners.Domain;
 using UtahPlanners.Infrastructure;
 
 namespace UtahPlanners.MVC.Controllers
@@ -22,8 +23,7 @@ namespace UtahPlanners.MVC.Controllers
         public ActionResult Index()
         {
             PropertyRepository repo = new PropertyRepository();
-            List<Property> properties = repo.GetAllProperties()
-                .ToList();
+            var properties = repo.GetAllProperties().ToList();
 
             return View(properties);
         }

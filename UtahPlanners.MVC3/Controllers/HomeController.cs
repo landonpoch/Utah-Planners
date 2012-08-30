@@ -8,6 +8,7 @@ using System.Configuration;
 using System.Web.Configuration;
 using UtahPlanners.MVC3.Models.Home;
 using System.Linq.Expressions;
+using UtahPlanners.Domain;
 
 namespace UtahPlanners.MVC3.Controllers
 {

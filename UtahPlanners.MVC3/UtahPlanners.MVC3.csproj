@@ -144,6 +144,10 @@
     <Content Include="Views\Admin\Login.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Paul.UtahPlanners.Domain\Paul.UtahPlanners.Domain.csproj">
+      <Project>{43DCBCA9-0F66-40FD-94FF-1FEE07908BBF}</Project>
+      <Name>Paul.UtahPlanners.Domain</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Paul.UtahPlanners.Infrastructure\Paul.UtahPlanners.Infrastructure.csproj">
       <Project>{7498DE95-BE40-467F-906E-08F3D9630DAB}</Project>
       <Name>Paul.UtahPlanners.Infrastructure</Name>

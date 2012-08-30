@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace UtahPlanners.Infrastructure
+namespace UtahPlanners.Domain
 {
     public partial class Property
     {
@@ -11,7 +11,7 @@ namespace UtahPlanners.Infrastructure
         {
             get
             {
-                Weight weights = new PropertyRepository().GetWeights();
+                Weight weights = null; // TODO: Figure out how to get the weights // new PropertyRepository().GetWeights();
                 var neighScore = ((int)NeighborhoodCode.weight / 6.0) * (int)weights.neighCondition;
                 var streetWalkScore = ((int)StreetwalkCode.weight / 20.0) * (int)weights.streetWalk;
                 var commonCodeScore = ((int)CommonCode.weight / 15.0) * (int)weights.commonAreas;

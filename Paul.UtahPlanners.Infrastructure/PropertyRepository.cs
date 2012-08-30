@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using UtahPlanners.Domain;
 
 namespace UtahPlanners.Infrastructure
 {
@@ -45,13 +46,13 @@ namespace UtahPlanners.Infrastructure
 
         public void AddProperty(Property property)
         {
-            _db.Properties.AddObject(property);
+            _db.Properties.Add(property);
             _db.SaveChanges();
         }
 
         public void DeleteProperty(Property property)
         {
-            _db.Properties.DeleteObject(property);
+            _db.Properties.Remove(property);
             _db.SaveChanges();
         }
 
