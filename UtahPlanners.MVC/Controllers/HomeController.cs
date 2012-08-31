@@ -22,10 +22,11 @@ namespace UtahPlanners.MVC.Controllers
 
         public ActionResult Index()
         {
-            PropertyRepository repo = new PropertyRepository();
-            var properties = repo.GetAllProperties().ToList();
+            //PropertyRepository repo = new PropertyRepository();
+            //var properties = repo.GetAllProperties().ToList();
 
-            return View(properties);
+            //return View(properties);
+            return View();
         }
 
         public ActionResult About()

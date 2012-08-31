@@ -1,20 +1,20 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-using UtahPlanners.Infrastructure;
-using System.Configuration;
-using System.Web.Configuration;
-using UtahPlanners.MVC3.Models.Home;
 using System.Linq.Expressions;
+using System.Web.Mvc;
 using UtahPlanners.Domain;
+using UtahPlanners.MVC3.Models.Home;
 
 namespace UtahPlanners.MVC3.Controllers
 {
     public class HomeController : Controller
     {
-        PropertyRepository _repo = new PropertyRepository();
+        private IUnitOfWorkFactory _factory;
+
+        public HomeController(IUnitOfWorkFactory unitOfWorkFactory)
+        {
+            _factory = unitOfWorkFactory;
+        }
 
         public ActionResult Default()
         {
@@ -25,13 +25,12 @@ namespace UtahPlanners.MVC3.Controllers
         public ActionResult Index()
         {
             //Get index table rows, including the calculated overall score
-            IQueryable<PropertiesIndex> props = _repo.GetAllPropertiesIndexes();
-            
-            //Performs the sort and filter operations
-            props = SortAndFilter(props);
-
-            //Execute query and return the correct list of results according to the sort/filter
-            return View(props.ToList());
+            using (IUnitOfWork unit = _factory.CreateUnitOfWork())
+            {
+                var propRepo = unit.CreateIndexRepository();
+                var props = propRepo.GetAll();
+                return View(props);
+            }
         }
 
         public ActionResult Property(int id)

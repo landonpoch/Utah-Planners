@@ -29,7 +29,7 @@ This is a test!
     <th scope="col"><a href="@Url.Sort(IndexColumn.TwoFiftySF)">250 Single Fam</a></th>
     </tr>
 
-    @foreach (UtahPlanners.Repository.PropertiesIndex prop in Model)
+    @foreach (UtahPlanners.Domain.PropertiesIndex prop in Model)
     {
         <tr align="center" valign="middle" style="height: 35px;">
         <td>@prop.city</td> @*City column should be clickable to property*@
