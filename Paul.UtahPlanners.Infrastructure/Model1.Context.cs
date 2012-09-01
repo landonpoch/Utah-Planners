@@ -9,6 +9,7 @@
 
 using System;
 using System.Data.Entity;
+using System.Data.Entity.Infrastructure;
 // using System.Data.Entity.Infrastructure;
 
 namespace UtahPlanners.Domain
@@ -22,9 +23,7 @@ namespace UtahPlanners.Domain
     
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            // TODO: look at fixing this or just regenerating the model
-            // throw new UnintentionalCodeFirstException();
-            throw new Exception("UnintentionalCodeFirstException");
+            throw new UnintentionalCodeFirstException();
         }
     
         public DbSet<Address> Addresses { get; set; }

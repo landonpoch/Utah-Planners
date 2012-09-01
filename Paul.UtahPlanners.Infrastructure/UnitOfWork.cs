@@ -17,9 +17,9 @@ namespace UtahPlanners.Infrastructure
 
         #region IUnitOfWork Members
 
-        public IPropertyRepository CreatePropertyRepository()
+        public IPropertyRepository CreatePropertyRepository(IConfigSettings settings)
         {
-            return new PropertyRepository(_context.Properties);
+            return new PropertyRepository(_context.Properties, settings);
         }
 
         public IPropertiesIndexRepository CreateIndexRepository()

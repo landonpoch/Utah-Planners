@@ -7,7 +7,7 @@ namespace UtahPlanners.Domain
 {
     public interface IUnitOfWork : IDisposable
     {
-        IPropertyRepository CreatePropertyRepository();
+        IPropertyRepository CreatePropertyRepository(IConfigSettings settings);
         IPropertiesIndexRepository CreateIndexRepository();
         void Commit();
     }

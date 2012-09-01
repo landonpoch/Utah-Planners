@@ -7,25 +7,31 @@ namespace UtahPlanners.Domain
 {
     public partial class Property
     {
+        public Weight Weights { get; set; }
+
         public int Score
         {
             get
             {
-                Weight weights = null; // TODO: Figure out how to get the weights // new PropertyRepository().GetWeights();
-                var neighScore = ((int)NeighborhoodCode.weight / 6.0) * (int)weights.neighCondition;
-                var streetWalkScore = ((int)StreetwalkCode.weight / 20.0) * (int)weights.streetWalk;
-                var commonCodeScore = ((int)CommonCode.weight / 15.0) * (int)weights.commonAreas;
-                var screetConnScore = ((int)StreetconnCode.weight / 6.0) * (int)weights.streetConn;
-                var buildingScore = ((int)EnclosureCode.weight / 4.0) * (int)weights.buildingEnclosure;
-                var streetSafetyScore = ((int)StreetSafteyCode.weight / 10.0) * (int)weights.streetSaftey;
-                var walkScore = ((int)walkscore / 100.0) * (int)weights.walkscore;
-                var twoFiftySFScore = (this.GetTwoFiftySFScore() / 15.0) * (int)weights.twoFiftySingleFam;
-                var twoFiftyAptsScore = (this.GetTwoFiftyAptsScore() / 5.0) * (int)weights.twoFiftyApts;
+                var score = 0;
+                if (Weights != null)
+                {
+                    var neighScore = ((int)NeighborhoodCode.weight / 6.0) * (int)Weights.neighCondition;
+                    var streetWalkScore = ((int)StreetwalkCode.weight / 20.0) * (int)Weights.streetWalk;
+                    var commonCodeScore = ((int)CommonCode.weight / 15.0) * (int)Weights.commonAreas;
+                    var screetConnScore = ((int)StreetconnCode.weight / 6.0) * (int)Weights.streetConn;
+                    var buildingScore = ((int)EnclosureCode.weight / 4.0) * (int)Weights.buildingEnclosure;
+                    var streetSafetyScore = ((int)StreetSafteyCode.weight / 10.0) * (int)Weights.streetSaftey;
+                    var walkScore = ((int)walkscore / 100.0) * (int)Weights.walkscore;
+                    var twoFiftySFScore = (this.GetTwoFiftySFScore() / 15.0) * (int)Weights.twoFiftySingleFam;
+                    var twoFiftyAptsScore = (this.GetTwoFiftyAptsScore() / 5.0) * (int)Weights.twoFiftyApts;
 
-                var overallScore = neighScore + streetWalkScore + commonCodeScore +
-                    screetConnScore + buildingScore + streetSafetyScore + walkScore +
-                    twoFiftySFScore + twoFiftyAptsScore;
-                return (int)overallScore;
+                    var overallScore = neighScore + streetWalkScore + commonCodeScore +
+                        screetConnScore + buildingScore + streetSafetyScore + walkScore +
+                        twoFiftySFScore + twoFiftyAptsScore;
+                    score = (int)overallScore;
+                }
+                return score;
             }
         }
 

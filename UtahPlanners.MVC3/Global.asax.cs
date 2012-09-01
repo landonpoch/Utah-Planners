@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
+using UtahPlanners.Domain;
 
 namespace UtahPlanners.MVC3
 {
@@ -34,7 +35,6 @@ namespace UtahPlanners.MVC3
             //    "{controller}/{action}",
             //    new { controller = "Admin", action = "Login"}
             //);
-
         }
 
         protected void Application_Start()

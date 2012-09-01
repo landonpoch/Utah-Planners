@@ -10,10 +10,12 @@ namespace UtahPlanners.MVC3.Controllers
     public class HomeController : Controller
     {
         private IUnitOfWorkFactory _factory;
+        private IConfigSettings _settings;
 
-        public HomeController(IUnitOfWorkFactory unitOfWorkFactory)
+        public HomeController(IUnitOfWorkFactory unitOfWorkFactory, IConfigSettings settings)
         {
             _factory = unitOfWorkFactory;
+            _settings = settings;
         }
 
         public ActionResult Default()
@@ -36,7 +38,12 @@ namespace UtahPlanners.MVC3.Controllers
         public ActionResult Property(int id)
         {
             //Get the details for a property
-            return View();
+            using (IUnitOfWork unit = _factory.CreateUnitOfWork())
+            {
+                var propRepo = unit.CreatePropertyRepository(_settings);
+                var prop = propRepo.Get(id);
+                return View(prop);
+            }
         }
 
         public ActionResult About()

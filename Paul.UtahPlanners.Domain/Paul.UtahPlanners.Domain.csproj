@@ -50,10 +50,12 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Extensions\PropertyExtensions.cs" />
+    <Compile Include="IConfigSettings.cs" />
     <Compile Include="IPropertiesIndexRepository.cs" />
     <Compile Include="IPropertyRepository.cs" />
     <Compile Include="IUnitOfWork.cs" />
     <Compile Include="IUnitOfWorkFactory.cs" />
+    <Compile Include="IWeightRepository.cs" />
     <Compile Include="Model1.cs">
       <DependentUpon>Model1.tt</DependentUpon>
       <AutoGen>True</AutoGen>
