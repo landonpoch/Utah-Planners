@@ -20,4 +20,9 @@ namespace UtahPlanners.MVC3.Models.Home
         SocioEcon,
         TwoFiftySF
     }
+
+    public class Index
+    {
+
+    }
 }

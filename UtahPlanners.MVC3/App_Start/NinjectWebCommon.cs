@@ -14,6 +14,7 @@ namespace UtahPlanners.MVC3.App_Start
     using System.Reflection;
     using System.Configuration;
     using System.Collections.Generic;
+    using UtahPlanners.MVC3.Services;
 
     public static class NinjectWebCommon 
     {
@@ -57,11 +58,7 @@ namespace UtahPlanners.MVC3.App_Start
         /// <param name="kernel">The kernel.</param>
         private static void RegisterServices(IKernel kernel)
         {
-            // Gets custom assemblies from the solution and loads them into the kernel
-            IEnumerable<Assembly> assemblies = AppDomain.CurrentDomain.GetAssemblies()
-                .ToList()
-                .Where(a => a.FullName.Contains("UtahPlanners"));
-            kernel.Load(assemblies);
+            kernel.Bind<IServiceFactory>().To<ServiceFactory>();
         }
     }
 }
