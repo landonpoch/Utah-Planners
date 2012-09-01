@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/UtahPlanners.Domain" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/UtahPlanners.Domain" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="ArrayOfPropertiesIndex">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="PropertiesIndex" nillable="true" type="tns:PropertiesIndex" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfPropertiesIndex" nillable="true" type="tns:ArrayOfPropertiesIndex" />
+  <xs:complexType name="PropertiesIndex">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="OverallScore" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="PropertyTypeDescription" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SocioEconDescription" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="StreetTypeDescription" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="StreetWalkDescription" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="city" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="density" nillable="true" type="xs:double" />
+      <xs:element minOccurs="0" name="id" type="xs:int" />
+      <xs:element minOccurs="0" name="twoFiftySingleFam" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="units" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="walkscore" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="yearBuilt" nillable="true" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PropertiesIndex" nillable="true" type="tns:PropertiesIndex" />
+  <xs:complexType name="Property">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Address" nillable="true" type="tns:Address" />
+      <xs:element minOccurs="0" name="CommonCode" nillable="true" type="tns:CommonCode" />
+      <xs:element minOccurs="0" name="EnclosureCode" nillable="true" type="tns:EnclosureCode" />
+      <xs:element minOccurs="0" name="NeighborhoodCode" nillable="true" type="tns:NeighborhoodCode" />
+      <xs:element minOccurs="0" name="Pictures" nillable="true" type="tns:ArrayOfPicture" />
+      <xs:element minOccurs="0" name="PropertyType" nillable="true" type="tns:PropertyType" />
+      <xs:element minOccurs="0" name="SocioEconCode" nillable="true" type="tns:SocioEconCode" />
+      <xs:element minOccurs="0" name="StreetSafteyCode" nillable="true" type="tns:StreetSafteyCode" />
+      <xs:element minOccurs="0" name="StreetType" nillable="true" type="tns:StreetType" />
+      <xs:element minOccurs="0" name="StreetconnCode" nillable="true" type="tns:StreetconnCode" />
+      <xs:element minOccurs="0" name="StreetwalkCode" nillable="true" type="tns:StreetwalkCode" />
+      <xs:element minOccurs="0" name="Weights" nillable="true" type="tns:Weight" />
+      <xs:element minOccurs="0" name="adminNotes" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="area" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="buildingEnclosure" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="commonAreas" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="density" nillable="true" type="xs:double" />
+      <xs:element minOccurs="0" name="id" type="xs:int" />
+      <xs:element minOccurs="0" name="latitude" nillable="true" type="xs:double" />
+      <xs:element minOccurs="0" name="longitude" nillable="true" type="xs:double" />
+      <xs:element minOccurs="0" name="neighCondition" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="notFinished" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="notes" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="socioEcon" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="streetCode" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="streetConn" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="streetSaftey" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="streetWalk" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="twoFiftyApts" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="twoFiftySingleFam" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="typeCode" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="units" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="walkscore" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="walkscoreNotes" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="yearBuilt" nillable="true" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Property" nillable="true" type="tns:Property" />
+  <xs:complexType name="Address">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Property" nillable="true" type="tns:Property" />
+      <xs:element minOccurs="0" name="city" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="country" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="id" type="xs:int" />
+      <xs:element minOccurs="0" name="state" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="street1" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="street2" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="zip" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Address" nillable="true" type="tns:Address" />
+  <xs:complexType name="CommonCode">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Properties" nillable="true" type="tns:ArrayOfProperty" />
+      <xs:element minOccurs="0" name="description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="id" type="xs:int" />
+      <xs:element minOccurs="0" name="weight" nillable="true" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CommonCode" nillable="true" type="tns:CommonCode" />
+  <xs:complexType name="ArrayOfProperty">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Property" nillable="true" type="tns:Property" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfProperty" nillable="true" type="tns:ArrayOfProperty" />
+  <xs:complexType name="EnclosureCode">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Properties" nillable="true" type="tns:ArrayOfProperty" />
+      <xs:element minOccurs="0" name="description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="id" type="xs:int" />
+      <xs:element minOccurs="0" name="weight" nillable="true" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="EnclosureCode" nillable="true" type="tns:EnclosureCode" />
+  <xs:complexType name="NeighborhoodCode">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Properties" nillable="true" type="tns:ArrayOfProperty" />
+      <xs:element minOccurs="0" name="description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="id" type="xs:int" />
+      <xs:element minOccurs="0" name="weight" nillable="true" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="NeighborhoodCode" nillable="true" type="tns:NeighborhoodCode" />
+  <xs:complexType name="ArrayOfPicture">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Picture" nillable="true" type="tns:Picture" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfPicture" nillable="true" type="tns:ArrayOfPicture" />
+  <xs:complexType name="Picture">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Property" nillable="true" type="tns:Property" />
+      <xs:element minOccurs="0" name="binaryData" nillable="true" type="xs:base64Binary" />
+      <xs:element minOccurs="0" name="frontPage" nillable="true" type="xs:short" />
+      <xs:element minOccurs="0" name="id" type="xs:int" />
+      <xs:element minOccurs="0" name="mainPicture" nillable="true" type="xs:short" />
+      <xs:element minOccurs="0" name="mimeType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="property_id" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="secondaryPicture" nillable="true" type="xs:short" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Picture" nillable="true" type="tns:Picture" />
+  <xs:complexType name="PropertyType">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Properties" nillable="true" type="tns:ArrayOfProperty" />
+      <xs:element minOccurs="0" name="description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="id" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PropertyType" nillable="true" type="tns:PropertyType" />
+  <xs:complexType name="SocioEconCode">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Properties" nillable="true" type="tns:ArrayOfProperty" />
+      <xs:element minOccurs="0" name="description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="id" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SocioEconCode" nillable="true" type="tns:SocioEconCode" />
+  <xs:complexType name="StreetSafteyCode">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Properties" nillable="true" type="tns:ArrayOfProperty" />
+      <xs:element minOccurs="0" name="description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="id" type="xs:int" />
+      <xs:element minOccurs="0" name="weight" nillable="true" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="StreetSafteyCode" nillable="true" type="tns:StreetSafteyCode" />
+  <xs:complexType name="StreetType">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Properties" nillable="true" type="tns:ArrayOfProperty" />
+      <xs:element minOccurs="0" name="description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="id" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="StreetType" nillable="true" type="tns:StreetType" />
+  <xs:complexType name="StreetconnCode">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Properties" nillable="true" type="tns:ArrayOfProperty" />
+      <xs:element minOccurs="0" name="description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="id" type="xs:int" />
+      <xs:element minOccurs="0" name="weight" nillable="true" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="StreetconnCode" nillable="true" type="tns:StreetconnCode" />
+  <xs:complexType name="StreetwalkCode">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Properties" nillable="true" type="tns:ArrayOfProperty" />
+      <xs:element minOccurs="0" name="description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="id" type="xs:int" />
+      <xs:element minOccurs="0" name="weight" nillable="true" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="StreetwalkCode" nillable="true" type="tns:StreetwalkCode" />
+  <xs:complexType name="Weight">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="buildingEnclosure" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="commonAreas" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="id" type="xs:int" />
+      <xs:element minOccurs="0" name="neighCondition" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="streetConn" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="streetSaftey" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="streetWalk" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="twoFiftyApts" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="twoFiftySingleFam" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="walkscore" nillable="true" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Weight" nillable="true" type="tns:Weight" />
+</xs:schema>

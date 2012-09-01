@@ -94,7 +94,8 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>if $(ConfigurationName) == Debug copy $(TargetDir)$(TargetName).* ..\..\..\UtahPlanners.MVC3\bin</PostBuildEvent>
+    <PostBuildEvent>if $(ConfigurationName) == Debug copy $(TargetDir)$(TargetName).* ..\..\..\UtahPlanners.MVC3\bin
+if $(ConfigurationName) == Debug copy $(TargetDir)$(TargetName).* ..\..\..\Paul.UtahPlanners.Application\bin</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -2,21 +2,22 @@
 using System.Linq;
 using System.Linq.Expressions;
 using System.Web.Mvc;
-using UtahPlanners.Domain;
 using UtahPlanners.MVC3.Models.Home;
+using UtahPlanners.MVC3.PropertyService;
+using UtahPlanners.MVC3.Extensions;
 
 namespace UtahPlanners.MVC3.Controllers
 {
     public class HomeController : Controller
     {
-        private IUnitOfWorkFactory _factory;
-        private IConfigSettings _settings;
+        //private IUnitOfWorkFactory _factory;
+        //private IConfigSettings _settings;
 
-        public HomeController(IUnitOfWorkFactory unitOfWorkFactory, IConfigSettings settings)
-        {
-            _factory = unitOfWorkFactory;
-            _settings = settings;
-        }
+        //public HomeController(IUnitOfWorkFactory unitOfWorkFactory, IConfigSettings settings)
+        //{
+        //    _factory = unitOfWorkFactory;
+        //    _settings = settings;
+        //}
 
         public ActionResult Default()
         {
@@ -27,23 +28,33 @@ namespace UtahPlanners.MVC3.Controllers
         public ActionResult Index()
         {
             //Get index table rows, including the calculated overall score
-            using (IUnitOfWork unit = _factory.CreateUnitOfWork())
-            {
-                var propRepo = unit.CreateIndexRepository();
-                var props = propRepo.GetAll();
-                return View(props);
-            }
+            //using (IUnitOfWork unit = _factory.CreateUnitOfWork())
+            //{
+            //    var propRepo = unit.CreateIndexRepository();
+            //    var props = propRepo.GetAll();
+            //    return View(props);
+            //}
+
+            // TODO: Write a client wrapper so this is testable
+            var client = new PropertyServiceClient();
+            var index = client.SafeExecution(c => c.GetIndex());
+
+            // TODO: Map the results to a model
+
+            // TODO: Return the model and wire up the view
+            return View();
         }
 
         public ActionResult Property(int id)
         {
             //Get the details for a property
-            using (IUnitOfWork unit = _factory.CreateUnitOfWork())
-            {
-                var propRepo = unit.CreatePropertyRepository(_settings);
-                var prop = propRepo.Get(id);
-                return View(prop);
-            }
+            //using (IUnitOfWork unit = _factory.CreateUnitOfWork())
+            //{
+            //    var propRepo = unit.CreatePropertyRepository(_settings);
+            //    var prop = propRepo.Get(id);
+            //    return View(prop);
+            //}
+            return View();
         }
 
         public ActionResult About()
@@ -51,6 +62,7 @@ namespace UtahPlanners.MVC3.Controllers
             return View();
         }
 
+        /*
         private IQueryable<PropertiesIndex> SortAndFilter(IQueryable<PropertiesIndex> props)
         {
             bool isFirstSort = true;
@@ -136,5 +148,6 @@ namespace UtahPlanners.MVC3.Controllers
             return descending ? props.OrderByDescending(keySelector) :
                 props.OrderBy(keySelector);
         }
+         */
     }
 }
