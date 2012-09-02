@@ -29,21 +29,21 @@ This is a test!
     <th scope="col"><a href="@Url.Sort(IndexColumn.TwoFiftySF)">250 Single Fam</a></th>
     </tr>
 
-    @foreach (UtahPlanners.Domain.PropertiesIndex prop in Model)
+    @foreach (UtahPlanners.MVC3.Models.Home.Index prop in Model)
     {
         <tr align="center" valign="middle" style="height: 35px;">
-        <td>@prop.city</td> @*City column should be clickable to property*@
-        <td>@prop.id</td>
-        <td>@prop.OverallScore</td>
-        <td>@prop.PropertyTypeDescription</td>
-        <td>@prop.density</td>
-        <td>@prop.units</td>
-        <td>@prop.yearBuilt</td>
-        <td>@prop.StreetTypeDescription</td>
+        <td>@prop.City</td> @*City column should be clickable to property*@
+        <td>@prop.Id</td>
+        <td>@prop.Score</td>
+        <td>@prop.PropertyType</td>
+        <td>@prop.Density</td>
+        <td>@prop.Units</td>
+        <td>@prop.YearBuilt</td>
+        <td>@prop.StreetType</td>
         <td>@prop.StreetWalkDescription</td>
-        <td>@prop.walkscore</td>
+        <td>@prop.Walkscore</td>
         <td>@prop.SocioEconDescription</td>
-        <td>@prop.twoFiftySingleFam</td>
+        <td>@prop.TwoFiftySingleFamily</td>
         </tr>
     }
 

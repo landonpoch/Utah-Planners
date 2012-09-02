@@ -4,6 +4,8 @@ using UtahPlanners.MVC3.Services;
 using UtahPlanners.MVC3.Models.Home;
 using UtahPlanners.MVC3.PropertyService;
 using System;
+using System.Linq;
+using System.Collections.Generic;
 
 namespace UtahPlanners.MVC3.Controllers
 {
@@ -26,12 +28,8 @@ namespace UtahPlanners.MVC3.Controllers
         {
             //Get index table rows, including the calculated overall score
             var client = _factory.CreateService();
-            var index = client.SafeExecution(c => c.GetIndex());
-
-            // TODO: Map the results to a model
-
-            // TODO: Return the model and wire up the view
-            return View();
+            var indecies = client.SafeExecution(c => c.GetIndex()).ToList();
+            return View(Convert(indecies));
         }
 
         public ActionResult Property(int id)
@@ -51,9 +49,34 @@ namespace UtahPlanners.MVC3.Controllers
             return View();
         }
 
+        private List<Index> Convert(List<PropertiesIndex> indecies)
+        {
+            var indexList = new List<Index>();
+            indecies.ForEach(i =>
+            {
+                if (i != null) 
+                    indexList.Add(Convert(i));
+            });
+            return indexList;
+        }
+
         private Index Convert(PropertiesIndex index)
         {
-            throw new NotImplementedException();
+            return new Index
+            {
+                Id = index.id,
+                City = index.city,
+                Score = index.OverallScore.HasValue ? index.OverallScore.Value : 0,
+                PropertyType = index.PropertyTypeDescription,
+                Density = index.density.HasValue ? index.density.Value : 0,
+                Units = index.units.HasValue ? index.units.Value : 0,
+                YearBuilt = index.yearBuilt.HasValue ? index.yearBuilt.ToString() : String.Empty,
+                StreetType = index.StreetTypeDescription,
+                StreetWalkDescription = index.StreetWalkDescription,
+                Walkscore = index.walkscore.HasValue ? index.walkscore.Value : 0,
+                SocioEconDescription = index.SocioEconDescription,
+                TwoFiftySingleFamily = index.twoFiftySingleFam.HasValue ? index.twoFiftySingleFam.Value : 0
+            };
         }
 
         /*
