@@ -6,33 +6,16 @@
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.4.2.min.js"></script>
     
 <script type="text/javascript">
-    $(document).ready(function() {
-
-        $(".toggle_container").hide();
-
-        /*
-        //Hide (Collapse) the toggle containers on load
-        <% 
-        if Not Request.UrlReferrer Is Nothing Then
-            If Not Request.UrlReferrer.Equals(Request.Url) Then 
-                Response.Write("$("".toggle_container"").hide();") 
-            End if
-        else
-            Response.Write("$("".toggle_container"").hide();") 
-        end if
-        %>
-
-        //Switch the "Open" and "Close" state per click then slide up/down (depending on open/close state)
-        $("h2.trigger").click(function() {
+    $(document).ready(function () {
+        $("h2.trigger").click(function (event) {
+            event.preventDefault();
             $(this).toggleClass("active").next().slideToggle("slow");
         });
-        */
-
     });
 </script>
 
 <h2 class="trigger"><a href="#">Index Filter</a></h2>
-<div class="toggle_container">
+<div class="toggle_container" style="display: none;">
     <div class="block">
     
     <div class="searchLeft">

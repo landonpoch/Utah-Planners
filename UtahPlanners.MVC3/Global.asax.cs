@@ -24,16 +24,16 @@ namespace UtahPlanners.MVC3
             routes.MapRoute(
                 "Default", // Route name
                 "{action}/{id}", // URL with parameters
-                new { controller = "Home", action = "Default", id = UrlParameter.Optional } // Parameter defaults
+                new { controller = "Home", action = "Default", id = UrlParameter.Optional }, // Parameter defaults
+                new { defaultConstraint = new DefaultController() }
                 //,new { id = @"\d+" }
             );
 
-            //Fix the admin route
-            //routes.MapRoute(
-            //    "Admin",
-            //    "{controller}/{action}",
-            //    new { controller = "Admin", action = "Login"}
-            //);
+            routes.MapRoute(
+                "Admin",
+                "{controller}/{action}/{id}",
+                new { id = UrlParameter.Optional }
+            );
         }
 
         protected void Application_Start()
@@ -43,5 +43,25 @@ namespace UtahPlanners.MVC3
             RegisterGlobalFilters(GlobalFilters.Filters);
             RegisterRoutes(RouteTable.Routes);
         }
+    }
+
+    public class DefaultController : IRouteConstraint
+    {
+
+        #region IRouteConstraint Members
+
+        public bool Match(HttpContextBase httpContext, Route route, string parameterName, RouteValueDictionary values, RouteDirection routeDirection)
+        {
+            List<string> defaultActions = new List<string>
+            {
+                "Default",
+                "Index",
+                "About",
+                "Property"
+            };
+            return defaultActions.Contains(values["action"].ToString());
+        }
+
+        #endregion
     }
 }

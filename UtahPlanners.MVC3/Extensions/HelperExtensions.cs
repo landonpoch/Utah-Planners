@@ -1,11 +1,15 @@
 ﻿using System;
 using System.Web.Mvc;
 using UtahPlanners.MVC3.Models.Home;
+using System.Collections.Generic;
 
 namespace UtahPlanners.MVC3.Extensions
 {
-    public static class UrlHelperExtensions
+    public static class HelperExtensions
     {
+
+        #region UrlHelperExtensions
+
         /// <summary>
         /// Used to support sorting.  Pass in the column that you would like to sort.  If 
         /// the column is already sorted, it will simply re-sort it descending or 
@@ -18,7 +22,7 @@ namespace UtahPlanners.MVC3.Extensions
         {
             var queryString = helper.RequestContext.HttpContext.Request.QueryString;
             string keyName = "sort" + column.ToString();
-            
+
             // Creates the first QueryString parameter in the url
             string firstParam = String.Empty;
             if (!String.IsNullOrEmpty(queryString[keyName]) && queryString.Keys[0] == keyName)
@@ -51,5 +55,25 @@ namespace UtahPlanners.MVC3.Extensions
         {
             return String.Empty;
         }
+        
+        #endregion
+
+        #region HtmlHelperExtensions
+
+        public static string IsActive(this HtmlHelper htmlHelper, string action, string controller)
+        {
+            var routeData = htmlHelper.ViewContext.RouteData;
+            var currentAction = routeData.GetRequiredString("action");
+            var currentController = routeData.GetRequiredString("controller");
+            if (string.Equals(currentAction, action, StringComparison.OrdinalIgnoreCase) &&
+                string.Equals(currentController, controller, StringComparison.OrdinalIgnoreCase))
+            {
+                return "active";
+            }
+            return null;
+        }
+
+        #endregion
+
     }
 }
