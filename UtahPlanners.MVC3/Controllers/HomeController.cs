@@ -2,7 +2,6 @@
 using UtahPlanners.MVC3.Extensions;
 using UtahPlanners.MVC3.Services;
 using UtahPlanners.MVC3.Models.Home;
-using UtahPlanners.MVC3.PropertyService;
 using System;
 using System.Linq;
 using System.Collections.Generic;
@@ -35,13 +34,9 @@ namespace UtahPlanners.MVC3.Controllers
         public ActionResult Property(int id)
         {
             //Get the details for a property
-            //using (IUnitOfWork unit = _factory.CreateUnitOfWork())
-            //{
-            //    var propRepo = unit.CreatePropertyRepository(_settings);
-            //    var prop = propRepo.Get(id);
-            //    return View(prop);
-            //}
-            return View();
+            var client = _factory.CreateService();
+            var property = client.SafeExecution(c => c.GetProperty(id));
+            return View(Convert(property));
         }
 
         public ActionResult About()
@@ -49,7 +44,15 @@ namespace UtahPlanners.MVC3.Controllers
             return View();
         }
 
-        private List<Index> Convert(List<PropertiesIndex> indecies)
+        private Property Convert(PropertyService.Property property)
+        {
+            return new Property
+            {
+                
+            };
+        }
+
+        private List<Index> Convert(List<PropertyService.PropertiesIndex> indecies)
         {
             var indexList = new List<Index>();
             indecies.ForEach(i =>
@@ -60,7 +63,7 @@ namespace UtahPlanners.MVC3.Controllers
             return indexList;
         }
 
-        private Index Convert(PropertiesIndex index)
+        private Index Convert(PropertyService.PropertiesIndex index)
         {
             return new Index
             {

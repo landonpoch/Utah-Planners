@@ -12,6 +12,7 @@ This is a test!
 </div>
 </div>
 
+
 <table cellspacing="0" align="center" rules="all" border="1" style="border-collapse:collapse;">
     
     <tr align="center" style="background-color: #CCCCCC; border-style: solid;">
@@ -32,7 +33,7 @@ This is a test!
     @foreach (UtahPlanners.MVC3.Models.Home.Index prop in Model)
     {
         <tr align="center" valign="middle" style="height: 35px;">
-        <td>@prop.City</td> @*City column should be clickable to property*@
+        <td>@Html.ActionLink(prop.City, "Property", new { id = prop.Id })</td>
         <td>@prop.Id</td>
         <td>@prop.Score</td>
         <td>@prop.PropertyType</td>
