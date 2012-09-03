@@ -13,18 +13,27 @@ namespace UtahPlanners.Infrastructure
         public UnitOfWork(PropertiesDB context)
         {
             _context = context;
+
+            // Needed to be able to use the POCO classes over the wire
+            _context.Configuration.LazyLoadingEnabled = false;
+            _context.Configuration.ProxyCreationEnabled = false;
         }
 
         #region IUnitOfWork Members
 
         public IPropertyRepository CreatePropertyRepository(IConfigSettings settings)
         {
-            return new PropertyRepository(_context.Properties, settings);
+            return new PropertyRepository(_context, settings);
         }
 
         public IPropertiesIndexRepository CreateIndexRepository()
         {
             return new PropertiesIndexRepository(_context.PropertiesIndexes);
+        }
+
+        public IPictureRepository CreatePictureRepository()
+        {
+            return new PictureRepository(_context.Pictures);
         }
 
         public void Commit()

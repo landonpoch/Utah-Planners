@@ -9,6 +9,7 @@ namespace UtahPlanners.Domain
     {
         IPropertyRepository CreatePropertyRepository(IConfigSettings settings);
         IPropertiesIndexRepository CreateIndexRepository();
+        IPictureRepository CreatePictureRepository();
         void Commit();
     }
 }

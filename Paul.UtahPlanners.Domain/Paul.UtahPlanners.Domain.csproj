@@ -51,6 +51,7 @@
     </Compile>
     <Compile Include="Extensions\PropertyExtensions.cs" />
     <Compile Include="IConfigSettings.cs" />
+    <Compile Include="IPictureRepository.cs" />
     <Compile Include="IPropertiesIndexRepository.cs" />
     <Compile Include="IPropertyRepository.cs" />
     <Compile Include="IUnitOfWork.cs" />

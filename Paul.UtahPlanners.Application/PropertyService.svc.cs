@@ -37,7 +37,7 @@ namespace Paul.UtahPlanners.Application
 
         public List<global::UtahPlanners.Domain.PropertiesIndex> GetIndex()
         {
-            using (IUnitOfWork unit = _factory.CreateUnitOfWork())
+            using (var unit = _factory.CreateUnitOfWork())
             {
                 var repo = unit.CreateIndexRepository();
                 return repo.GetAll();
@@ -46,10 +46,28 @@ namespace Paul.UtahPlanners.Application
 
         public global::UtahPlanners.Domain.Property GetProperty(int id)
         {
-            using (IUnitOfWork unit = _factory.CreateUnitOfWork())
+            using (var unit = _factory.CreateUnitOfWork())
             {
                 var repo = unit.CreatePropertyRepository(_settings);
                 return repo.Get(id);
+            }
+        }
+
+        public KeyValuePair<int, int> GetShowcaseProperty()
+        {
+            using (var unit = _factory.CreateUnitOfWork())
+            {
+                var repo = unit.CreatePropertyRepository(_settings);
+                return repo.GetShowcaseProperty();
+            }
+        }
+
+        public Picture GetPicture(int id)
+        {
+            using (var unit = _factory.CreateUnitOfWork())
+            {
+                var repo = unit.CreatePictureRepository();
+                return repo.GetPicture(id);
             }
         }
 

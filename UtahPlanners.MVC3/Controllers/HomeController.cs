@@ -19,8 +19,9 @@ namespace UtahPlanners.MVC3.Controllers
 
         public ActionResult Default()
         {
-            //Get a random image from the database
-            return View();
+            var client = _factory.CreateService();
+            var prop = client.GetShowcaseProperty();
+            return View(prop);
         }
 
         public ActionResult Index()
@@ -42,6 +43,13 @@ namespace UtahPlanners.MVC3.Controllers
         public ActionResult About()
         {
             return View();
+        }
+
+        public ActionResult GetPicture(int id)
+        {
+            var client = _factory.CreateService();
+            var picture = client.GetPicture(id);
+            return File(picture.binaryData, "image/png");
         }
 
         private Property Convert(PropertyService.Property property)

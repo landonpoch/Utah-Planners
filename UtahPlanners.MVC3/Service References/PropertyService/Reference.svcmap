@@ -22,6 +22,7 @@
   </MetadataSources>
   <Metadata>
     <MetadataFile FileName="PropertyService.disco" MetadataType="Disco" ID="251a7165-69b9-4311-a0d7-f335c20686b7" SourceId="1" SourceUrl="http://localhost:3109/PropertyService.svc?disco" />
+    <MetadataFile FileName="PropertyService4.xsd" MetadataType="Schema" ID="5393b764-f5d9-49d9-9a21-4aaa5f5bba30" SourceId="1" SourceUrl="http://localhost:3109/PropertyService.svc?xsd=xsd4" />
     <MetadataFile FileName="PropertyService.wsdl" MetadataType="Wsdl" ID="25b08411-b3ef-4d95-801a-fb83acd8fd57" SourceId="1" SourceUrl="http://localhost:3109/PropertyService.svc?wsdl" />
     <MetadataFile FileName="PropertyService.xsd" MetadataType="Schema" ID="63544239-912f-404d-8d59-aca0c7d62dee" SourceId="1" SourceUrl="http://localhost:3109/PropertyService.svc?xsd=xsd3" />
     <MetadataFile FileName="PropertyService1.xsd" MetadataType="Schema" ID="39f5eab8-8371-49f0-a928-cfb2740b026f" SourceId="1" SourceUrl="http://localhost:3109/PropertyService.svc?xsd=xsd2" />

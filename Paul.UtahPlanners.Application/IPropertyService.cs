@@ -25,6 +25,12 @@ namespace Paul.UtahPlanners.Application
 
         [OperationContract]
         Property GetProperty(int id);
+
+        [OperationContract]
+        KeyValuePair<int, int> GetShowcaseProperty();
+
+        [OperationContract]
+        Picture GetPicture(int id);
     }
 
 

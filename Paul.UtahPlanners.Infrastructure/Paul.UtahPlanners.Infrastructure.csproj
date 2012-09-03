@@ -57,6 +57,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Model1.Context.tt</DependentUpon>
     </Compile>
+    <Compile Include="PictureRepository.cs" />
     <Compile Include="PropertiesIndexRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PropertyRepository.cs" />

@@ -2191,6 +2191,12 @@ namespace UtahPlanners.MVC3.PropertyService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPropertyService/GetProperty", ReplyAction="http://tempuri.org/IPropertyService/GetPropertyResponse")]
         UtahPlanners.MVC3.PropertyService.Property GetProperty(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPropertyService/GetShowcaseProperty", ReplyAction="http://tempuri.org/IPropertyService/GetShowcasePropertyResponse")]
+        System.Collections.Generic.KeyValuePair<int, int> GetShowcaseProperty();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPropertyService/GetPicture", ReplyAction="http://tempuri.org/IPropertyService/GetPictureResponse")]
+        UtahPlanners.MVC3.PropertyService.Picture GetPicture(int id);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -2234,6 +2240,14 @@ namespace UtahPlanners.MVC3.PropertyService {
         
         public UtahPlanners.MVC3.PropertyService.Property GetProperty(int id) {
             return base.Channel.GetProperty(id);
+        }
+        
+        public System.Collections.Generic.KeyValuePair<int, int> GetShowcaseProperty() {
+            return base.Channel.GetShowcaseProperty();
+        }
+        
+        public UtahPlanners.MVC3.PropertyService.Picture GetPicture(int id) {
+            return base.Channel.GetPicture(id);
         }
     }
 }

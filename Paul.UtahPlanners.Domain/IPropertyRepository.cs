@@ -8,6 +8,7 @@ namespace UtahPlanners.Domain
     public interface IPropertyRepository
     {
         Property Get(int id);
+        KeyValuePair<int, int> GetShowcaseProperty();
         List<Property> GetAll();
     }
 }
