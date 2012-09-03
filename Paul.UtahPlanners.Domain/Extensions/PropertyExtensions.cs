@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Runtime.Serialization;
 
 namespace UtahPlanners.Domain
 {
@@ -9,30 +10,33 @@ namespace UtahPlanners.Domain
     {
         public Weight Weights { get; set; }
 
-        public int Score
-        {
-            get
-            {
-                var score = 0;
-                if (Weights != null)
-                {
-                    var neighScore = ((int)NeighborhoodCode.weight / 6.0) * (int)Weights.neighCondition;
-                    var streetWalkScore = ((int)StreetwalkCode.weight / 20.0) * (int)Weights.streetWalk;
-                    var commonCodeScore = ((int)CommonCode.weight / 15.0) * (int)Weights.commonAreas;
-                    var screetConnScore = ((int)StreetconnCode.weight / 6.0) * (int)Weights.streetConn;
-                    var buildingScore = ((int)EnclosureCode.weight / 4.0) * (int)Weights.buildingEnclosure;
-                    var streetSafetyScore = ((int)StreetSafteyCode.weight / 10.0) * (int)Weights.streetSaftey;
-                    var walkScore = ((int)walkscore / 100.0) * (int)Weights.walkscore;
-                    var twoFiftySFScore = (this.GetTwoFiftySFScore() / 15.0) * (int)Weights.twoFiftySingleFam;
-                    var twoFiftyAptsScore = (this.GetTwoFiftyAptsScore() / 5.0) * (int)Weights.twoFiftyApts;
+        public List<int> PictureIds { get; set; }
 
-                    var overallScore = neighScore + streetWalkScore + commonCodeScore +
-                        screetConnScore + buildingScore + streetSafetyScore + walkScore +
-                        twoFiftySFScore + twoFiftyAptsScore;
-                    score = (int)overallScore;
-                }
-                return score;
+        public int SecondaryPictureId { get; set; }
+
+        public int Score { get; set; }
+
+        public void CalculateScore()
+        {
+            var score = 0;
+            if (Weights != null)
+            {
+                var neighScore = ((int)NeighborhoodCode.weight / 6.0) * (int)Weights.neighCondition;
+                var streetWalkScore = ((int)StreetwalkCode.weight / 20.0) * (int)Weights.streetWalk;
+                var commonCodeScore = ((int)CommonCode.weight / 15.0) * (int)Weights.commonAreas;
+                var screetConnScore = ((int)StreetconnCode.weight / 6.0) * (int)Weights.streetConn;
+                var buildingScore = ((int)EnclosureCode.weight / 4.0) * (int)Weights.buildingEnclosure;
+                var streetSafetyScore = ((int)StreetSafteyCode.weight / 10.0) * (int)Weights.streetSaftey;
+                var walkScore = ((int)walkscore / 100.0) * (int)Weights.walkscore;
+                var twoFiftySFScore = (this.GetTwoFiftySFScore() / 15.0) * (int)Weights.twoFiftySingleFam;
+                var twoFiftyAptsScore = (this.GetTwoFiftyAptsScore() / 5.0) * (int)Weights.twoFiftyApts;
+
+                var overallScore = neighScore + streetWalkScore + commonCodeScore +
+                    screetConnScore + buildingScore + streetSafetyScore + walkScore +
+                    twoFiftySFScore + twoFiftyAptsScore;
+                score = (int)overallScore;
             }
+            this.Score = score;
         }
 
         private int GetTwoFiftySFScore()
@@ -73,4 +77,34 @@ namespace UtahPlanners.Domain
             return twoFiftyAptsScore;
         }
     }
+
+    [DataContract(IsReference = true)]
+    public partial class Address { }
+    
+    [DataContract(IsReference = true)]
+    public partial class CommonCode { }
+
+    [DataContract(IsReference = true)]
+    public partial class EnclosureCode { }
+
+    [DataContract(IsReference = true)]
+    public partial class NeighborhoodCode { }
+    
+    [DataContract(IsReference = true)]
+    public partial class PropertyType { }
+
+    [DataContract(IsReference = true)]
+    public partial class SocioEconCode { }
+
+    [DataContract(IsReference = true)]
+    public partial class StreetconnCode { }
+
+    [DataContract(IsReference = true)]
+    public partial class StreetSafteyCode { }
+
+    [DataContract(IsReference = true)]
+    public partial class StreetType { }
+
+    [DataContract(IsReference = true)]
+    public partial class StreetwalkCode { }
 }

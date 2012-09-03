@@ -9,6 +9,5 @@ namespace UtahPlanners.Domain
     {
         Property Get(int id);
         KeyValuePair<int, int> GetShowcaseProperty();
-        List<Property> GetAll();
     }
 }

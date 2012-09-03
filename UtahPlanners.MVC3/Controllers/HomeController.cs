@@ -37,7 +37,8 @@ namespace UtahPlanners.MVC3.Controllers
             //Get the details for a property
             var client = _factory.CreateService();
             var property = client.SafeExecution(c => c.GetProperty(id));
-            return View(Convert(property));
+            var prop = Convert(property);
+            return View(prop);
         }
 
         public ActionResult About()
@@ -52,11 +53,43 @@ namespace UtahPlanners.MVC3.Controllers
             return File(picture.binaryData, "image/png");
         }
 
-        private Property Convert(PropertyService.Property property)
+        private Property Convert(PropertyService.Property p)
         {
             return new Property
             {
-                
+                Id = p.id,
+                Address = Convert(p.Address),
+                PictureIds = p.PictureIds.ToList(),
+                SecondaryPictureId = p.SecondaryPictureId,
+                PropertyType = p.PropertyType.description,
+                Score = p.Score,
+                StreetSafety = p.StreetSafteyCode.description,
+                BuildingEnclosure = p.EnclosureCode.description,
+                CommonAreas = p.CommonCode.description,
+                StreetConnectivity = p.StreetconnCode.description,
+                StreetWalkability = p.StreetwalkCode.description,
+                Walkscore = p.walkscore.HasValue ? p.walkscore.Value : 0,
+                NeighborhoodCondition = p.NeighborhoodCode.description,
+                TwoFiftySingleFamily = p.twoFiftySingleFam.HasValue ? p.twoFiftySingleFam.Value : 0,
+                TwoFiftyApartments = p.twoFiftyApts.HasValue ? p.twoFiftyApts.Value : 0,
+                Density = p.density.HasValue ? p.density.Value : 0,
+                Area = p.area.HasValue ? p.area.Value : 0,
+                Units = p.units.HasValue ? p.units.Value : 0,
+                StreetType = p.StreetType.description,
+                YearBuilt = p.yearBuilt.HasValue ? p.yearBuilt.Value : 0,
+                SocioEcon = p.SocioEconCode.description,
+                Notes = p.notes
+            };
+        }
+
+        private Address Convert(PropertyService.Address a)
+        {
+            return new Address
+            {
+                Street = a.street1,
+                City = a.city,
+                State = a.state,
+                ZipCode = a.zip
             };
         }
 

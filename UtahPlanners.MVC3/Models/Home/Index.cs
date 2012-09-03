@@ -36,9 +36,4 @@ namespace UtahPlanners.MVC3.Models.Home
         public string SocioEconDescription { get; set; }
         public int TwoFiftySingleFamily { get; set; }
     }
-
-    public class Property
-    {
-
-    }
 }

@@ -75,5 +75,10 @@ namespace UtahPlanners.MVC3.Extensions
 
         #endregion
 
+        public static string ToQueryString(this Address address)
+        {
+            return String.Join("+", address.Street, address.City, address.State, address.ZipCode);
+        }
+
     }
 }

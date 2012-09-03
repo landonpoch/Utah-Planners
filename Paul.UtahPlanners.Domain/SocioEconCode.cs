@@ -9,6 +9,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Runtime.Serialization;
 
 namespace UtahPlanners.Domain
 {
@@ -18,8 +19,10 @@ namespace UtahPlanners.Domain
         {
             this.Properties = new HashSet<Property>();
         }
-    
+
+        [DataMember]
         public int id { get; set; }
+        [DataMember]
         public string description { get; set; }
     
         public virtual ICollection<Property> Properties { get; set; }

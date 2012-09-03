@@ -22,8 +22,46 @@ namespace UtahPlanners.Infrastructure
 
         public Property Get(int id)
         {
-            var property = _context.Properties.FirstOrDefault(p => p.id == id);
+            // TODO: Try to do this in 1 DB hit
+            var property = _context.Properties
+                .Include(p => p.Address)
+                .Include(p => p.CommonCode)
+                .Include(p => p.EnclosureCode)
+                .Include(p => p.NeighborhoodCode)
+                .Include(p => p.PropertyType)
+                .Include(p => p.SocioEconCode)
+                .Include(p => p.StreetconnCode)
+                .Include(p => p.StreetSafteyCode)
+                .Include(p => p.StreetType)
+                .Include(p => p.StreetwalkCode)
+                .FirstOrDefault(p => p.id == id); // DB Hit 1
+
             property.Weights = _settings.Weights;
+            var pictureIds = (from prop in _context.Properties
+                              join pic in _context.Pictures on prop.id equals pic.property_id
+                              where prop.id == id
+                              select new
+                              {
+                                  PictureId = pic.id,
+                                  IsMainPicture = pic.mainPicture == 1,
+                                  IsSecondaryPicture = pic.secondaryPicture == 1
+                              })
+                              .ToList(); // DB Hit 2
+            
+            property.PictureIds = pictureIds
+                .Where(p => !p.IsSecondaryPicture)
+                .OrderByDescending(p => p.IsMainPicture) // Put the main picture first
+                .Select(p => p.PictureId)
+                .ToList();
+
+            property.SecondaryPictureId = pictureIds
+                .Where(p => p.IsSecondaryPicture)
+                .Select(p => p.PictureId)
+                .FirstOrDefault();
+
+            // TODO: See if there is a better way to do this.  I don't think the repository should call methods on the domain entity
+            property.CalculateScore();
+            
             return property;
         }
 
@@ -40,13 +78,6 @@ namespace UtahPlanners.Infrastructure
                 .Select(p => new { PropertyId = p.property_id.Value, PictureId = p.id })
                 .FirstOrDefault();
             return new KeyValuePair<int, int>(result.PropertyId, result.PictureId);
-        }
-
-        public List<Property> GetAll()
-        {
-            var properties = _context.Properties.ToList();
-            properties.ForEach(p => p.Weights = _settings.Weights);
-            return properties;
         }
 
         #endregion

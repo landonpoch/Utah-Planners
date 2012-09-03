@@ -13,6 +13,72 @@ img.resizePortrait {
     width: 85px;
 }
 
+/****** [Property Page] *******/
+.leftpicture
+{
+	float:left;
+	width:412px;
+	height:308px;
+	/*border:1px solid gray;*/
+}
+
+.rightpicture
+{
+	float:right;
+	width:417px;
+	height:308px;
+	/*border:2px solid red;*/
+}
+
+.resize
+{
+	width: 412px;
+	height: auto;
+	border: 0px;
+}
+
+.left
+{
+	float:left;
+	width:392px;
+	height:293px;
+	padding:10px;
+	/*border:2px solid gray;*/
+}
+
+.right
+{
+	float:right;
+	width:392px;
+	height:293px;
+	padding:10px;
+	/*border:2px solid red;*/
+}
+
+.scoredetail
+{
+width: 13em;
+float: left;
+text-align: right;
+margin-right: 0.5em;
+display: block;
+font-weight:bold;
+}
+
+.builddetail
+{
+width: 7.2em;
+float: left;
+text-align: right;
+margin-right: 0.5em;
+display: block;
+font-weight:bold;
+}
+
+.center
+{
+	text-align: center;
+}
 
 /****** [INDEX PAGE FILTER]  ******/
 .searchLeft

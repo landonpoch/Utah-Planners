@@ -317,10 +317,19 @@ namespace UtahPlanners.MVC3.PropertyService {
         private UtahPlanners.MVC3.PropertyService.NeighborhoodCode NeighborhoodCodeField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int[] PictureIdsField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private UtahPlanners.MVC3.PropertyService.Picture[] PicturesField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private UtahPlanners.MVC3.PropertyService.PropertyType PropertyTypeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int ScoreField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int SecondaryPictureIdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private UtahPlanners.MVC3.PropertyService.SocioEconCode SocioEconCodeField;
@@ -472,6 +481,19 @@ namespace UtahPlanners.MVC3.PropertyService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
+        public int[] PictureIds {
+            get {
+                return this.PictureIdsField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.PictureIdsField, value) != true)) {
+                    this.PictureIdsField = value;
+                    this.RaisePropertyChanged("PictureIds");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
         public UtahPlanners.MVC3.PropertyService.Picture[] Pictures {
             get {
                 return this.PicturesField;
@@ -493,6 +515,32 @@ namespace UtahPlanners.MVC3.PropertyService {
                 if ((object.ReferenceEquals(this.PropertyTypeField, value) != true)) {
                     this.PropertyTypeField = value;
                     this.RaisePropertyChanged("PropertyType");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Score {
+            get {
+                return this.ScoreField;
+            }
+            set {
+                if ((this.ScoreField.Equals(value) != true)) {
+                    this.ScoreField = value;
+                    this.RaisePropertyChanged("Score");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int SecondaryPictureId {
+            get {
+                return this.SecondaryPictureIdField;
+            }
+            set {
+                if ((this.SecondaryPictureIdField.Equals(value) != true)) {
+                    this.SecondaryPictureIdField = value;
+                    this.RaisePropertyChanged("SecondaryPictureId");
                 }
             }
         }

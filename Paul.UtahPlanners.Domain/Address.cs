@@ -9,17 +9,25 @@
 
 using System;
 using System.Collections.Generic;
+using System.Runtime.Serialization;
 
 namespace UtahPlanners.Domain
 {
     public partial class Address
     {
+        [DataMember]
         public int id { get; set; }
+        [DataMember]
         public string street1 { get; set; }
+        [DataMember]
         public string street2 { get; set; }
+        [DataMember]
         public string city { get; set; }
+        [DataMember]
         public string state { get; set; }
+        [DataMember]
         public string zip { get; set; }
+        [DataMember]
         public string country { get; set; }
     
         public virtual Property Property { get; set; }

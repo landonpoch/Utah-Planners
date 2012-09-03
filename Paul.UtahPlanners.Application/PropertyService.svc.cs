@@ -49,7 +49,8 @@ namespace Paul.UtahPlanners.Application
             using (var unit = _factory.CreateUnitOfWork())
             {
                 var repo = unit.CreatePropertyRepository(_settings);
-                return repo.Get(id);
+                var prop = repo.Get(id);
+                return prop;
             }
         }
 
