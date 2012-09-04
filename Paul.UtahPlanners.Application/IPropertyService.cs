@@ -21,7 +21,10 @@ namespace Paul.UtahPlanners.Application
         CompositeType GetDataUsingDataContract(CompositeType composite);
 
         [OperationContract]
-        List<PropertiesIndex> GetIndex();
+        List<PropertiesIndex> GetAllIndecies();
+
+        [OperationContract]
+        List<PropertiesIndex> GetIndecies(IndexFilter filter = null, IndexSort sort = null);
 
         [OperationContract]
         Property GetProperty(int id);

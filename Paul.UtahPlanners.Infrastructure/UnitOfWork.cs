@@ -28,7 +28,7 @@ namespace UtahPlanners.Infrastructure
 
         public IPropertiesIndexRepository CreateIndexRepository()
         {
-            return new PropertiesIndexRepository(_context.PropertiesIndexes);
+            return new PropertiesIndexRepository(_context);
         }
 
         public IPictureRepository CreatePictureRepository()

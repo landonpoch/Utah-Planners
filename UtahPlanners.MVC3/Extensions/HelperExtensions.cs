@@ -18,7 +18,7 @@ namespace UtahPlanners.MVC3.Extensions
         /// <param name="helper">Used for extension method, passed in automatically</param>
         /// <param name="column">The column that requires sorting</param>
         /// <returns>A string representing the new QueryString</returns>
-        public static string Sort(this UrlHelper helper, IndexColumn column)
+        public static string Sort(this UrlHelper helper, PropertyService.IndexColumn column)
         {
             var queryString = helper.RequestContext.HttpContext.Request.QueryString;
             string keyName = "sort" + column.ToString();
@@ -51,11 +51,11 @@ namespace UtahPlanners.MVC3.Extensions
         }
 
         // TODO: Add support for filtering
-        public static string Filter(this UrlHelper helper, IndexColumn column, string value)
+        public static string Filter(this UrlHelper helper, PropertyService.IndexColumn column, string value)
         {
             return String.Empty;
         }
-        
+
         #endregion
 
         #region HtmlHelperExtensions

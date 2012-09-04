@@ -35,12 +35,17 @@ namespace Paul.UtahPlanners.Application
 
         #region IPropertyService Members
 
-        public List<global::UtahPlanners.Domain.PropertiesIndex> GetIndex()
+        public List<global::UtahPlanners.Domain.PropertiesIndex> GetAllIndecies()
+        {
+            return GetIndecies(null, null);
+        }
+
+        public List<global::UtahPlanners.Domain.PropertiesIndex> GetIndecies(IndexFilter filter, IndexSort sort)
         {
             using (var unit = _factory.CreateUnitOfWork())
             {
                 var repo = unit.CreateIndexRepository();
-                return repo.GetAll();
+                return repo.GetIndecies(filter, sort);
             }
         }
 

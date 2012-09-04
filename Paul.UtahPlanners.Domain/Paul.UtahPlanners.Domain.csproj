@@ -52,6 +52,8 @@
     </Compile>
     <Compile Include="Extensions\PropertyExtensions.cs" />
     <Compile Include="IConfigSettings.cs" />
+    <Compile Include="IndexFilter.cs" />
+    <Compile Include="IndexSort.cs" />
     <Compile Include="IPictureRepository.cs" />
     <Compile Include="IPropertiesIndexRepository.cs" />
     <Compile Include="IPropertyRepository.cs" />

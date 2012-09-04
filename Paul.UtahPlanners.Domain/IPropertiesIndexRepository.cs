@@ -7,6 +7,6 @@ namespace UtahPlanners.Domain
 {
     public interface IPropertiesIndexRepository
     {
-        List<PropertiesIndex> GetAll();
+        List<PropertiesIndex> GetIndecies(IndexFilter filter, IndexSort sort);
     }
 }

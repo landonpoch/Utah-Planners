@@ -31,15 +31,30 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="GetIndex">
+  <xs:element name="GetAllIndecies">
     <xs:complexType>
       <xs:sequence />
     </xs:complexType>
   </xs:element>
-  <xs:element name="GetIndexResponse">
+  <xs:element name="GetAllIndeciesResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/UtahPlanners.Domain" minOccurs="0" name="GetIndexResult" nillable="true" type="q3:ArrayOfPropertiesIndex" />
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/UtahPlanners.Domain" minOccurs="0" name="GetAllIndeciesResult" nillable="true" type="q3:ArrayOfPropertiesIndex" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetIndecies">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/UtahPlanners.Domain" minOccurs="0" name="filter" nillable="true" type="q4:IndexFilter" />
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/UtahPlanners.Domain" minOccurs="0" name="sort" nillable="true" type="q5:IndexSort" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetIndeciesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/UtahPlanners.Domain" minOccurs="0" name="GetIndeciesResult" nillable="true" type="q6:ArrayOfPropertiesIndex" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -53,7 +68,7 @@
   <xs:element name="GetPropertyResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/UtahPlanners.Domain" minOccurs="0" name="GetPropertyResult" nillable="true" type="q4:Property" />
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/UtahPlanners.Domain" minOccurs="0" name="GetPropertyResult" nillable="true" type="q7:Property" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -65,7 +80,7 @@
   <xs:element name="GetShowcasePropertyResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/System.Collections.Generic" minOccurs="0" name="GetShowcasePropertyResult" type="q5:KeyValuePairOfintint" />
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/System.Collections.Generic" minOccurs="0" name="GetShowcasePropertyResult" type="q8:KeyValuePairOfintint" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -79,7 +94,7 @@
   <xs:element name="GetPictureResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/UtahPlanners.Domain" minOccurs="0" name="GetPictureResult" nillable="true" type="q6:Picture" />
+        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/UtahPlanners.Domain" minOccurs="0" name="GetPictureResult" nillable="true" type="q9:Picture" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

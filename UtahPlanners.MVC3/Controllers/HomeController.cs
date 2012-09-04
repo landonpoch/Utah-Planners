@@ -28,7 +28,20 @@ namespace UtahPlanners.MVC3.Controllers
         {
             //Get index table rows, including the calculated overall score
             var client = _factory.CreateService();
-            var indecies = client.SafeExecution(c => c.GetIndex()).ToList();
+            //var indecies = client.SafeExecution(c => c.GetAllIndecies()).ToList();
+
+            //Test Filter
+            var densityRange = new PropertyService.RangeOfNullableOfdouble5F2dSckg();
+            densityRange.LowValue = 15;
+            densityRange.HighValue = 20;
+            var scoreRange = new PropertyService.RangeOfNullableOfint5F2dSckg();
+            scoreRange.LowValue = 40;
+            scoreRange.HighValue = 50;
+            var filter = new PropertyService.IndexFilter
+            {
+                ScoreRange = scoreRange,
+            };
+            var indecies = client.SafeExecution(c => c.GetIndecies(filter, null)).ToList();
             return View(Convert(indecies));
         }
 
