@@ -30,11 +30,58 @@ namespace UtahPlanners.MVC3.Models.Home
 
     public class IndexFilter
     {
+        public int? PropertyId { get; set; }
+        public string City { get; set; }
+        public int? PropertyType { get; set; }
+        public Range<double?> DensityRange { get; set; }
+        public Range<int?> AreaRange { get; set; }
+        public Range<int?> UnitRange { get; set; }
+        public int? StreetType { get; set; }
+        public Range<int?> YearBuiltRange { get; set; }
+        public int? SocioEconType { get; set; }
+        public Range<int?> ScoreRange { get; set; }
+        public int? StreetSafetyType { get; set; }
+        public int? BuildingEnclosureType { get; set; }
+        public int? CommonAreasType { get; set; }
+        public int? StreetConnectivityType { get; set; }
+        public int? StreetWalkabilityType { get; set; }
+        public Range<int?> WalkscoreRange { get; set; }
+        public int? NeighborhoodConditionType { get; set; }
+        public Range<int?> TwoFiftySingleFamilyRange { get; set; }
+        public Range<int?> TwoFiftyApartmentsRange { get; set; }
+    }
 
+    public class Range<T>
+    {
+        public T LowValue { get; set; }
+        public T HighValue { get; set; }
     }
 
     public class IndexSort
     {
+        public IndexColumn? Column { get; set; }
+        public Direction? Direction { get; set; }
+    }
 
+    public enum IndexColumn
+    {
+        City,
+        Id,
+        Score,
+        Type,
+        Density,
+        Units,
+        Year,
+        StreetType,
+        Walkability,
+        Walkscore,
+        SocioEcon,
+        TwoFiftySF
+    }
+
+    public enum Direction
+    {
+        Ascending,
+        Descending
     }
 }

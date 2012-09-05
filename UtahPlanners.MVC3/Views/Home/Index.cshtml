@@ -4,140 +4,141 @@
     Layout = "~/Views/Shared/_LayoutNoLeftNav.cshtml";
 }
 
+@section Head
+{
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.4.2.min.js"></script>
-    
 <script type="text/javascript">
     $(document).ready(function () {
         $("h2.trigger").click(function (event) {
             event.preventDefault();
             $(this).toggleClass("active").next().slideToggle("slow");
         });
+
+        // Sorting the city column
+        $("#cityColumn").click(function (event) {
+            event.preventDefault();
+            $("#columnField").val('City');
+            $("form").submit();
+        });
     });
 </script>
+}
 
+@using (Html.BeginForm("Index", "Home", FormMethod.Post))
+{ 
 <h2 class="trigger"><a href="#">Index Filter</a></h2>
 <div class="toggle_container" style="display: none;">
     <div class="block">
     
+
     <div class="searchLeft">
         <h3 style="margin-left:50px;">Property Details:</h3>
         
-        <span ID="span1" runat="server" class="searchLabel">Property Number:</span>
-        <input type="text" ID="txtID" runat="server" class="newwidth" /><br />
+        <span class="searchLabel">Property Number:</span>
+        @Html.TextBoxFor(m => m.Filter.PropertyId, new { @class = "newwidth" })
         
-        <span ID="span2" runat="server" class="searchLabel">City:</span>
-        <input type="text" ID="txtCity" runat="server" class="newwidth" /><br />
-        
-        <span ID="span3" runat="server" class="searchLabel">Property Type:</span>
-        <select ID="drpPropType" runat="server" class="newwidth" 
-            DataSourceID="sqlPropertyType" DataTextField="description"
-            DataValueField="id" AppendDataBoundItems="True">
+        <span class="searchLabel">City:</span>
+        @Html.TextBoxFor(m => m.Filter.City, new { @class = "newwidth" })
+
+        <span class="searchLabel">Property Type:</span>
+        <select class="newwidth">
             <option selected="selected"></option>
         </select><br />
         
-        <span ID="span4" runat="server" class="searchLabel">Density Between:</span>
-        <input type="text" ID="txtDensityLow" runat="server" class="smallwidth" />
-        and <input type="text" ID="txtDensityHigh" runat="server" class="smallwidth" /><br />
+        <span class="searchLabel">Density Between:</span>
+        @Html.TextBoxFor(m => m.Filter.DensityRange.LowValue, new { @class = "smallwidth" }) and 
+        @Html.TextBoxFor(m => m.Filter.DensityRange.HighValue, new { @class = "smallwidth" })<br />
         
-        <span ID="span5" runat="server" class="searchLabel">Area Between:</span>
-        <input type="text" ID="txtAreaLow" runat="server" class="smallwidth" />
-        and <input type="text" ID="txtAreaHigh" runat="server" class="smallwidth" /><br />
+        <span class="searchLabel">Area Between:</span>
+        @Html.TextBoxFor(m => m.Filter.AreaRange.LowValue, new { @class = "smallwidth" }) and 
+        @Html.TextBoxFor(m => m.Filter.AreaRange.HighValue, new { @class = "smallwidth" })<br />
         
-        <span ID="span6" runat="server" class="searchLabel">Units Between:</span>
-        <input type="text" ID="txtUnitsLow" runat="server" class="smallwidth" />
-        and <input type="text" ID="txtUnitsHigh" runat="server" class="smallwidth" /><br />
+        <span class="searchLabel">Units Between:</span>
+        @Html.TextBoxFor(m => m.Filter.UnitRange.LowValue, new { @class = "smallwidth" }) and 
+        @Html.TextBoxFor(m => m.Filter.UnitRange.HighValue, new { @class = "smallwidth" })<br />
         
-        <span ID="span7" runat="server" class="searchLabel">Street Type:</span>
-        <select ID="drpStreetType" runat="server" class="newwidth" 
-            DataSourceID="sqlStreetType" DataTextField="description" DataValueField="id" AppendDataBoundItems="True">
+        <span class="searchLabel">Street Type:</span>
+        <select class="newwidth">
             <option selected="selected"></option>
         </select><br />
         
-        <span ID="span8" runat="server" class="searchLabel">Year Built Between:</span>
-        <input type="text" ID="txtYearBuiltLow" runat="server" class="smallwidth" />
-        and <input type="text" ID="txtYearBuiltHigh" runat="server" class="smallwidth" /><br />
+        <span class="searchLabel">Year Built Between:</span>
+        @Html.TextBoxFor(m => m.Filter.YearBuiltRange.LowValue, new { @class = "smallwidth" }) and 
+        @Html.TextBoxFor(m => m.Filter.YearBuiltRange.HighValue, new { @class = "smallwidth" })<br />
         
-        <span ID="span9" runat="server" class="searchLabel">Socio Econ:</span>
-        <select ID="drpSocioEcon" runat="server" class="newwidth" 
-            DataSourceID="sqlSocioEcon" DataTextField="description" DataValueField="id" AppendDataBoundItems="True">
-            <asp:ListItem Selected="True"></asp:ListItem>
+        <span class="searchLabel">Socio Econ:</span>
+        <select class="newwidth">
+            <option selected="selected"></option>
         </select><br /><br /><br />
     </div>
     
     <div class="searchRight">
         <h3>Rating Details:</h3>
-        <span ID="span10" runat="server" class="searchLabel">Overall Score Between:</span> 
-        <input type="text" ID="txtOverallLow" runat="server" class="smallwidth" />
-        and <input type="text" ID="txtOverallHigh" runat="server" class="smallwidth" /><br />
+        <span class="searchLabel">Overall Score Between:</span> 
+        @Html.TextBoxFor(m => m.Filter.ScoreRange.LowValue, new { @class = "smallwidth" }) and 
+        @Html.TextBoxFor(m => m.Filter.ScoreRange.HighValue, new { @class = "smallwidth" })<br />
         
-        <span ID="span11" runat="server" class="searchLabel">Street Safety:</span> 
-        <select ID="drpStreetSaftey" runat="server" class="newwidth" 
-            DataSourceID="sqlStreetSafety" DataTextField="description" DataValueField="id" AppendDataBoundItems="True">
+        <span class="searchLabel">Street Safety:</span> 
+        <select class="newwidth">
             <option selected="selected"></option>
         </select><br />
         
-        <span ID="span12" runat="server" class="searchLabel">Building Enclosure:</span> 
-        <select ID="drpBuildingEnclosure" runat="server" class="newwidth" 
-            DataSourceID="sqlBuildingEnclosure" DataTextField="description" 
-            DataValueField="id" AppendDataBoundItems="True">
+        <span class="searchLabel">Building Enclosure:</span> 
+        <select class="newwidth">
             <option selected="selected"></option>
         </select><br />
         
-        <span ID="span13" runat="server" class="searchLabel">Common Areas:</span> 
-        <select ID="drpCommonAreas" runat="server" class="newwidth" 
-            DataSourceID="sqlCommonAreas" DataTextField="description" DataValueField="id" AppendDataBoundItems="True">
+        <span class="searchLabel">Common Areas:</span> 
+        <select class="newwidth">
             <option selected="selected"></option>
         </select><br />
         
-        <span ID="span14" runat="server" class="searchLabel">Street Connectivity:</span> 
-        <select ID="drpStreetConn" runat="server" class="newwidth" 
-            DataSourceID="sqlStreetConn" DataTextField="description" DataValueField="id" AppendDataBoundItems="True">
+        <span class="searchLabel">Street Connectivity:</span> 
+        <select class="newwidth">
             <option selected="selected"></option>
         </select><br />
         
-        <span ID="span15" runat="server" class="searchLabel">Street Walkability:</span> 
-        <select ID="drpStreetWalk" runat="server" class="newwidth" 
-            DataSourceID="sqlStreetWalk" DataTextField="description" DataValueField="id" AppendDataBoundItems="True">
+        <span class="searchLabel">Street Walkability:</span> 
+        <select class="newwidth">
             <option selected="selected"></option>
         </select><br />
         
-        <span ID="span16" runat="server" class="searchLabel">Walkscore Between:</span> 
-        <input type="text" ID="txtWalkscoreLow" runat="server" class="smallwidth" />
-        and <input type="text" ID="txtWalkscoreHigh" runat="server" class="smallwidth" /><br />
+        <span class="searchLabel">Walkscore Between:</span> 
+        @Html.TextBoxFor(m => m.Filter.WalkscoreRange.LowValue, new { @class = "smallwidth" }) and 
+        @Html.TextBoxFor(m => m.Filter.WalkscoreRange.HighValue, new { @class = "smallwidth" })<br />
         
-        <span ID="span17" runat="server" class="searchLabel">Neighborhood Condition:</span> 
-        <select ID="drpNeighCondition" runat="server" class="newwidth" 
-            DataSourceID="sqlNeighCondition" DataTextField="description" 
-            DataValueField="id" AppendDataBoundItems="True">
+        <span class="searchLabel">Neighborhood Condition:</span> 
+        <select class="newwidth">
             <option selected="selected"></option>
         </select><br />
         
-        <span ID="span18" runat="server" class="searchLabel">250 SF Between:</span> 
-        <input type="text" ID="txt250SFLow" runat="server" class="smallwidth" />
-        and <input type="text" ID="txt250SFHigh" runat="server" class="smallwidth" /><br />
+        <span class="searchLabel">250 SF Between:</span> 
+        @Html.TextBoxFor(m => m.Filter.TwoFiftySingleFamilyRange.LowValue, new { @class = "smallwidth" }) and 
+        @Html.TextBoxFor(m => m.Filter.TwoFiftySingleFamilyRange.HighValue, new { @class = "smallwidth" })<br />
         
-        <span ID="span19" runat="server" class="searchLabel">250 Apts Between:</span> 
-        <input type="text" ID="txt250AptsLow" runat="server" class="smallwidth" />
-        and <input type="text" ID="txt250AptsHigh" runat="server" class="smallwidth" /><br />
+        <span class="searchLabel">250 Apts Between:</span> 
+        @Html.TextBoxFor(m => m.Filter.TwoFiftyApartmentsRange.LowValue, new { @class = "smallwidth" }) and 
+        @Html.TextBoxFor(m => m.Filter.TwoFiftyApartmentsRange.HighValue, new { @class = "smallwidth" })<br />
     </div>
     
     <div style="text-align:center; margin-bottom:10px;">
-        <input type="submit" ID="btnMaps" runat="server" value="Clear Filter" />
-        <input type="submit" ID="btnSearch" runat="server" value="Filter Properties" />
+        <input type="submit" value="Clear Filter" />
+        <input type="submit" value="Filter Properties" />
     </div>
     
     <div style="text-align:center; margin-bottom:20px;">
-        <input type="submit" ID="Button1" runat="server" value="View Results in Google Maps" />
+        <input type="submit" value="View Results in Google Maps" />
     </div>
     
     </div>
     </div>
 
 
+@Html.HiddenFor(m => m.Sort.Column, new { @id = "columnField" })
 <table cellspacing="0" align="center" rules="all" border="1" style="border-collapse:collapse;">
     
     <tr align="center" style="background-color: #CCCCCC; border-style: solid;">
-    <th scope="col"><a href="@Url.Sort(UtahPlanners.MVC3.PropertyService.IndexColumn.City)">City</a></th>
+    <th scope="col"><a id="cityColumn" href="#">City</a></th>
     <th scope="col"><a href="@Url.Sort(UtahPlanners.MVC3.PropertyService.IndexColumn.Id)">Property Number</a></th>
     <th scope="col"><a href="@Url.Sort(UtahPlanners.MVC3.PropertyService.IndexColumn.Score)">Overall Score</a></th>
     <th scope="col"><a href="@Url.Sort(UtahPlanners.MVC3.PropertyService.IndexColumn.Type)">Type</a></th>
@@ -170,3 +171,4 @@
     }
 
 </table>
+}

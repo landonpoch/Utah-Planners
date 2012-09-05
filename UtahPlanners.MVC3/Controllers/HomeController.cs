@@ -24,6 +24,7 @@ namespace UtahPlanners.MVC3.Controllers
             return View(prop);
         }
 
+        [HttpGet]
         public ActionResult Index()
         {
             //Get index table rows, including the calculated overall score
@@ -48,7 +49,8 @@ namespace UtahPlanners.MVC3.Controllers
             var sort = Convert(model.Sort);
             
             var indicies = client.SafeExecution(c => c.GetIndecies(filter, sort)).ToList();
-            return View(Convert(indicies));
+            model.Records = Convert(indicies);
+            return View(model);
         }
 
         public ActionResult Property(int id)
@@ -72,6 +74,8 @@ namespace UtahPlanners.MVC3.Controllers
             return File(picture.binaryData, "image/png");
         }
 
+        #region Mapping Methods
+        
         private Property Convert(PropertyService.Property p)
         {
             return new Property
@@ -142,102 +146,139 @@ namespace UtahPlanners.MVC3.Controllers
             };
         }
 
-        private PropertyService.IndexFilter Convert(IndexFilter filter)
+        private PropertyService.IndexFilter Convert(IndexFilter f)
         {
-            throw new NotImplementedException();
+            if (f != null)
+            {
+                return new PropertyService.IndexFilter
+                {
+                    PropertyId = f.PropertyId,
+                    City = f.City,
+                    PropertyType = f.PropertyType,
+                    DensityRange = Convert(f.DensityRange),
+                    AreaRange = Convert(f.AreaRange),
+                    UnitRange = Convert(f.UnitRange),
+                    StreetType = f.StreetType,
+                    YearBuiltRange = Convert(f.YearBuiltRange),
+                    SocioEconType = f.SocioEconType,
+                    ScoreRange = Convert(f.ScoreRange),
+                    StreetSafetyType = f.StreetSafetyType,
+                    BuildingEnclosureType = f.BuildingEnclosureType,
+                    CommonAreasType = f.CommonAreasType,
+                    StreetConnectivityType = f.StreetConnectivityType,
+                    StreetWalkabilityType = f.StreetWalkabilityType,
+                    WalkscoreRange = Convert(f.WalkscoreRange),
+                    NeighborhoodConditionType = f.NeighborhoodConditionType,
+                    TwoFiftySingleFamilyRange = Convert(f.TwoFiftySingleFamilyRange),
+                    TwoFiftyApartmentsRange = Convert(f.TwoFiftyApartmentsRange)
+                };
+            }
+            return null;
+        }
+
+        private PropertyService.RangeOfNullableOfdouble5F2dSckg Convert(Range<double?> range)
+        {
+            if (range != null)
+            {
+                var serviceRange = new PropertyService.RangeOfNullableOfdouble5F2dSckg();
+                serviceRange.LowValue = range.LowValue;
+                serviceRange.HighValue = range.HighValue;
+                return serviceRange;
+            }
+            return null;
+        }
+
+        private PropertyService.RangeOfNullableOfint5F2dSckg Convert(Range<int?> range)
+        {
+            if (range != null)
+            {
+                var serviceRange = new PropertyService.RangeOfNullableOfint5F2dSckg();
+                serviceRange.LowValue = range.LowValue;
+                serviceRange.HighValue = range.HighValue;
+                return serviceRange;
+            }
+            return null;
         }
 
         private PropertyService.IndexSort Convert(IndexSort sort)
         {
-            throw new NotImplementedException();
-        }
-
-        /*
-        private IQueryable<PropertiesIndex> SortAndFilter(IQueryable<PropertiesIndex> props)
-        {
-            bool isFirstSort = true;
-            foreach (string key in Request.QueryString.Keys)
+            if (sort != null)
             {
-                // Sorts when a sort key is found, otherwise performs the filter
-                if (key.Contains("sort"))
+                return new PropertyService.IndexSort
                 {
-                    IndexColumn column = (IndexColumn)Enum.Parse(typeof(IndexColumn), key.Replace("sort", String.Empty), true);
-                    string direction = Request.QueryString[key];
-                    props = this.Sort(column, props, direction == "desc", isFirstSort);
-                }
-                else
-                {
-                    // TODO: Add filtering support
-                }
-                isFirstSort = false;
+                    Column = Convert(sort.Column),
+                    Direction = Convert(sort.Direction)
+                };
             }
-            return props;
+            return null;
         }
-
-        private IQueryable<PropertiesIndex> Sort(IndexColumn column, IQueryable<PropertiesIndex> props, bool isDescending, bool isFirstSort)
+        
+        private PropertyService.IndexColumn Convert(IndexColumn? c)
         {
-            switch (column)
+            var column = PropertyService.IndexColumn.Id; // Default
+            if (c.HasValue)
             {
-                case IndexColumn.City:
-                    props = this.MultiColumnOrderedByWithDirection(props, p => p.city, isDescending, isFirstSort);
-                    break;
-                case IndexColumn.Density:
-                    props = this.MultiColumnOrderedByWithDirection(props, p => p.density, isDescending, isFirstSort);
-                    break;
-                case IndexColumn.Id:
-                    props = this.MultiColumnOrderedByWithDirection(props, p => p.id, isDescending, isFirstSort);
-                    break;
-                case IndexColumn.Score:
-                    props = this.MultiColumnOrderedByWithDirection(props, p => p.OverallScore, isDescending, isFirstSort);
-                    break;
-                case IndexColumn.SocioEcon:
-                    props = this.MultiColumnOrderedByWithDirection(props, p => p.SocioEconDescription, isDescending, isFirstSort);
-                    break;
-                case IndexColumn.StreetType:
-                    props = this.MultiColumnOrderedByWithDirection(props, p => p.StreetTypeDescription, isDescending, isFirstSort);
-                    break;
-                case IndexColumn.TwoFiftySF:
-                    props = this.MultiColumnOrderedByWithDirection(props, p => p.twoFiftySingleFam, isDescending, isFirstSort);
-                    break;
-                case IndexColumn.Type:
-                    props = this.MultiColumnOrderedByWithDirection(props, p => p.PropertyTypeDescription, isDescending, isFirstSort);
-                    break;
-                case IndexColumn.Units:
-                    props = this.MultiColumnOrderedByWithDirection(props, p => p.units, isDescending, isFirstSort);
-                    break;
-                case IndexColumn.Walkability:
-                    props = this.MultiColumnOrderedByWithDirection(props, p => p.StreetWalkDescription, isDescending, isFirstSort);
-                    break;
-                case IndexColumn.Walkscore:
-                    props = this.MultiColumnOrderedByWithDirection(props, p => p.walkscore, isDescending, isFirstSort);
-                    break;
-                case IndexColumn.Year:
-                    props = this.MultiColumnOrderedByWithDirection(props, p => p.yearBuilt, isDescending, isFirstSort);
-                    break;
+                switch (c)
+                {
+                    case IndexColumn.City:
+                        column = PropertyService.IndexColumn.City;
+                        break;
+                    case IndexColumn.Id:
+                        column = PropertyService.IndexColumn.Id;
+                        break;
+                    case IndexColumn.Score:
+                        column = PropertyService.IndexColumn.Score;
+                        break;
+                    case IndexColumn.Type:
+                        column = PropertyService.IndexColumn.Type;
+                        break;
+                    case IndexColumn.Density:
+                        column = PropertyService.IndexColumn.Density;
+                        break;
+                    case IndexColumn.Units:
+                        column = PropertyService.IndexColumn.Units;
+                        break;
+                    case IndexColumn.Year:
+                        column = PropertyService.IndexColumn.Year;
+                        break;
+                    case IndexColumn.StreetType:
+                        column = PropertyService.IndexColumn.StreetType;
+                        break;
+                    case IndexColumn.Walkability:
+                        column = PropertyService.IndexColumn.Walkability;
+                        break;
+                    case IndexColumn.Walkscore:
+                        column = PropertyService.IndexColumn.Walkscore;
+                        break;
+                    case IndexColumn.SocioEcon:
+                        column = PropertyService.IndexColumn.SocioEcon;
+                        break;
+                    case IndexColumn.TwoFiftySF:
+                        column = PropertyService.IndexColumn.TwoFiftySF;
+                        break;
+                }
             }
-            return props;
+            return column;
         }
 
-        private IOrderedQueryable<PropertiesIndex> MultiColumnOrderedByWithDirection<PropertiesIndex, TKey>
-            (IQueryable<PropertiesIndex> props, Expression<Func<PropertiesIndex, TKey>> keySelector, bool descending, bool isFirstSort)
+        private PropertyService.Direction Convert(Direction? d)
         {
-            return isFirstSort ? OrderByWithDirection(props, keySelector, descending) :
-                ThenByWithDirection((IOrderedQueryable<PropertiesIndex>)props, keySelector, descending);
+            var direction = PropertyService.Direction.Ascending; // Default
+            if (d.HasValue)
+            {
+                switch (d)
+                {
+                    case Direction.Ascending:
+                        direction = PropertyService.Direction.Ascending;
+                        break;
+                    case Direction.Descending:
+                        direction = PropertyService.Direction.Descending;
+                        break;
+                }
+            }
+            return direction;
         }
 
-        private IOrderedQueryable<PropertiesIndex> ThenByWithDirection<PropertiesIndex, TKey>
-            (IOrderedQueryable<PropertiesIndex> props, Expression<Func<PropertiesIndex, TKey>> keySelector, bool descending)
-        {
-            return descending ? props.ThenByDescending(keySelector) :
-                props.ThenBy(keySelector);
-        }
-
-        private IOrderedQueryable<PropertiesIndex> OrderByWithDirection<PropertiesIndex, TKey>
-            (IQueryable<PropertiesIndex> props, Expression<Func<PropertiesIndex, TKey>> keySelector, bool descending)
-        {
-            return descending ? props.OrderByDescending(keySelector) :
-                props.OrderBy(keySelector);
-        }
-         */
+        #endregion
     }
 }
