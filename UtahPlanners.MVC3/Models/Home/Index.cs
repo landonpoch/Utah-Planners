@@ -5,6 +5,13 @@ using System.Web;
 
 namespace UtahPlanners.MVC3.Models.Home
 {
+    public class IndexModel
+    {
+        public List<Index> Records { get; set; }
+        public IndexFilter Filter { get; set; }
+        public IndexSort Sort { get; set; }
+    }
+
     public class Index
     {
         public int Id { get; set; }
@@ -19,5 +26,15 @@ namespace UtahPlanners.MVC3.Models.Home
         public int Walkscore { get; set; }
         public string SocioEconDescription { get; set; }
         public int TwoFiftySingleFamily { get; set; }
+    }
+
+    public class IndexFilter
+    {
+
+    }
+
+    public class IndexSort
+    {
+
     }
 }

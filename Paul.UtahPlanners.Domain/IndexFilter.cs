@@ -36,7 +36,7 @@ namespace UtahPlanners.Domain
     [DataContract(IsReference = true)]
     public class Range<T>
     {
-
+        // TODO: Constructor, see if this works across the service
 
         [DataMember]
         public T LowValue { get; set; }

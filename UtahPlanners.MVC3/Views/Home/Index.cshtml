@@ -1,4 +1,5 @@
-﻿@{
+﻿@model IndexModel
+@{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_LayoutNoLeftNav.cshtml";
 }
@@ -150,7 +151,7 @@
     <th scope="col"><a href="@Url.Sort(UtahPlanners.MVC3.PropertyService.IndexColumn.TwoFiftySF)">250 Single Fam</a></th>
     </tr>
 
-    @foreach (UtahPlanners.MVC3.Models.Home.Index prop in Model)
+    @foreach (UtahPlanners.MVC3.Models.Home.Index prop in Model.Records)
     {
         <tr align="center" valign="middle" style="height: 35px;">
         <td>@Html.ActionLink(prop.City, "Property", new { id = prop.Id })</td>

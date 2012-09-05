@@ -28,21 +28,27 @@ namespace UtahPlanners.MVC3.Controllers
         {
             //Get index table rows, including the calculated overall score
             var client = _factory.CreateService();
-            //var indecies = client.SafeExecution(c => c.GetAllIndecies()).ToList();
-
-            //Test Filter
-            var densityRange = new PropertyService.RangeOfNullableOfdouble5F2dSckg();
-            densityRange.LowValue = 15;
-            densityRange.HighValue = 20;
-            var scoreRange = new PropertyService.RangeOfNullableOfint5F2dSckg();
-            scoreRange.LowValue = 40;
-            scoreRange.HighValue = 50;
-            var filter = new PropertyService.IndexFilter
+            var indecies = client.SafeExecution(c => c.GetAllIndecies()).ToList();
+            var model = new IndexModel
             {
-                ScoreRange = scoreRange,
+                Records = Convert(indecies),
+                Filter = null,
+                Sort = null
             };
-            var indecies = client.SafeExecution(c => c.GetIndecies(filter, null)).ToList();
-            return View(Convert(indecies));
+            return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult Index(IndexModel model)
+        {
+            //Get filtered index records
+            var client = _factory.CreateService();
+            
+            var filter = Convert(model.Filter);
+            var sort = Convert(model.Sort);
+            
+            var indicies = client.SafeExecution(c => c.GetIndecies(filter, sort)).ToList();
+            return View(Convert(indicies));
         }
 
         public ActionResult Property(int id)
@@ -134,6 +140,16 @@ namespace UtahPlanners.MVC3.Controllers
                 SocioEconDescription = index.SocioEconDescription,
                 TwoFiftySingleFamily = index.twoFiftySingleFam.HasValue ? index.twoFiftySingleFam.Value : 0
             };
+        }
+
+        private PropertyService.IndexFilter Convert(IndexFilter filter)
+        {
+            throw new NotImplementedException();
+        }
+
+        private PropertyService.IndexSort Convert(IndexSort sort)
+        {
+            throw new NotImplementedException();
         }
 
         /*
