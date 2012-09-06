@@ -14,13 +14,34 @@
             $(this).toggleClass("active").next().slideToggle("slow");
         });
 
-        // Sorting the city column
-        $("#cityColumn").click(function (event) {
-            event.preventDefault();
-            $("#columnField").val('City');
-            $("form").submit();
+        $('#indexTable>thead>tr>th a').each(function () {
+            $(this).click(function (event) {
+                event.preventDefault();
+                sort(this);
+                $("form").submit();
+            });
         });
     });
+
+    function sort(column) {
+        var previousSort = $('#columnField').val();
+        applySortColumn(column);
+        var nextSort = $('#columnField').val();
+        applySortDirection(previousSort, nextSort);
+    }
+
+    function applySortColumn(column) {
+        var column = $(column).attr('id');
+        $('#columnField').val(column);
+    }
+
+    function applySortDirection(previousSort, nextSort) {
+        var currentDirection = $('#directionField').val();
+        $('#directionField').val('ascending');
+        if (previousSort == nextSort && currentDirection == 'ascending') {
+            $('#directionField').val('descending');
+        }
+    }
 </script>
 }
 
@@ -135,23 +156,26 @@
 
 
 @Html.HiddenFor(m => m.Sort.Column, new { @id = "columnField" })
-<table cellspacing="0" align="center" rules="all" border="1" style="border-collapse:collapse;">
-    
+@Html.HiddenFor(m => m.Sort.Direction, new { @id = "directionField" })
+<table id="indexTable" cellspacing="0" align="center" rules="all" border="1" style="border-collapse:collapse;">
+    <thead>
     <tr align="center" style="background-color: #CCCCCC; border-style: solid;">
-    <th scope="col"><a id="cityColumn" href="#">City</a></th>
-    <th scope="col"><a href="@Url.Sort(UtahPlanners.MVC3.PropertyService.IndexColumn.Id)">Property Number</a></th>
-    <th scope="col"><a href="@Url.Sort(UtahPlanners.MVC3.PropertyService.IndexColumn.Score)">Overall Score</a></th>
-    <th scope="col"><a href="@Url.Sort(UtahPlanners.MVC3.PropertyService.IndexColumn.Type)">Type</a></th>
-    <th scope="col"><a href="@Url.Sort(UtahPlanners.MVC3.PropertyService.IndexColumn.Density)">Density</a></th>
-    <th scope="col"><a href="@Url.Sort(UtahPlanners.MVC3.PropertyService.IndexColumn.Units)">Units</a></th>
-    <th scope="col"><a href="@Url.Sort(UtahPlanners.MVC3.PropertyService.IndexColumn.Year)">Year Built</a></th>
-    <th scope="col"><a href="@Url.Sort(UtahPlanners.MVC3.PropertyService.IndexColumn.StreetType)">Street Type</a></th>
-    <th scope="col"><a href="@Url.Sort(UtahPlanners.MVC3.PropertyService.IndexColumn.Walkability)">Walkability</a></th>
-    <th scope="col"><a href="@Url.Sort(UtahPlanners.MVC3.PropertyService.IndexColumn.Walkscore)">Walkscore</a></th>
-    <th scope="col"><a href="@Url.Sort(UtahPlanners.MVC3.PropertyService.IndexColumn.SocioEcon)">Socio Econ</a></th>
-    <th scope="col"><a href="@Url.Sort(UtahPlanners.MVC3.PropertyService.IndexColumn.TwoFiftySF)">250 Single Fam</a></th>
+    <th scope="col"><a id="city" href="#">City</a></th>
+    <th scope="col"><a id="id" href="#">Property Number</a></th>
+    <th scope="col"><a id="score" href="#">Overall Score</a></th>
+    <th scope="col"><a id="type" href="#">Type</a></th>
+    <th scope="col"><a id="density" href="#">Density</a></th>
+    <th scope="col"><a id="units" href="#">Units</a></th>
+    <th scope="col"><a id="year" href="#">Year Built</a></th>
+    <th scope="col"><a id="streetType" href="#">Street Type</a></th>
+    <th scope="col"><a id="walkability" href="#">Walkability</a></th>
+    <th scope="col"><a id="walkscore" href="#">Walkscore</a></th>
+    <th scope="col"><a id="socioEcon" href="#">Socio Econ</a></th>
+    <th scope="col"><a id="twoFiftySF" href="#">250 Single Fam</a></th>
     </tr>
+    </thead>
 
+    <tbody>
     @foreach (UtahPlanners.MVC3.Models.Home.Index prop in Model.Records)
     {
         <tr align="center" valign="middle" style="height: 35px;">
@@ -169,6 +193,7 @@
         <td>@prop.TwoFiftySingleFamily</td>
         </tr>
     }
+    </tbody>
 
 </table>
 }
