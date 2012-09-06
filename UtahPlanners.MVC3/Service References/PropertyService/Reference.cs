@@ -2536,6 +2536,179 @@ namespace UtahPlanners.MVC3.PropertyService {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="LookupValues", Namespace="http://schemas.datacontract.org/2004/07/UtahPlanners.Domain")]
+    [System.SerializableAttribute()]
+    public partial class LookupValues : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private UtahPlanners.MVC3.PropertyService.CommonCode[] CommonCodesField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private UtahPlanners.MVC3.PropertyService.EnclosureCode[] EnclosureCodesField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private UtahPlanners.MVC3.PropertyService.NeighborhoodCode[] NeighborhoodCodesField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private UtahPlanners.MVC3.PropertyService.PropertyType[] PropertyTypesField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private UtahPlanners.MVC3.PropertyService.SocioEconCode[] SocioEconCodesField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private UtahPlanners.MVC3.PropertyService.StreetSafteyCode[] StreetSafetyCodesField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private UtahPlanners.MVC3.PropertyService.StreetType[] StreetTypesField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private UtahPlanners.MVC3.PropertyService.StreetconnCode[] StreetconnCodesField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private UtahPlanners.MVC3.PropertyService.StreetwalkCode[] StreetwalkCodesField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public UtahPlanners.MVC3.PropertyService.CommonCode[] CommonCodes {
+            get {
+                return this.CommonCodesField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CommonCodesField, value) != true)) {
+                    this.CommonCodesField = value;
+                    this.RaisePropertyChanged("CommonCodes");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public UtahPlanners.MVC3.PropertyService.EnclosureCode[] EnclosureCodes {
+            get {
+                return this.EnclosureCodesField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.EnclosureCodesField, value) != true)) {
+                    this.EnclosureCodesField = value;
+                    this.RaisePropertyChanged("EnclosureCodes");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public UtahPlanners.MVC3.PropertyService.NeighborhoodCode[] NeighborhoodCodes {
+            get {
+                return this.NeighborhoodCodesField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.NeighborhoodCodesField, value) != true)) {
+                    this.NeighborhoodCodesField = value;
+                    this.RaisePropertyChanged("NeighborhoodCodes");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public UtahPlanners.MVC3.PropertyService.PropertyType[] PropertyTypes {
+            get {
+                return this.PropertyTypesField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.PropertyTypesField, value) != true)) {
+                    this.PropertyTypesField = value;
+                    this.RaisePropertyChanged("PropertyTypes");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public UtahPlanners.MVC3.PropertyService.SocioEconCode[] SocioEconCodes {
+            get {
+                return this.SocioEconCodesField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.SocioEconCodesField, value) != true)) {
+                    this.SocioEconCodesField = value;
+                    this.RaisePropertyChanged("SocioEconCodes");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public UtahPlanners.MVC3.PropertyService.StreetSafteyCode[] StreetSafetyCodes {
+            get {
+                return this.StreetSafetyCodesField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.StreetSafetyCodesField, value) != true)) {
+                    this.StreetSafetyCodesField = value;
+                    this.RaisePropertyChanged("StreetSafetyCodes");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public UtahPlanners.MVC3.PropertyService.StreetType[] StreetTypes {
+            get {
+                return this.StreetTypesField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.StreetTypesField, value) != true)) {
+                    this.StreetTypesField = value;
+                    this.RaisePropertyChanged("StreetTypes");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public UtahPlanners.MVC3.PropertyService.StreetconnCode[] StreetconnCodes {
+            get {
+                return this.StreetconnCodesField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.StreetconnCodesField, value) != true)) {
+                    this.StreetconnCodesField = value;
+                    this.RaisePropertyChanged("StreetconnCodes");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public UtahPlanners.MVC3.PropertyService.StreetwalkCode[] StreetwalkCodes {
+            get {
+                return this.StreetwalkCodesField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.StreetwalkCodesField, value) != true)) {
+                    this.StreetwalkCodesField = value;
+                    this.RaisePropertyChanged("StreetwalkCodes");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="PropertyService.IPropertyService")]
     public interface IPropertyService {
@@ -2560,6 +2733,9 @@ namespace UtahPlanners.MVC3.PropertyService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPropertyService/GetPicture", ReplyAction="http://tempuri.org/IPropertyService/GetPictureResponse")]
         UtahPlanners.MVC3.PropertyService.Picture GetPicture(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPropertyService/GetLookupValues", ReplyAction="http://tempuri.org/IPropertyService/GetLookupValuesResponse")]
+        UtahPlanners.MVC3.PropertyService.LookupValues GetLookupValues();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -2615,6 +2791,10 @@ namespace UtahPlanners.MVC3.PropertyService {
         
         public UtahPlanners.MVC3.PropertyService.Picture GetPicture(int id) {
             return base.Channel.GetPicture(id);
+        }
+        
+        public UtahPlanners.MVC3.PropertyService.LookupValues GetLookupValues() {
+            return base.Channel.GetLookupValues();
         }
     }
 }

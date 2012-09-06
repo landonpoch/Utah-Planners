@@ -30,11 +30,16 @@ namespace UtahPlanners.MVC3.Controllers
             //Get index table rows, including the calculated overall score
             var client = _factory.CreateService();
             var indecies = client.SafeExecution(c => c.GetAllIndecies()).ToList();
+            
+            var client2 = _factory.CreateService();
+            var lookupValues = client2.SafeExecution(c => c.GetLookupValues());
+            
             var model = new IndexModel
             {
                 Records = Convert(indecies),
                 Filter = null,
-                Sort = null
+                Sort = null,
+                DropDowns = Convert(lookupValues)
             };
             return View(model);
         }
@@ -49,6 +54,11 @@ namespace UtahPlanners.MVC3.Controllers
             var sort = Convert(model.Sort);
             
             var indicies = client.SafeExecution(c => c.GetIndecies(filter, sort)).ToList();
+
+            var client2 = _factory.CreateService();
+            var lookupValues = client2.SafeExecution(c => c.GetLookupValues());
+            model.DropDowns = Convert(lookupValues);
+
             model.Records = Convert(indicies);
             return View(model);
         }
@@ -277,6 +287,118 @@ namespace UtahPlanners.MVC3.Controllers
                 }
             }
             return direction;
+        }
+
+        private DropDowns Convert(PropertyService.LookupValues lv)
+        {
+            if (lv != null)
+            {
+                return new DropDowns
+                {
+                    PropertyTypes = GetDropDownList(lv.PropertyTypes, Convert),
+                    StreetTypes = GetDropDownList(lv.StreetTypes, Convert),
+                    SocioEconCodes = GetDropDownList(lv.SocioEconCodes, Convert),
+                    StreetSafetyCodes = GetDropDownList(lv.StreetSafetyCodes, Convert),
+                    EnclosureCodes = GetDropDownList(lv.EnclosureCodes, Convert),
+                    CommonCodes = GetDropDownList(lv.CommonCodes, Convert),
+                    StreetconnCodes = GetDropDownList(lv.StreetconnCodes, Convert),
+                    StreetwalkCodes = GetDropDownList(lv.StreetwalkCodes, Convert),
+                    NeighborhoodCodes = GetDropDownList(lv.NeighborhoodCodes, Convert)
+                };
+            }
+            return null;
+        }
+
+        private List<DropDownItem> GetDropDownList<T>(T[] lookupValues, Func<T, DropDownItem> convert)
+        {
+            var items = new List<DropDownItem>();
+            items.Add(new DropDownItem { Id = String.Empty, Value = String.Empty });
+            lookupValues.ToList().ForEach(lv =>
+            {
+                items.Add(convert(lv));
+            });
+            return items;
+        }
+
+        private DropDownItem Convert(PropertyService.PropertyType propertyType)
+        {
+            return new DropDownItem
+            {
+                Id = propertyType.id.ToString(),
+                Value = propertyType.description
+            };
+        }
+
+        private DropDownItem Convert(PropertyService.StreetType streetType)
+        {
+            return new DropDownItem
+            {
+                Id = streetType.id.ToString(),
+                Value = streetType.description
+            };
+        }
+
+        private DropDownItem Convert(PropertyService.SocioEconCode socioEconCode)
+        {
+            return new DropDownItem
+            {
+                Id = socioEconCode.id.ToString(),
+                Value = socioEconCode.description
+            };
+        }
+
+        private DropDownItem Convert(PropertyService.StreetSafteyCode streetSafetyCode)
+        {
+            return new DropDownItem
+            {
+                Id = streetSafetyCode.id.ToString(),
+                Value = streetSafetyCode.description
+            };
+        }
+
+        private DropDownItem Convert(PropertyService.EnclosureCode enclosureCode)
+        {
+            return new DropDownItem
+            {
+                Id = enclosureCode.id.ToString(),
+                Value = enclosureCode.description
+            };
+        }
+
+        private DropDownItem Convert(PropertyService.CommonCode commonCode)
+        {
+            return new DropDownItem
+            {
+                Id = commonCode.id.ToString(),
+                Value = commonCode.description
+            };
+        }
+
+        private DropDownItem Convert(PropertyService.StreetconnCode streetconnCode)
+        {
+            return new DropDownItem
+            {
+                Id = streetconnCode.id.ToString(),
+                Value = streetconnCode.description
+            };
+        }
+
+        private DropDownItem Convert(PropertyService.StreetwalkCode streetwalkCode)
+        {
+            return new DropDownItem
+            {
+                Id = streetwalkCode.id.ToString(),
+                Value = streetwalkCode.description
+            };
+        }
+
+        private DropDownItem Convert(PropertyService.NeighborhoodCode neighborhoodCode)
+        {
+            return new DropDownItem
+            {
+                Id = neighborhoodCode.id.ToString(),
+                Value = neighborhoodCode.description
+            };
         }
 
         #endregion

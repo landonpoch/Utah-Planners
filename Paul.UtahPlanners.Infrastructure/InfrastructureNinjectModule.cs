@@ -12,7 +12,6 @@ namespace UtahPlanners.Infrastructure
         public override void Load()
         {
             Bind<IUnitOfWorkFactory>().To<UnitOfWorkFactory>();
-            Bind<IConfigSettings>().To<ConfigSettings>().InSingletonScope(); // Global configuration cache
         }
     }
 }

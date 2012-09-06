@@ -50,7 +50,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ConfigSettings.cs" />
+    <Compile Include="ConfigRepository.cs" />
     <Compile Include="InfrastructureNinjectModule.cs" />
     <Compile Include="Model1.Context.cs">
       <AutoGen>True</AutoGen>

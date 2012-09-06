@@ -98,4 +98,16 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="GetLookupValues">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetLookupValuesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/UtahPlanners.Domain" minOccurs="0" name="GetLookupValuesResult" nillable="true" type="q10:LookupValues" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
 </xs:schema>

@@ -36,6 +36,11 @@ namespace UtahPlanners.Infrastructure
             return new PictureRepository(_context.Pictures);
         }
 
+        public IConfigRepository CreateConfigRepository()
+        {
+            return new ConfigRepository(_context);
+        }
+
         public void Commit()
         {
             _context.SaveChanges();

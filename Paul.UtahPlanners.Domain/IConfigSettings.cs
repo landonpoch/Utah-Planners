@@ -9,5 +9,8 @@ namespace UtahPlanners.Domain
     {
         Weight Weights { get; }
         void ReloadWeights();
+
+        LookupValues LookupValues { get; }
+        void ReloadLookupValues();
     }
 }

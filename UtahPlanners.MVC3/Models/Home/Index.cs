@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace UtahPlanners.MVC3.Models.Home
 {
@@ -10,6 +11,26 @@ namespace UtahPlanners.MVC3.Models.Home
         public List<Index> Records { get; set; }
         public IndexFilter Filter { get; set; }
         public IndexSort Sort { get; set; }
+        public DropDowns DropDowns { get; set; }
+    }
+
+    public class DropDowns
+    {
+        public List<DropDownItem> PropertyTypes { get; set; }
+        public List<DropDownItem> StreetTypes { get; set; }
+        public List<DropDownItem> SocioEconCodes { get; set; }
+        public List<DropDownItem> StreetSafetyCodes { get; set; }
+        public List<DropDownItem> EnclosureCodes { get; set; }
+        public List<DropDownItem> CommonCodes { get; set; }
+        public List<DropDownItem> StreetconnCodes { get; set; }
+        public List<DropDownItem> StreetwalkCodes { get; set; }
+        public List<DropDownItem> NeighborhoodCodes { get; set; }
+    }
+
+    public class DropDownItem
+    {
+        public string Id { get; set; }
+        public string Value { get; set; }
     }
 
     public class Index

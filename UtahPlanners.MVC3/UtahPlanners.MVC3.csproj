@@ -291,6 +291,9 @@
     <None Include="Service References\PropertyService\UtahPlanners.MVC3.PropertyService.CompositeType.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Service References\PropertyService\UtahPlanners.MVC3.PropertyService.LookupValues.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Service References\PropertyService\UtahPlanners.MVC3.PropertyService.Picture.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>

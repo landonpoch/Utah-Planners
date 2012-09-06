@@ -288,4 +288,72 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="Weight" nillable="true" type="tns:Weight" />
+  <xs:complexType name="LookupValues">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CommonCodes" nillable="true" type="tns:ArrayOfCommonCode" />
+      <xs:element minOccurs="0" name="EnclosureCodes" nillable="true" type="tns:ArrayOfEnclosureCode" />
+      <xs:element minOccurs="0" name="NeighborhoodCodes" nillable="true" type="tns:ArrayOfNeighborhoodCode" />
+      <xs:element minOccurs="0" name="PropertyTypes" nillable="true" type="tns:ArrayOfPropertyType" />
+      <xs:element minOccurs="0" name="SocioEconCodes" nillable="true" type="tns:ArrayOfSocioEconCode" />
+      <xs:element minOccurs="0" name="StreetSafetyCodes" nillable="true" type="tns:ArrayOfStreetSafteyCode" />
+      <xs:element minOccurs="0" name="StreetTypes" nillable="true" type="tns:ArrayOfStreetType" />
+      <xs:element minOccurs="0" name="StreetconnCodes" nillable="true" type="tns:ArrayOfStreetconnCode" />
+      <xs:element minOccurs="0" name="StreetwalkCodes" nillable="true" type="tns:ArrayOfStreetwalkCode" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="LookupValues" nillable="true" type="tns:LookupValues" />
+  <xs:complexType name="ArrayOfCommonCode">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="CommonCode" nillable="true" type="tns:CommonCode" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCommonCode" nillable="true" type="tns:ArrayOfCommonCode" />
+  <xs:complexType name="ArrayOfEnclosureCode">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="EnclosureCode" nillable="true" type="tns:EnclosureCode" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfEnclosureCode" nillable="true" type="tns:ArrayOfEnclosureCode" />
+  <xs:complexType name="ArrayOfNeighborhoodCode">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="NeighborhoodCode" nillable="true" type="tns:NeighborhoodCode" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfNeighborhoodCode" nillable="true" type="tns:ArrayOfNeighborhoodCode" />
+  <xs:complexType name="ArrayOfPropertyType">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="PropertyType" nillable="true" type="tns:PropertyType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfPropertyType" nillable="true" type="tns:ArrayOfPropertyType" />
+  <xs:complexType name="ArrayOfSocioEconCode">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="SocioEconCode" nillable="true" type="tns:SocioEconCode" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfSocioEconCode" nillable="true" type="tns:ArrayOfSocioEconCode" />
+  <xs:complexType name="ArrayOfStreetSafteyCode">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="StreetSafteyCode" nillable="true" type="tns:StreetSafteyCode" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfStreetSafteyCode" nillable="true" type="tns:ArrayOfStreetSafteyCode" />
+  <xs:complexType name="ArrayOfStreetType">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="StreetType" nillable="true" type="tns:StreetType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfStreetType" nillable="true" type="tns:ArrayOfStreetType" />
+  <xs:complexType name="ArrayOfStreetconnCode">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="StreetconnCode" nillable="true" type="tns:StreetconnCode" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfStreetconnCode" nillable="true" type="tns:ArrayOfStreetconnCode" />
+  <xs:complexType name="ArrayOfStreetwalkCode">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="StreetwalkCode" nillable="true" type="tns:StreetwalkCode" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfStreetwalkCode" nillable="true" type="tns:ArrayOfStreetwalkCode" />
 </xs:schema>

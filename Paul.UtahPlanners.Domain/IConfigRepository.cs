@@ -5,8 +5,9 @@ using System.Text;
 
 namespace UtahPlanners.Domain
 {
-    public interface IWeightRepository
+    public interface IConfigRepository
     {
-        Weight GetWeight();
+        Weight GetWeights();
+        LookupValues GetLookupValues();
     }
 }

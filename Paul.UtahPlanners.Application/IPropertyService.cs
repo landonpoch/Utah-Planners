@@ -34,6 +34,9 @@ namespace Paul.UtahPlanners.Application
 
         [OperationContract]
         Picture GetPicture(int id);
+
+        [OperationContract]
+        LookupValues GetLookupValues();
     }
 
 

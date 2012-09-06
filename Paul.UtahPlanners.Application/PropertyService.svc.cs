@@ -77,6 +77,11 @@ namespace Paul.UtahPlanners.Application
             }
         }
 
+        public LookupValues GetLookupValues()
+        {
+            return _settings.LookupValues;
+        }
+
         #endregion
     }
 }

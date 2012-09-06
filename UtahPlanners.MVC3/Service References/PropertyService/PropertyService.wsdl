@@ -52,6 +52,12 @@
   <wsdl:message name="IPropertyService_GetPicture_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetPictureResponse" />
   </wsdl:message>
+  <wsdl:message name="IPropertyService_GetLookupValues_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetLookupValues" />
+  </wsdl:message>
+  <wsdl:message name="IPropertyService_GetLookupValues_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetLookupValuesResponse" />
+  </wsdl:message>
   <wsdl:portType name="IPropertyService">
     <wsdl:operation name="GetData">
       <wsdl:input wsaw:Action="http://tempuri.org/IPropertyService/GetData" message="tns:IPropertyService_GetData_InputMessage" />
@@ -80,6 +86,10 @@
     <wsdl:operation name="GetPicture">
       <wsdl:input wsaw:Action="http://tempuri.org/IPropertyService/GetPicture" message="tns:IPropertyService_GetPicture_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IPropertyService/GetPictureResponse" message="tns:IPropertyService_GetPicture_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLookupValues">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPropertyService/GetLookupValues" message="tns:IPropertyService_GetLookupValues_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPropertyService/GetLookupValuesResponse" message="tns:IPropertyService_GetLookupValues_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IPropertyService" type="tns:IPropertyService">
@@ -140,6 +150,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetPicture">
       <soap:operation soapAction="http://tempuri.org/IPropertyService/GetPicture" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLookupValues">
+      <soap:operation soapAction="http://tempuri.org/IPropertyService/GetLookupValues" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
