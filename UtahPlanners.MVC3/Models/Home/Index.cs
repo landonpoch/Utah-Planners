@@ -16,21 +16,15 @@ namespace UtahPlanners.MVC3.Models.Home
 
     public class DropDowns
     {
-        public List<DropDownItem> PropertyTypes { get; set; }
-        public List<DropDownItem> StreetTypes { get; set; }
-        public List<DropDownItem> SocioEconCodes { get; set; }
-        public List<DropDownItem> StreetSafetyCodes { get; set; }
-        public List<DropDownItem> EnclosureCodes { get; set; }
-        public List<DropDownItem> CommonCodes { get; set; }
-        public List<DropDownItem> StreetconnCodes { get; set; }
-        public List<DropDownItem> StreetwalkCodes { get; set; }
-        public List<DropDownItem> NeighborhoodCodes { get; set; }
-    }
-
-    public class DropDownItem
-    {
-        public string Id { get; set; }
-        public string Value { get; set; }
+        public SelectList PropertyTypes { get; set; }
+        public SelectList StreetTypes { get; set; }
+        public SelectList SocioEconCodes { get; set; }
+        public SelectList StreetSafetyCodes { get; set; }
+        public SelectList EnclosureCodes { get; set; }
+        public SelectList CommonCodes { get; set; }
+        public SelectList StreetconnCodes { get; set; }
+        public SelectList StreetwalkCodes { get; set; }
+        public SelectList NeighborhoodCodes { get; set; }
     }
 
     public class Index

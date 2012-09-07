@@ -62,12 +62,7 @@
         @Html.TextBoxFor(m => m.Filter.City, new { @class = "newwidth" })
 
         <span class="searchLabel">Property Type:</span>
-        @Html.DropDownListFor(m => m.Filter.PropertyType, 
-            new SelectList(Model.DropDowns.PropertyTypes, 
-            "Id", 
-            "Value", 
-            Model.DropDowns.PropertyTypes.First().Id) , 
-            new { @class = "newwidth" })<br />
+        @Html.DropDownListFor(m => m.Filter.PropertyType, Model.DropDowns.PropertyTypes, String.Empty, new { @class = "newwidth" })<br />
         
         <span class="searchLabel">Density Between:</span>
         @Html.TextBoxFor(m => m.Filter.DensityRange.LowValue, new { @class = "smallwidth" }) and 
@@ -82,24 +77,14 @@
         @Html.TextBoxFor(m => m.Filter.UnitRange.HighValue, new { @class = "smallwidth" })<br />
         
         <span class="searchLabel">Street Type:</span>
-        @Html.DropDownListFor(m => m.Filter.StreetType,
-            new SelectList(Model.DropDowns.StreetTypes,
-            "Id",
-            "Value",
-            Model.DropDowns.StreetTypes.First().Id) ,
-            new { @class = "newwidth" })<br />
+        @Html.DropDownListFor(m => m.Filter.StreetType, Model.DropDowns.StreetTypes, String.Empty, new { @class = "newwidth" })<br />
         
         <span class="searchLabel">Year Built Between:</span>
         @Html.TextBoxFor(m => m.Filter.YearBuiltRange.LowValue, new { @class = "smallwidth" }) and 
         @Html.TextBoxFor(m => m.Filter.YearBuiltRange.HighValue, new { @class = "smallwidth" })<br />
         
         <span class="searchLabel">Socio Econ:</span>
-        @Html.DropDownListFor(m => m.Filter.SocioEconType,
-            new SelectList(Model.DropDowns.SocioEconCodes,
-            "Id",
-            "Value",
-            Model.DropDowns.SocioEconCodes.First().Id),
-            new { @class = "newwidth" })<br />
+        @Html.DropDownListFor(m => m.Filter.SocioEconType, Model.DropDowns.SocioEconCodes, String.Empty, new { @class = "newwidth" })<br />
     </div>
     
     <div class="searchRight">
@@ -109,56 +94,26 @@
         @Html.TextBoxFor(m => m.Filter.ScoreRange.HighValue, new { @class = "smallwidth" })<br />
         
         <span class="searchLabel">Street Safety:</span> 
-        @Html.DropDownListFor(m => m.Filter.StreetSafetyType,
-            new SelectList(Model.DropDowns.StreetSafetyCodes,
-            "Id",
-            "Value",
-            Model.DropDowns.StreetSafetyCodes.First().Id),
-            new { @class = "newwidth" })<br />
+        @Html.DropDownListFor(m => m.Filter.StreetSafetyType, Model.DropDowns.StreetSafetyCodes, String.Empty, new { @class = "newwidth" })<br />
         
         <span class="searchLabel">Building Enclosure:</span> 
-        @Html.DropDownListFor(m => m.Filter.BuildingEnclosureType,
-            new SelectList(Model.DropDowns.EnclosureCodes,
-            "Id",
-            "Value",
-            Model.DropDowns.EnclosureCodes.First().Id),
-            new { @class = "newwidth" })<br />
+        @Html.DropDownListFor(m => m.Filter.BuildingEnclosureType, Model.DropDowns.EnclosureCodes, String.Empty, new { @class = "newwidth" })<br />
         
         <span class="searchLabel">Common Areas:</span> 
-        @Html.DropDownListFor(m => m.Filter.CommonAreasType,
-            new SelectList(Model.DropDowns.CommonCodes,
-            "Id",
-            "Value",
-            Model.DropDowns.CommonCodes.First().Id),
-            new { @class = "newwidth" })<br />
+        @Html.DropDownListFor(m => m.Filter.CommonAreasType, Model.DropDowns.CommonCodes, String.Empty, new { @class = "newwidth" })<br />
         
         <span class="searchLabel">Street Connectivity:</span> 
-        @Html.DropDownListFor(m => m.Filter.StreetConnectivityType,
-            new SelectList(Model.DropDowns.StreetconnCodes,
-            "Id",
-            "Value",
-            Model.DropDowns.StreetconnCodes.First().Id),
-            new { @class = "newwidth" })<br />
+        @Html.DropDownListFor(m => m.Filter.StreetConnectivityType, Model.DropDowns.StreetconnCodes, String.Empty, new { @class = "newwidth" })<br />
         
         <span class="searchLabel">Street Walkability:</span> 
-        @Html.DropDownListFor(m => m.Filter.StreetWalkabilityType,
-            new SelectList(Model.DropDowns.StreetwalkCodes,
-            "Id",
-            "Value",
-            Model.DropDowns.StreetwalkCodes.First().Id),
-            new { @class = "newwidth" })<br />
+        @Html.DropDownListFor(m => m.Filter.StreetWalkabilityType, Model.DropDowns.StreetwalkCodes, String.Empty, new { @class = "newwidth" })<br />
         
         <span class="searchLabel">Walkscore Between:</span> 
         @Html.TextBoxFor(m => m.Filter.WalkscoreRange.LowValue, new { @class = "smallwidth" }) and 
         @Html.TextBoxFor(m => m.Filter.WalkscoreRange.HighValue, new { @class = "smallwidth" })<br />
         
         <span class="searchLabel">Neighborhood Condition:</span> 
-        @Html.DropDownListFor(m => m.Filter.NeighborhoodConditionType,
-            new SelectList(Model.DropDowns.NeighborhoodCodes,
-            "Id",
-            "Value",
-            Model.DropDowns.NeighborhoodCodes.First().Id),
-            new { @class = "newwidth" })<br />
+        @Html.DropDownListFor(m => m.Filter.NeighborhoodConditionType, Model.DropDowns.NeighborhoodCodes, String.Empty, new { @class = "newwidth" })<br />
         
         <span class="searchLabel">250 SF Between:</span> 
         @Html.TextBoxFor(m => m.Filter.TwoFiftySingleFamilyRange.LowValue, new { @class = "smallwidth" }) and 

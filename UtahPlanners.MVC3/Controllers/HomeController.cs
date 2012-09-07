@@ -295,110 +295,23 @@ namespace UtahPlanners.MVC3.Controllers
             {
                 return new DropDowns
                 {
-                    PropertyTypes = GetDropDownList(lv.PropertyTypes, Convert),
-                    StreetTypes = GetDropDownList(lv.StreetTypes, Convert),
-                    SocioEconCodes = GetDropDownList(lv.SocioEconCodes, Convert),
-                    StreetSafetyCodes = GetDropDownList(lv.StreetSafetyCodes, Convert),
-                    EnclosureCodes = GetDropDownList(lv.EnclosureCodes, Convert),
-                    CommonCodes = GetDropDownList(lv.CommonCodes, Convert),
-                    StreetconnCodes = GetDropDownList(lv.StreetconnCodes, Convert),
-                    StreetwalkCodes = GetDropDownList(lv.StreetwalkCodes, Convert),
-                    NeighborhoodCodes = GetDropDownList(lv.NeighborhoodCodes, Convert)
+                    PropertyTypes = Convert(lv.PropertyTypes),
+                    StreetTypes = Convert(lv.StreetTypes),
+                    SocioEconCodes = Convert(lv.SocioEconCodes),
+                    StreetSafetyCodes = Convert(lv.StreetSafetyCodes),
+                    EnclosureCodes = Convert(lv.EnclosureCodes),
+                    CommonCodes = Convert(lv.CommonCodes),
+                    StreetconnCodes = Convert(lv.StreetconnCodes),
+                    StreetwalkCodes = Convert(lv.StreetwalkCodes),
+                    NeighborhoodCodes = Convert(lv.NeighborhoodCodes)
                 };
             }
             return null;
         }
 
-        private List<DropDownItem> GetDropDownList<T>(T[] lookupValues, Func<T, DropDownItem> convert)
+        private SelectList Convert<T>(T[] items)
         {
-            var items = new List<DropDownItem>();
-            items.Add(new DropDownItem { Id = String.Empty, Value = String.Empty });
-            lookupValues.ToList().ForEach(lv =>
-            {
-                items.Add(convert(lv));
-            });
-            return items;
-        }
-
-        private DropDownItem Convert(PropertyService.PropertyType propertyType)
-        {
-            return new DropDownItem
-            {
-                Id = propertyType.id.ToString(),
-                Value = propertyType.description
-            };
-        }
-
-        private DropDownItem Convert(PropertyService.StreetType streetType)
-        {
-            return new DropDownItem
-            {
-                Id = streetType.id.ToString(),
-                Value = streetType.description
-            };
-        }
-
-        private DropDownItem Convert(PropertyService.SocioEconCode socioEconCode)
-        {
-            return new DropDownItem
-            {
-                Id = socioEconCode.id.ToString(),
-                Value = socioEconCode.description
-            };
-        }
-
-        private DropDownItem Convert(PropertyService.StreetSafteyCode streetSafetyCode)
-        {
-            return new DropDownItem
-            {
-                Id = streetSafetyCode.id.ToString(),
-                Value = streetSafetyCode.description
-            };
-        }
-
-        private DropDownItem Convert(PropertyService.EnclosureCode enclosureCode)
-        {
-            return new DropDownItem
-            {
-                Id = enclosureCode.id.ToString(),
-                Value = enclosureCode.description
-            };
-        }
-
-        private DropDownItem Convert(PropertyService.CommonCode commonCode)
-        {
-            return new DropDownItem
-            {
-                Id = commonCode.id.ToString(),
-                Value = commonCode.description
-            };
-        }
-
-        private DropDownItem Convert(PropertyService.StreetconnCode streetconnCode)
-        {
-            return new DropDownItem
-            {
-                Id = streetconnCode.id.ToString(),
-                Value = streetconnCode.description
-            };
-        }
-
-        private DropDownItem Convert(PropertyService.StreetwalkCode streetwalkCode)
-        {
-            return new DropDownItem
-            {
-                Id = streetwalkCode.id.ToString(),
-                Value = streetwalkCode.description
-            };
-        }
-
-        private DropDownItem Convert(PropertyService.NeighborhoodCode neighborhoodCode)
-        {
-            return new DropDownItem
-            {
-                Id = neighborhoodCode.id.ToString(),
-                Value = neighborhoodCode.description
-            };
+            return new SelectList(items.ToList(), "id", "description");
         }
 
         #endregion
