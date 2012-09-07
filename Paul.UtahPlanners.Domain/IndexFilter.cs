@@ -10,7 +10,7 @@ namespace UtahPlanners.Domain
     {
         public int? PropertyId { get; set; }
         public string City { get; set; }
-        public int? PropertyType { get; set; }
+        public List<int> PropertyTypes { get; set; }
         public Range<double?> DensityRange { get; set; }
         public Range<int?> AreaRange { get; set; }
         public Range<int?> UnitRange { get; set; }

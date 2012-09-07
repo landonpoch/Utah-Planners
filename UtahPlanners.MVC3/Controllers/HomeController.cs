@@ -25,19 +25,29 @@ namespace UtahPlanners.MVC3.Controllers
         }
 
         [HttpGet]
-        public ActionResult Index()
+        public ActionResult Index(string proptype, string density, string walkscore)
         {
-            //Get index table rows, including the calculated overall score
             var client = _factory.CreateService();
-            var indecies = client.SafeExecution(c => c.GetAllIndecies()).ToList();
+            var lookupValues = client.SafeExecution(c => c.GetLookupValues());
+            PropertyService.IndexFilter filter = GetFilterFromQueryString(proptype, density, walkscore);
+
+            //Get index table rows, including the calculated overall score
+            client = _factory.CreateService();
+            List<PropertyService.PropertiesIndex> indecies;
+            if (filter != null)
+            {
+                indecies = client.SafeExecution(c => c.GetIndecies(filter, null)).ToList();
+            }
+            else
+            {
+                indecies = client.SafeExecution(c => c.GetAllIndecies()).ToList();
+            }
             
-            var client2 = _factory.CreateService();
-            var lookupValues = client2.SafeExecution(c => c.GetLookupValues());
             
             var model = new IndexModel
             {
                 Records = Convert(indecies),
-                Filter = null,
+                Filter = Convert(filter),
                 Sort = null,
                 DropDowns = Convert(lookupValues)
             };
@@ -45,20 +55,24 @@ namespace UtahPlanners.MVC3.Controllers
         }
 
         [HttpPost]
-        public ActionResult Index(IndexModel model)
+        public ActionResult Index(IndexModel model, string proptype, string density, string walkscore)
         {
-            //Get filtered index records
+            // TODO: Not getting querystring values on post.  Figure this out!!
+
             var client = _factory.CreateService();
+            var lookupValues = client.SafeExecution(c => c.GetLookupValues());
             
+            //Get filtered index records
+            var queryStringFilter = GetFilterFromQueryString(proptype, density, walkscore);
             var filter = Convert(model.Filter);
+            filter = MergeFilters(filter, queryStringFilter);
             var sort = Convert(model.Sort);
             
+            client = _factory.CreateService();
             var indicies = client.SafeExecution(c => c.GetIndecies(filter, sort)).ToList();
 
-            var client2 = _factory.CreateService();
-            var lookupValues = client2.SafeExecution(c => c.GetLookupValues());
+            model.Filter = Convert(filter);
             model.DropDowns = Convert(lookupValues);
-
             model.Records = Convert(indicies);
             return View(model);
         }
@@ -85,7 +99,69 @@ namespace UtahPlanners.MVC3.Controllers
         }
 
         #region Mapping Methods
-        
+
+        private PropertyService.IndexFilter GetFilterFromQueryString(string proptype, string density, string walkscore)
+        {
+            PropertyService.IndexFilter filter = null;
+
+            if (!String.IsNullOrEmpty(proptype))
+            {
+                if (proptype == "flats")
+                    filter = new PropertyService.IndexFilter { PropertyTypes = new List<int> { 10 }.ToArray() };
+                if (proptype == "twins")
+                    filter = new PropertyService.IndexFilter { PropertyTypes = new List<int> { 7 }.ToArray() };
+                if (proptype == "townhomes")
+                    filter = new PropertyService.IndexFilter { PropertyTypes = new List<int> { 3, 4 }.ToArray() };
+                if (proptype == "units")
+                    filter = new PropertyService.IndexFilter { PropertyTypes = new List<int> { 2, 5, 11, 12, 13 }.ToArray() };
+            }
+
+            if (!String.IsNullOrEmpty(density))
+            {
+                Range<double?> range = null;
+                if (density == "lessthan10")
+                    range = new Range<double?> { HighValue = 9.999 };
+                if (density == "10to13")
+                    range = new Range<double?> { LowValue = 10, HighValue = 13.999 };
+                if (density == "14to16")
+                    range = new Range<double?> { LowValue = 14, HighValue = 16.999 };
+                if (density == "17to20")
+                    range = new Range<double?> { LowValue = 17, HighValue = 19.999 };
+                if (density == "morethan20")
+                    range = new Range<double?> { LowValue = 20 };
+                if (range != null)
+                    filter = new PropertyService.IndexFilter { DensityRange = Convert(range) };
+            }
+
+            if (!String.IsNullOrEmpty(walkscore))
+            {
+                Range<int?> range = null;
+                if (walkscore == "High")
+                    range = new Range<int?> { LowValue = 66 };
+                if (walkscore == "Medium")
+                    range = new Range<int?> { LowValue = 33, HighValue = 65 };
+                if (walkscore == "Low")
+                    range = new Range<int?> { HighValue = 32 };
+                if (range != null)
+                    filter = new PropertyService.IndexFilter { WalkscoreRange = Convert(range) };
+            }
+
+            return filter;
+        }
+
+        private PropertyService.IndexFilter MergeFilters(PropertyService.IndexFilter filter, PropertyService.IndexFilter queryStringFilter)
+        {
+            if (filter != null && queryStringFilter != null)
+            {
+                // Query string always takes precidence
+                filter.PropertyTypes = queryStringFilter.PropertyTypes;
+                filter.DensityRange = queryStringFilter.DensityRange;
+                filter.WalkscoreRange = queryStringFilter.WalkscoreRange;
+            }
+
+            return filter ?? queryStringFilter;
+        }
+
         private Property Convert(PropertyService.Property p)
         {
             return new Property
@@ -156,6 +232,62 @@ namespace UtahPlanners.MVC3.Controllers
             };
         }
 
+        private IndexFilter Convert(PropertyService.IndexFilter f)
+        {
+            if (f != null)
+            {
+                return new IndexFilter
+                {
+                    PropertyId = f.PropertyId,
+                    City = f.City,
+                    PropertyTypes = f.PropertyTypes != null ? f.PropertyTypes.ToList() : null,
+                    DensityRange = Convert(f.DensityRange),
+                    AreaRange = Convert(f.AreaRange),
+                    UnitRange = Convert(f.UnitRange),
+                    StreetType = f.StreetType,
+                    YearBuiltRange = Convert(f.YearBuiltRange),
+                    SocioEconType = f.SocioEconType,
+                    ScoreRange = Convert(f.ScoreRange),
+                    StreetSafetyType = f.StreetSafetyType,
+                    BuildingEnclosureType = f.BuildingEnclosureType,
+                    CommonAreasType = f.CommonAreasType,
+                    StreetConnectivityType = f.StreetConnectivityType,
+                    StreetWalkabilityType = f.StreetWalkabilityType,
+                    WalkscoreRange = Convert(f.WalkscoreRange),
+                    NeighborhoodConditionType = f.NeighborhoodConditionType,
+                    TwoFiftySingleFamilyRange = Convert(f.TwoFiftySingleFamilyRange),
+                    TwoFiftyApartmentsRange = Convert(f.TwoFiftyApartmentsRange)
+                };
+            }
+            return null;
+        }
+
+        private Range<int?> Convert(PropertyService.RangeOfNullableOfint5F2dSckg range)
+        {
+            if (range != null)
+            {
+                return new Range<int?>
+                {
+                    LowValue = range.LowValue,
+                    HighValue = range.HighValue
+                };
+            }
+            return null;
+        }
+
+        private Range<double?> Convert(PropertyService.RangeOfNullableOfdouble5F2dSckg range)
+        {
+            if (range != null)
+            {
+                return new Range<double?>
+                {
+                    LowValue = range.LowValue,
+                    HighValue = range.HighValue
+                };
+            }
+            return null;
+        }
+
         private PropertyService.IndexFilter Convert(IndexFilter f)
         {
             if (f != null)
@@ -164,7 +296,7 @@ namespace UtahPlanners.MVC3.Controllers
                 {
                     PropertyId = f.PropertyId,
                     City = f.City,
-                    PropertyType = f.PropertyType,
+                    PropertyTypes = f.PropertyType.HasValue ? new List<int> { f.PropertyType.Value }.ToArray() : new int[0],
                     DensityRange = Convert(f.DensityRange),
                     AreaRange = Convert(f.AreaRange),
                     UnitRange = Convert(f.UnitRange),

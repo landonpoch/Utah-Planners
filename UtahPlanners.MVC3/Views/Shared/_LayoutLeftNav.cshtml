@@ -12,29 +12,29 @@
 			<li>
 				<h2>Condo Type</h2>
 				<ul>
-					<li><a href="#">Stacked Flats</a></li>
-					<li><a href="#">Twin Homes</a></li>
-					<li><a href="#">Townhomes</a></li>
-					<li><a href="#">Mixed Units</a></li>
+                    <li>@Html.ActionLink("Stacked Flats", "Index", new { proptype = "flats" })</li>
+					<li>@Html.ActionLink("Twin Homes", "Index", new { proptype = "twins" })</li>
+					<li>@Html.ActionLink("Townhomes", "Index", new { proptype = "townhomes" })</li>
+					<li>@Html.ActionLink("Mixed Units", "Index", new { proptype = "units" })</li>
 				</ul>
 			</li>
 			<li>
 				<h2>Density</h2>
                 <h3>Units per Acre</h3>
 				<ul>
-					<li><a href="#">Less than 10</a></li>
-					<li><a href="#">10 to 13</a></li>
-					<li><a href="#">14 to 16</a></li>
-					<li><a href="#">17 to 20</a></li>
-					<li><a href="#">More than 20</a></li>
+                    <li>@Html.ActionLink("Less than 10", "Index", new { density = "lessthan10" })</li>
+					<li>@Html.ActionLink("10 to 13", "Index", new { density = "10to13" })</li>
+					<li>@Html.ActionLink("14 to 16", "Index", new { density = "14to16" })</li>
+					<li>@Html.ActionLink("17 to 20", "Index", new { density = "17to20" })</li>
+					<li>@Html.ActionLink("More than 20", "Index", new { density = "morethan20" })</li>
 				</ul>
 			</li>
 			<li>
 				<h2>Local Services</h2>
 				<ul>
-					<li><a href="#">High</a></li>
-					<li><a href="#">Medium</a></li>
-					<li><a href="#">Low</a></li>
+                    <li>@Html.ActionLink("High", "Index", new { walkscore = "High" })</li>
+                    <li>@Html.ActionLink("Medium", "Index", new { walkscore = "Medium" })</li>
+                    <li>@Html.ActionLink("Low", "Index", new { walkscore = "Low" })</li>
 				</ul>
 			</li>
 		</ul>

@@ -326,7 +326,7 @@ namespace UtahPlanners.MVC3.PropertyService {
         private System.Nullable<int> PropertyIdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<int> PropertyTypeField;
+        private int[] PropertyTypesField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private UtahPlanners.MVC3.PropertyService.RangeOfNullableOfint5F2dSckg ScoreRangeField;
@@ -463,14 +463,14 @@ namespace UtahPlanners.MVC3.PropertyService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<int> PropertyType {
+        public int[] PropertyTypes {
             get {
-                return this.PropertyTypeField;
+                return this.PropertyTypesField;
             }
             set {
-                if ((this.PropertyTypeField.Equals(value) != true)) {
-                    this.PropertyTypeField = value;
-                    this.RaisePropertyChanged("PropertyType");
+                if ((object.ReferenceEquals(this.PropertyTypesField, value) != true)) {
+                    this.PropertyTypesField = value;
+                    this.RaisePropertyChanged("PropertyTypes");
                 }
             }
         }

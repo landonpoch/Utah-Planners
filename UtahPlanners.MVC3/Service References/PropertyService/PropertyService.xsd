@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:ser="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:tns="http://schemas.datacontract.org/2004/07/UtahPlanners.Domain" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/UtahPlanners.Domain" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:import schemaLocation="http://localhost:3109/PropertyService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
   <xs:import schemaLocation="http://localhost:3109/PropertyService.svc?xsd=xsd4" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:import schemaLocation="http://localhost:3109/PropertyService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
   <xs:complexType name="ArrayOfPropertiesIndex">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="PropertiesIndex" nillable="true" type="tns:PropertiesIndex" />
@@ -34,7 +34,7 @@
       <xs:element minOccurs="0" name="DensityRange" nillable="true" type="tns:RangeOfNullableOfdouble5F2dSckg" />
       <xs:element minOccurs="0" name="NeighborhoodConditionType" nillable="true" type="xs:int" />
       <xs:element minOccurs="0" name="PropertyId" nillable="true" type="xs:int" />
-      <xs:element minOccurs="0" name="PropertyType" nillable="true" type="xs:int" />
+      <xs:element xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="PropertyTypes" nillable="true" type="q1:ArrayOfint" />
       <xs:element minOccurs="0" name="ScoreRange" nillable="true" type="tns:RangeOfNullableOfint5F2dSckg" />
       <xs:element minOccurs="0" name="SocioEconType" nillable="true" type="xs:int" />
       <xs:element minOccurs="0" name="StreetConnectivityType" nillable="true" type="xs:int" />
@@ -122,7 +122,7 @@
       <xs:element minOccurs="0" name="CommonCode" nillable="true" type="tns:CommonCode" />
       <xs:element minOccurs="0" name="EnclosureCode" nillable="true" type="tns:EnclosureCode" />
       <xs:element minOccurs="0" name="NeighborhoodCode" nillable="true" type="tns:NeighborhoodCode" />
-      <xs:element xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="PictureIds" nillable="true" type="q1:ArrayOfint" />
+      <xs:element xmlns:q2="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="PictureIds" nillable="true" type="q2:ArrayOfint" />
       <xs:element minOccurs="0" name="Pictures" nillable="true" type="tns:ArrayOfPicture" />
       <xs:element minOccurs="0" name="PropertyType" nillable="true" type="tns:PropertyType" />
       <xs:element minOccurs="0" name="Score" type="xs:int" />

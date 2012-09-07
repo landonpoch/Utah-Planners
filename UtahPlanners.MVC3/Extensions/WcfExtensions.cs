@@ -39,19 +39,16 @@ namespace UtahPlanners.MVC3.Extensions
             {
                 myServiceClient.Close();
             }
-            catch (CommunicationException ex)
+            catch (CommunicationException)
             {
-                //Debug.Print(ex.ToString());
                 myServiceClient.Abort();
             }
-            catch (TimeoutException ex)
+            catch (TimeoutException)
             {
-                //Debug.Print(ex.ToString());
                 myServiceClient.Abort();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                //Debug.Print(ex.ToString());
                 myServiceClient.Abort();
                 throw;
             }

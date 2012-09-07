@@ -40,8 +40,9 @@ namespace UtahPlanners.Infrastructure
                 props = props.Where(p => p.id == filter.PropertyId.Value);
             if (!String.IsNullOrEmpty(filter.City))
                 props = props.Where(p => p.Address != null && p.Address.city.Contains(filter.City));
-            if (filter.PropertyType.HasValue)
-                props = props.Where(p => p.typeCode.HasValue && p.typeCode.Value == filter.PropertyType.Value);
+            if (filter.PropertyTypes != null 
+                && filter.PropertyTypes.Count > 0)
+                props = props.Where(p => p.typeCode.HasValue && filter.PropertyTypes.Contains(p.typeCode.Value));
             if (filter.DensityRange != null)
             {
                 if (filter.DensityRange.LowValue.HasValue)
