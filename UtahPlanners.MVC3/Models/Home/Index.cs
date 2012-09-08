@@ -12,6 +12,11 @@ namespace UtahPlanners.MVC3.Models.Home
         public IndexFilter Filter { get; set; }
         public IndexSort Sort { get; set; }
         public DropDowns DropDowns { get; set; }
+
+        public string PropType { get; set; }
+        public string Density { get; set; }
+        public string Walkscore { get; set; }
+        public bool ResetView { get; set; }
     }
 
     public class DropDowns

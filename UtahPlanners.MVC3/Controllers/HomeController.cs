@@ -24,56 +24,37 @@ namespace UtahPlanners.MVC3.Controllers
             return View(prop);
         }
 
-        [HttpGet]
-        public ActionResult Index(string proptype, string density, string walkscore)
+        public ActionResult Index(IndexModel model, string proptype, string density, string walkscore)
         {
+            if (model.ResetView)
+                return RedirectToAction("Index");
+
             var client = _factory.CreateService();
             var lookupValues = client.SafeExecution(c => c.GetLookupValues());
-            PropertyService.IndexFilter filter = GetFilterFromQueryString(proptype, density, walkscore);
+
+            model.PropType = proptype ?? model.PropType;
+            model.Density = density ?? model.Density;
+            model.Walkscore = walkscore ?? model.Walkscore;
+            PropertyService.IndexFilter filter = GetPrimaryFilterFromModel(model.PropType, model.Density, model.Walkscore);
+            filter = filter ?? Convert(model.Filter);
+            
+            var sort = Convert(model.Sort);
 
             //Get index table rows, including the calculated overall score
             client = _factory.CreateService();
             List<PropertyService.PropertiesIndex> indecies;
-            if (filter != null)
-            {
-                indecies = client.SafeExecution(c => c.GetIndecies(filter, null)).ToList();
-            }
-            else
-            {
-                indecies = client.SafeExecution(c => c.GetAllIndecies()).ToList();
-            }
-            
-            
-            var model = new IndexModel
+            indecies = client.SafeExecution(c => c.GetIndecies(filter, sort)).ToList();
+
+            model = new IndexModel
             {
                 Records = Convert(indecies),
                 Filter = Convert(filter),
-                Sort = null,
-                DropDowns = Convert(lookupValues)
+                Sort = Convert(sort),
+                DropDowns = Convert(lookupValues),
+                PropType = model.PropType,
+                Density = model.Density,
+                Walkscore = model.Walkscore
             };
-            return View(model);
-        }
-
-        [HttpPost]
-        public ActionResult Index(IndexModel model, string proptype, string density, string walkscore)
-        {
-            // TODO: Not getting querystring values on post.  Figure this out!!
-
-            var client = _factory.CreateService();
-            var lookupValues = client.SafeExecution(c => c.GetLookupValues());
-            
-            //Get filtered index records
-            var queryStringFilter = GetFilterFromQueryString(proptype, density, walkscore);
-            var filter = Convert(model.Filter);
-            filter = MergeFilters(filter, queryStringFilter);
-            var sort = Convert(model.Sort);
-            
-            client = _factory.CreateService();
-            var indicies = client.SafeExecution(c => c.GetIndecies(filter, sort)).ToList();
-
-            model.Filter = Convert(filter);
-            model.DropDowns = Convert(lookupValues);
-            model.Records = Convert(indicies);
             return View(model);
         }
 
@@ -100,7 +81,7 @@ namespace UtahPlanners.MVC3.Controllers
 
         #region Mapping Methods
 
-        private PropertyService.IndexFilter GetFilterFromQueryString(string proptype, string density, string walkscore)
+        private PropertyService.IndexFilter GetPrimaryFilterFromModel(string proptype, string density, string walkscore)
         {
             PropertyService.IndexFilter filter = null;
 
@@ -419,6 +400,63 @@ namespace UtahPlanners.MVC3.Controllers
                 }
             }
             return direction;
+        }
+
+        private IndexColumn Convert(PropertyService.IndexColumn c)
+        {
+            switch (c)
+            {
+                case PropertyService.IndexColumn.City:
+                    return IndexColumn.City;
+                case PropertyService.IndexColumn.Score:
+                    return IndexColumn.Score;
+                case PropertyService.IndexColumn.Type:
+                    return IndexColumn.Type;
+                case PropertyService.IndexColumn.Density:
+                    return IndexColumn.Density;
+                case PropertyService.IndexColumn.Units:
+                    return IndexColumn.Units;
+                case PropertyService.IndexColumn.Year:
+                    return IndexColumn.Year;
+                case PropertyService.IndexColumn.StreetType:
+                    return IndexColumn.StreetType;
+                case PropertyService.IndexColumn.Walkability:
+                    return IndexColumn.Walkability;
+                case PropertyService.IndexColumn.Walkscore:
+                    return IndexColumn.Walkscore;
+                case PropertyService.IndexColumn.SocioEcon:
+                    return IndexColumn.SocioEcon;
+                case PropertyService.IndexColumn.TwoFiftySF:
+                    return IndexColumn.TwoFiftySF;
+                case PropertyService.IndexColumn.Id:
+                default:
+                    return IndexColumn.Id;
+            }
+        }
+
+        private IndexSort Convert(PropertyService.IndexSort sort)
+        {
+            if (sort != null)
+            {
+                return new IndexSort
+                {
+                    Column = Convert(sort.Column),
+                    Direction = Convert(sort.Direction),
+                };
+            }
+            return null;
+        }
+
+        private Direction Convert(PropertyService.Direction d)
+        {
+            switch (d)
+            {
+                case PropertyService.Direction.Descending:
+                    return Direction.Descending;
+                case PropertyService.Direction.Ascending:
+                default:
+                    return Direction.Ascending;
+            }
         }
 
         private DropDowns Convert(PropertyService.LookupValues lv)
