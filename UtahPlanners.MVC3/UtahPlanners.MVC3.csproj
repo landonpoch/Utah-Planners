@@ -234,6 +234,7 @@
     <None Include="Service References\PropertyService\PropertyService.disco" />
     <None Include="Service References\PropertyService\configuration91.svcinfo" />
     <None Include="Service References\PropertyService\configuration.svcinfo" />
+    <None Include="Service References\PropertyService\PropertyService1.wsdl" />
     <None Include="Service References\PropertyService\PropertyService4.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -336,6 +337,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\uploadify\example\uploads\" />
+    <Folder Include="Models\Admin\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

@@ -76,7 +76,7 @@ namespace UtahPlanners.MVC3.PropertyService {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="PropertiesIndex", Namespace="http://schemas.datacontract.org/2004/07/UtahPlanners.Domain")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="PropertiesIndex", Namespace="http://schemas.datacontract.org/2004/07/UtahPlanners.Domain.Entity")]
     [System.SerializableAttribute()]
     public partial class PropertiesIndex : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
@@ -297,7 +297,7 @@ namespace UtahPlanners.MVC3.PropertyService {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="IndexFilter", Namespace="http://schemas.datacontract.org/2004/07/UtahPlanners.Domain")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="IndexFilter", Namespace="http://schemas.datacontract.org/2004/07/UtahPlanners.Domain.Entity")]
     [System.SerializableAttribute()]
     public partial class IndexFilter : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
@@ -630,7 +630,7 @@ namespace UtahPlanners.MVC3.PropertyService {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="RangeOfNullableOfint5F2dSckg", Namespace="http://schemas.datacontract.org/2004/07/UtahPlanners.Domain", IsReference=true)]
+    [System.Runtime.Serialization.DataContractAttribute(Name="RangeOfNullableOfint5F2dSckg", Namespace="http://schemas.datacontract.org/2004/07/UtahPlanners.Domain.Entity", IsReference=true)]
     [System.SerializableAttribute()]
     public partial class RangeOfNullableOfint5F2dSckg : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
@@ -691,7 +691,7 @@ namespace UtahPlanners.MVC3.PropertyService {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="RangeOfNullableOfdouble5F2dSckg", Namespace="http://schemas.datacontract.org/2004/07/UtahPlanners.Domain", IsReference=true)]
+    [System.Runtime.Serialization.DataContractAttribute(Name="RangeOfNullableOfdouble5F2dSckg", Namespace="http://schemas.datacontract.org/2004/07/UtahPlanners.Domain.Entity", IsReference=true)]
     [System.SerializableAttribute()]
     public partial class RangeOfNullableOfdouble5F2dSckg : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
@@ -752,7 +752,7 @@ namespace UtahPlanners.MVC3.PropertyService {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="IndexSort", Namespace="http://schemas.datacontract.org/2004/07/UtahPlanners.Domain")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="IndexSort", Namespace="http://schemas.datacontract.org/2004/07/UtahPlanners.Domain.Entity")]
     [System.SerializableAttribute()]
     public partial class IndexSort : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
@@ -812,7 +812,7 @@ namespace UtahPlanners.MVC3.PropertyService {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="IndexColumn", Namespace="http://schemas.datacontract.org/2004/07/UtahPlanners.Domain")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="IndexColumn", Namespace="http://schemas.datacontract.org/2004/07/UtahPlanners.Domain.Entity")]
     public enum IndexColumn : int {
         
         [System.Runtime.Serialization.EnumMemberAttribute()]
@@ -853,7 +853,7 @@ namespace UtahPlanners.MVC3.PropertyService {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Direction", Namespace="http://schemas.datacontract.org/2004/07/UtahPlanners.Domain")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Direction", Namespace="http://schemas.datacontract.org/2004/07/UtahPlanners.Domain.Entity")]
     public enum Direction : int {
         
         [System.Runtime.Serialization.EnumMemberAttribute()]
@@ -865,7 +865,7 @@ namespace UtahPlanners.MVC3.PropertyService {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Property", Namespace="http://schemas.datacontract.org/2004/07/UtahPlanners.Domain")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Property", Namespace="http://schemas.datacontract.org/2004/07/UtahPlanners.Domain.Entity")]
     [System.SerializableAttribute()]
     public partial class Property : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
@@ -913,9 +913,6 @@ namespace UtahPlanners.MVC3.PropertyService {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private UtahPlanners.MVC3.PropertyService.StreetwalkCode StreetwalkCodeField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private UtahPlanners.MVC3.PropertyService.Weight WeightsField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string adminNotesField;
@@ -1174,19 +1171,6 @@ namespace UtahPlanners.MVC3.PropertyService {
                 if ((object.ReferenceEquals(this.StreetwalkCodeField, value) != true)) {
                     this.StreetwalkCodeField = value;
                     this.RaisePropertyChanged("StreetwalkCode");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public UtahPlanners.MVC3.PropertyService.Weight Weights {
-            get {
-                return this.WeightsField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.WeightsField, value) != true)) {
-                    this.WeightsField = value;
-                    this.RaisePropertyChanged("Weights");
                 }
             }
         }
@@ -1502,12 +1486,15 @@ namespace UtahPlanners.MVC3.PropertyService {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Address", Namespace="http://schemas.datacontract.org/2004/07/UtahPlanners.Domain", IsReference=true)]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Address", Namespace="http://schemas.datacontract.org/2004/07/UtahPlanners.Domain.Entity")]
     [System.SerializableAttribute()]
     public partial class Address : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
         [System.NonSerializedAttribute()]
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private UtahPlanners.MVC3.PropertyService.Property PropertyField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string cityField;
@@ -1537,6 +1524,19 @@ namespace UtahPlanners.MVC3.PropertyService {
             }
             set {
                 this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public UtahPlanners.MVC3.PropertyService.Property Property {
+            get {
+                return this.PropertyField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.PropertyField, value) != true)) {
+                    this.PropertyField = value;
+                    this.RaisePropertyChanged("Property");
+                }
             }
         }
         
@@ -1643,7 +1643,7 @@ namespace UtahPlanners.MVC3.PropertyService {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="CommonCode", Namespace="http://schemas.datacontract.org/2004/07/UtahPlanners.Domain", IsReference=true)]
+    [System.Runtime.Serialization.DataContractAttribute(Name="CommonCode", Namespace="http://schemas.datacontract.org/2004/07/UtahPlanners.Domain.Entity")]
     [System.SerializableAttribute()]
     public partial class CommonCode : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
@@ -1651,10 +1651,16 @@ namespace UtahPlanners.MVC3.PropertyService {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private UtahPlanners.MVC3.PropertyService.Property[] PropertiesField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string descriptionField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int idField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<int> weightField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -1663,6 +1669,19 @@ namespace UtahPlanners.MVC3.PropertyService {
             }
             set {
                 this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public UtahPlanners.MVC3.PropertyService.Property[] Properties {
+            get {
+                return this.PropertiesField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.PropertiesField, value) != true)) {
+                    this.PropertiesField = value;
+                    this.RaisePropertyChanged("Properties");
+                }
             }
         }
         
@@ -1692,6 +1711,19 @@ namespace UtahPlanners.MVC3.PropertyService {
             }
         }
         
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<int> weight {
+            get {
+                return this.weightField;
+            }
+            set {
+                if ((this.weightField.Equals(value) != true)) {
+                    this.weightField = value;
+                    this.RaisePropertyChanged("weight");
+                }
+            }
+        }
+        
         public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
         
         protected void RaisePropertyChanged(string propertyName) {
@@ -1704,7 +1736,7 @@ namespace UtahPlanners.MVC3.PropertyService {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="EnclosureCode", Namespace="http://schemas.datacontract.org/2004/07/UtahPlanners.Domain", IsReference=true)]
+    [System.Runtime.Serialization.DataContractAttribute(Name="EnclosureCode", Namespace="http://schemas.datacontract.org/2004/07/UtahPlanners.Domain.Entity")]
     [System.SerializableAttribute()]
     public partial class EnclosureCode : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
@@ -1712,10 +1744,16 @@ namespace UtahPlanners.MVC3.PropertyService {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private UtahPlanners.MVC3.PropertyService.Property[] PropertiesField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string descriptionField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int idField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<int> weightField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -1724,6 +1762,19 @@ namespace UtahPlanners.MVC3.PropertyService {
             }
             set {
                 this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public UtahPlanners.MVC3.PropertyService.Property[] Properties {
+            get {
+                return this.PropertiesField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.PropertiesField, value) != true)) {
+                    this.PropertiesField = value;
+                    this.RaisePropertyChanged("Properties");
+                }
             }
         }
         
@@ -1753,6 +1804,19 @@ namespace UtahPlanners.MVC3.PropertyService {
             }
         }
         
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<int> weight {
+            get {
+                return this.weightField;
+            }
+            set {
+                if ((this.weightField.Equals(value) != true)) {
+                    this.weightField = value;
+                    this.RaisePropertyChanged("weight");
+                }
+            }
+        }
+        
         public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
         
         protected void RaisePropertyChanged(string propertyName) {
@@ -1765,7 +1829,7 @@ namespace UtahPlanners.MVC3.PropertyService {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="NeighborhoodCode", Namespace="http://schemas.datacontract.org/2004/07/UtahPlanners.Domain", IsReference=true)]
+    [System.Runtime.Serialization.DataContractAttribute(Name="NeighborhoodCode", Namespace="http://schemas.datacontract.org/2004/07/UtahPlanners.Domain.Entity")]
     [System.SerializableAttribute()]
     public partial class NeighborhoodCode : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
@@ -1773,10 +1837,16 @@ namespace UtahPlanners.MVC3.PropertyService {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private UtahPlanners.MVC3.PropertyService.Property[] PropertiesField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string descriptionField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int idField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<int> weightField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -1785,6 +1855,19 @@ namespace UtahPlanners.MVC3.PropertyService {
             }
             set {
                 this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public UtahPlanners.MVC3.PropertyService.Property[] Properties {
+            get {
+                return this.PropertiesField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.PropertiesField, value) != true)) {
+                    this.PropertiesField = value;
+                    this.RaisePropertyChanged("Properties");
+                }
             }
         }
         
@@ -1814,6 +1897,19 @@ namespace UtahPlanners.MVC3.PropertyService {
             }
         }
         
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<int> weight {
+            get {
+                return this.weightField;
+            }
+            set {
+                if ((this.weightField.Equals(value) != true)) {
+                    this.weightField = value;
+                    this.RaisePropertyChanged("weight");
+                }
+            }
+        }
+        
         public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
         
         protected void RaisePropertyChanged(string propertyName) {
@@ -1826,7 +1922,7 @@ namespace UtahPlanners.MVC3.PropertyService {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="PropertyType", Namespace="http://schemas.datacontract.org/2004/07/UtahPlanners.Domain", IsReference=true)]
+    [System.Runtime.Serialization.DataContractAttribute(Name="PropertyType", Namespace="http://schemas.datacontract.org/2004/07/UtahPlanners.Domain.Entity")]
     [System.SerializableAttribute()]
     public partial class PropertyType : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
@@ -1834,6 +1930,9 @@ namespace UtahPlanners.MVC3.PropertyService {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private UtahPlanners.MVC3.PropertyService.Property[] PropertiesField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string descriptionField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -1846,6 +1945,19 @@ namespace UtahPlanners.MVC3.PropertyService {
             }
             set {
                 this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public UtahPlanners.MVC3.PropertyService.Property[] Properties {
+            get {
+                return this.PropertiesField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.PropertiesField, value) != true)) {
+                    this.PropertiesField = value;
+                    this.RaisePropertyChanged("Properties");
+                }
             }
         }
         
@@ -1887,7 +1999,7 @@ namespace UtahPlanners.MVC3.PropertyService {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="SocioEconCode", Namespace="http://schemas.datacontract.org/2004/07/UtahPlanners.Domain", IsReference=true)]
+    [System.Runtime.Serialization.DataContractAttribute(Name="SocioEconCode", Namespace="http://schemas.datacontract.org/2004/07/UtahPlanners.Domain.Entity")]
     [System.SerializableAttribute()]
     public partial class SocioEconCode : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
@@ -1895,6 +2007,9 @@ namespace UtahPlanners.MVC3.PropertyService {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private UtahPlanners.MVC3.PropertyService.Property[] PropertiesField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string descriptionField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -1907,6 +2022,19 @@ namespace UtahPlanners.MVC3.PropertyService {
             }
             set {
                 this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public UtahPlanners.MVC3.PropertyService.Property[] Properties {
+            get {
+                return this.PropertiesField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.PropertiesField, value) != true)) {
+                    this.PropertiesField = value;
+                    this.RaisePropertyChanged("Properties");
+                }
             }
         }
         
@@ -1948,7 +2076,7 @@ namespace UtahPlanners.MVC3.PropertyService {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="StreetSafteyCode", Namespace="http://schemas.datacontract.org/2004/07/UtahPlanners.Domain", IsReference=true)]
+    [System.Runtime.Serialization.DataContractAttribute(Name="StreetSafteyCode", Namespace="http://schemas.datacontract.org/2004/07/UtahPlanners.Domain.Entity")]
     [System.SerializableAttribute()]
     public partial class StreetSafteyCode : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
@@ -1956,10 +2084,16 @@ namespace UtahPlanners.MVC3.PropertyService {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private UtahPlanners.MVC3.PropertyService.Property[] PropertiesField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string descriptionField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int idField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<int> weightField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -1968,6 +2102,19 @@ namespace UtahPlanners.MVC3.PropertyService {
             }
             set {
                 this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public UtahPlanners.MVC3.PropertyService.Property[] Properties {
+            get {
+                return this.PropertiesField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.PropertiesField, value) != true)) {
+                    this.PropertiesField = value;
+                    this.RaisePropertyChanged("Properties");
+                }
             }
         }
         
@@ -1997,6 +2144,19 @@ namespace UtahPlanners.MVC3.PropertyService {
             }
         }
         
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<int> weight {
+            get {
+                return this.weightField;
+            }
+            set {
+                if ((this.weightField.Equals(value) != true)) {
+                    this.weightField = value;
+                    this.RaisePropertyChanged("weight");
+                }
+            }
+        }
+        
         public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
         
         protected void RaisePropertyChanged(string propertyName) {
@@ -2009,7 +2169,7 @@ namespace UtahPlanners.MVC3.PropertyService {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="StreetType", Namespace="http://schemas.datacontract.org/2004/07/UtahPlanners.Domain", IsReference=true)]
+    [System.Runtime.Serialization.DataContractAttribute(Name="StreetType", Namespace="http://schemas.datacontract.org/2004/07/UtahPlanners.Domain.Entity")]
     [System.SerializableAttribute()]
     public partial class StreetType : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
@@ -2017,6 +2177,9 @@ namespace UtahPlanners.MVC3.PropertyService {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private UtahPlanners.MVC3.PropertyService.Property[] PropertiesField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string descriptionField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -2029,6 +2192,19 @@ namespace UtahPlanners.MVC3.PropertyService {
             }
             set {
                 this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public UtahPlanners.MVC3.PropertyService.Property[] Properties {
+            get {
+                return this.PropertiesField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.PropertiesField, value) != true)) {
+                    this.PropertiesField = value;
+                    this.RaisePropertyChanged("Properties");
+                }
             }
         }
         
@@ -2070,7 +2246,7 @@ namespace UtahPlanners.MVC3.PropertyService {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="StreetconnCode", Namespace="http://schemas.datacontract.org/2004/07/UtahPlanners.Domain", IsReference=true)]
+    [System.Runtime.Serialization.DataContractAttribute(Name="StreetconnCode", Namespace="http://schemas.datacontract.org/2004/07/UtahPlanners.Domain.Entity")]
     [System.SerializableAttribute()]
     public partial class StreetconnCode : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
@@ -2078,10 +2254,16 @@ namespace UtahPlanners.MVC3.PropertyService {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private UtahPlanners.MVC3.PropertyService.Property[] PropertiesField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string descriptionField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int idField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<int> weightField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -2090,6 +2272,19 @@ namespace UtahPlanners.MVC3.PropertyService {
             }
             set {
                 this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public UtahPlanners.MVC3.PropertyService.Property[] Properties {
+            get {
+                return this.PropertiesField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.PropertiesField, value) != true)) {
+                    this.PropertiesField = value;
+                    this.RaisePropertyChanged("Properties");
+                }
             }
         }
         
@@ -2119,6 +2314,19 @@ namespace UtahPlanners.MVC3.PropertyService {
             }
         }
         
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<int> weight {
+            get {
+                return this.weightField;
+            }
+            set {
+                if ((this.weightField.Equals(value) != true)) {
+                    this.weightField = value;
+                    this.RaisePropertyChanged("weight");
+                }
+            }
+        }
+        
         public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
         
         protected void RaisePropertyChanged(string propertyName) {
@@ -2131,7 +2339,7 @@ namespace UtahPlanners.MVC3.PropertyService {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="StreetwalkCode", Namespace="http://schemas.datacontract.org/2004/07/UtahPlanners.Domain", IsReference=true)]
+    [System.Runtime.Serialization.DataContractAttribute(Name="StreetwalkCode", Namespace="http://schemas.datacontract.org/2004/07/UtahPlanners.Domain.Entity")]
     [System.SerializableAttribute()]
     public partial class StreetwalkCode : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
@@ -2139,10 +2347,16 @@ namespace UtahPlanners.MVC3.PropertyService {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private UtahPlanners.MVC3.PropertyService.Property[] PropertiesField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string descriptionField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int idField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<int> weightField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -2151,6 +2365,19 @@ namespace UtahPlanners.MVC3.PropertyService {
             }
             set {
                 this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public UtahPlanners.MVC3.PropertyService.Property[] Properties {
+            get {
+                return this.PropertiesField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.PropertiesField, value) != true)) {
+                    this.PropertiesField = value;
+                    this.RaisePropertyChanged("Properties");
+                }
             }
         }
         
@@ -2180,191 +2407,15 @@ namespace UtahPlanners.MVC3.PropertyService {
             }
         }
         
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Weight", Namespace="http://schemas.datacontract.org/2004/07/UtahPlanners.Domain")]
-    [System.SerializableAttribute()]
-    public partial class Weight : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<int> buildingEnclosureField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<int> commonAreasField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int idField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<int> neighConditionField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<int> streetConnField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<int> streetSafteyField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<int> streetWalkField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<int> twoFiftyAptsField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<int> twoFiftySingleFamField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<int> walkscoreField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<int> buildingEnclosure {
+        public System.Nullable<int> weight {
             get {
-                return this.buildingEnclosureField;
+                return this.weightField;
             }
             set {
-                if ((this.buildingEnclosureField.Equals(value) != true)) {
-                    this.buildingEnclosureField = value;
-                    this.RaisePropertyChanged("buildingEnclosure");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<int> commonAreas {
-            get {
-                return this.commonAreasField;
-            }
-            set {
-                if ((this.commonAreasField.Equals(value) != true)) {
-                    this.commonAreasField = value;
-                    this.RaisePropertyChanged("commonAreas");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int id {
-            get {
-                return this.idField;
-            }
-            set {
-                if ((this.idField.Equals(value) != true)) {
-                    this.idField = value;
-                    this.RaisePropertyChanged("id");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<int> neighCondition {
-            get {
-                return this.neighConditionField;
-            }
-            set {
-                if ((this.neighConditionField.Equals(value) != true)) {
-                    this.neighConditionField = value;
-                    this.RaisePropertyChanged("neighCondition");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<int> streetConn {
-            get {
-                return this.streetConnField;
-            }
-            set {
-                if ((this.streetConnField.Equals(value) != true)) {
-                    this.streetConnField = value;
-                    this.RaisePropertyChanged("streetConn");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<int> streetSaftey {
-            get {
-                return this.streetSafteyField;
-            }
-            set {
-                if ((this.streetSafteyField.Equals(value) != true)) {
-                    this.streetSafteyField = value;
-                    this.RaisePropertyChanged("streetSaftey");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<int> streetWalk {
-            get {
-                return this.streetWalkField;
-            }
-            set {
-                if ((this.streetWalkField.Equals(value) != true)) {
-                    this.streetWalkField = value;
-                    this.RaisePropertyChanged("streetWalk");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<int> twoFiftyApts {
-            get {
-                return this.twoFiftyAptsField;
-            }
-            set {
-                if ((this.twoFiftyAptsField.Equals(value) != true)) {
-                    this.twoFiftyAptsField = value;
-                    this.RaisePropertyChanged("twoFiftyApts");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<int> twoFiftySingleFam {
-            get {
-                return this.twoFiftySingleFamField;
-            }
-            set {
-                if ((this.twoFiftySingleFamField.Equals(value) != true)) {
-                    this.twoFiftySingleFamField = value;
-                    this.RaisePropertyChanged("twoFiftySingleFam");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<int> walkscore {
-            get {
-                return this.walkscoreField;
-            }
-            set {
-                if ((this.walkscoreField.Equals(value) != true)) {
-                    this.walkscoreField = value;
-                    this.RaisePropertyChanged("walkscore");
+                if ((this.weightField.Equals(value) != true)) {
+                    this.weightField = value;
+                    this.RaisePropertyChanged("weight");
                 }
             }
         }
@@ -2381,7 +2432,7 @@ namespace UtahPlanners.MVC3.PropertyService {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Picture", Namespace="http://schemas.datacontract.org/2004/07/UtahPlanners.Domain")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Picture", Namespace="http://schemas.datacontract.org/2004/07/UtahPlanners.Domain.Entity")]
     [System.SerializableAttribute()]
     public partial class Picture : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
@@ -2538,7 +2589,7 @@ namespace UtahPlanners.MVC3.PropertyService {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="LookupValues", Namespace="http://schemas.datacontract.org/2004/07/UtahPlanners.Domain")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="LookupValues", Namespace="http://schemas.datacontract.org/2004/07/UtahPlanners.Domain.Entity")]
     [System.SerializableAttribute()]
     public partial class LookupValues : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         

@@ -1,19 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Runtime.Serialization;
 using System.ServiceModel;
-using System.ServiceModel.Web;
-using System.Text;
-using UtahPlanners.Domain;
+using UtahPlanners.Domain.Entity;
 
 namespace Paul.UtahPlanners.Application
 {
-    // NOTE: You can use the "Rename" command on the "Refactor" menu to change the interface name "IService1" in both code and config file together.
     [ServiceContract]
     public interface IPropertyService
     {
-
         [OperationContract]
         string GetData(int value);
 
@@ -24,7 +18,7 @@ namespace Paul.UtahPlanners.Application
         List<PropertiesIndex> GetAllIndecies();
 
         [OperationContract]
-        List<PropertiesIndex> GetIndecies(IndexFilter filter = null, IndexSort sort = null);
+        List<PropertiesIndex> GetIndecies(IndexFilter filter, IndexSort sort);
 
         [OperationContract]
         Property GetProperty(int id);

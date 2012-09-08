@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using UtahPlanners.Domain;
+using UtahPlanners.Domain.Contract.Service;
+using UtahPlanners.Domain.Contract.UnitOfWork;
+using UtahPlanners.Domain.Entity;
 
 namespace Paul.UtahPlanners.Application
 {
@@ -35,12 +37,12 @@ namespace Paul.UtahPlanners.Application
 
         #region IPropertyService Members
 
-        public List<global::UtahPlanners.Domain.PropertiesIndex> GetAllIndecies()
+        public List<global::UtahPlanners.Domain.Entity.PropertiesIndex> GetAllIndecies()
         {
             return GetIndecies(null, null);
         }
 
-        public List<global::UtahPlanners.Domain.PropertiesIndex> GetIndecies(IndexFilter filter, IndexSort sort)
+        public List<global::UtahPlanners.Domain.Entity.PropertiesIndex> GetIndecies(IndexFilter filter, IndexSort sort)
         {
             using (var unit = _factory.CreateUnitOfWork())
             {
@@ -49,7 +51,7 @@ namespace Paul.UtahPlanners.Application
             }
         }
 
-        public global::UtahPlanners.Domain.Property GetProperty(int id)
+        public global::UtahPlanners.Domain.Entity.Property GetProperty(int id)
         {
             using (var unit = _factory.CreateUnitOfWork())
             {

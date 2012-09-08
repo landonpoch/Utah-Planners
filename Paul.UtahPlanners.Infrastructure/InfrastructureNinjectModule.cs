@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Ninject.Modules;
-using UtahPlanners.Domain;
+﻿using Ninject.Modules;
+using UtahPlanners.Domain.Contract.UnitOfWork;
+using UtahPlanners.Infrastructure.UnitOfWork;
 
 namespace UtahPlanners.Infrastructure
 {
