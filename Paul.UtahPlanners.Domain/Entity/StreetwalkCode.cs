@@ -13,7 +13,7 @@ using System.Runtime.Serialization;
 
 namespace UtahPlanners.Domain.Entity
 {
-    [DataContract]
+    [DataContract(IsReference = true)]
     public partial class StreetwalkCode
     {
         public StreetwalkCode()
