@@ -7,6 +7,7 @@ namespace UtahPlanners.MVC3.Services
 {
     public interface IServiceFactory
     {
-        IPropertyServiceProxy CreateService();
+        IPropertyServiceProxy CreatePropertyService();
+        IMembershipServiceProxy CreateMembershipService();
     }
 }

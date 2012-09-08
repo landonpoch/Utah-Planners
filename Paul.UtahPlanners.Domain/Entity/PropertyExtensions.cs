@@ -77,36 +77,4 @@ namespace UtahPlanners.Domain.Entity
             return twoFiftyAptsScore;
         }
     }
-    
-    /*
-    [DataContract(IsReference = true)]
-    public partial class Address { }
-    
-    [DataContract(IsReference = true)]
-    public partial class CommonCode { }
-
-    [DataContract(IsReference = true)]
-    public partial class EnclosureCode { }
-
-    [DataContract(IsReference = true)]
-    public partial class NeighborhoodCode { }
-    
-    [DataContract(IsReference = true)]
-    public partial class PropertyType { }
-
-    [DataContract(IsReference = true)]
-    public partial class SocioEconCode { }
-
-    [DataContract(IsReference = true)]
-    public partial class StreetconnCode { }
-
-    [DataContract(IsReference = true)]
-    public partial class StreetSafteyCode { }
-
-    [DataContract(IsReference = true)]
-    public partial class StreetType { }
-
-    [DataContract(IsReference = true)]
-    public partial class StreetwalkCode { }
-    */
 }

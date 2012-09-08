@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using UtahPlanners.Domain;
+﻿using System.Collections.Generic;
 using System.Data.Entity;
-using UtahPlanners.Domain.Entity;
+using System.Linq;
 using UtahPlanners.Domain.Contract.Repository;
+using UtahPlanners.Domain.Entity;
 
 namespace UtahPlanners.Infrastructure.Repository
 {

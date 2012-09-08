@@ -19,7 +19,7 @@ namespace UtahPlanners.MVC3.Controllers
 
         public ActionResult Default()
         {
-            var client = _factory.CreateService();
+            var client = _factory.CreatePropertyService();
             var prop = client.GetShowcaseProperty();
             return View(prop);
         }
@@ -29,7 +29,7 @@ namespace UtahPlanners.MVC3.Controllers
             if (model.ResetView)
                 return RedirectToAction("Index");
 
-            var client = _factory.CreateService();
+            var client = _factory.CreatePropertyService();
             var lookupValues = client.SafeExecution(c => c.GetLookupValues());
 
             model.PropType = proptype ?? model.PropType;
@@ -41,7 +41,7 @@ namespace UtahPlanners.MVC3.Controllers
             var sort = Convert(model.Sort);
 
             //Get index table rows, including the calculated overall score
-            client = _factory.CreateService();
+            client = _factory.CreatePropertyService();
             List<PropertyService.PropertiesIndex> indecies;
             indecies = client.SafeExecution(c => c.GetIndecies(filter, sort)).ToList();
 
@@ -61,7 +61,7 @@ namespace UtahPlanners.MVC3.Controllers
         public ActionResult Property(int id)
         {
             //Get the details for a property
-            var client = _factory.CreateService();
+            var client = _factory.CreatePropertyService();
             var property = client.SafeExecution(c => c.GetProperty(id));
             var prop = Convert(property);
             return View(prop);
@@ -74,7 +74,7 @@ namespace UtahPlanners.MVC3.Controllers
 
         public ActionResult GetPicture(int id)
         {
-            var client = _factory.CreateService();
+            var client = _factory.CreatePropertyService();
             var picture = client.GetPicture(id);
             return File(picture.binaryData, "image/png");
         }
