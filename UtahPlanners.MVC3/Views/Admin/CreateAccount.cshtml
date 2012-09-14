@@ -1,0 +1,21 @@
+﻿@model UtahPlanners.MVC3.Models.Admin.CreateAccount
+@{
+    ViewBag.Title = "CreateAccount";
+    Layout = "~/Views/Shared/_LayoutLeftNav.cshtml";
+}
+
+<h2>CreateAccount</h2>
+
+@using (Html.BeginForm("CreateAccount", "Admin", FormMethod.Post))
+{
+    @Html.LabelFor(m => m.Username)
+    @Html.TextBoxFor(m => m.Username)<br /><br />
+
+    @Html.LabelFor(m => m.Password)
+    @Html.PasswordFor(m => m.Password)<br /><br />
+
+    @Html.LabelFor(m => m.Email)
+    @Html.TextBoxFor(m => m.Email)<br /><br />
+
+    <input type="submit" value="Create Account" />
+}

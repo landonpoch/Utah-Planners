@@ -9,5 +9,6 @@ namespace UtahPlanners.MVC3.Services
     {
         IPropertyServiceProxy CreatePropertyService();
         IMembershipServiceProxy CreateMembershipService();
+        IFormsAuthenticationService CreateFormsAuthenticationService();
     }
 }

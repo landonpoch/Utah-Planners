@@ -9,7 +9,6 @@ using UtahPlanners.MVC3.Extensions;
 
 namespace UtahPlanners.MVC3.Controllers
 {
-    [Authorize]
     public class AdminController : Controller
     {
         IServiceFactory _factory;
@@ -30,13 +29,20 @@ namespace UtahPlanners.MVC3.Controllers
         {
             var client = _factory.CreateMembershipService();
 
-            if (client.SafeExecution(c => c.ValidateUser(model.Username, model.Password)))
+            if (ModelState.IsValid)
             {
-                // TODO: Set auth cookie with username
-                RedirectToAction("Admin", "Admin");
+                if (client.SafeExecution(c => c.ValidateUser(model.Username, model.Password)))
+                {
+                    var authService = _factory.CreateFormsAuthenticationService();
+                    authService.SignIn(model.Username, true);
+                    return RedirectToAction("Admin", "Admin");
+                }
+                else
+                {
+                    ModelState.AddModelError("", "Invalid username and password combination.");
+                }
             }
             
-            // TODO: Bad username/password
             return View();
         }
 
@@ -51,9 +57,22 @@ namespace UtahPlanners.MVC3.Controllers
         {
             var client = _factory.CreateMembershipService();
             var status = client.CreateUser(model.Username, model.Password, model.Email);
-            // TODO: Messaging for account creation scenarios
+
+            if (status == MembershipService.MembershipStatus.Success)
+            {
+                var authService = _factory.CreateFormsAuthenticationService();
+                authService.SignIn(model.Username, true);
+                return RedirectToAction("Admin", "Admin");
+            }
 
             return View();
+        }
+
+        public ActionResult Logout()
+        {
+            var formsAuthService = _factory.CreateFormsAuthenticationService();
+            formsAuthService.SignOut();
+            return RedirectToAction("Default", "Home");
         }
 
         [Authorize]

@@ -99,6 +99,8 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Services\FormsAuthenticationService.cs" />
+    <Compile Include="Services\IFormsAuthenticationService.cs" />
     <Compile Include="Services\IServiceFactory.cs" />
     <Compile Include="Services\ServiceFactory.cs" />
   </ItemGroup>
@@ -331,6 +333,7 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <Content Include="Views\Admin\Admin.cshtml" />
+    <Content Include="Views\Admin\CreateAccount.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Shared\_LayoutMaster.cshtml" />

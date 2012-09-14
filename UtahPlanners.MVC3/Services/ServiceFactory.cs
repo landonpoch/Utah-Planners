@@ -28,6 +28,11 @@ namespace UtahPlanners.MVC3.Services
         {
             return new MembershipServiceClient() as IMembershipServiceProxy;
         }
+
+        public IFormsAuthenticationService CreateFormsAuthenticationService()
+        {
+            return new FormsAuthenticationService();
+        }
     }
 
 }

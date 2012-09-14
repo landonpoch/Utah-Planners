@@ -27,9 +27,16 @@
 		    <!-- end div#logo -->
 		    <div id="menu">
 			    <ul>
-				    <li><a href="/Index">Index</a></li>
-				    <li><a href="/About">About</a></li>
-				    <li><a href="/Admin/Login">Login</a></li>
+				    <li>@Html.ActionLink("Index", "Index")</li>
+				    <li>@Html.ActionLink("About", "About")</li>
+				    @if (User.Identity.IsAuthenticated)
+                    {
+                        <li>@Html.ActionLink("Logout", "Logout", "Admin")</li>
+                    }
+                    else
+                    {
+                        <li>@Html.ActionLink("Login", "Login", "Admin")</li>
+                    }
 			    </ul>
 		    </div>
 		    <!-- end div#menu -->

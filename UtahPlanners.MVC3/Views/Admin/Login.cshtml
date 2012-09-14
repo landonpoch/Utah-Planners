@@ -1,7 +1,58 @@
-﻿@{
+﻿@model UtahPlanners.MVC3.Models.Admin.Login
+@{
     ViewBag.Title = "Login";
     Layout = "~/Views/Shared/_LayoutLeftNav.cshtml";
 }
 
-<h2>Login</h2>
-
+@using (Html.BeginForm("Login", "Admin", FormMethod.Post)) 
+{
+    @Html.ValidationSummary()
+    <table cellspacing="0" 
+        cellpadding="1" 
+        border="0" 
+        style="background-color:#F7F7DE;
+            border-color:#CCCC99;
+            border-width:1px;
+            border-style:Solid;
+            border-collapse:collapse;">
+	    <tbody>
+            <tr>
+		        <td>
+                    <table cellpadding="0" 
+                        border="0" 
+                        style="font-family:Verdana;
+                            font-size:10pt;">
+			            <tbody>
+                            <tr>
+				                <td align="center" colspan="2" style="color:White;background-color:#6B696B;font-weight:bold;">Log In</td>
+			                </tr>
+                            <tr>
+				                <td align="right">@Html.LabelFor(m => m.Username)</td>
+                                <td>
+                                    @Html.TextBoxFor(m => m.Username)
+                                    <span id="ctl00_ContentPlaceHolder1_Login1_UserNameRequired" title="User Name is required." style="color:Red;visibility:hidden;">*</span>
+                                </td>
+			                </tr>
+                            <tr>
+				                <td align="right">@Html.LabelFor(m => m.Password)</td>
+                                <td>
+                                    @Html.PasswordFor(m => m.Password)
+                                    <span id="ctl00_ContentPlaceHolder1_Login1_PasswordRequired" title="Password is required." style="color:Red;visibility:hidden;">*</span>
+                                </td>
+			                </tr>
+                            <tr>
+				                <td colspan="2"><input id="ctl00_ContentPlaceHolder1_Login1_RememberMe" type="checkbox" name="ctl00$ContentPlaceHolder1$Login1$RememberMe"><label for="ctl00_ContentPlaceHolder1_Login1_RememberMe">Remember me next time.</label></td>
+			                </tr>
+                            <tr>
+				                <td align="right" colspan="2"><input type="submit" value="Login" /></td>
+			                </tr>
+                            <tr>
+				                <td colspan="2"><a id="ctl00_ContentPlaceHolder1_Login1_CreateUserLink" href="CreateAccount.aspx">Create New Account</a><br><a id="ctl00_ContentPlaceHolder1_Login1_PasswordRecoveryLink" href="ForgotPassword.aspx">Forgot Password?</a></td>
+			                </tr>
+		                </tbody>
+                    </table>
+                </td>
+	        </tr>
+        </tbody>
+    </table>
+}
