@@ -103,10 +103,16 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Service References\RoleService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Services\FormsAuthenticationService.cs" />
     <Compile Include="Services\IFormsAuthenticationService.cs" />
     <Compile Include="Services\IServiceFactory.cs" />
     <Compile Include="Services\ServiceFactory.cs" />
+    <Compile Include="Services\WcfRoleProvider.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\custom.css" />
@@ -277,6 +283,13 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
+    <None Include="Service References\RoleService\RoleService.disco" />
+    <None Include="Service References\RoleService\configuration91.svcinfo" />
+    <None Include="Service References\RoleService\configuration.svcinfo" />
+    <None Include="Service References\RoleService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -340,6 +353,16 @@
     <Content Include="Views\User\CreateAccount.cshtml" />
     <Content Include="Views\User\Profile.cshtml" />
     <Content Include="Views\User\ForgotPassword.cshtml" />
+    <None Include="Service References\RoleService\RoleService.wsdl" />
+    <None Include="Service References\RoleService\RoleService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\RoleService\RoleService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\RoleService\RoleService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Home\Default.cshtml" />
@@ -368,6 +391,7 @@
   <ItemGroup>
     <WCFMetadataStorage Include="Service References\MembershipService\" />
     <WCFMetadataStorage Include="Service References\PropertyService\" />
+    <WCFMetadataStorage Include="Service References\RoleService\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\uploadify\example\uploads\" />

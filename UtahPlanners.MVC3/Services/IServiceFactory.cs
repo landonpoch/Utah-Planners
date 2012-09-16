@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using UtahPlanners.MVC3.RoleService;
 
 namespace UtahPlanners.MVC3.Services
 {
@@ -9,6 +10,7 @@ namespace UtahPlanners.MVC3.Services
     {
         IPropertyServiceProxy CreatePropertyService();
         IMembershipServiceProxy CreateMembershipService();
+        IRoleServiceProxy CreateRoleService();
         IFormsAuthenticationService CreateFormsAuthenticationService();
     }
 }

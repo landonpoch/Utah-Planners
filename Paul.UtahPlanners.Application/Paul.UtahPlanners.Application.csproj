@@ -78,6 +78,7 @@
   <ItemGroup>
     <Content Include="MembershipService.svc" />
     <Content Include="PropertyService.svc" />
+    <Content Include="RoleService.svc" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -89,6 +90,7 @@
   <ItemGroup>
     <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="IMembershipService.cs" />
+    <Compile Include="IRoleService.cs" />
     <Compile Include="MembershipService.svc.cs">
       <DependentUpon>MembershipService.svc</DependentUpon>
     </Compile>
@@ -97,6 +99,9 @@
     </Compile>
     <Compile Include="IPropertyService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RoleService.svc.cs">
+      <DependentUpon>RoleService.svc</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

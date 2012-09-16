@@ -79,6 +79,5 @@ namespace UtahPlanners.MVC3.Extensions
         {
             return String.Join("+", address.Street, address.City, address.State, address.ZipCode);
         }
-
     }
 }

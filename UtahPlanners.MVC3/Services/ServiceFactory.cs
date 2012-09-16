@@ -5,6 +5,7 @@ using System.Web;
 using UtahPlanners.MVC3.PropertyService;
 using UtahPlanners.MVC3.MembershipService;
 using System.ServiceModel;
+using UtahPlanners.MVC3.RoleService;
 
 
 namespace UtahPlanners.MVC3.Services
@@ -14,6 +15,10 @@ namespace UtahPlanners.MVC3.Services
     }
 
     public interface IMembershipServiceProxy : IMembershipService, ICommunicationObject
+    {
+    }
+
+    public interface IRoleServiceProxy : IRoleService, ICommunicationObject
     {
     }
 
@@ -27,6 +32,11 @@ namespace UtahPlanners.MVC3.Services
         public IMembershipServiceProxy CreateMembershipService()
         {
             return new MembershipServiceClient() as IMembershipServiceProxy;
+        }
+
+        public IRoleServiceProxy CreateRoleService()
+        {
+            return new RoleServiceClient() as IRoleServiceProxy;
         }
 
         public IFormsAuthenticationService CreateFormsAuthenticationService()
@@ -49,4 +59,11 @@ namespace UtahPlanners.MVC3.MembershipService
     using UtahPlanners.MVC3.Services;
 
     public partial class MembershipServiceClient : IMembershipServiceProxy {}
+}
+
+namespace UtahPlanners.MVC3.RoleService
+{
+    using UtahPlanners.MVC3.Services;
+
+    public partial class RoleServiceClient : IRoleServiceProxy {}
 }
