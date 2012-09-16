@@ -1,6 +1,27 @@
 ﻿@{
-    ViewBag.Title = "Admin";
+    Layout = "~/Views/Shared/_LayoutNoLeftNav.cshtml";
 }
 
-<h2>Admin</h2>
-
+<div style="float:left">
+    <h3>Manage Properties</h3>
+    @Html.ActionLink("Create New Property", "Property", "Admin")<br />
+    @Html.ActionLink("Edit Properties", "Property", "Admin")<br /><br />
+    
+    <h3>Manage Types</h3>
+    @Html.ActionLink("Create New Type", "Types", "Admin")<br />
+    @Html.ActionLink("Edit Types", "Types", "Admin")<br /><br />
+    
+    <h3>Manage Codes</h3>
+    @Html.ActionLink("Create New Codes", "Codes", "Admin")<br />
+    @Html.ActionLink("Edit Codes", "Codes", "Admin")<br /><br />
+    
+    <h3>Manage Weights</h3>
+    @Html.ActionLink("Edit Weight Values", "Weights", "Admin")<br /><br />
+    
+    <h3>Download Spreadsheet</h3>
+    @Html.ActionLink("Property Details.csv", "Csv", "Admin")<br /><br />
+    
+</div>
+<div class="floatright">
+<img src="@Url.Action("GetPicture", "Home", new { id = 4503 })" alt="adminPic" />
+</div>

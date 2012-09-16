@@ -1,0 +1,84 @@
+﻿@model UtahPlanners.MVC3.Models.User.Profile
+@{
+    Layout = "~/Views/Shared/_LayoutLeftNav.cshtml";
+}
+
+@using (Html.BeginForm("", "", FormMethod.Post))
+{
+<h4>USER DETAILS</h4>
+<br />
+    
+<div class="profileDetail">
+    @Html.LabelFor(m => m.FirstName, "First Name:")
+    @Html.TextBoxFor(m => m.FirstName)<br />
+    
+    @Html.LabelFor(m => m.LastName, "Last Name:")
+    @Html.TextBoxFor(m => m.LastName)<br />
+    
+    @Html.LabelFor(m => m.Username, "User Name:")
+    @Html.DisplayTextFor(m => m.Username)<br />
+    
+    @Html.LabelFor(m => m.Email, "Email:")
+    @Html.TextBoxFor(m => m.Email)<br />
+    
+    @Html.LabelFor(m => m.Role, "Role:")
+    @Html.DisplayTextFor(m => m.Role)<br />
+    
+    @Html.LabelFor(m => m.Theme, "Theme:")
+    @Html.DropDownListFor(m => m.Theme, Model.Themes)<br />
+    
+    <label for="Button1">&nbsp;</label>
+    <input type="submit" value="Submit" /><br /><br />
+</div>
+    
+<table cellspacing="0" 
+    cellpadding="1" 
+    border="0" 
+    style="background-color:#F7F7DE;
+        border-color:#CCCC99;
+        border-width:1px;
+        border-style:Solid;
+        border-collapse:collapse;">
+	<tbody>
+        <tr>
+		    <td>
+                <table cellpadding="0" border="0" style="font-family:Verdana;font-size:10pt;">
+			        <tbody>
+                        <tr>
+				            <td align="center" colspan="2" style="color:White;background-color:#6B696B;font-weight:bold;">Change Your Password</td>
+			            </tr>
+                        <tr>
+				            <td align="right"><label>Password:</label></td>
+                            <td>
+                                <input type="password" />
+                                <span title="Password is required." style="color:Red;visibility:hidden;">*</span>
+                            </td>
+			            </tr>
+                        <tr>
+				            <td align="right"><label>New Password:</label></td>
+                            <td>
+                                <input type="password" />
+                                <span title="New Password is required." style="color:Red;visibility:hidden;">*</span>
+                            </td>
+			            </tr>
+                        <tr>
+				            <td align="right"><label>Confirm New Password:</label></td>
+                            <td>
+                                <input type="password" />
+                                <span title="Confirm New Password is required." style="color:Red;visibility:hidden;">*</span>
+                            </td>
+			            </tr>
+                        <tr>
+				            <td align="center" colspan="2"><span style="color:Red;display:none;">The Confirm New Password must match the New Password entry.</span></td>
+			            </tr>
+                        <tr>
+				            <td align="right"><input type="submit" value="Change Password" /></td>
+                            <td><input type="submit" value="Cancel" /></td>
+			            </tr>
+		            </tbody>
+                </table>
+            </td>
+	    </tr>
+    </tbody>
+</table>
+}

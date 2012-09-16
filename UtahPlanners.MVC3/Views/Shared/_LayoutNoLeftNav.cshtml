@@ -32,12 +32,17 @@
                     <li class="@Html.IsActive("Index", "Home")">@Html.ActionLink("Index", "Index", "Home")</li>
                     <li class="@Html.IsActive("About", "Home")">@Html.ActionLink("About", "About", "Home")</li>
                     @if (User.Identity.IsAuthenticated)
-                    { 
-                        <li>@Html.ActionLink("Logout", "Logout", "Admin")</li>
+                    {
+                        <li class="@Html.IsActive("Profile", "User")">@Html.ActionLink("Profile", "Profile", "User")</li>
+                        if (User.IsInRole("admin"))
+                        { 
+                            <li class="@Html.IsActive("Admin", "Admin")">@Html.ActionLink("Admin", "Admin", "Admin")</li>
+                        }
+                        <li>@Html.ActionLink("Logout", "Logout", "User")</li>
                     }
                     else
                     { 
-                        <li class="@Html.IsActive("Login", "Admin")">@Html.ActionLink("Login", "Login", "Admin")</li>
+                        <li class="@Html.IsActive("Login", "User")">@Html.ActionLink("Login", "Login", "User")</li>
                     }
 	            </ul>
             </div>

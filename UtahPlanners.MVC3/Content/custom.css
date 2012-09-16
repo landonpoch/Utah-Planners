@@ -155,3 +155,17 @@ h2.active {background-position: left bottom;} /*--When toggle is triggered, it w
     padding-top: 20px;
     /*background: url(toggle_block_btm.gif) no-repeat left bottom; /*--Bottom rounded corners--*/
 }
+
+.floatright {
+	float:right;
+	margin-right:32px;
+}
+
+.profileDetail label {
+    width: 7.2em;
+    float: left;
+    text-align: right;
+    margin-right: 0.5em;
+    display: block;
+    font-weight: bold;
+}
