@@ -22,5 +22,30 @@ namespace UtahPlanners.MVC3.Controllers
         {
             return View();
         }
+
+        public ActionResult CreateCodes()
+        {
+            return View();
+        }
+
+        public ActionResult ReadCodes()
+        {
+            return View();
+        }
+
+        public ActionResult CreateTypes()
+        {
+            return View();
+        }
+
+        public ActionResult ReadTypes()
+        {
+            return View();
+        }
+
+        public ActionResult Weights()
+        {
+            return View();
+        }
     }
 }
