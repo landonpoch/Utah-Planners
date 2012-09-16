@@ -6,23 +6,13 @@ using System.Web.Security;
 using Ninject;
 using UtahPlanners.MVC3.RoleService;
 using System.Web.Mvc;
+using UtahPlanners.MVC3.Extensions;
 
 namespace UtahPlanners.MVC3.Services
 {
     public class WcfRoleProvider : RoleProvider
     {
         public IServiceFactory _factory;
-
-        private IRoleService _roleService;
-        private IRoleService RoleService
-        {
-            get
-            {
-                if (_roleService == null)
-                    _roleService = _factory.CreateRoleService();
-                return _roleService;
-            }
-        }
 
         public WcfRoleProvider()
         {
@@ -33,12 +23,14 @@ namespace UtahPlanners.MVC3.Services
 
         public override bool IsUserInRole(string username, string roleName)
         {
-            return RoleService.IsUserInRole(username, roleName);
+            var client = _factory.CreateRoleService();
+            return client.SafeExecution(c => c.IsUserInRole(username, roleName));
         }
 
         public override string[] GetRolesForUser(string username)
         {
-            return RoleService.GetRolesForUser(username);
+            var client = _factory.CreateRoleService();
+            return client.SafeExecution(c => c.GetRolesForUser(username));
         }
 
         #region Unimplemented Methods
