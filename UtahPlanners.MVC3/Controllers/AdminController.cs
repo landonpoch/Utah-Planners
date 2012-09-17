@@ -23,6 +23,16 @@ namespace UtahPlanners.MVC3.Controllers
             return View();
         }
 
+        public ActionResult CreateProperty()
+        {
+            return View();
+        }
+
+        public ActionResult EditProperty()
+        {
+            return View();
+        }
+
         public ActionResult CreateCodes()
         {
             return View();

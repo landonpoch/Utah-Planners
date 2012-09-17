@@ -368,6 +368,8 @@
     <Content Include="Views\Admin\CreateTypes.cshtml" />
     <Content Include="Views\Admin\ReadTypes.cshtml" />
     <Content Include="Views\Admin\Weights.cshtml" />
+    <Content Include="Views\Admin\CreateProperty.cshtml" />
+    <Content Include="Views\Admin\EditProperty.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Home\Default.cshtml" />

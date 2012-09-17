@@ -2,6 +2,23 @@
     ViewBag.Title = "CreateCodes";
     Layout = "~/Views/Shared/_LayoutNoLeftNav.cshtml";
 }
+                        
+    <label for="codes" class="builddetail">Codes:</label>
+    <select name="ctl00$ContentPlaceHolder1$DropDownList1" id="ctl00_ContentPlaceHolder1_DropDownList1">
+	<option value="Common Codes">Common Codes</option>
+	<option value="Enclosure Codes">Enclosure Codes</option>
+	<option value="Neighborhood Codes">Neighborhood Codes</option>
+	<option value="Streetconn Codes">Streetconn Codes</option>
+	<option value="Street Saftey Codes">Street Saftey Codes</option>
+	<option value="Streetwalk Codes">Streetwalk Codes</option>
 
-<h2>CreateCodes</h2>
-
+</select><br>
+    
+    <label for="desc" class="builddetail">Description:</label>
+    <input name="ctl00$ContentPlaceHolder1$desc" type="text" id="ctl00_ContentPlaceHolder1_desc"><br>
+    
+    <label for="weigh" class="builddetail">Weight:</label>
+    <input name="ctl00$ContentPlaceHolder1$weigh" type="text" id="ctl00_ContentPlaceHolder1_weigh"><br>
+    
+    <label for="Button1" class="builddetail">&nbsp;</label>
+    <input type="submit" name="ctl00$ContentPlaceHolder1$Button1" value="Submit" id="ctl00_ContentPlaceHolder1_Button1">

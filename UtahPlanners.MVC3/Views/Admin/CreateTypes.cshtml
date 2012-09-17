@@ -3,5 +3,14 @@
     Layout = "~/Views/Shared/_LayoutNoLeftNav.cshtml";
 }
 
-<h2>CreateTypes</h2>
+    <label for="type" class="builddetail">Type:</label>
+    <select name="ctl00$ContentPlaceHolder1$type" id="ctl00_ContentPlaceHolder1_type">
+	<option value="Property Type">Property Type</option>
+	<option value="Street Type">Street Type</option>
+	<option value="Socio-Econ Type">Socio-Econ Type</option>
 
+</select><br>
+    
+    <label for="description" class="builddetail">Description:</label>
+    <input name="ctl00$ContentPlaceHolder1$description" type="text" id="ctl00_ContentPlaceHolder1_description"><br>
+    <label for="button1" class="builddetail">&nbsp;</label><input type="submit" name="ctl00$ContentPlaceHolder1$Button1" value="Submit" id="ctl00_ContentPlaceHolder1_Button1">
