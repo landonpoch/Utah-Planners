@@ -47,6 +47,10 @@
 	            </ul>
             </div>
             <!-- end menu -->
+            @if (User.Identity.IsAuthenticated)
+            { 
+                <div class="floatright"><span>Welcome @User.Identity.Name!</span></div>
+            }
 	    </div>
 	    <!-- end div#header -->
 	    <div id="page">
