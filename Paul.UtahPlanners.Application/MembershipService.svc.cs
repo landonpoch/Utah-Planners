@@ -8,12 +8,19 @@ using System.Web.Security;
 using UtahPlanners.Domain.Entity;
 using Paul.UtahPlanners.Application.DTO;
 using System.Net.Mail;
+using UtahPlanners.Domain.Contract.Service;
 
 namespace Paul.UtahPlanners.Application
 {
     public class MembershipService : IMembershipService
     {
         private readonly MembershipProvider _provider = Membership.Provider;
+        private IEmailService _emailService;
+
+        public MembershipService(IEmailService emailService)
+        {
+            _emailService = emailService;
+        }
 
         #region IMembershipService Members
 
@@ -98,14 +105,7 @@ namespace Paul.UtahPlanners.Application
             try
             {
                 string newPassword = _provider.ResetPassword(username, answer);
-                MailMessage message = new MailMessage
-                {
-                    Body = newPassword
-                };
-                message.To.Add(new MailAddress("landon.poch@gmail.com"));
-                var client = new SmtpClient();
-                client.Send(message);
-                result = true;
+                result = _emailService.SendEmail("landon.poch@gmail.com", newPassword);
             }
             catch (MembershipPasswordException e)
             {
