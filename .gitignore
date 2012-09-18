@@ -12,6 +12,9 @@ TestResults
 *.suo
 *.user
 *.sln.docstates
+Web.Debug.config
+Web.Release.config
+
 
 # Build results
 [Dd]ebug/
@@ -36,8 +39,6 @@ x64/
 *.vspscc
 *.vssscc
 .builds
-*.Debug.config
-*.Release.config
 
 # Visual C++ cache files
 ipch/
