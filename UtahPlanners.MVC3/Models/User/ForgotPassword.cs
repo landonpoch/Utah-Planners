@@ -11,5 +11,9 @@ namespace UtahPlanners.MVC3.Models.User
         [Display(Name = "User Name")]
         [Required]
         public string Username { get; set; }
+
+        public string SecurityQuestion { get; set; }
+        
+        public string SecurityAnswer { get; set; }
     }
 }

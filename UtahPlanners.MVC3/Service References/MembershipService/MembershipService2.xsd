@@ -10,4 +10,11 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="CreateUserRequest" nillable="true" type="tns:CreateUserRequest" />
+  <xs:complexType name="User">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="SecurityQuestion" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Username" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="User" nillable="true" type="tns:User" />
 </xs:schema>

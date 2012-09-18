@@ -265,6 +265,9 @@
     <None Include="Service References\MembershipService\UtahPlanners.MVC3.MembershipService.MembershipStatus.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Service References\MembershipService\UtahPlanners.MVC3.MembershipService.User.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Service References\PropertyService\PropertyService.disco" />
     <None Include="Service References\PropertyService\configuration91.svcinfo" />
     <None Include="Service References\PropertyService\configuration.svcinfo" />

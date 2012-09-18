@@ -32,6 +32,18 @@
   <wsdl:message name="IMembershipService_ChangePassword_OutputMessage">
     <wsdl:part name="parameters" element="tns:ChangePasswordResponse" />
   </wsdl:message>
+  <wsdl:message name="IMembershipService_GetUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUser" />
+  </wsdl:message>
+  <wsdl:message name="IMembershipService_GetUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMembershipService_ResetPassword_InputMessage">
+    <wsdl:part name="parameters" element="tns:ResetPassword" />
+  </wsdl:message>
+  <wsdl:message name="IMembershipService_ResetPassword_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ResetPasswordResponse" />
+  </wsdl:message>
   <wsdl:portType name="IMembershipService">
     <wsdl:operation name="GetMinPasswordLength">
       <wsdl:input wsaw:Action="http://tempuri.org/IMembershipService/GetMinPasswordLength" message="tns:IMembershipService_GetMinPasswordLength_InputMessage" />
@@ -48,6 +60,14 @@
     <wsdl:operation name="ChangePassword">
       <wsdl:input wsaw:Action="http://tempuri.org/IMembershipService/ChangePassword" message="tns:IMembershipService_ChangePassword_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IMembershipService/ChangePasswordResponse" message="tns:IMembershipService_ChangePassword_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMembershipService/GetUser" message="tns:IMembershipService_GetUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMembershipService/GetUserResponse" message="tns:IMembershipService_GetUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ResetPassword">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMembershipService/ResetPassword" message="tns:IMembershipService_ResetPassword_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMembershipService/ResetPasswordResponse" message="tns:IMembershipService_ResetPassword_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IMembershipService" type="tns:IMembershipService">
@@ -81,6 +101,24 @@
     </wsdl:operation>
     <wsdl:operation name="ChangePassword">
       <soap:operation soapAction="http://tempuri.org/IMembershipService/ChangePassword" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUser">
+      <soap:operation soapAction="http://tempuri.org/IMembershipService/GetUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ResetPassword">
+      <soap:operation soapAction="http://tempuri.org/IMembershipService/ResetPassword" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

@@ -88,9 +88,32 @@ namespace UtahPlanners.MVC3.Controllers
             return View();
         }
 
-        public ActionResult ForgotPassword()
+        public ActionResult ForgotPassword(ForgotPassword model)
         {
-            return View();
+            if (String.IsNullOrEmpty(model.SecurityAnswer))
+            {
+                var client = _factory.CreateMembershipService();
+                var user = client.GetUser(model.Username);
+                model = new ForgotPassword
+                {
+                    Username = model.Username,
+                    SecurityQuestion = user.SecurityQuestion
+                };
+            }
+            else
+            {
+                var client = _factory.CreateMembershipService();
+                if (client.ResetPassword(model.Username, model.SecurityAnswer))
+                {
+                    // TODO: Message email sent
+                }
+                else
+                {
+                    // TODO: Invalid answer
+                }
+            }
+
+            return View(model);
         }
 
         [Authorize]

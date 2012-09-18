@@ -163,6 +163,67 @@ namespace UtahPlanners.MVC3.MembershipService {
         ProviderError = 11,
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="User", Namespace="http://schemas.datacontract.org/2004/07/Paul.UtahPlanners.Application.DTO")]
+    [System.SerializableAttribute()]
+    public partial class User : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string SecurityQuestionField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string UsernameField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string SecurityQuestion {
+            get {
+                return this.SecurityQuestionField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.SecurityQuestionField, value) != true)) {
+                    this.SecurityQuestionField = value;
+                    this.RaisePropertyChanged("SecurityQuestion");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Username {
+            get {
+                return this.UsernameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.UsernameField, value) != true)) {
+                    this.UsernameField = value;
+                    this.RaisePropertyChanged("Username");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="MembershipService.IMembershipService")]
     public interface IMembershipService {
@@ -178,6 +239,12 @@ namespace UtahPlanners.MVC3.MembershipService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMembershipService/ChangePassword", ReplyAction="http://tempuri.org/IMembershipService/ChangePasswordResponse")]
         bool ChangePassword(string userName, string oldPassword, string newPassword);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMembershipService/GetUser", ReplyAction="http://tempuri.org/IMembershipService/GetUserResponse")]
+        UtahPlanners.MVC3.MembershipService.User GetUser(string username);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMembershipService/ResetPassword", ReplyAction="http://tempuri.org/IMembershipService/ResetPasswordResponse")]
+        bool ResetPassword(string username, string answer);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -221,6 +288,14 @@ namespace UtahPlanners.MVC3.MembershipService {
         
         public bool ChangePassword(string userName, string oldPassword, string newPassword) {
             return base.Channel.ChangePassword(userName, oldPassword, newPassword);
+        }
+        
+        public UtahPlanners.MVC3.MembershipService.User GetUser(string username) {
+            return base.Channel.GetUser(username);
+        }
+        
+        public bool ResetPassword(string username, string answer) {
+            return base.Channel.ResetPassword(username, answer);
         }
     }
 }

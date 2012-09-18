@@ -7,6 +7,7 @@ using System.Text;
 using System.Web.Security;
 using UtahPlanners.Domain.Entity;
 using Paul.UtahPlanners.Application.DTO;
+using System.Net.Mail;
 
 namespace Paul.UtahPlanners.Application
 {
@@ -23,8 +24,10 @@ namespace Paul.UtahPlanners.Application
 
         public bool ValidateUser(string userName, string password)
         {
-            if (String.IsNullOrEmpty(userName)) throw new ArgumentException("Value cannot be null or empty.", "userName");
-            if (String.IsNullOrEmpty(password)) throw new ArgumentException("Value cannot be null or empty.", "password");
+            if (String.IsNullOrEmpty(userName)) 
+                throw new ArgumentException("Value cannot be null or empty.", "userName");
+            if (String.IsNullOrEmpty(password)) 
+                throw new ArgumentException("Value cannot be null or empty.", "password");
 
             return _provider.ValidateUser(userName, password);
         }
@@ -78,6 +81,49 @@ namespace Paul.UtahPlanners.Application
             }
         }
 
+        public User GetUser(string username)
+        {
+            var user = _provider.GetUser(username, false);
+            return Convert(user);
+        }
+
+        public bool ResetPassword(string username, string answer)
+        {
+            if (String.IsNullOrEmpty(username))
+                throw new ArgumentException("Value cannot be null or empty.", "username");
+            if (String.IsNullOrEmpty(answer))
+                throw new ArgumentException("Value cannot be null or empty.", "answer");
+
+            bool result = false;
+            try
+            {
+                string newPassword = _provider.ResetPassword(username, answer);
+                MailMessage message = new MailMessage
+                {
+                    Body = newPassword
+                };
+                message.To.Add(new MailAddress("landon.poch@gmail.com"));
+                var client = new SmtpClient();
+                client.Send(message);
+                result = true;
+            }
+            catch (MembershipPasswordException e)
+            {
+                result = false;
+            }
+            return result;
+        }
+
         #endregion
+
+        private User Convert(MembershipUser user)
+        {
+            
+            return new User
+            {
+                Username = user.UserName,
+                SecurityQuestion = user.PasswordQuestion
+            };
+        }
     }
 }

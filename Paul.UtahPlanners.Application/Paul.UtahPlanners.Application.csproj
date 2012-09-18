@@ -90,6 +90,7 @@
   <ItemGroup>
     <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="DTO\CreateUserRequest.cs" />
+    <Compile Include="DTO\User.cs" />
     <Compile Include="IMembershipService.cs" />
     <Compile Include="IRoleService.cs" />
     <Compile Include="MembershipService.svc.cs">
