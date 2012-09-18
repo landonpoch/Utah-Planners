@@ -44,6 +44,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Contract\Service\IEmailService.cs" />
     <Compile Include="Entity\Address.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>

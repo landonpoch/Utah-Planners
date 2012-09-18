@@ -14,6 +14,7 @@ TestResults
 *.sln.docstates
 Web.Debug.config
 Web.Release.config
+smtp.config
 
 # Build results
 [Dd]ebug/

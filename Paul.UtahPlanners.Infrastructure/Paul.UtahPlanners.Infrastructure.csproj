@@ -66,6 +66,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Repository.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Service\EmailService.cs" />
     <Compile Include="UnitOfWork\UnitOfWork.cs" />
     <Compile Include="UnitOfWork\UnitOfWorkFactory.cs" />
   </ItemGroup>
