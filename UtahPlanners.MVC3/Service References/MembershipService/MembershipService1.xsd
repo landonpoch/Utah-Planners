@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:import schemaLocation="http://localhost:3109/MembershipService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/UtahPlanners.Domain.Entity" />
+  <xs:import schemaLocation="http://localhost:3109/MembershipService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Paul.UtahPlanners.Application.DTO" />
+  <xs:import schemaLocation="http://localhost:3109/MembershipService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/UtahPlanners.Domain.Entity" />
   <xs:element name="GetMinPasswordLength">
     <xs:complexType>
       <xs:sequence />
@@ -31,16 +32,14 @@
   <xs:element name="CreateUser">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="userName" nillable="true" type="xs:string" />
-        <xs:element minOccurs="0" name="password" nillable="true" type="xs:string" />
-        <xs:element minOccurs="0" name="email" nillable="true" type="xs:string" />
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/Paul.UtahPlanners.Application.DTO" minOccurs="0" name="request" nillable="true" type="q1:CreateUserRequest" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="CreateUserResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/UtahPlanners.Domain.Entity" minOccurs="0" name="CreateUserResult" type="q1:MembershipStatus" />
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/UtahPlanners.Domain.Entity" minOccurs="0" name="CreateUserResult" type="q2:MembershipStatus" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

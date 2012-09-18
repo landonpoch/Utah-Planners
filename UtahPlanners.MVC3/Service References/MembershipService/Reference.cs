@@ -10,7 +10,117 @@
 
 namespace UtahPlanners.MVC3.MembershipService {
     using System.Runtime.Serialization;
+    using System;
     
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="CreateUserRequest", Namespace="http://schemas.datacontract.org/2004/07/Paul.UtahPlanners.Application.DTO")]
+    [System.SerializableAttribute()]
+    public partial class CreateUserRequest : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string EmailField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string PasswordField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string SecurityAnswerField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string SecurityQuestionField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string UsernameField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Email {
+            get {
+                return this.EmailField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.EmailField, value) != true)) {
+                    this.EmailField = value;
+                    this.RaisePropertyChanged("Email");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Password {
+            get {
+                return this.PasswordField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.PasswordField, value) != true)) {
+                    this.PasswordField = value;
+                    this.RaisePropertyChanged("Password");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string SecurityAnswer {
+            get {
+                return this.SecurityAnswerField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.SecurityAnswerField, value) != true)) {
+                    this.SecurityAnswerField = value;
+                    this.RaisePropertyChanged("SecurityAnswer");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string SecurityQuestion {
+            get {
+                return this.SecurityQuestionField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.SecurityQuestionField, value) != true)) {
+                    this.SecurityQuestionField = value;
+                    this.RaisePropertyChanged("SecurityQuestion");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Username {
+            get {
+                return this.UsernameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.UsernameField, value) != true)) {
+                    this.UsernameField = value;
+                    this.RaisePropertyChanged("Username");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="MembershipStatus", Namespace="http://schemas.datacontract.org/2004/07/UtahPlanners.Domain.Entity")]
@@ -64,7 +174,7 @@ namespace UtahPlanners.MVC3.MembershipService {
         bool ValidateUser(string userName, string password);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMembershipService/CreateUser", ReplyAction="http://tempuri.org/IMembershipService/CreateUserResponse")]
-        UtahPlanners.MVC3.MembershipService.MembershipStatus CreateUser(string userName, string password, string email);
+        UtahPlanners.MVC3.MembershipService.MembershipStatus CreateUser(UtahPlanners.MVC3.MembershipService.CreateUserRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMembershipService/ChangePassword", ReplyAction="http://tempuri.org/IMembershipService/ChangePasswordResponse")]
         bool ChangePassword(string userName, string oldPassword, string newPassword);
@@ -105,8 +215,8 @@ namespace UtahPlanners.MVC3.MembershipService {
             return base.Channel.ValidateUser(userName, password);
         }
         
-        public UtahPlanners.MVC3.MembershipService.MembershipStatus CreateUser(string userName, string password, string email) {
-            return base.Channel.CreateUser(userName, password, email);
+        public UtahPlanners.MVC3.MembershipService.MembershipStatus CreateUser(UtahPlanners.MVC3.MembershipService.CreateUserRequest request) {
+            return base.Channel.CreateUser(request);
         }
         
         public bool ChangePassword(string userName, string oldPassword, string newPassword) {

@@ -259,6 +259,9 @@
     <None Include="Service References\MembershipService\MembershipService2.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Service References\MembershipService\MembershipService3.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\MembershipService\UtahPlanners.MVC3.MembershipService.MembershipStatus.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>

@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using UtahPlanners.MVC3.Services;
 using UtahPlanners.MVC3.Models.User;
 using UtahPlanners.MVC3.Extensions;
+using UtahPlanners.MVC3.MembershipService;
 
 namespace UtahPlanners.MVC3.Controllers
 {
@@ -65,15 +66,25 @@ namespace UtahPlanners.MVC3.Controllers
         public ActionResult CreateAccount(CreateAccount model)
         {
             var client = _factory.CreateMembershipService();
-            var status = client.CreateUser(model.Username, model.Password, model.Email);
+            
+            var request = new CreateUserRequest
+            {
+                Username = model.Username,
+                Password = model.Password,
+                Email = model.Email,
+                SecurityQuestion = model.SecurityQuestion,
+                SecurityAnswer = model.SecurityAnswer
+            };
+            var status = client.CreateUser(request);
 
             if (status == MembershipService.MembershipStatus.Success)
             {
                 var authService = _factory.CreateFormsAuthenticationService();
                 authService.SignIn(model.Username, true);
-                return RedirectToAction("Admin", "Admin");
+                return RedirectToAction("Default", "Home");
             }
 
+            // TODO: Validation Errors
             return View();
         }
 

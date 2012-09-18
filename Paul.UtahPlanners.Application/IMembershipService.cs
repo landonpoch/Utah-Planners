@@ -5,6 +5,7 @@ using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
 using UtahPlanners.Domain.Entity;
+using Paul.UtahPlanners.Application.DTO;
 
 namespace Paul.UtahPlanners.Application
 {
@@ -18,7 +19,7 @@ namespace Paul.UtahPlanners.Application
         bool ValidateUser(string userName, string password);
 
         [OperationContract]
-        MembershipStatus CreateUser(string userName, string password, string email);
+        MembershipStatus CreateUser(CreateUserRequest request);
 
         [OperationContract]
         bool ChangePassword(string userName, string oldPassword, string newPassword);
