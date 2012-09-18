@@ -15,7 +15,6 @@ TestResults
 Web.Debug.config
 Web.Release.config
 
-
 # Build results
 [Dd]ebug/
 [Rr]elease/
