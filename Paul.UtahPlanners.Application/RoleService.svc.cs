@@ -10,14 +10,21 @@ namespace Paul.UtahPlanners.Application
 {
     public class RoleService : IRoleService
     {
+        private IRoleService _roleService;
+
+        public RoleService(IRoleService roleService)
+        {
+            _roleService = roleService;
+        }
+
         public bool IsUserInRole(string username, string roleName)
         {
-            return Roles.IsUserInRole(username, roleName);
+            return _roleService.IsUserInRole(username, roleName);
         }
 
         public string[] GetRolesForUser(string username)
         {
-            return Roles.GetRolesForUser(username);
+            return _roleService.GetRolesForUser(username);
         }
     }
 }

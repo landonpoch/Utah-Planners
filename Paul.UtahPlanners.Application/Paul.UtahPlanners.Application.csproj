@@ -108,6 +108,7 @@
     <Compile Include="RoleService.svc.cs">
       <DependentUpon>RoleService.svc</DependentUpon>
     </Compile>
+    <Compile Include="Service\DefaultRoleService.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

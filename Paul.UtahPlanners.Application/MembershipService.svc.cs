@@ -9,6 +9,8 @@ using UtahPlanners.Domain.Entity;
 using Paul.UtahPlanners.Application.DTO;
 using System.Net.Mail;
 using UtahPlanners.Domain.Contract.Service;
+using System.Web;
+using System.Web.Profile;
 
 namespace Paul.UtahPlanners.Application
 {
@@ -16,10 +18,12 @@ namespace Paul.UtahPlanners.Application
     {
         private readonly MembershipProvider _provider = Membership.Provider;
         private IEmailService _emailService;
+        private IRoleService _roleService;
 
-        public MembershipService(IEmailService emailService)
+        public MembershipService(IEmailService emailService, IRoleService roleService)
         {
             _emailService = emailService;
+            _roleService = roleService;
         }
 
         #region IMembershipService Members
@@ -67,9 +71,12 @@ namespace Paul.UtahPlanners.Application
 
         public bool ChangePassword(string userName, string oldPassword, string newPassword)
         {
-            if (String.IsNullOrEmpty(userName)) throw new ArgumentException("Value cannot be null or empty.", "userName");
-            if (String.IsNullOrEmpty(oldPassword)) throw new ArgumentException("Value cannot be null or empty.", "oldPassword");
-            if (String.IsNullOrEmpty(newPassword)) throw new ArgumentException("Value cannot be null or empty.", "newPassword");
+            if (String.IsNullOrEmpty(userName)) 
+                throw new ArgumentException("Value cannot be null or empty.", "userName");
+            if (String.IsNullOrEmpty(oldPassword)) 
+                throw new ArgumentException("Value cannot be null or empty.", "oldPassword");
+            if (String.IsNullOrEmpty(newPassword)) 
+                throw new ArgumentException("Value cannot be null or empty.", "newPassword");
 
             // The underlying ChangePassword() will throw an exception rather
             // than return false in certain failure scenarios.
@@ -118,11 +125,14 @@ namespace Paul.UtahPlanners.Application
 
         private User Convert(MembershipUser user)
         {
-            
+            ProfileBase profile = ProfileBase.Create(user.UserName, true);
             return new User
             {
                 Username = user.UserName,
+                FirstName = profile["fname"] != null ? profile["fname"].ToString() : String.Empty,
+                LastName = profile["lname"] != null ? profile["lname"].ToString() : String.Empty,
                 Email = user.Email,
+                Role = _roleService.GetRolesForUser(user.UserName).FirstOrDefault(),
                 SecurityQuestion = user.PasswordQuestion
             };
         }

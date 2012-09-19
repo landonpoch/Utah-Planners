@@ -13,6 +13,7 @@ namespace Paul.UtahPlanners.Application.App_Start
     using Ninject.Web.Common;
     using System.Collections.Generic;
     using System.Reflection;
+    using Paul.UtahPlanners.Application.Service;
 
     public static class NinjectWebCommon 
     {
@@ -61,6 +62,8 @@ namespace Paul.UtahPlanners.Application.App_Start
                 .ToList()
                 .Where(a => a.FullName.Contains("UtahPlanners"));
             kernel.Load(assemblies);
+
+            kernel.Bind<IRoleService>().To<DefaultRoleService>();
         }        
     }
 }

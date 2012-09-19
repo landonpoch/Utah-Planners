@@ -124,11 +124,33 @@ namespace UtahPlanners.MVC3.Controllers
         [Authorize]
         public ActionResult Profile()
         {
+            var client = _factory.CreateMembershipService();
+            User user = client.GetUser(User.Identity.Name);
             var profile = new Profile
             {
-                Themes = new SelectList(_themes, "Value", "Text")
+                Username = user.Username,
+                FirstName = user.FirstName,
+                LastName = user.LastName,
+                Email = user.Email,
+                Role = user.Role,
+                Themes = new SelectList(_themes, "Value", "Text"),
             };
             return View(profile);
+        }
+
+        [Authorize]
+        [HttpPost]
+        public ActionResult Profile(Profile model)
+        {
+            var client = _factory.CreateMembershipService();
+            bool result = client.SafeExecution(c => c.ChangePassword(model.Username, model.OldPassword, model.NewPassword1));
+
+            model = new Profile
+            {
+                Username = model.Username,
+                Themes = new SelectList(_themes, "Value", "Text"),
+            };
+            return View(model);
         }
 
         public ActionResult Logout()

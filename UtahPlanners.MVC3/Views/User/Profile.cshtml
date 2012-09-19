@@ -16,7 +16,8 @@
     @Html.TextBoxFor(m => m.LastName)<br />
     
     @Html.LabelFor(m => m.Username, "User Name:")
-    @Html.DisplayTextFor(m => m.Username)<br />
+    @Html.DisplayTextFor(m => m.Username)
+    @Html.HiddenFor(m => m.Username)<br />
     
     @Html.LabelFor(m => m.Email, "Email:")
     @Html.TextBoxFor(m => m.Email)<br />
@@ -50,21 +51,21 @@
                         <tr>
 				            <td align="right"><label>Password:</label></td>
                             <td>
-                                <input type="password" />
+                                @Html.PasswordFor(m => m.OldPassword)
                                 <span title="Password is required." style="color:Red;visibility:hidden;">*</span>
                             </td>
 			            </tr>
                         <tr>
 				            <td align="right"><label>New Password:</label></td>
                             <td>
-                                <input type="password" />
+                                @Html.PasswordFor(m => m.NewPassword1)
                                 <span title="New Password is required." style="color:Red;visibility:hidden;">*</span>
                             </td>
 			            </tr>
                         <tr>
 				            <td align="right"><label>Confirm New Password:</label></td>
                             <td>
-                                <input type="password" />
+                                @Html.PasswordFor(m => m.NewPassword2)
                                 <span title="Confirm New Password is required." style="color:Red;visibility:hidden;">*</span>
                             </td>
 			            </tr>
