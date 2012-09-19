@@ -9,17 +9,20 @@ namespace UtahPlanners.Infrastructure.Service
 {
     public class EmailService : IEmailService
     {
+        private const string ResetPasswordEmailSubject = "Utahplanners.com - Password Reset";
+        private const string ResetPasswordEmailBody = "{0},\r\n\r\nYour Utahplanners.com password has been reset.  Your new temporary password is:\r\n\r\n{1}";
 
         #region IEmailService Members
 
-        public bool SendEmail(string toEmail, string body)
+        public bool SendResetEmail(string username, string toEmail, string password)
         {
             try
             {
                 var client = new SmtpClient();
                 MailMessage message = new MailMessage
                 {
-                    Body = body
+                    Subject = ResetPasswordEmailSubject,
+                    Body = String.Format(ResetPasswordEmailBody, username, password),
                 };
                 message.To.Add(new MailAddress(toEmail));
                 client.Send(message);

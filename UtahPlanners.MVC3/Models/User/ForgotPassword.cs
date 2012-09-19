@@ -12,8 +12,12 @@ namespace UtahPlanners.MVC3.Models.User
         [Required]
         public string Username { get; set; }
 
+        public string Email { get; set; }
+
         public string SecurityQuestion { get; set; }
         
         public string SecurityAnswer { get; set; }
+
+        public bool ResetSuccessful { get; set; }
     }
 }

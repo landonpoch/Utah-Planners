@@ -173,6 +173,9 @@ namespace UtahPlanners.MVC3.MembershipService {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string EmailField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string SecurityQuestionField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -185,6 +188,19 @@ namespace UtahPlanners.MVC3.MembershipService {
             }
             set {
                 this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Email {
+            get {
+                return this.EmailField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.EmailField, value) != true)) {
+                    this.EmailField = value;
+                    this.RaisePropertyChanged("Email");
+                }
             }
         }
         
@@ -244,7 +260,7 @@ namespace UtahPlanners.MVC3.MembershipService {
         UtahPlanners.MVC3.MembershipService.User GetUser(string username);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMembershipService/ResetPassword", ReplyAction="http://tempuri.org/IMembershipService/ResetPasswordResponse")]
-        bool ResetPassword(string username, string answer);
+        bool ResetPassword(string username, string email, string answer);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -294,8 +310,8 @@ namespace UtahPlanners.MVC3.MembershipService {
             return base.Channel.GetUser(username);
         }
         
-        public bool ResetPassword(string username, string answer) {
-            return base.Channel.ResetPassword(username, answer);
+        public bool ResetPassword(string username, string email, string answer) {
+            return base.Channel.ResetPassword(username, email, answer);
         }
     }
 }

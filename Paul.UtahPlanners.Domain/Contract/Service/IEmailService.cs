@@ -7,6 +7,6 @@ namespace UtahPlanners.Domain.Contract.Service
 {
     public interface IEmailService
     {
-        bool SendEmail(string toEmail, string body);
+        bool SendResetEmail(string username, string toEmail, string password);
     }
 }

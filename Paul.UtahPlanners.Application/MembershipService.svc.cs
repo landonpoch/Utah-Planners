@@ -94,7 +94,7 @@ namespace Paul.UtahPlanners.Application
             return Convert(user);
         }
 
-        public bool ResetPassword(string username, string answer)
+        public bool ResetPassword(string username, string email, string answer)
         {
             if (String.IsNullOrEmpty(username))
                 throw new ArgumentException("Value cannot be null or empty.", "username");
@@ -105,7 +105,7 @@ namespace Paul.UtahPlanners.Application
             try
             {
                 string newPassword = _provider.ResetPassword(username, answer);
-                result = _emailService.SendEmail("landon.poch@gmail.com", newPassword);
+                result = _emailService.SendResetEmail(username, email, newPassword);
             }
             catch (MembershipPasswordException e)
             {
@@ -122,6 +122,7 @@ namespace Paul.UtahPlanners.Application
             return new User
             {
                 Username = user.UserName,
+                Email = user.Email,
                 SecurityQuestion = user.PasswordQuestion
             };
         }
