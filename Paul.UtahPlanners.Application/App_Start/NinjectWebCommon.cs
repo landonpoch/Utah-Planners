@@ -14,6 +14,7 @@ namespace Paul.UtahPlanners.Application.App_Start
     using System.Collections.Generic;
     using System.Reflection;
     using Paul.UtahPlanners.Application.Service;
+    using Paul.UtahPlanners.Application.Contract;
 
     public static class NinjectWebCommon 
     {
@@ -63,7 +64,9 @@ namespace Paul.UtahPlanners.Application.App_Start
                 .Where(a => a.FullName.Contains("UtahPlanners"));
             kernel.Load(assemblies);
 
+            kernel.Bind<IMembershipService>().To<DefaultMembershipService>();
+            kernel.Bind<IProfileService>().To<DefaultProfileService>();
             kernel.Bind<IRoleService>().To<DefaultRoleService>();
-        }        
+        }
     }
 }

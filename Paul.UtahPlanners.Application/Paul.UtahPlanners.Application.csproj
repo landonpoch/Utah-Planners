@@ -80,9 +80,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="MembershipService.svc" />
+    <Content Include="UserService.svc" />
     <Content Include="PropertyService.svc" />
-    <Content Include="RoleService.svc" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -93,21 +92,23 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\NinjectWebCommon.cs" />
+    <Compile Include="Contract\IProfileService.cs" />
     <Compile Include="DTO\CreateUserRequest.cs" />
     <Compile Include="DTO\User.cs" />
-    <Compile Include="IMembershipService.cs" />
-    <Compile Include="IRoleService.cs" />
-    <Compile Include="MembershipService.svc.cs">
-      <DependentUpon>MembershipService.svc</DependentUpon>
+    <Compile Include="DTO\UserProfile.cs" />
+    <Compile Include="Contract\IMembershipService.cs" />
+    <Compile Include="Contract\IRoleService.cs" />
+    <Compile Include="IUserService.cs" />
+    <Compile Include="UserService.svc.cs">
+      <DependentUpon>UserService.svc</DependentUpon>
     </Compile>
     <Compile Include="PropertyService.svc.cs">
       <DependentUpon>PropertyService.svc</DependentUpon>
     </Compile>
     <Compile Include="IPropertyService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RoleService.svc.cs">
-      <DependentUpon>RoleService.svc</DependentUpon>
-    </Compile>
+    <Compile Include="Service\DefaultMembershipService.cs" />
+    <Compile Include="Service\DefaultProfileService.cs" />
     <Compile Include="Service\DefaultRoleService.cs" />
   </ItemGroup>
   <ItemGroup>

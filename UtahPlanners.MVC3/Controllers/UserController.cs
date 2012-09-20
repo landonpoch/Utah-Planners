@@ -6,7 +6,7 @@ using System.Web.Mvc;
 using UtahPlanners.MVC3.Services;
 using UtahPlanners.MVC3.Models.User;
 using UtahPlanners.MVC3.Extensions;
-using UtahPlanners.MVC3.MembershipService;
+using UtahPlanners.MVC3.UserService;
 
 namespace UtahPlanners.MVC3.Controllers
 {
@@ -37,7 +37,7 @@ namespace UtahPlanners.MVC3.Controllers
         [HttpPost]
         public ActionResult Login(Login model)
         {
-            var client = _factory.CreateMembershipService();
+            var client = _factory.CreateUserService();
 
             if (ModelState.IsValid)
             {
@@ -65,7 +65,7 @@ namespace UtahPlanners.MVC3.Controllers
         [HttpPost]
         public ActionResult CreateAccount(CreateAccount model)
         {
-            var client = _factory.CreateMembershipService();
+            var client = _factory.CreateUserService();
             
             var request = new CreateUserRequest
             {
@@ -77,7 +77,7 @@ namespace UtahPlanners.MVC3.Controllers
             };
             var status = client.CreateUser(request);
 
-            if (status == MembershipService.MembershipStatus.Success)
+            if (status == MembershipStatus.Success)
             {
                 var authService = _factory.CreateFormsAuthenticationService();
                 authService.SignIn(model.Username, true);
@@ -93,7 +93,7 @@ namespace UtahPlanners.MVC3.Controllers
             if (String.IsNullOrEmpty(model.SecurityAnswer)
                 && !String.IsNullOrEmpty(model.Username))
             {
-                var client = _factory.CreateMembershipService();
+                var client = _factory.CreateUserService();
                 var user = client.GetUser(model.Username);
                 model = new ForgotPassword
                 {
@@ -107,7 +107,7 @@ namespace UtahPlanners.MVC3.Controllers
                 && !String.IsNullOrEmpty(model.Email)
                 && !String.IsNullOrEmpty(model.SecurityAnswer))
             {
-                var client = _factory.CreateMembershipService();
+                var client = _factory.CreateUserService();
                 bool result = client.ResetPassword(model.Username, model.Email, model.SecurityAnswer);
                 model = new ForgotPassword
                 {
@@ -124,13 +124,13 @@ namespace UtahPlanners.MVC3.Controllers
         [Authorize]
         public ActionResult Profile()
         {
-            var client = _factory.CreateMembershipService();
+            var client = _factory.CreateUserService();
             User user = client.GetUser(User.Identity.Name);
             var profile = new Profile
             {
                 Username = user.Username,
-                FirstName = user.FirstName,
-                LastName = user.LastName,
+                FirstName = user.UserProfile.FirstName,
+                LastName = user.UserProfile.LastName,
                 Email = user.Email,
                 Role = user.Role,
                 Themes = new SelectList(_themes, "Value", "Text"),
@@ -142,7 +142,7 @@ namespace UtahPlanners.MVC3.Controllers
         [HttpPost]
         public ActionResult Profile(Profile model)
         {
-            var client = _factory.CreateMembershipService();
+            var client = _factory.CreateUserService();
             bool result = client.SafeExecution(c => c.ChangePassword(model.Username, model.OldPassword, model.NewPassword1));
 
             model = new Profile

@@ -11,26 +11,33 @@ using System.Net.Mail;
 using UtahPlanners.Domain.Contract.Service;
 using System.Web;
 using System.Web.Profile;
+using Paul.UtahPlanners.Application.Contract;
 
 namespace Paul.UtahPlanners.Application
 {
-    public class MembershipService : IMembershipService
+    public class UserService : IUserService
     {
-        private readonly MembershipProvider _provider = Membership.Provider;
-        private IEmailService _emailService;
+        private IMembershipService _membershipService;
+        private IProfileService _profileService;
         private IRoleService _roleService;
+        private IEmailService _emailService;
 
-        public MembershipService(IEmailService emailService, IRoleService roleService)
+        public UserService(IMembershipService membershipService,
+            IProfileService profileService,
+            IRoleService roleService,
+            IEmailService emailService)
         {
-            _emailService = emailService;
+            _membershipService = membershipService;
+            _profileService = profileService;
             _roleService = roleService;
+            _emailService = emailService;
         }
 
-        #region IMembershipService Members
+        #region IUserService Members
 
         public int GetMinPasswordLength()
         {
-            return _provider.MinRequiredPasswordLength;
+            return _membershipService.GetMinPasswordLength();
         }
 
         public bool ValidateUser(string userName, string password)
@@ -40,10 +47,10 @@ namespace Paul.UtahPlanners.Application
             if (String.IsNullOrEmpty(password)) 
                 throw new ArgumentException("Value cannot be null or empty.", "password");
 
-            return _provider.ValidateUser(userName, password);
+            return _membershipService.ValidateUser(userName, password);
         }
 
-        public global::UtahPlanners.Domain.Entity.MembershipStatus CreateUser(CreateUserRequest request)
+        public MembershipStatus CreateUser(CreateUserRequest request)
         {
             if (String.IsNullOrEmpty(request.Username)) 
                 throw new ArgumentException("Value cannot be null or empty.", "userName");
@@ -56,17 +63,7 @@ namespace Paul.UtahPlanners.Application
             if (String.IsNullOrEmpty(request.SecurityAnswer))
                 throw new ArgumentException("Value cannot be null or empty.", "securityAnswer");
 
-            MembershipCreateStatus status;
-            _provider.CreateUser(request.Username, 
-                request.Password, 
-                request.Email, 
-                request.SecurityQuestion, 
-                request.SecurityAnswer, 
-                true, 
-                null, 
-                out status);
-
-            return (MembershipStatus)(int)status;
+            return _membershipService.CreateUser(request);
         }
 
         public bool ChangePassword(string userName, string oldPassword, string newPassword)
@@ -82,8 +79,8 @@ namespace Paul.UtahPlanners.Application
             // than return false in certain failure scenarios.
             try
             {
-                MembershipUser currentUser = _provider.GetUser(userName, true /* userIsOnline */);
-                return currentUser.ChangePassword(oldPassword, newPassword);
+                User currentUser = _membershipService.GetUser(userName);
+                return _membershipService.ChangePassword(userName, oldPassword, newPassword);
             }
             catch (ArgumentException)
             {
@@ -97,8 +94,12 @@ namespace Paul.UtahPlanners.Application
 
         public User GetUser(string username)
         {
-            var user = _provider.GetUser(username, false);
-            return Convert(user);
+            var user = _membershipService.GetUser(username);
+            var profile = _profileService.GetUserProfile(user.Username);
+            var role = _roleService.GetRolesForUser(user.Username);
+            user.UserProfile = profile;
+            user.Role = role.FirstOrDefault();
+            return user;
         }
 
         public bool ResetPassword(string username, string email, string answer)
@@ -111,7 +112,7 @@ namespace Paul.UtahPlanners.Application
             bool result = false;
             try
             {
-                string newPassword = _provider.ResetPassword(username, answer);
+                string newPassword = _membershipService.ResetPassword(username, answer);
                 result = _emailService.SendResetEmail(username, email, newPassword);
             }
             catch (MembershipPasswordException e)
@@ -121,20 +122,16 @@ namespace Paul.UtahPlanners.Application
             return result;
         }
 
-        #endregion
-
-        private User Convert(MembershipUser user)
+        public bool IsUserInRole(string username, string roleName)
         {
-            ProfileBase profile = ProfileBase.Create(user.UserName, true);
-            return new User
-            {
-                Username = user.UserName,
-                FirstName = profile["fname"] != null ? profile["fname"].ToString() : String.Empty,
-                LastName = profile["lname"] != null ? profile["lname"].ToString() : String.Empty,
-                Email = user.Email,
-                Role = _roleService.GetRolesForUser(user.UserName).FirstOrDefault(),
-                SecurityQuestion = user.PasswordQuestion
-            };
+            return _roleService.IsUserInRole(username, roleName);
         }
+
+        public string[] GetRolesForUser(string username)
+        {
+            return _roleService.GetRolesForUser(username);
+        }
+
+        #endregion
     }
 }

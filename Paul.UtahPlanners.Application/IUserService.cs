@@ -1,16 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.Serialization;
+using System.Web;
 using System.ServiceModel;
-using System.Text;
 using UtahPlanners.Domain.Entity;
 using Paul.UtahPlanners.Application.DTO;
 
 namespace Paul.UtahPlanners.Application
 {
     [ServiceContract]
-    public interface IMembershipService
+    public interface IUserService
     {
         [OperationContract]
         int GetMinPasswordLength();
@@ -29,5 +28,11 @@ namespace Paul.UtahPlanners.Application
 
         [OperationContract]
         bool ResetPassword(string username, string email, string answer);
+
+        [OperationContract]
+        bool IsUserInRole(string username, string roleName);
+
+        [OperationContract]
+        string[] GetRolesForUser(string username);
     }
 }

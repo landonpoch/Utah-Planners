@@ -3,9 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using UtahPlanners.MVC3.PropertyService;
-using UtahPlanners.MVC3.MembershipService;
 using System.ServiceModel;
-using UtahPlanners.MVC3.RoleService;
+using UtahPlanners.MVC3.UserService;
 
 
 namespace UtahPlanners.MVC3.Services
@@ -14,11 +13,7 @@ namespace UtahPlanners.MVC3.Services
     {
     }
 
-    public interface IMembershipServiceProxy : IMembershipService, ICommunicationObject
-    {
-    }
-
-    public interface IRoleServiceProxy : IRoleService, ICommunicationObject
+    public interface IUserServiceProxy : IUserService, ICommunicationObject
     {
     }
 
@@ -29,14 +24,9 @@ namespace UtahPlanners.MVC3.Services
             return new PropertyServiceClient() as IPropertyServiceProxy;
         }
 
-        public IMembershipServiceProxy CreateMembershipService()
+        public IUserServiceProxy CreateUserService()
         {
-            return new MembershipServiceClient() as IMembershipServiceProxy;
-        }
-
-        public IRoleServiceProxy CreateRoleService()
-        {
-            return new RoleServiceClient() as IRoleServiceProxy;
+            return new UserServiceClient() as IUserServiceProxy;
         }
 
         public IFormsAuthenticationService CreateFormsAuthenticationService()
@@ -54,16 +44,9 @@ namespace UtahPlanners.MVC3.PropertyService
     public partial class PropertyServiceClient : IPropertyServiceProxy {} // This is required to be able to cast the object to the interface
 }
 
-namespace UtahPlanners.MVC3.MembershipService
+namespace UtahPlanners.MVC3.UserService
 {
     using UtahPlanners.MVC3.Services;
 
-    public partial class MembershipServiceClient : IMembershipServiceProxy {}
-}
-
-namespace UtahPlanners.MVC3.RoleService
-{
-    using UtahPlanners.MVC3.Services;
-
-    public partial class RoleServiceClient : IRoleServiceProxy {}
+    public partial class UserServiceClient : IUserServiceProxy {}
 }

@@ -4,7 +4,6 @@ using System.Linq;
 using System.Web;
 using System.Web.Security;
 using Ninject;
-using UtahPlanners.MVC3.RoleService;
 using System.Web.Mvc;
 using UtahPlanners.MVC3.Extensions;
 
@@ -23,13 +22,13 @@ namespace UtahPlanners.MVC3.Services
 
         public override bool IsUserInRole(string username, string roleName)
         {
-            var client = _factory.CreateRoleService();
+            var client = _factory.CreateUserService();
             return client.SafeExecution(c => c.IsUserInRole(username, roleName));
         }
 
         public override string[] GetRolesForUser(string username)
         {
-            var client = _factory.CreateRoleService();
+            var client = _factory.CreateUserService();
             return client.SafeExecution(c => c.GetRolesForUser(username));
         }
 

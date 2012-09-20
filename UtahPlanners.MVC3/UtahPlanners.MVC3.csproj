@@ -93,17 +93,12 @@
     <Compile Include="Models\Home\Property.cs" />
     <Compile Include="Models\User\Profile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Service References\MembershipService\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Compile>
     <Compile Include="Service References\PropertyService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
-    <Compile Include="Service References\RoleService\Reference.cs">
+    <Compile Include="Service References\UserService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -249,25 +244,6 @@
     <None Include="Content\uploadify\uploadify.php" />
     <None Include="Properties\DataSources\UtahPlanners.Domain.PropertiesIndex.datasource" />
     <None Include="Properties\DataSources\UtahPlanners.Domain.Property.datasource" />
-    <None Include="Service References\MembershipService\MembershipService.wsdl" />
-    <None Include="Service References\MembershipService\MembershipService.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\MembershipService\MembershipService1.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\MembershipService\MembershipService2.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\MembershipService\MembershipService3.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\MembershipService\UtahPlanners.MVC3.MembershipService.MembershipStatus.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Service References\MembershipService\UtahPlanners.MVC3.MembershipService.User.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
     <None Include="Service References\PropertyService\PropertyService.disco" />
     <None Include="Service References\PropertyService\configuration91.svcinfo" />
     <None Include="Service References\PropertyService\configuration.svcinfo" />
@@ -282,17 +258,10 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-    <None Include="Service References\MembershipService\MembershipService.disco" />
-    <None Include="Service References\MembershipService\configuration91.svcinfo" />
-    <None Include="Service References\MembershipService\configuration.svcinfo" />
-    <None Include="Service References\MembershipService\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-    <None Include="Service References\RoleService\RoleService.disco" />
-    <None Include="Service References\RoleService\configuration91.svcinfo" />
-    <None Include="Service References\RoleService\configuration.svcinfo" />
-    <None Include="Service References\RoleService\Reference.svcmap">
+    <None Include="Service References\UserService\UserService.disco" />
+    <None Include="Service References\UserService\configuration91.svcinfo" />
+    <None Include="Service References\UserService\configuration.svcinfo" />
+    <None Include="Service References\UserService\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
@@ -359,16 +328,6 @@
     <Content Include="Views\User\CreateAccount.cshtml" />
     <Content Include="Views\User\Profile.cshtml" />
     <Content Include="Views\User\ForgotPassword.cshtml" />
-    <None Include="Service References\RoleService\RoleService.wsdl" />
-    <None Include="Service References\RoleService\RoleService.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\RoleService\RoleService1.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\RoleService\RoleService2.xsd">
-      <SubType>Designer</SubType>
-    </None>
     <Content Include="Views\Admin\CreateCodes.cshtml" />
     <Content Include="Views\Admin\ReadCodes.cshtml" />
     <Content Include="Views\Admin\CreateTypes.cshtml" />
@@ -376,6 +335,28 @@
     <Content Include="Views\Admin\Weights.cshtml" />
     <Content Include="Views\Admin\CreateProperty.cshtml" />
     <Content Include="Views\Admin\EditProperty.cshtml" />
+    <None Include="Service References\UserService\UserService.wsdl" />
+    <None Include="Service References\UserService\UserService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\UserService\UserService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\UserService\UserService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\UserService\UserService3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\UserService\UserService4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\UserService\UtahPlanners.MVC3.UserService.MembershipStatus.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\UserService\UtahPlanners.MVC3.UserService.User.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Home\Default.cshtml" />
@@ -402,9 +383,8 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
-    <WCFMetadataStorage Include="Service References\MembershipService\" />
     <WCFMetadataStorage Include="Service References\PropertyService\" />
-    <WCFMetadataStorage Include="Service References\RoleService\" />
+    <WCFMetadataStorage Include="Service References\UserService\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\uploadify\example\uploads\" />

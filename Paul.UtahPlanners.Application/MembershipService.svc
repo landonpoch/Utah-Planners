@@ -1,1 +1,0 @@
-﻿<%@ ServiceHost Language="C#" Debug="true" Service="Paul.UtahPlanners.Application.MembershipService" CodeBehind="MembershipService.svc.cs" Factory="Ninject.Extensions.Wcf.NinjectServiceHostFactory" %>

@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace UtahPlanners.MVC3.MembershipService {
+namespace UtahPlanners.MVC3.UserService {
     using System.Runtime.Serialization;
     using System;
     
@@ -176,16 +176,13 @@ namespace UtahPlanners.MVC3.MembershipService {
         private string EmailField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string FirstNameField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string LastNameField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string RoleField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string SecurityQuestionField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private UtahPlanners.MVC3.UserService.UserProfile UserProfileField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string UsernameField;
@@ -209,32 +206,6 @@ namespace UtahPlanners.MVC3.MembershipService {
                 if ((object.ReferenceEquals(this.EmailField, value) != true)) {
                     this.EmailField = value;
                     this.RaisePropertyChanged("Email");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string FirstName {
-            get {
-                return this.FirstNameField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.FirstNameField, value) != true)) {
-                    this.FirstNameField = value;
-                    this.RaisePropertyChanged("FirstName");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string LastName {
-            get {
-                return this.LastNameField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.LastNameField, value) != true)) {
-                    this.LastNameField = value;
-                    this.RaisePropertyChanged("LastName");
                 }
             }
         }
@@ -266,6 +237,19 @@ namespace UtahPlanners.MVC3.MembershipService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
+        public UtahPlanners.MVC3.UserService.UserProfile UserProfile {
+            get {
+                return this.UserProfileField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.UserProfileField, value) != true)) {
+                    this.UserProfileField = value;
+                    this.RaisePropertyChanged("UserProfile");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
         public string Username {
             get {
                 return this.UsernameField;
@@ -288,53 +272,136 @@ namespace UtahPlanners.MVC3.MembershipService {
         }
     }
     
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="MembershipService.IMembershipService")]
-    public interface IMembershipService {
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="UserProfile", Namespace="http://schemas.datacontract.org/2004/07/Paul.UtahPlanners.Application.DTO")]
+    [System.SerializableAttribute()]
+    public partial class UserProfile : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMembershipService/GetMinPasswordLength", ReplyAction="http://tempuri.org/IMembershipService/GetMinPasswordLengthResponse")]
-        int GetMinPasswordLength();
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMembershipService/ValidateUser", ReplyAction="http://tempuri.org/IMembershipService/ValidateUserResponse")]
-        bool ValidateUser(string userName, string password);
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string FirstNameField;
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMembershipService/CreateUser", ReplyAction="http://tempuri.org/IMembershipService/CreateUserResponse")]
-        UtahPlanners.MVC3.MembershipService.MembershipStatus CreateUser(UtahPlanners.MVC3.MembershipService.CreateUserRequest request);
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string LastNameField;
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMembershipService/ChangePassword", ReplyAction="http://tempuri.org/IMembershipService/ChangePasswordResponse")]
-        bool ChangePassword(string userName, string oldPassword, string newPassword);
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ThemeField;
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMembershipService/GetUser", ReplyAction="http://tempuri.org/IMembershipService/GetUserResponse")]
-        UtahPlanners.MVC3.MembershipService.User GetUser(string username);
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMembershipService/ResetPassword", ReplyAction="http://tempuri.org/IMembershipService/ResetPasswordResponse")]
-        bool ResetPassword(string username, string email, string answer);
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string FirstName {
+            get {
+                return this.FirstNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.FirstNameField, value) != true)) {
+                    this.FirstNameField = value;
+                    this.RaisePropertyChanged("FirstName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string LastName {
+            get {
+                return this.LastNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.LastNameField, value) != true)) {
+                    this.LastNameField = value;
+                    this.RaisePropertyChanged("LastName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Theme {
+            get {
+                return this.ThemeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ThemeField, value) != true)) {
+                    this.ThemeField = value;
+                    this.RaisePropertyChanged("Theme");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface IMembershipServiceChannel : UtahPlanners.MVC3.MembershipService.IMembershipService, System.ServiceModel.IClientChannel {
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="UserService.IUserService")]
+    public interface IUserService {
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/GetMinPasswordLength", ReplyAction="http://tempuri.org/IUserService/GetMinPasswordLengthResponse")]
+        int GetMinPasswordLength();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/ValidateUser", ReplyAction="http://tempuri.org/IUserService/ValidateUserResponse")]
+        bool ValidateUser(string userName, string password);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/CreateUser", ReplyAction="http://tempuri.org/IUserService/CreateUserResponse")]
+        UtahPlanners.MVC3.UserService.MembershipStatus CreateUser(UtahPlanners.MVC3.UserService.CreateUserRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/ChangePassword", ReplyAction="http://tempuri.org/IUserService/ChangePasswordResponse")]
+        bool ChangePassword(string userName, string oldPassword, string newPassword);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/GetUser", ReplyAction="http://tempuri.org/IUserService/GetUserResponse")]
+        UtahPlanners.MVC3.UserService.User GetUser(string username);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/ResetPassword", ReplyAction="http://tempuri.org/IUserService/ResetPasswordResponse")]
+        bool ResetPassword(string username, string email, string answer);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/IsUserInRole", ReplyAction="http://tempuri.org/IUserService/IsUserInRoleResponse")]
+        bool IsUserInRole(string username, string roleName);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/GetRolesForUser", ReplyAction="http://tempuri.org/IUserService/GetRolesForUserResponse")]
+        string[] GetRolesForUser(string username);
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public interface IUserServiceChannel : UtahPlanners.MVC3.UserService.IUserService, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class MembershipServiceClient : System.ServiceModel.ClientBase<UtahPlanners.MVC3.MembershipService.IMembershipService>, UtahPlanners.MVC3.MembershipService.IMembershipService {
+    public partial class UserServiceClient : System.ServiceModel.ClientBase<UtahPlanners.MVC3.UserService.IUserService>, UtahPlanners.MVC3.UserService.IUserService {
         
-        public MembershipServiceClient() {
+        public UserServiceClient() {
         }
         
-        public MembershipServiceClient(string endpointConfigurationName) : 
+        public UserServiceClient(string endpointConfigurationName) : 
                 base(endpointConfigurationName) {
         }
         
-        public MembershipServiceClient(string endpointConfigurationName, string remoteAddress) : 
+        public UserServiceClient(string endpointConfigurationName, string remoteAddress) : 
                 base(endpointConfigurationName, remoteAddress) {
         }
         
-        public MembershipServiceClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+        public UserServiceClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(endpointConfigurationName, remoteAddress) {
         }
         
-        public MembershipServiceClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+        public UserServiceClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(binding, remoteAddress) {
         }
         
@@ -346,7 +413,7 @@ namespace UtahPlanners.MVC3.MembershipService {
             return base.Channel.ValidateUser(userName, password);
         }
         
-        public UtahPlanners.MVC3.MembershipService.MembershipStatus CreateUser(UtahPlanners.MVC3.MembershipService.CreateUserRequest request) {
+        public UtahPlanners.MVC3.UserService.MembershipStatus CreateUser(UtahPlanners.MVC3.UserService.CreateUserRequest request) {
             return base.Channel.CreateUser(request);
         }
         
@@ -354,12 +421,20 @@ namespace UtahPlanners.MVC3.MembershipService {
             return base.Channel.ChangePassword(userName, oldPassword, newPassword);
         }
         
-        public UtahPlanners.MVC3.MembershipService.User GetUser(string username) {
+        public UtahPlanners.MVC3.UserService.User GetUser(string username) {
             return base.Channel.GetUser(username);
         }
         
         public bool ResetPassword(string username, string email, string answer) {
             return base.Channel.ResetPassword(username, email, answer);
+        }
+        
+        public bool IsUserInRole(string username, string roleName) {
+            return base.Channel.IsUserInRole(username, roleName);
+        }
+        
+        public string[] GetRolesForUser(string username) {
+            return base.Channel.GetRolesForUser(username);
         }
     }
 }
