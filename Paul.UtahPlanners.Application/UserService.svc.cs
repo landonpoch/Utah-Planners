@@ -102,6 +102,12 @@ namespace Paul.UtahPlanners.Application
             return user;
         }
 
+        public bool UpdateUser(User user)
+        {
+            var result = _profileService.UpdateUserProfile(user.Username, user.UserProfile);
+            return result && _membershipService.ChangeEmail(user.Username, user.Email);
+        }
+
         public bool ResetPassword(string username, string email, string answer)
         {
             if (String.IsNullOrEmpty(username))

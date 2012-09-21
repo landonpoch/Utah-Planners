@@ -17,5 +17,6 @@ namespace Paul.UtahPlanners.Application
         bool ChangePassword(string userName, string oldPassword, string newPassword);
         User GetUser(string username);
         string ResetPassword(string username, string answer);
+        bool ChangeEmail(string username, string email);
     }
 }

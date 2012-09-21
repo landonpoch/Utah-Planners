@@ -55,6 +55,23 @@ namespace Paul.UtahPlanners.Application.Service
             return _provider.ResetPassword(username, answer);
         }
 
+        public bool ChangeEmail(string username, string email)
+        {
+            bool result = false;
+            try
+            {
+                var user = _provider.GetUser(username, true);
+                user.Email = email;
+                _provider.UpdateUser(user);
+                result = true;
+            }
+            catch (Exception e)
+            {
+                // TODO: Logging
+            }
+            return result;
+        }
+
         #endregion
 
         private User Convert(MembershipUser user)

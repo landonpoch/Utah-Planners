@@ -75,7 +75,7 @@ namespace UtahPlanners.MVC3.Controllers
                 SecurityQuestion = model.SecurityQuestion,
                 SecurityAnswer = model.SecurityAnswer
             };
-            var status = client.CreateUser(request);
+            var status = client.SafeExecution(c => c.CreateUser(request));
 
             if (status == MembershipStatus.Success)
             {
@@ -94,7 +94,7 @@ namespace UtahPlanners.MVC3.Controllers
                 && !String.IsNullOrEmpty(model.Username))
             {
                 var client = _factory.CreateUserService();
-                var user = client.GetUser(model.Username);
+                var user = client.SafeExecution(c => c.GetUser(model.Username));
                 model = new ForgotPassword
                 {
                     Username = model.Username,
@@ -108,7 +108,7 @@ namespace UtahPlanners.MVC3.Controllers
                 && !String.IsNullOrEmpty(model.SecurityAnswer))
             {
                 var client = _factory.CreateUserService();
-                bool result = client.ResetPassword(model.Username, model.Email, model.SecurityAnswer);
+                bool result = client.SafeExecution(c => c.ResetPassword(model.Username, model.Email, model.SecurityAnswer));
                 model = new ForgotPassword
                 {
                     ResetSuccessful = result,
@@ -135,7 +135,7 @@ namespace UtahPlanners.MVC3.Controllers
         public ActionResult Profile()
         {
             var client = _factory.CreateUserService();
-            User user = client.GetUser(User.Identity.Name);
+            User user = client.SafeExecution(c => c.GetUser(User.Identity.Name));
             var profile = new Profile
             {
                 Username = user.Username,
@@ -153,11 +153,23 @@ namespace UtahPlanners.MVC3.Controllers
         [HttpPost]
         public ActionResult Profile(Profile model)
         {
-            model = new Profile
+            var client = _factory.CreateUserService();
+
+            var user = new User
             {
                 Username = model.Username,
-                Themes = new SelectList(_themes, "Value", "Text"),
+                Email = model.Email,
+                UserProfile = new UserProfile
+                {
+                    FirstName = model.FirstName,
+                    LastName = model.LastName,
+                    Theme = model.Theme
+                }
             };
+            var result = client.SafeExecution(c => c.UpdateUser(user));
+
+            model.Themes = new SelectList(_themes, "Value", "Text");
+            model.ChangePassword = new ChangePassword { Username = model.Username };
             return View(model);
         }
 

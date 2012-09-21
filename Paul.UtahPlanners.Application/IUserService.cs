@@ -27,6 +27,9 @@ namespace Paul.UtahPlanners.Application
         User GetUser(string username);
 
         [OperationContract]
+        bool UpdateUser(User user);
+
+        [OperationContract]
         bool ResetPassword(string username, string email, string answer);
 
         [OperationContract]

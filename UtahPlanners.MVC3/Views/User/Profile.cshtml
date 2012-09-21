@@ -28,7 +28,8 @@
     @Html.TextBoxFor(m => m.Email)<br />
     
     @Html.LabelFor(m => m.Role, "Role:")
-    @Html.DisplayTextFor(m => m.Role)<br />
+    @Html.DisplayTextFor(m => m.Role)
+    @Html.HiddenFor(m => m.Role)<br />
     
     @Html.LabelFor(m => m.Theme, "Theme:")
     @Html.DropDownListFor(m => m.Theme, Model.Themes)<br />

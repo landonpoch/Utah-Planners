@@ -368,6 +368,9 @@ namespace UtahPlanners.MVC3.UserService {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/GetUser", ReplyAction="http://tempuri.org/IUserService/GetUserResponse")]
         UtahPlanners.MVC3.UserService.User GetUser(string username);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/UpdateUser", ReplyAction="http://tempuri.org/IUserService/UpdateUserResponse")]
+        bool UpdateUser(UtahPlanners.MVC3.UserService.User user);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/ResetPassword", ReplyAction="http://tempuri.org/IUserService/ResetPasswordResponse")]
         bool ResetPassword(string username, string email, string answer);
         
@@ -423,6 +426,10 @@ namespace UtahPlanners.MVC3.UserService {
         
         public UtahPlanners.MVC3.UserService.User GetUser(string username) {
             return base.Channel.GetUser(username);
+        }
+        
+        public bool UpdateUser(UtahPlanners.MVC3.UserService.User user) {
+            return base.Channel.UpdateUser(user);
         }
         
         public bool ResetPassword(string username, string email, string answer) {
