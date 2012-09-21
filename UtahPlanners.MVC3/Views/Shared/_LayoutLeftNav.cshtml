@@ -2,42 +2,48 @@
     Layout = "~/Views/Shared/_LayoutNoLeftNav.cshtml";
 }
 
+@section Head
+{
+    @RenderSection("Head", required: false)
+}
+
 <div id="content">
-@RenderBody()
+    @RenderBody()
 </div>
 	
-@section LeftNav {
-    <div id="sidebar">
-		<ul>
-			<li>
-				<h2>Condo Type</h2>
-				<ul>
-                    <li>@Html.ActionLink("Stacked Flats", "Index", "Home", new { proptype = "flats" }, null)</li>
-					<li>@Html.ActionLink("Twin Homes", "Index", "Home", new { proptype = "twins" }, null)</li>
-					<li>@Html.ActionLink("Townhomes", "Index", "Home", new { proptype = "townhomes" }, null)</li>
-					<li>@Html.ActionLink("Mixed Units", "Index", "Home", new { proptype = "units" }, null)</li>
-				</ul>
-			</li>
-			<li>
-				<h2>Density</h2>
-                <h3>Units per Acre</h3>
-				<ul>
-                    <li>@Html.ActionLink("Less than 10", "Index", "Home", new { density = "lessthan10" }, null)</li>
-					<li>@Html.ActionLink("10 to 13", "Index", "Home", new { density = "10to13" }, null)</li>
-					<li>@Html.ActionLink("14 to 16", "Index", "Home", new { density = "14to16" }, null)</li>
-					<li>@Html.ActionLink("17 to 20", "Index", "Home", new { density = "17to20" }, null)</li>
-					<li>@Html.ActionLink("More than 20", "Index", "Home", new { density = "morethan20" }, null)</li>
-				</ul>
-			</li>
-			<li>
-				<h2>Local Services</h2>
-				<ul>
-                    <li>@Html.ActionLink("High", "Index", "Home", new { walkscore = "High" }, null)</li>
-                    <li>@Html.ActionLink("Medium", "Index", "Home", new { walkscore = "Medium" }, null)</li>
-                    <li>@Html.ActionLink("Low", "Index", "Home", new { walkscore = "Low" }, null)</li>
-				</ul>
-			</li>
-		</ul>
-	</div>
-	<!-- end div#sidebar -->
+@section LeftNav 
+{
+<div id="sidebar">
+	<ul>
+		<li>
+			<h2>Condo Type</h2>
+			<ul>
+                <li>@Html.ActionLink("Stacked Flats", "Index", "Home", new { proptype = "flats" }, null)</li>
+				<li>@Html.ActionLink("Twin Homes", "Index", "Home", new { proptype = "twins" }, null)</li>
+				<li>@Html.ActionLink("Townhomes", "Index", "Home", new { proptype = "townhomes" }, null)</li>
+				<li>@Html.ActionLink("Mixed Units", "Index", "Home", new { proptype = "units" }, null)</li>
+			</ul>
+		</li>
+		<li>
+			<h2>Density</h2>
+            <h3>Units per Acre</h3>
+			<ul>
+                <li>@Html.ActionLink("Less than 10", "Index", "Home", new { density = "lessthan10" }, null)</li>
+				<li>@Html.ActionLink("10 to 13", "Index", "Home", new { density = "10to13" }, null)</li>
+				<li>@Html.ActionLink("14 to 16", "Index", "Home", new { density = "14to16" }, null)</li>
+				<li>@Html.ActionLink("17 to 20", "Index", "Home", new { density = "17to20" }, null)</li>
+				<li>@Html.ActionLink("More than 20", "Index", "Home", new { density = "morethan20" }, null)</li>
+			</ul>
+		</li>
+		<li>
+			<h2>Local Services</h2>
+			<ul>
+                <li>@Html.ActionLink("High", "Index", "Home", new { walkscore = "High" }, null)</li>
+                <li>@Html.ActionLink("Medium", "Index", "Home", new { walkscore = "Medium" }, null)</li>
+                <li>@Html.ActionLink("Low", "Index", "Home", new { walkscore = "Low" }, null)</li>
+			</ul>
+		</li>
+	</ul>
+</div>
+<!-- end div#sidebar -->
 }

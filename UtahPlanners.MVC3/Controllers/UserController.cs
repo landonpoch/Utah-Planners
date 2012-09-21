@@ -122,6 +122,16 @@ namespace UtahPlanners.MVC3.Controllers
         }
 
         [Authorize]
+        [HttpPost]
+        public ActionResult ChangePassword(ChangePassword model)
+        {
+            var client = _factory.CreateUserService();
+            bool result = client.SafeExecution(c => c.ChangePassword(model.Username, model.OldPassword, model.ConfirmPassword));
+            model = new ChangePassword { ChangePasswordResult = result };
+            return PartialView("_ChangePassword", model);
+        }
+
+        [Authorize]
         public ActionResult Profile()
         {
             var client = _factory.CreateUserService();
@@ -134,6 +144,7 @@ namespace UtahPlanners.MVC3.Controllers
                 Email = user.Email,
                 Role = user.Role,
                 Themes = new SelectList(_themes, "Value", "Text"),
+                ChangePassword = new ChangePassword { Username = user.Username }
             };
             return View(profile);
         }
@@ -142,9 +153,6 @@ namespace UtahPlanners.MVC3.Controllers
         [HttpPost]
         public ActionResult Profile(Profile model)
         {
-            var client = _factory.CreateUserService();
-            bool result = client.SafeExecution(c => c.ChangePassword(model.Username, model.OldPassword, model.NewPassword1));
-
             model = new Profile
             {
                 Username = model.Username,

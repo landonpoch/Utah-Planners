@@ -86,6 +86,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\User\ChangePassword.cs" />
     <Compile Include="Models\User\CreateAccount.cs" />
     <Compile Include="Models\User\ForgotPassword.cs" />
     <Compile Include="Models\User\Login.cs" />
@@ -357,6 +358,7 @@
     <None Include="Service References\UserService\UtahPlanners.MVC3.UserService.User.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <Content Include="Views\User\_ChangePassword.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Home\Default.cshtml" />
