@@ -143,6 +143,7 @@ namespace UtahPlanners.MVC3.Controllers
                 LastName = user.UserProfile.LastName,
                 Email = user.Email,
                 Role = user.Role,
+                Theme = user.UserProfile.Theme,
                 Themes = new SelectList(_themes, "Value", "Text"),
                 ChangePassword = new ChangePassword { Username = user.Username }
             };
