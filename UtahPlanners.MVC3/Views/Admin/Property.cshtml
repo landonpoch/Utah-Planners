@@ -3,6 +3,13 @@
     Layout = "~/Views/Shared/_LayoutNoLeftNav.cshtml";
 }
 
+@section Head
+{
+    <link href="../../Content/uploadify/uploadify.css" rel="stylesheet" type="text/css" />
+    <script src="../../Content/uploadify/jquery.uploadify.v2.1.0.min.js" type="text/javascript"></script>
+    <script src="../../Content/uploadify/swfobject.js" type="text/javascript"></script>
+}
+
 <h2>@ViewBag.Title</h2>
 <br />
 
@@ -125,16 +132,9 @@
     
 
     <!-- File Upload Control -->
-    <input id="fileInput" name="fileInput" type="file" style="display: none;" width="110" height="30" />
-    <object type="application/x-shockwave-flash" data="../../Content/uploadify/uploadify.swf" width="110" height="30" id="fileInputUploader" style="visibility: visible;">
-        <param name="quality" value="high" />
-        <param name="wmode" value="opaque" />
-        <param name="allowScriptAccess" value="sameDomain" />
-        <param name="flashvars" value="uploadifyID=fileInput&amp;pagepath=/Properties/&amp;script=../scripts/uploadify/Upload.ashx&amp;folder=../scripts/uploadify/&amp;scriptData=ASPSESSID%3Dl2lkvy1s2wz554pwpv0p4rqi%26AUTHID%3D981D3BFB635B57E6E8457C47CB6BAB6E97966E58B784FC653168A8E5B15C03E02A02CF57643E40D2FDA25C64C702E35383CEFAAEC0D7DBCDC635FF8301785E1DF87B521E6E4CBC4F393242DB7D77B9DF&amp;width=110&amp;height=30&amp;wmode=opaque&amp;method=POST&amp;queueSizeLimit=999&amp;simUploadLimit=1&amp;auto=true&amp;fileDataName=Filedata" />
-    </object>
-    
+    <input id="fileInput" name="fileInput" type="file" style="display: none;" />
     <div id="fileInputQueue" class="uploadifyQueue"></div>
-
+    
     <script type="text/javascript">
         // <![CDATA[
         $(document).ready(function () {
@@ -143,8 +143,8 @@
             var secondaryPicture = 0;
             var frontPage = 0;
 
-            var auth = "981D3BFB635B57E6E8457C47CB6BAB6E97966E58B784FC653168A8E5B15C03E02A02CF57643E40D2FDA25C64C702E35383CEFAAEC0D7DBCDC635FF8301785E1DF87B521E6E4CBC4F393242DB7D77B9DF";
-            var ASPSESSID = "l2lkvy1s2wz554pwpv0p4rqi";
+            var auth = '@Request.Cookies[FormsAuthentication.FormsCookieName].Value';
+            var ASPSESSID = '@Session.SessionID';
 
             $("#checkbox1").click(function () {
                 mainPicture = (mainPicture == 1) ? 0 : 1;
@@ -164,11 +164,11 @@
 
 
             $('#fileInput').uploadify({
-                'uploader': '../scripts/uploadify/uploadify.swf',
-                'script': '../scripts/uploadify/Upload.ashx',
-                'cancelImg': '../scripts/uploadify/cancel.png',
+                'uploader': '../../Content/uploadify/uploadify.swf',
+                'script': '../../Content/uploadify/Upload.ashx',
+                'cancelImg': '../../Content/uploadify/cancel.png',
                 'auto': true,
-                'folder': '../scripts/uploadify/',
+                'folder': '../../Content/uploadify/',
                 'scriptData': { ASPSESSID: ASPSESSID, AUTHID: auth }
             });
 

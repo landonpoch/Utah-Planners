@@ -141,7 +141,6 @@
     <Content Include="Content\fancybox\jquery.mousewheel-3.0.2.pack.js" />
     <Content Include="Content\images\h2_trigger_a.gif" />
     <Content Include="Content\images\priorityrecords_129.jpg" />
-    <Content Include="Content\images\test.jpg" />
     <Content Include="Content\uploadify\cancel.png" />
     <Content Include="Content\uploadify\example\cancel.png" />
     <Content Include="Content\uploadify\example\css\default.css" />

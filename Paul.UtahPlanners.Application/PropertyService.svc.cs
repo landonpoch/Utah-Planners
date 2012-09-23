@@ -61,6 +61,8 @@ namespace Paul.UtahPlanners.Application
             }
         }
 
+        
+
         public KeyValuePair<int, int> GetShowcaseProperty()
         {
             using (var unit = _factory.CreateUnitOfWork())

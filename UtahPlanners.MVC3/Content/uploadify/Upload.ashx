@@ -3,7 +3,7 @@
 Imports System
 Imports System.Web
 Imports System.Web.SessionState
-Imports com.landonpoch.entities
+Imports UtahPlanners.MVC3.PropertyService
 
 Public Class Upload : Implements IHttpHandler, IRequiresSessionState
     
