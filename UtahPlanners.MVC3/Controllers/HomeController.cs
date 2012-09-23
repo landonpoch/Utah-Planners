@@ -149,8 +149,16 @@ namespace UtahPlanners.MVC3.Controllers
             {
                 Id = p.id,
                 Address = Convert(p.Address),
-                PictureIds = p.PictureIds.ToList(),
-                SecondaryPictureId = p.SecondaryPictureId,
+                PictureIds = p.PictureMetaData
+                    .ToList()
+                    .Where(md => !md.SecondaryPicture)
+                    .Select(md => md.PictureId)
+                    .ToList(),
+                SecondaryPictureId = p.PictureMetaData
+                    .ToList()
+                    .Where(md => md.SecondaryPicture)
+                    .Select(md => md.PictureId)
+                    .FirstOrDefault(),
                 PropertyType = p.PropertyType.description,
                 Score = p.Score,
                 StreetSafety = p.StreetSafteyCode.description,

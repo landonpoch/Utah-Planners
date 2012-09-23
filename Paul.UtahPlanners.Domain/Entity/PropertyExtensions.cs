@@ -8,10 +8,7 @@ namespace UtahPlanners.Domain.Entity
         public Weight Weights { get; set; }
 
         [DataMember]
-        public List<int> PictureIds { get; set; }
-
-        [DataMember]
-        public int SecondaryPictureId { get; set; }
+        public List<PictureMetaData> PictureMetaData { get; set; }
 
         [DataMember]
         public int Score { get; set; }

@@ -39,27 +39,21 @@ namespace UtahPlanners.Infrastructure.Repository
                 .FirstOrDefault(p => p.id == id); // DB Hit 1
 
             property.Weights = _settings.Weights;
-            var pictureIds = (from prop in _context.Properties
+            var pictureMetaData = (from prop in _context.Properties
                               join pic in _context.Pictures on prop.id equals pic.property_id
                               where prop.id == id
-                              select new
+                              select new PictureMetaData
                               {
                                   PictureId = pic.id,
-                                  IsMainPicture = pic.mainPicture == 1,
-                                  IsSecondaryPicture = pic.secondaryPicture == 1
+                                  PrimaryPicture = pic.mainPicture == 1,
+                                  SecondaryPicture = pic.secondaryPicture == 1,
+                                  FrontPage = pic.frontPage == 1
                               })
                               .ToList(); // DB Hit 2
             
-            property.PictureIds = pictureIds
-                .Where(p => !p.IsSecondaryPicture)
-                .OrderByDescending(p => p.IsMainPicture) // Put the main picture first
-                .Select(p => p.PictureId)
+            property.PictureMetaData = pictureMetaData
+                .OrderByDescending(p => p.PrimaryPicture) // Put the main picture first
                 .ToList();
-
-            property.SecondaryPictureId = pictureIds
-                .Where(p => p.IsSecondaryPicture)
-                .Select(p => p.PictureId)
-                .FirstOrDefault();
 
             // TODO: See if there is a better way to do this.  I don't think the repository should call methods on the domain entity
             property.CalculateScore();

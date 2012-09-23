@@ -37,6 +37,7 @@ namespace UtahPlanners.MVC3.Controllers
             {
                 ViewBag.Title = "Edit Property";
                 ViewBag.NewPictureTitle = "Add New Pictures:";
+                ViewBag.SubmitText = "Submit Changes";
 
                 client = _factory.CreatePropertyService();
                 var property = client.SafeExecution(c => c.GetProperty(id.Value));
@@ -56,6 +57,7 @@ namespace UtahPlanners.MVC3.Controllers
             {
                 ViewBag.Title = "Create New Property";
                 ViewBag.NewPictureTitle = "Pictures:";
+                ViewBag.SubmitText = "Create New Property";
             }
 
             return View(model);

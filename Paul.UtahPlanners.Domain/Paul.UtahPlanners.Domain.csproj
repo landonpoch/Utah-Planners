@@ -52,6 +52,7 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity\MembershipStatus.cs" />
+    <Compile Include="Entity\PictureMetaData.cs" />
     <Compile Include="Service\ConfigSettings.cs" />
     <Compile Include="DomainNinjectModule.cs" />
     <Compile Include="Entity\EnclosureCode.cs">

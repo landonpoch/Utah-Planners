@@ -27,9 +27,8 @@
     <MetadataFile FileName="PropertyService.wsdl" MetadataType="Wsdl" ID="25b08411-b3ef-4d95-801a-fb83acd8fd57" SourceId="1" SourceUrl="http://localhost:3109/PropertyService.svc?wsdl" />
     <MetadataFile FileName="PropertyService.xsd" MetadataType="Schema" ID="63544239-912f-404d-8d59-aca0c7d62dee" SourceId="1" SourceUrl="http://localhost:3109/PropertyService.svc?xsd=xsd3" />
     <MetadataFile FileName="PropertyService1.xsd" MetadataType="Schema" ID="39f5eab8-8371-49f0-a928-cfb2740b026f" SourceId="1" SourceUrl="http://localhost:3109/PropertyService.svc?xsd=xsd2" />
-    <MetadataFile FileName="PropertyService1.wsdl" MetadataType="Wsdl" ID="9ed48280-a28b-4219-aac9-95519ba1e86f" SourceId="1" SourceUrl="http://localhost:3109/PropertyService.svc?wsdl=wsdl0" />
-    <MetadataFile FileName="PropertyService3.xsd" MetadataType="Schema" ID="35a93dc9-43d5-4600-b522-72eaea0d8196" SourceId="1" SourceUrl="http://localhost:3109/PropertyService.svc?xsd=xsd0" />
     <MetadataFile FileName="PropertyService2.xsd" MetadataType="Schema" ID="3da13f36-a123-4526-aab6-90caa8d80139" SourceId="1" SourceUrl="http://localhost:3109/PropertyService.svc?xsd=xsd1" />
+    <MetadataFile FileName="PropertyService3.xsd" MetadataType="Schema" ID="35a93dc9-43d5-4600-b522-72eaea0d8196" SourceId="1" SourceUrl="http://localhost:3109/PropertyService.svc?xsd=xsd0" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

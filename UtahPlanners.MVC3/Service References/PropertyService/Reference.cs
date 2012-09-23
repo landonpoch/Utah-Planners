@@ -76,7 +76,7 @@ namespace UtahPlanners.MVC3.PropertyService {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="PropertiesIndex", Namespace="http://schemas.datacontract.org/2004/07/UtahPlanners.Domain.Entity")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="PropertiesIndex", Namespace="http://schemas.datacontract.org/2004/07/UtahPlanners.Domain.Entity", IsReference=true)]
     [System.SerializableAttribute()]
     public partial class PropertiesIndex : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
@@ -865,7 +865,7 @@ namespace UtahPlanners.MVC3.PropertyService {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Property", Namespace="http://schemas.datacontract.org/2004/07/UtahPlanners.Domain.Entity")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Property", Namespace="http://schemas.datacontract.org/2004/07/UtahPlanners.Domain.Entity", IsReference=true)]
     [System.SerializableAttribute()]
     public partial class Property : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
@@ -885,7 +885,7 @@ namespace UtahPlanners.MVC3.PropertyService {
         private UtahPlanners.MVC3.PropertyService.NeighborhoodCode NeighborhoodCodeField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int[] PictureIdsField;
+        private UtahPlanners.MVC3.PropertyService.PictureMetaData[] PictureMetaDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private UtahPlanners.MVC3.PropertyService.Picture[] PicturesField;
@@ -895,9 +895,6 @@ namespace UtahPlanners.MVC3.PropertyService {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int ScoreField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int SecondaryPictureIdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private UtahPlanners.MVC3.PropertyService.SocioEconCode SocioEconCodeField;
@@ -1046,14 +1043,14 @@ namespace UtahPlanners.MVC3.PropertyService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public int[] PictureIds {
+        public UtahPlanners.MVC3.PropertyService.PictureMetaData[] PictureMetaData {
             get {
-                return this.PictureIdsField;
+                return this.PictureMetaDataField;
             }
             set {
-                if ((object.ReferenceEquals(this.PictureIdsField, value) != true)) {
-                    this.PictureIdsField = value;
-                    this.RaisePropertyChanged("PictureIds");
+                if ((object.ReferenceEquals(this.PictureMetaDataField, value) != true)) {
+                    this.PictureMetaDataField = value;
+                    this.RaisePropertyChanged("PictureMetaData");
                 }
             }
         }
@@ -1093,19 +1090,6 @@ namespace UtahPlanners.MVC3.PropertyService {
                 if ((this.ScoreField.Equals(value) != true)) {
                     this.ScoreField = value;
                     this.RaisePropertyChanged("Score");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int SecondaryPictureId {
-            get {
-                return this.SecondaryPictureIdField;
-            }
-            set {
-                if ((this.SecondaryPictureIdField.Equals(value) != true)) {
-                    this.SecondaryPictureIdField = value;
-                    this.RaisePropertyChanged("SecondaryPictureId");
                 }
             }
         }
@@ -1486,7 +1470,7 @@ namespace UtahPlanners.MVC3.PropertyService {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Address", Namespace="http://schemas.datacontract.org/2004/07/UtahPlanners.Domain.Entity")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Address", Namespace="http://schemas.datacontract.org/2004/07/UtahPlanners.Domain.Entity", IsReference=true)]
     [System.SerializableAttribute()]
     public partial class Address : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
@@ -1643,7 +1627,7 @@ namespace UtahPlanners.MVC3.PropertyService {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="CommonCode", Namespace="http://schemas.datacontract.org/2004/07/UtahPlanners.Domain.Entity")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="CommonCode", Namespace="http://schemas.datacontract.org/2004/07/UtahPlanners.Domain.Entity", IsReference=true)]
     [System.SerializableAttribute()]
     public partial class CommonCode : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
@@ -1736,7 +1720,7 @@ namespace UtahPlanners.MVC3.PropertyService {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="EnclosureCode", Namespace="http://schemas.datacontract.org/2004/07/UtahPlanners.Domain.Entity")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="EnclosureCode", Namespace="http://schemas.datacontract.org/2004/07/UtahPlanners.Domain.Entity", IsReference=true)]
     [System.SerializableAttribute()]
     public partial class EnclosureCode : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
@@ -1829,7 +1813,7 @@ namespace UtahPlanners.MVC3.PropertyService {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="NeighborhoodCode", Namespace="http://schemas.datacontract.org/2004/07/UtahPlanners.Domain.Entity")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="NeighborhoodCode", Namespace="http://schemas.datacontract.org/2004/07/UtahPlanners.Domain.Entity", IsReference=true)]
     [System.SerializableAttribute()]
     public partial class NeighborhoodCode : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
@@ -1922,7 +1906,7 @@ namespace UtahPlanners.MVC3.PropertyService {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="PropertyType", Namespace="http://schemas.datacontract.org/2004/07/UtahPlanners.Domain.Entity")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="PropertyType", Namespace="http://schemas.datacontract.org/2004/07/UtahPlanners.Domain.Entity", IsReference=true)]
     [System.SerializableAttribute()]
     public partial class PropertyType : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
@@ -1999,7 +1983,7 @@ namespace UtahPlanners.MVC3.PropertyService {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="SocioEconCode", Namespace="http://schemas.datacontract.org/2004/07/UtahPlanners.Domain.Entity")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="SocioEconCode", Namespace="http://schemas.datacontract.org/2004/07/UtahPlanners.Domain.Entity", IsReference=true)]
     [System.SerializableAttribute()]
     public partial class SocioEconCode : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
@@ -2076,7 +2060,7 @@ namespace UtahPlanners.MVC3.PropertyService {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="StreetSafteyCode", Namespace="http://schemas.datacontract.org/2004/07/UtahPlanners.Domain.Entity")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="StreetSafteyCode", Namespace="http://schemas.datacontract.org/2004/07/UtahPlanners.Domain.Entity", IsReference=true)]
     [System.SerializableAttribute()]
     public partial class StreetSafteyCode : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
@@ -2169,7 +2153,7 @@ namespace UtahPlanners.MVC3.PropertyService {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="StreetType", Namespace="http://schemas.datacontract.org/2004/07/UtahPlanners.Domain.Entity")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="StreetType", Namespace="http://schemas.datacontract.org/2004/07/UtahPlanners.Domain.Entity", IsReference=true)]
     [System.SerializableAttribute()]
     public partial class StreetType : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
@@ -2246,7 +2230,7 @@ namespace UtahPlanners.MVC3.PropertyService {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="StreetconnCode", Namespace="http://schemas.datacontract.org/2004/07/UtahPlanners.Domain.Entity")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="StreetconnCode", Namespace="http://schemas.datacontract.org/2004/07/UtahPlanners.Domain.Entity", IsReference=true)]
     [System.SerializableAttribute()]
     public partial class StreetconnCode : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
@@ -2339,7 +2323,7 @@ namespace UtahPlanners.MVC3.PropertyService {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="StreetwalkCode", Namespace="http://schemas.datacontract.org/2004/07/UtahPlanners.Domain.Entity")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="StreetwalkCode", Namespace="http://schemas.datacontract.org/2004/07/UtahPlanners.Domain.Entity", IsReference=true)]
     [System.SerializableAttribute()]
     public partial class StreetwalkCode : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
@@ -2432,7 +2416,116 @@ namespace UtahPlanners.MVC3.PropertyService {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Picture", Namespace="http://schemas.datacontract.org/2004/07/UtahPlanners.Domain.Entity")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="PictureMetaData", Namespace="http://schemas.datacontract.org/2004/07/UtahPlanners.Domain.Entity")]
+    [System.SerializableAttribute()]
+    public partial class PictureMetaData : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private bool DeleteField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private bool FrontPageField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int PictureIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private bool PrimaryPictureField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private bool SecondaryPictureField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool Delete {
+            get {
+                return this.DeleteField;
+            }
+            set {
+                if ((this.DeleteField.Equals(value) != true)) {
+                    this.DeleteField = value;
+                    this.RaisePropertyChanged("Delete");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool FrontPage {
+            get {
+                return this.FrontPageField;
+            }
+            set {
+                if ((this.FrontPageField.Equals(value) != true)) {
+                    this.FrontPageField = value;
+                    this.RaisePropertyChanged("FrontPage");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int PictureId {
+            get {
+                return this.PictureIdField;
+            }
+            set {
+                if ((this.PictureIdField.Equals(value) != true)) {
+                    this.PictureIdField = value;
+                    this.RaisePropertyChanged("PictureId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool PrimaryPicture {
+            get {
+                return this.PrimaryPictureField;
+            }
+            set {
+                if ((this.PrimaryPictureField.Equals(value) != true)) {
+                    this.PrimaryPictureField = value;
+                    this.RaisePropertyChanged("PrimaryPicture");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool SecondaryPicture {
+            get {
+                return this.SecondaryPictureField;
+            }
+            set {
+                if ((this.SecondaryPictureField.Equals(value) != true)) {
+                    this.SecondaryPictureField = value;
+                    this.RaisePropertyChanged("SecondaryPicture");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Picture", Namespace="http://schemas.datacontract.org/2004/07/UtahPlanners.Domain.Entity", IsReference=true)]
     [System.SerializableAttribute()]
     public partial class Picture : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         

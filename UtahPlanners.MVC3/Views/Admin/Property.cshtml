@@ -107,7 +107,15 @@
     <span id="ctl00_ContentPlaceHolder1_lblNotFinished" class="newproperty">Not Finished:</span>
     @Html.TextAreaFor(m => m.Property.notFinished, new { style = "height:100px; width:400px;" })<br /><br />
 
-    
+    @if (Model.Property != null)
+    {
+        <div id="existingPictures">
+        <h3>Pictures:</h3>
+        <br /><br />
+        @Html.EditorFor(m => m.Property.PictureMetaData)
+        </div>
+        <br />
+    }
     
     <div id="newPictures">
     <h3>@ViewBag.NewPictureTitle</h3><br />
@@ -171,7 +179,6 @@
     </div>
 
     <br />
-    <br />
-    <input type="submit" value="Create New Property" />
+    <input type="submit" value="@ViewBag.SubmitText" />
     </div>
 }

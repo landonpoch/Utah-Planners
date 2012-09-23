@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:ser="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:tns="http://schemas.datacontract.org/2004/07/UtahPlanners.Domain.Entity" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/UtahPlanners.Domain.Entity" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:import schemaLocation="http://localhost:3109/PropertyService.svc?xsd=xsd4" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
   <xs:import schemaLocation="http://localhost:3109/PropertyService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:import schemaLocation="http://localhost:3109/PropertyService.svc?xsd=xsd4" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
   <xs:complexType name="ArrayOfPropertiesIndex">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="PropertiesIndex" nillable="true" type="tns:PropertiesIndex" />
@@ -23,6 +23,8 @@
       <xs:element minOccurs="0" name="walkscore" nillable="true" type="xs:int" />
       <xs:element minOccurs="0" name="yearBuilt" nillable="true" type="xs:int" />
     </xs:sequence>
+    <xs:attribute ref="ser:Id" />
+    <xs:attribute ref="ser:Ref" />
   </xs:complexType>
   <xs:element name="PropertiesIndex" nillable="true" type="tns:PropertiesIndex" />
   <xs:complexType name="IndexFilter">
@@ -122,11 +124,10 @@
       <xs:element minOccurs="0" name="CommonCode" nillable="true" type="tns:CommonCode" />
       <xs:element minOccurs="0" name="EnclosureCode" nillable="true" type="tns:EnclosureCode" />
       <xs:element minOccurs="0" name="NeighborhoodCode" nillable="true" type="tns:NeighborhoodCode" />
-      <xs:element xmlns:q2="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="PictureIds" nillable="true" type="q2:ArrayOfint" />
+      <xs:element minOccurs="0" name="PictureMetaData" nillable="true" type="tns:ArrayOfPictureMetaData" />
       <xs:element minOccurs="0" name="Pictures" nillable="true" type="tns:ArrayOfPicture" />
       <xs:element minOccurs="0" name="PropertyType" nillable="true" type="tns:PropertyType" />
       <xs:element minOccurs="0" name="Score" type="xs:int" />
-      <xs:element minOccurs="0" name="SecondaryPictureId" type="xs:int" />
       <xs:element minOccurs="0" name="SocioEconCode" nillable="true" type="tns:SocioEconCode" />
       <xs:element minOccurs="0" name="StreetSafteyCode" nillable="true" type="tns:StreetSafteyCode" />
       <xs:element minOccurs="0" name="StreetType" nillable="true" type="tns:StreetType" />
@@ -156,6 +157,8 @@
       <xs:element minOccurs="0" name="walkscoreNotes" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="yearBuilt" nillable="true" type="xs:int" />
     </xs:sequence>
+    <xs:attribute ref="ser:Id" />
+    <xs:attribute ref="ser:Ref" />
   </xs:complexType>
   <xs:element name="Property" nillable="true" type="tns:Property" />
   <xs:complexType name="Address">
@@ -169,6 +172,8 @@
       <xs:element minOccurs="0" name="street2" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="zip" nillable="true" type="xs:string" />
     </xs:sequence>
+    <xs:attribute ref="ser:Id" />
+    <xs:attribute ref="ser:Ref" />
   </xs:complexType>
   <xs:element name="Address" nillable="true" type="tns:Address" />
   <xs:complexType name="CommonCode">
@@ -178,6 +183,8 @@
       <xs:element minOccurs="0" name="id" type="xs:int" />
       <xs:element minOccurs="0" name="weight" nillable="true" type="xs:int" />
     </xs:sequence>
+    <xs:attribute ref="ser:Id" />
+    <xs:attribute ref="ser:Ref" />
   </xs:complexType>
   <xs:element name="CommonCode" nillable="true" type="tns:CommonCode" />
   <xs:complexType name="ArrayOfProperty">
@@ -193,6 +200,8 @@
       <xs:element minOccurs="0" name="id" type="xs:int" />
       <xs:element minOccurs="0" name="weight" nillable="true" type="xs:int" />
     </xs:sequence>
+    <xs:attribute ref="ser:Id" />
+    <xs:attribute ref="ser:Ref" />
   </xs:complexType>
   <xs:element name="EnclosureCode" nillable="true" type="tns:EnclosureCode" />
   <xs:complexType name="NeighborhoodCode">
@@ -202,8 +211,26 @@
       <xs:element minOccurs="0" name="id" type="xs:int" />
       <xs:element minOccurs="0" name="weight" nillable="true" type="xs:int" />
     </xs:sequence>
+    <xs:attribute ref="ser:Id" />
+    <xs:attribute ref="ser:Ref" />
   </xs:complexType>
   <xs:element name="NeighborhoodCode" nillable="true" type="tns:NeighborhoodCode" />
+  <xs:complexType name="ArrayOfPictureMetaData">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="PictureMetaData" nillable="true" type="tns:PictureMetaData" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfPictureMetaData" nillable="true" type="tns:ArrayOfPictureMetaData" />
+  <xs:complexType name="PictureMetaData">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Delete" type="xs:boolean" />
+      <xs:element minOccurs="0" name="FrontPage" type="xs:boolean" />
+      <xs:element minOccurs="0" name="PictureId" type="xs:int" />
+      <xs:element minOccurs="0" name="PrimaryPicture" type="xs:boolean" />
+      <xs:element minOccurs="0" name="SecondaryPicture" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PictureMetaData" nillable="true" type="tns:PictureMetaData" />
   <xs:complexType name="ArrayOfPicture">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="Picture" nillable="true" type="tns:Picture" />
@@ -221,6 +248,8 @@
       <xs:element minOccurs="0" name="property_id" nillable="true" type="xs:int" />
       <xs:element minOccurs="0" name="secondaryPicture" nillable="true" type="xs:short" />
     </xs:sequence>
+    <xs:attribute ref="ser:Id" />
+    <xs:attribute ref="ser:Ref" />
   </xs:complexType>
   <xs:element name="Picture" nillable="true" type="tns:Picture" />
   <xs:complexType name="PropertyType">
@@ -229,6 +258,8 @@
       <xs:element minOccurs="0" name="description" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="id" type="xs:int" />
     </xs:sequence>
+    <xs:attribute ref="ser:Id" />
+    <xs:attribute ref="ser:Ref" />
   </xs:complexType>
   <xs:element name="PropertyType" nillable="true" type="tns:PropertyType" />
   <xs:complexType name="SocioEconCode">
@@ -237,6 +268,8 @@
       <xs:element minOccurs="0" name="description" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="id" type="xs:int" />
     </xs:sequence>
+    <xs:attribute ref="ser:Id" />
+    <xs:attribute ref="ser:Ref" />
   </xs:complexType>
   <xs:element name="SocioEconCode" nillable="true" type="tns:SocioEconCode" />
   <xs:complexType name="StreetSafteyCode">
@@ -246,6 +279,8 @@
       <xs:element minOccurs="0" name="id" type="xs:int" />
       <xs:element minOccurs="0" name="weight" nillable="true" type="xs:int" />
     </xs:sequence>
+    <xs:attribute ref="ser:Id" />
+    <xs:attribute ref="ser:Ref" />
   </xs:complexType>
   <xs:element name="StreetSafteyCode" nillable="true" type="tns:StreetSafteyCode" />
   <xs:complexType name="StreetType">
@@ -254,6 +289,8 @@
       <xs:element minOccurs="0" name="description" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="id" type="xs:int" />
     </xs:sequence>
+    <xs:attribute ref="ser:Id" />
+    <xs:attribute ref="ser:Ref" />
   </xs:complexType>
   <xs:element name="StreetType" nillable="true" type="tns:StreetType" />
   <xs:complexType name="StreetconnCode">
@@ -263,6 +300,8 @@
       <xs:element minOccurs="0" name="id" type="xs:int" />
       <xs:element minOccurs="0" name="weight" nillable="true" type="xs:int" />
     </xs:sequence>
+    <xs:attribute ref="ser:Id" />
+    <xs:attribute ref="ser:Ref" />
   </xs:complexType>
   <xs:element name="StreetconnCode" nillable="true" type="tns:StreetconnCode" />
   <xs:complexType name="StreetwalkCode">
@@ -272,6 +311,8 @@
       <xs:element minOccurs="0" name="id" type="xs:int" />
       <xs:element minOccurs="0" name="weight" nillable="true" type="xs:int" />
     </xs:sequence>
+    <xs:attribute ref="ser:Id" />
+    <xs:attribute ref="ser:Ref" />
   </xs:complexType>
   <xs:element name="StreetwalkCode" nillable="true" type="tns:StreetwalkCode" />
   <xs:complexType name="LookupValues">
