@@ -1,0 +1,177 @@
+﻿@model UtahPlanners.MVC3.Models.Admin.AdminProperty
+@{
+    Layout = "~/Views/Shared/_LayoutNoLeftNav.cshtml";
+}
+
+<h2>@ViewBag.Title</h2>
+<br />
+
+<h3>Address:</h3>
+
+@using (Html.BeginForm("Property", "Admin", FormMethod.Post))
+{
+    <div class="propform">
+    @Html.HiddenFor(m => m.Property.id)
+    
+    <span class="newproperty">Street1:</span>
+    @Html.TextBoxFor(m => m.Property.Address.street1)<br />
+
+    <span class="newproperty">Street2:</span>
+    @Html.TextBoxFor(m => m.Property.Address.street2)<br />
+
+    <span id="ctl00_ContentPlaceHolder1_lblCity" class="newproperty">City:</span>
+    @Html.TextBoxFor(m => m.Property.Address.city)<br />
+
+    <span id="ctl00_ContentPlaceHolder1_lblState" class="newproperty">State:</span>
+    @Html.TextBoxFor(m => m.Property.Address.state)<br />
+
+    <span id="ctl00_ContentPlaceHolder1_lblZip" class="newproperty">Zip:</span>
+    @Html.TextBoxFor(m => m.Property.Address.zip)<br />
+
+    <span id="ctl00_ContentPlaceHolder1_lblCountry" class="newproperty">Country:</span>
+    @Html.TextBoxFor(m => m.Property.Address.country)<br /><br />
+
+    <h3>General Attributes:</h3>
+    <span id="ctl00_ContentPlaceHolder1_lblDensity" class="newproperty">Density:</span>
+    @Html.TextBoxFor(m => m.Property.density)
+    <span id="ctl00_ContentPlaceHolder1_RegularExpressionValidator2" style="color:Red;display:none;">Please enter in a numeric value</span>
+    <span id="ctl00_ContentPlaceHolder1_RequiredFieldValidator2" style="color:Red;display:none;">This is a required field</span><br />
+
+    <span id="ctl00_ContentPlaceHolder1_lblArea" class="newproperty">Area:</span>
+    @Html.TextBoxFor(m => m.Property.area)
+    <span id="ctl00_ContentPlaceHolder1_RegularExpressionValidator1" style="color:Red;display:none;">Please enter in a numeric value</span>
+    <span id="ctl00_ContentPlaceHolder1_RequiredFieldValidator3" style="color:Red;display:none;">This is a required field</span><br />
+
+    <span id="ctl00_ContentPlaceHolder1_lblUnits" class="newproperty">Units:</span>
+    @Html.TextBoxFor(m => m.Property.units)
+    <span id="ctl00_ContentPlaceHolder1_RegularExpressionValidator3" style="color:Red;display:none;">Please enter in a numeric value</span>
+    <span id="ctl00_ContentPlaceHolder1_RequiredFieldValidator6" style="color:Red;display:none;">This is a required field</span><br />
+
+    <span id="ctl00_ContentPlaceHolder1_lblYearBuilt" class="newproperty">Year Built:</span>
+    @Html.TextBoxFor(m => m.Property.yearBuilt)
+    <span id="ctl00_ContentPlaceHolder1_RegularExpressionValidator4" style="color:Red;display:none;">Please enter in a numeric value</span>
+    <span id="ctl00_ContentPlaceHolder1_RequiredFieldValidator1" style="color:Red;display:none;">This is a required field</span><br />
+
+    <span id="ctl00_ContentPlaceHolder1_lblWalkscore" class="newproperty">Walkscore:</span>
+    @Html.TextBoxFor(m => m.Property.walkscore)
+    <span id="ctl00_ContentPlaceHolder1_RegularExpressionValidator5" style="color:Red;display:none;">Please enter in a numeric value</span>
+    <span id="ctl00_ContentPlaceHolder1_RequiredFieldValidator5" style="color:Red;display:none;">This is a required field</span><br />
+
+    <span id="ctl00_ContentPlaceHolder1_lbl250sf" class="newproperty">250 Single Fam:</span>
+    @Html.TextBoxFor(m => m.Property.twoFiftySingleFam)
+    <span id="ctl00_ContentPlaceHolder1_RegularExpressionValidator6" style="color:Red;display:none;">Please enter in a numeric value</span>
+    <span id="ctl00_ContentPlaceHolder1_RequiredFieldValidator7" style="color:Red;display:none;">This is a required field</span><br />
+
+    <span id="ctl00_ContentPlaceHolder1_lbl250apts" class="newproperty">250 Apartments:</span>
+    @Html.TextBoxFor(m => m.Property.twoFiftyApts)
+    <span id="ctl00_ContentPlaceHolder1_RegularExpressionValidator7" style="color:Red;display:none;">Please enter in a numeric value</span>
+    <span id="ctl00_ContentPlaceHolder1_RequiredFieldValidator8" style="color:Red;display:none;">This is a required field</span><br />
+
+    <span id="ctl00_ContentPlaceHolder1_lblPropertyType" class="newproperty">Property Type:</span>
+    @Html.DropDownListFor(m => m.PropertyType, Model.LookupValues.PropertyTypes.ToSelectList("id", "description"))<br />
+
+    <span id="ctl00_ContentPlaceHolder1_lblStreetType" class="newproperty">Street Type:</span>
+    @Html.DropDownListFor(m => m.StreetType, Model.LookupValues.StreetTypes.ToSelectList("id", "description"))<br />
+
+    <span id="ctl00_ContentPlaceHolder1_lblSocioEcon" class="newproperty">Socio-Econ:</span>
+    @Html.DropDownListFor(m => m.SocioEcon, Model.LookupValues.SocioEconCodes.ToSelectList("id", "description"))<br />
+
+    <span id="ctl00_ContentPlaceHolder1_lblStreetSaftey" class="newproperty">Street Saftey:</span>
+    @Html.DropDownListFor(m => m.StreetSafety, Model.LookupValues.StreetSafetyCodes.ToSelectList("id", "description"))<br />
+
+    <span id="ctl00_ContentPlaceHolder1_lblBuildingEnclosure" class="newproperty">Building Enclosure:</span>
+    @Html.DropDownListFor(m => m.BuildingEnclosure, Model.LookupValues.EnclosureCodes.ToSelectList("id", "description"))<br />
+
+    <span id="ctl00_ContentPlaceHolder1_lblCommonAreas" class="newproperty">Common Areas:</span>
+    @Html.DropDownListFor(m => m.CommonAreas, Model.LookupValues.CommonCodes.ToSelectList("id", "description"))<br />
+
+    <span id="ctl00_ContentPlaceHolder1_lblStreetConn" class="newproperty">Street Connectivity:</span>
+    @Html.DropDownListFor(m => m.StreetConnectivity, Model.LookupValues.StreetconnCodes.ToSelectList("id", "description"))<br />
+        
+    <span id="ctl00_ContentPlaceHolder1_lblStreetWalk" class="newproperty">Street Walkability:</span>
+    @Html.DropDownListFor(m => m.StreetWalkability, Model.LookupValues.StreetwalkCodes.ToSelectList("id", "description"))<br />
+
+    <span id="ctl00_ContentPlaceHolder1_lblNeighCond" class="newproperty">Neighborhood Cond:</span>
+    @Html.DropDownListFor(m => m.NeighborhoodCondition, Model.LookupValues.NeighborhoodCodes.ToSelectList("id", "description"))<br />
+
+    <span id="ctl00_ContentPlaceHolder1_lblNotes" class="newproperty">Notes:</span>
+    @Html.TextAreaFor(m => m.Property.notes, new { style = "height:100px; width:400px;" })<br /><br />
+
+    <h3>Hidden Attributes:</h3>
+    <span id="ctl00_ContentPlaceHolder1_lblAdminNotes" class="newproperty">Admin Notes:</span>
+    @Html.TextAreaFor(m => m.Property.adminNotes, new { style = "height:100px; width:400px;" })<br />
+
+    <span id="ctl00_ContentPlaceHolder1_lblWalkscoreNotes" class="newproperty">Walkscore Notes:</span>
+    @Html.TextAreaFor(m => m.Property.walkscoreNotes, new { style = "height:100px; width:400px;" })<br />
+
+    <span id="ctl00_ContentPlaceHolder1_lblNotFinished" class="newproperty">Not Finished:</span>
+    @Html.TextAreaFor(m => m.Property.notFinished, new { style = "height:100px; width:400px;" })<br /><br />
+
+    
+    
+    <div id="newPictures">
+    <h3>@ViewBag.NewPictureTitle</h3><br />
+    <input type="checkbox" id="checkbox1" /><label for="checkbox1">Primary Image</label><br />
+    <input type="checkbox" id="checkbox2" /><label for="checkbox2">Secondary Image</label><br />
+    <input type="checkbox" id="checkbox3" /><label for="checkbox3">Front Page</label><br />
+    
+
+    <!-- File Upload Control -->
+    <input id="fileInput" name="fileInput" type="file" style="display: none;" width="110" height="30" />
+    <object type="application/x-shockwave-flash" data="../../Content/uploadify/uploadify.swf" width="110" height="30" id="fileInputUploader" style="visibility: visible;">
+        <param name="quality" value="high" />
+        <param name="wmode" value="opaque" />
+        <param name="allowScriptAccess" value="sameDomain" />
+        <param name="flashvars" value="uploadifyID=fileInput&amp;pagepath=/Properties/&amp;script=../scripts/uploadify/Upload.ashx&amp;folder=../scripts/uploadify/&amp;scriptData=ASPSESSID%3Dl2lkvy1s2wz554pwpv0p4rqi%26AUTHID%3D981D3BFB635B57E6E8457C47CB6BAB6E97966E58B784FC653168A8E5B15C03E02A02CF57643E40D2FDA25C64C702E35383CEFAAEC0D7DBCDC635FF8301785E1DF87B521E6E4CBC4F393242DB7D77B9DF&amp;width=110&amp;height=30&amp;wmode=opaque&amp;method=POST&amp;queueSizeLimit=999&amp;simUploadLimit=1&amp;auto=true&amp;fileDataName=Filedata" />
+    </object>
+    
+    <div id="fileInputQueue" class="uploadifyQueue"></div>
+
+    <script type="text/javascript">
+        // <![CDATA[
+        $(document).ready(function () {
+
+            var mainPicture = 0;
+            var secondaryPicture = 0;
+            var frontPage = 0;
+
+            var auth = "981D3BFB635B57E6E8457C47CB6BAB6E97966E58B784FC653168A8E5B15C03E02A02CF57643E40D2FDA25C64C702E35383CEFAAEC0D7DBCDC635FF8301785E1DF87B521E6E4CBC4F393242DB7D77B9DF";
+            var ASPSESSID = "l2lkvy1s2wz554pwpv0p4rqi";
+
+            $("#checkbox1").click(function () {
+                mainPicture = (mainPicture == 1) ? 0 : 1;
+                $("#fileInput").uploadifySettings('scriptData',
+                    { 'mainPicture': mainPicture, 'secondaryPicture': secondaryPicture, 'frontPage': frontPage });
+            });
+            $("#checkbox2").click(function () {
+                secondaryPicture = (secondaryPicture == 1) ? 0 : 1;
+                $("#fileInput").uploadifySettings('scriptData',
+                { 'mainPicture': mainPicture, 'secondaryPicture': secondaryPicture, 'frontPage': frontPage });
+            });
+            $("#checkbox3").click(function () {
+                frontPage = (frontPage == 1) ? 0 : 1;
+                $("#fileInput").uploadifySettings('scriptData',
+                { 'mainPicture': mainPicture, 'secondaryPicture': secondaryPicture, 'frontPage': frontPage });
+            });
+
+
+            $('#fileInput').uploadify({
+                'uploader': '../scripts/uploadify/uploadify.swf',
+                'script': '../scripts/uploadify/Upload.ashx',
+                'cancelImg': '../scripts/uploadify/cancel.png',
+                'auto': true,
+                'folder': '../scripts/uploadify/',
+                'scriptData': { ASPSESSID: ASPSESSID, AUTHID: auth }
+            });
+
+        });
+        // ]]>
+    </script>
+    <!-- End File Upload Control -->
+    </div>
+
+    <br />
+    <br />
+    <input type="submit" value="Create New Property" />
+    </div>
+}

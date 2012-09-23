@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Web.Mvc;
 using UtahPlanners.MVC3.Models.Home;
 using System.Collections.Generic;
@@ -78,6 +79,11 @@ namespace UtahPlanners.MVC3.Extensions
         public static string ToQueryString(this Address address)
         {
             return String.Join("+", address.Street, address.City, address.State, address.ZipCode);
+        }
+
+        public static SelectList ToSelectList<T>(this T[] array, string id, string text)
+        {
+            return new SelectList(array.ToList(), id, text);
         }
     }
 }

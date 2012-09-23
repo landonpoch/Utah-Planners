@@ -119,6 +119,16 @@ font-weight:bold;
 	width: 170px;
 }
 
+.propform input[type=text]
+{
+	width: 170px;
+}
+
+.propform select
+{
+    width: 170px;
+}
+
 h2.trigger {
     padding: 0 0 0 50px;
     margin: 0 0 5px 0;
