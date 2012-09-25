@@ -41,6 +41,12 @@
   <wsdl:message name="IPropertyService_GetIndecies_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetIndeciesResponse" />
   </wsdl:message>
+  <wsdl:message name="IPropertyService_GetAllProperties_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllProperties" />
+  </wsdl:message>
+  <wsdl:message name="IPropertyService_GetAllProperties_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllPropertiesResponse" />
+  </wsdl:message>
   <wsdl:message name="IPropertyService_GetProperty_InputMessage">
     <wsdl:part name="parameters" element="tns:GetProperty" />
   </wsdl:message>
@@ -87,6 +93,10 @@
     <wsdl:operation name="GetIndecies">
       <wsdl:input wsaw:Action="http://tempuri.org/IPropertyService/GetIndecies" message="tns:IPropertyService_GetIndecies_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IPropertyService/GetIndeciesResponse" message="tns:IPropertyService_GetIndecies_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllProperties">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPropertyService/GetAllProperties" message="tns:IPropertyService_GetAllProperties_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPropertyService/GetAllPropertiesResponse" message="tns:IPropertyService_GetAllProperties_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetProperty">
       <wsdl:input wsaw:Action="http://tempuri.org/IPropertyService/GetProperty" message="tns:IPropertyService_GetProperty_InputMessage" />
@@ -141,6 +151,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetIndecies">
       <soap12:operation soapAction="http://tempuri.org/IPropertyService/GetIndecies" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllProperties">
+      <soap12:operation soapAction="http://tempuri.org/IPropertyService/GetAllProperties" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

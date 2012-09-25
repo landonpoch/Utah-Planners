@@ -2416,7 +2416,7 @@ namespace UtahPlanners.MVC3.PropertyService {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="PictureMetaData", Namespace="http://schemas.datacontract.org/2004/07/UtahPlanners.Domain.Entity")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="PictureMetaData", Namespace="http://schemas.datacontract.org/2004/07/UtahPlanners.Domain.Entity", IsReference=true)]
     [System.SerializableAttribute()]
     public partial class PictureMetaData : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
@@ -2869,6 +2869,9 @@ namespace UtahPlanners.MVC3.PropertyService {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPropertyService/GetIndecies", ReplyAction="http://tempuri.org/IPropertyService/GetIndeciesResponse")]
         UtahPlanners.MVC3.PropertyService.PropertiesIndex[] GetIndecies(UtahPlanners.MVC3.PropertyService.IndexFilter filter, UtahPlanners.MVC3.PropertyService.IndexSort sort);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPropertyService/GetAllProperties", ReplyAction="http://tempuri.org/IPropertyService/GetAllPropertiesResponse")]
+        UtahPlanners.MVC3.PropertyService.Property[] GetAllProperties();
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPropertyService/GetProperty", ReplyAction="http://tempuri.org/IPropertyService/GetPropertyResponse")]
         UtahPlanners.MVC3.PropertyService.Property GetProperty(int id);
         
@@ -2926,6 +2929,10 @@ namespace UtahPlanners.MVC3.PropertyService {
         
         public UtahPlanners.MVC3.PropertyService.PropertiesIndex[] GetIndecies(UtahPlanners.MVC3.PropertyService.IndexFilter filter, UtahPlanners.MVC3.PropertyService.IndexSort sort) {
             return base.Channel.GetIndecies(filter, sort);
+        }
+        
+        public UtahPlanners.MVC3.PropertyService.Property[] GetAllProperties() {
+            return base.Channel.GetAllProperties();
         }
         
         public UtahPlanners.MVC3.PropertyService.Property GetProperty(int id) {

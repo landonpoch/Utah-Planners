@@ -51,6 +51,16 @@ namespace Paul.UtahPlanners.Application
             }
         }
 
+        public List<Property> GetAllProperties()
+        {
+            using (var unit = _factory.CreateUnitOfWork())
+            {
+                var repo = unit.CreatePropertyRepository(_settings);
+                var props = repo.GetAllProperties();
+                return props;
+            }
+        }
+
         public Property GetProperty(int id)
         {
             using (var unit = _factory.CreateUnitOfWork())

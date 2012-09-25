@@ -27,20 +27,36 @@ namespace UtahPlanners.Infrastructure.Repository
             _context.Properties.Add(property);
         }
 
+        public List<Property> GetAllProperties()
+        {
+            var properties = GetPropertiesQuery().ToList();
+
+            /* If we are strictly returning aggregate roots than we would return them with all their value types.
+             * This would be very expensive in this case.  Do a little research to see what the best practice is.
+            properties.ForEach(p =>
+            {
+                p.Weights = _settings.Weights;
+                p.PictureMetaData = (from prop in _context.Properties
+                                     join pic in _context.Pictures on prop.id equals pic.property_id
+                                     where prop.id == p.id
+                                     select new PictureMetaData
+                                     {
+                                         PictureId = pic.id,
+                                         PrimaryPicture = pic.mainPicture == 1,
+                                         SecondaryPicture = pic.secondaryPicture == 1,
+                                         FrontPage = pic.frontPage == 1
+                                     })
+                                    .ToList();
+            });
+            */
+
+            return properties;
+        }
+
         public Property Get(int id)
         {
             // TODO: Try to do this in 1 DB hit
-            var property = _context.Properties
-                .Include(p => p.Address)
-                .Include(p => p.CommonCode)
-                .Include(p => p.EnclosureCode)
-                .Include(p => p.NeighborhoodCode)
-                .Include(p => p.PropertyType)
-                .Include(p => p.SocioEconCode)
-                .Include(p => p.StreetconnCode)
-                .Include(p => p.StreetSafteyCode)
-                .Include(p => p.StreetType)
-                .Include(p => p.StreetwalkCode)
+            var property = GetPropertiesQuery()
                 .FirstOrDefault(p => p.id == id); // DB Hit 1
 
             property.Weights = _settings.Weights;
@@ -82,5 +98,20 @@ namespace UtahPlanners.Infrastructure.Repository
         }
 
         #endregion
+
+        private IQueryable<Property> GetPropertiesQuery()
+        {
+            return _context.Properties
+                .Include(p => p.Address)
+                .Include(p => p.CommonCode)
+                .Include(p => p.EnclosureCode)
+                .Include(p => p.NeighborhoodCode)
+                .Include(p => p.PropertyType)
+                .Include(p => p.SocioEconCode)
+                .Include(p => p.StreetconnCode)
+                .Include(p => p.StreetSafteyCode)
+                .Include(p => p.StreetType)
+                .Include(p => p.StreetwalkCode);
+        }
     }
 }

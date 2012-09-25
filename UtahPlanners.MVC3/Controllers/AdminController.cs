@@ -80,7 +80,10 @@ namespace UtahPlanners.MVC3.Controllers
 
         public ActionResult PropertyList()
         {
-            return View();
+            var client = _factory.CreatePropertyService();
+            var props = client.SafeExecution(c => c.GetAllProperties());
+            
+            return View(props.ToList());
         }
 
         public ActionResult CreateCodes()

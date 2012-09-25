@@ -118,6 +118,12 @@
     </xs:restriction>
   </xs:simpleType>
   <xs:element name="Direction" nillable="true" type="tns:Direction" />
+  <xs:complexType name="ArrayOfProperty">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Property" nillable="true" type="tns:Property" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfProperty" nillable="true" type="tns:ArrayOfProperty" />
   <xs:complexType name="Property">
     <xs:sequence>
       <xs:element minOccurs="0" name="Address" nillable="true" type="tns:Address" />
@@ -187,12 +193,6 @@
     <xs:attribute ref="ser:Ref" />
   </xs:complexType>
   <xs:element name="CommonCode" nillable="true" type="tns:CommonCode" />
-  <xs:complexType name="ArrayOfProperty">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="Property" nillable="true" type="tns:Property" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ArrayOfProperty" nillable="true" type="tns:ArrayOfProperty" />
   <xs:complexType name="EnclosureCode">
     <xs:sequence>
       <xs:element minOccurs="0" name="Properties" nillable="true" type="tns:ArrayOfProperty" />
@@ -229,6 +229,8 @@
       <xs:element minOccurs="0" name="PrimaryPicture" type="xs:boolean" />
       <xs:element minOccurs="0" name="SecondaryPicture" type="xs:boolean" />
     </xs:sequence>
+    <xs:attribute ref="ser:Id" />
+    <xs:attribute ref="ser:Ref" />
   </xs:complexType>
   <xs:element name="PictureMetaData" nillable="true" type="tns:PictureMetaData" />
   <xs:complexType name="ArrayOfPicture">
