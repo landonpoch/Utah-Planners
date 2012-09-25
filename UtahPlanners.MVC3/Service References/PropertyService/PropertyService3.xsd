@@ -72,6 +72,20 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="SaveProperty">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/UtahPlanners.Domain.Entity" minOccurs="0" name="property" nillable="true" type="q8:Property" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SavePropertyResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SavePropertyResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="GetShowcaseProperty">
     <xs:complexType>
       <xs:sequence />
@@ -80,7 +94,7 @@
   <xs:element name="GetShowcasePropertyResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/System.Collections.Generic" minOccurs="0" name="GetShowcasePropertyResult" type="q8:KeyValuePairOfintint" />
+        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/System.Collections.Generic" minOccurs="0" name="GetShowcasePropertyResult" type="q9:KeyValuePairOfintint" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -94,7 +108,7 @@
   <xs:element name="GetPictureResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/UtahPlanners.Domain.Entity" minOccurs="0" name="GetPictureResult" nillable="true" type="q9:Picture" />
+        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/UtahPlanners.Domain.Entity" minOccurs="0" name="GetPictureResult" nillable="true" type="q10:Picture" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -106,7 +120,7 @@
   <xs:element name="GetLookupValuesResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/UtahPlanners.Domain.Entity" minOccurs="0" name="GetLookupValuesResult" nillable="true" type="q10:LookupValues" />
+        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/UtahPlanners.Domain.Entity" minOccurs="0" name="GetLookupValuesResult" nillable="true" type="q11:LookupValues" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

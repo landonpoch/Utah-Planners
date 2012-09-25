@@ -1,5 +1,6 @@
 ﻿@model UtahPlanners.MVC3.PropertyService.PictureMetaData
 
+@Html.HiddenFor(m => m.PictureId)
 <img src="@Url.Action("GetPicture", "Home", new { id = Model.PictureId })" alt="propertyPic" width="250" /><br />
 @Html.CheckBoxFor(m => m.PrimaryPicture)<label>Primary Image</label><br />
 @Html.CheckBoxFor(m => m.SecondaryPicture)<label>Secondary Image</label><br />

@@ -56,6 +56,7 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Model1.Context.tt</DependentUpon>
+      <CustomToolNamespace>UtahPlanners.Domain.Entity</CustomToolNamespace>
     </Compile>
     <Compile Include="Repository\PictureRepository.cs" />
     <Compile Include="Repository\PropertiesIndexRepository.cs" />
@@ -65,6 +66,7 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Repository.edmx</DependentUpon>
+      <CustomToolNamespace>UtahPlanners.Domain.Entity</CustomToolNamespace>
     </Compile>
     <Compile Include="Service\EmailService.cs" />
     <Compile Include="UnitOfWork\UnitOfWork.cs" />
@@ -75,12 +77,12 @@
     <EntityDeploy Include="DAO\Repository.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Repository.Designer.cs</LastGenOutput>
-      <CustomToolNamespace>UtahPlanners.Infrastructure.DAO</CustomToolNamespace>
+      <CustomToolNamespace>UtahPlanners.Domain.Entities</CustomToolNamespace>
     </EntityDeploy>
     <None Include="DAO\Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>Model1.Context.cs</LastGenOutput>
-      <CustomToolNamespace>UtahPlanners.Domain</CustomToolNamespace>
+      <CustomToolNamespace>UtahPlanners.Infrastructure.DAO</CustomToolNamespace>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\DataSources\PropertiesDB.datasource" />

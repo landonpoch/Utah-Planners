@@ -69,8 +69,6 @@ namespace UtahPlanners.Domain.Entity
         public Nullable<double> longitude { get; set; }
     
     	[DataMember]
-        public virtual Address Address { get; set; }
-    	[DataMember]
         public virtual CommonCode CommonCode { get; set; }
     	[DataMember]
         public virtual EnclosureCode EnclosureCode { get; set; }
@@ -90,6 +88,8 @@ namespace UtahPlanners.Domain.Entity
         public virtual StreetSafteyCode StreetSafteyCode { get; set; }
     	[DataMember]
         public virtual StreetwalkCode StreetwalkCode { get; set; }
+    	[DataMember]
+        public virtual Address Address { get; set; }
     }
     
 }

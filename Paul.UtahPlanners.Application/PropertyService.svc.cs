@@ -61,7 +61,33 @@ namespace Paul.UtahPlanners.Application
             }
         }
 
-        
+        public bool SaveProperty(Property dtoProp)
+        {
+            var result = false;
+            try
+            {
+                using (var unit = _factory.CreateUnitOfWork())
+                {
+                    var repo = unit.CreatePropertyRepository(_settings);
+                    if (dtoProp.id > 0)
+                    {
+                        var ctxProp = repo.Get(dtoProp.id);
+                        UpdateProperty(ctxProp, dtoProp);
+                    }
+                    else
+                    {
+                        repo.Add(dtoProp);
+                    }
+                    unit.Commit();
+                    result = true;
+                }
+            }
+            catch (Exception e)
+            {
+                // TODO: Logging
+            }
+            return result;
+        }
 
         public KeyValuePair<int, int> GetShowcaseProperty()
         {
@@ -87,5 +113,40 @@ namespace Paul.UtahPlanners.Application
         }
 
         #endregion
+
+        private void UpdateProperty(Property ctxProp, Property dtoProp)
+        {
+            // Map address attributes
+            ctxProp.Address.street1 = dtoProp.Address.street1;
+            ctxProp.Address.street2 = dtoProp.Address.street2;
+            ctxProp.Address.city = dtoProp.Address.city;
+            ctxProp.Address.state = dtoProp.Address.state;
+            ctxProp.Address.zip = dtoProp.Address.zip;
+            ctxProp.Address.country = dtoProp.Address.country;
+
+            // Map general attributes
+            ctxProp.density = dtoProp.density;
+            ctxProp.area = dtoProp.area;
+            ctxProp.units = dtoProp.units;
+            ctxProp.yearBuilt = dtoProp.yearBuilt;
+            ctxProp.walkscore = dtoProp.walkscore;
+            ctxProp.twoFiftySingleFam = dtoProp.twoFiftySingleFam;
+            ctxProp.twoFiftyApts = dtoProp.twoFiftyApts;
+            ctxProp.typeCode = dtoProp.typeCode;
+            ctxProp.streetCode = dtoProp.streetCode;
+            ctxProp.socioEcon = dtoProp.socioEcon;
+            ctxProp.streetSaftey = dtoProp.streetSaftey;
+            ctxProp.buildingEnclosure = dtoProp.buildingEnclosure;
+            ctxProp.commonAreas = dtoProp.commonAreas;
+            ctxProp.streetConn = dtoProp.streetConn;
+            ctxProp.streetWalk = dtoProp.streetWalk;
+            ctxProp.neighCondition = dtoProp.neighCondition;
+            ctxProp.notes = dtoProp.notes;
+
+            // Map hidden attributes
+            ctxProp.adminNotes = dtoProp.adminNotes;
+            ctxProp.walkscoreNotes = dtoProp.walkscoreNotes;
+            ctxProp.notFinished = dtoProp.notFinished;
+        }
     }
 }

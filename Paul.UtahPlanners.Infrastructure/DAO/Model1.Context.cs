@@ -9,9 +9,8 @@
 
 using System;
 using System.Data.Entity;
-using UtahPlanners.Domain.Entity;
 using System.Data.Entity.Infrastructure;
-// using System.Data.Entity.Infrastructure;
+using UtahPlanners.Domain.Entity;
 
 namespace UtahPlanners.Infrastructure.DAO
 {
@@ -27,7 +26,6 @@ namespace UtahPlanners.Infrastructure.DAO
             throw new UnintentionalCodeFirstException();
         }
     
-        public DbSet<Address> Addresses { get; set; }
         public DbSet<CommonCode> CommonCodes { get; set; }
         public DbSet<EnclosureCode> EnclosureCodes { get; set; }
         public DbSet<NeighborhoodCode> NeighborhoodCodes { get; set; }
@@ -41,5 +39,6 @@ namespace UtahPlanners.Infrastructure.DAO
         public DbSet<StreetwalkCode> StreetwalkCodes { get; set; }
         public DbSet<Weight> Weights { get; set; }
         public DbSet<PropertiesIndex> PropertiesIndexes { get; set; }
+        public DbSet<Address> Addresses { get; set; }
     }
 }

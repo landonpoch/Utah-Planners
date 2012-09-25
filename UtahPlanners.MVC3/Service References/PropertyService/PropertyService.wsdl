@@ -47,6 +47,12 @@
   <wsdl:message name="IPropertyService_GetProperty_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetPropertyResponse" />
   </wsdl:message>
+  <wsdl:message name="IPropertyService_SaveProperty_InputMessage">
+    <wsdl:part name="parameters" element="tns:SaveProperty" />
+  </wsdl:message>
+  <wsdl:message name="IPropertyService_SaveProperty_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SavePropertyResponse" />
+  </wsdl:message>
   <wsdl:message name="IPropertyService_GetShowcaseProperty_InputMessage">
     <wsdl:part name="parameters" element="tns:GetShowcaseProperty" />
   </wsdl:message>
@@ -85,6 +91,10 @@
     <wsdl:operation name="GetProperty">
       <wsdl:input wsaw:Action="http://tempuri.org/IPropertyService/GetProperty" message="tns:IPropertyService_GetProperty_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IPropertyService/GetPropertyResponse" message="tns:IPropertyService_GetProperty_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveProperty">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPropertyService/SaveProperty" message="tns:IPropertyService_SaveProperty_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPropertyService/SavePropertyResponse" message="tns:IPropertyService_SaveProperty_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetShowcaseProperty">
       <wsdl:input wsaw:Action="http://tempuri.org/IPropertyService/GetShowcaseProperty" message="tns:IPropertyService_GetShowcaseProperty_InputMessage" />
@@ -140,6 +150,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetProperty">
       <soap12:operation soapAction="http://tempuri.org/IPropertyService/GetProperty" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveProperty">
+      <soap12:operation soapAction="http://tempuri.org/IPropertyService/SaveProperty" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

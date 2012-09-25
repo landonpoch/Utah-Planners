@@ -41,7 +41,8 @@ if (container == null)
 
 using System;
 using System.Data.Entity;
-// using System.Data.Entity.Infrastructure;
+using System.Data.Entity.Infrastructure;
+using UtahPlanners.Domain.Entity;
 <#
 if (container.FunctionImports.Any())
 {

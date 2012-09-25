@@ -2872,6 +2872,9 @@ namespace UtahPlanners.MVC3.PropertyService {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPropertyService/GetProperty", ReplyAction="http://tempuri.org/IPropertyService/GetPropertyResponse")]
         UtahPlanners.MVC3.PropertyService.Property GetProperty(int id);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPropertyService/SaveProperty", ReplyAction="http://tempuri.org/IPropertyService/SavePropertyResponse")]
+        bool SaveProperty(UtahPlanners.MVC3.PropertyService.Property property);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPropertyService/GetShowcaseProperty", ReplyAction="http://tempuri.org/IPropertyService/GetShowcasePropertyResponse")]
         System.Collections.Generic.KeyValuePair<int, int> GetShowcaseProperty();
         
@@ -2927,6 +2930,10 @@ namespace UtahPlanners.MVC3.PropertyService {
         
         public UtahPlanners.MVC3.PropertyService.Property GetProperty(int id) {
             return base.Channel.GetProperty(id);
+        }
+        
+        public bool SaveProperty(UtahPlanners.MVC3.PropertyService.Property property) {
+            return base.Channel.SaveProperty(property);
         }
         
         public System.Collections.Generic.KeyValuePair<int, int> GetShowcaseProperty() {

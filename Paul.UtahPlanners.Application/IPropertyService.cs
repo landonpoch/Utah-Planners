@@ -24,6 +24,9 @@ namespace Paul.UtahPlanners.Application
         Property GetProperty(int id);
 
         [OperationContract]
+        bool SaveProperty(Property property);
+
+        [OperationContract]
         KeyValuePair<int, int> GetShowcaseProperty();
 
         [OperationContract]

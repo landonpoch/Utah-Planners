@@ -22,6 +22,11 @@ namespace UtahPlanners.Infrastructure.Repository
 
         #region IPropertyRepository Members
 
+        public void Add(Property property)
+        {
+            _context.Properties.Add(property);
+        }
+
         public Property Get(int id)
         {
             // TODO: Try to do this in 1 DB hit

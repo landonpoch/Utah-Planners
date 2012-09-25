@@ -113,6 +113,7 @@
     <None Include="Entity\Model1.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>Model1.cs</LastGenOutput>
+      <CustomToolNamespace>UtahPlanners.Domain.Entity</CustomToolNamespace>
     </None>
     <None Include="packages.config" />
   </ItemGroup>

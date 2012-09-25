@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using UtahPlanners.MVC3.Services;
 using UtahPlanners.MVC3.Extensions;
 using UtahPlanners.MVC3.Models.Admin;
+using UtahPlanners.MVC3.Models.Home;
 
 namespace UtahPlanners.MVC3.Controllers
 {
@@ -66,8 +67,13 @@ namespace UtahPlanners.MVC3.Controllers
         [HttpPost]
         public ActionResult Property(AdminProperty model)
         {
+            var prop = SetCodes(model);
             var client = _factory.CreatePropertyService();
-            //var result = client.SafeExecution(c => c.SaveProperty());
+            var result = client.SafeExecution(c => c.SaveProperty(model.Property));
+
+            client = _factory.CreatePropertyService();
+            model.LookupValues = client.SafeExecution(c => c.GetLookupValues());
+            ViewBag.SubmitText = "Submit Changes";
 
             return View(model);
         }
@@ -102,6 +108,22 @@ namespace UtahPlanners.MVC3.Controllers
             return View();
         }
 
+        private PropertyService.Property SetCodes(AdminProperty model)
+        {
+            var property = model.Property;
 
+            // Map new drop down selections
+            property.typeCode = Int32.Parse(model.PropertyType);
+            property.streetCode = Int32.Parse(model.StreetType);
+            property.socioEcon = Int32.Parse(model.SocioEcon);
+            property.streetSaftey = Int32.Parse(model.StreetSafety);
+            property.buildingEnclosure = Int32.Parse(model.BuildingEnclosure);
+            property.commonAreas = Int32.Parse(model.CommonAreas);
+            property.streetConn = Int32.Parse(model.StreetConnectivity);
+            property.streetWalk = Int32.Parse(model.StreetWalkability);
+            property.neighCondition = Int32.Parse(model.NeighborhoodCondition);
+            
+            return property;
+        }
     }
 }
