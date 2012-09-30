@@ -71,9 +71,9 @@ namespace Paul.UtahPlanners.Application
             }
         }
 
-        public bool SaveProperty(Property dtoProp)
+        public int SaveProperty(Property dtoProp)
         {
-            var result = false;
+            var result = 0;
             try
             {
                 using (var unit = _factory.CreateUnitOfWork())
@@ -88,6 +88,27 @@ namespace Paul.UtahPlanners.Application
                     {
                         repo.Add(dtoProp);
                     }
+                    unit.Commit();
+                    result = dtoProp.id;
+                }
+            }
+            catch (Exception e)
+            {
+                // TODO: Logging
+            }
+            return result;
+        }
+
+        public bool DeleteProperty(int propertyId)
+        {
+            bool result = false;
+            try
+            {
+                using (var unit = _factory.CreateUnitOfWork())
+                {
+                    var repo = unit.CreatePropertyRepository(_settings);
+                    var property = repo.Get(propertyId);
+                    repo.Remove(property);
                     unit.Commit();
                     result = true;
                 }

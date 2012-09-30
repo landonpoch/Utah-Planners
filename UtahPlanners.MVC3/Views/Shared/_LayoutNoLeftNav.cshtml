@@ -10,15 +10,13 @@
     <meta name="description" content="" />
     
     <title>@ViewBag.Title</title>
-    <link href="@Url.Content("/Content/default.css")" rel="stylesheet" type="text/css" />
-    <link href="@Url.Content("/Content/custom.css")" rel="stylesheet" type="text/css" />
-    <script src="@Url.Content("~/Scripts/jquery-1.4.4.min.js")" type="text/javascript"></script>
-    @RenderSection("Head", required: false)
+    <link href="@Url.Content("~/Content/default.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/custom.css")" rel="stylesheet" type="text/css" />
+    @RenderSection("Head", false)
 </head>
 
 <body>
     
-
     <div id="wrapper">
 	    <div id="header">
 		    <div id="logo">
@@ -66,6 +64,10 @@
 		<p id="legal">Copyright &copy; 2010 Paul Anderson. All Rights Reserved. Designed by <a href="http://www.freecsstemplates.org/">Free CSS Templates</a>.</p>
 		<p id="links"><a href="#">Privacy Policy</a> | <a href="#">Terms of Use</a></p>
 	</div>
+
+    <script src="@Url.Content("~/Scripts/jquery-1.4.4.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/jquery.unobtrusive-ajax.js")" type="text/javascript"></script>
+    @RenderSection("Scripts", false)
 
 </body>
 </html>

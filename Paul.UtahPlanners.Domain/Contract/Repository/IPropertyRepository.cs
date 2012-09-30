@@ -11,6 +11,7 @@ namespace UtahPlanners.Domain.Contract.Repository
         void Add(Property property);
         List<Property> GetAllProperties();
         Property Get(int id);
+        void Remove(Property property);
         KeyValuePair<int, int> GetShowcaseProperty();
     }
 }

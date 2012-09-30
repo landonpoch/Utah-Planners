@@ -94,7 +94,21 @@
   <xs:element name="SavePropertyResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="SavePropertyResult" type="xs:boolean" />
+        <xs:element minOccurs="0" name="SavePropertyResult" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteProperty">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="propertyId" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeletePropertyResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="DeletePropertyResult" type="xs:boolean" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

@@ -2876,7 +2876,10 @@ namespace UtahPlanners.MVC3.PropertyService {
         UtahPlanners.MVC3.PropertyService.Property GetProperty(int id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPropertyService/SaveProperty", ReplyAction="http://tempuri.org/IPropertyService/SavePropertyResponse")]
-        bool SaveProperty(UtahPlanners.MVC3.PropertyService.Property property);
+        int SaveProperty(UtahPlanners.MVC3.PropertyService.Property property);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPropertyService/DeleteProperty", ReplyAction="http://tempuri.org/IPropertyService/DeletePropertyResponse")]
+        bool DeleteProperty(int propertyId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPropertyService/GetShowcaseProperty", ReplyAction="http://tempuri.org/IPropertyService/GetShowcasePropertyResponse")]
         System.Collections.Generic.KeyValuePair<int, int> GetShowcaseProperty();
@@ -2939,8 +2942,12 @@ namespace UtahPlanners.MVC3.PropertyService {
             return base.Channel.GetProperty(id);
         }
         
-        public bool SaveProperty(UtahPlanners.MVC3.PropertyService.Property property) {
+        public int SaveProperty(UtahPlanners.MVC3.PropertyService.Property property) {
             return base.Channel.SaveProperty(property);
+        }
+        
+        public bool DeleteProperty(int propertyId) {
+            return base.Channel.DeleteProperty(propertyId);
         }
         
         public System.Collections.Generic.KeyValuePair<int, int> GetShowcaseProperty() {

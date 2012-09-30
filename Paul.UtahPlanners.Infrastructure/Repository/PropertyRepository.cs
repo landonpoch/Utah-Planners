@@ -30,26 +30,7 @@ namespace UtahPlanners.Infrastructure.Repository
         public List<Property> GetAllProperties()
         {
             var properties = GetPropertiesQuery().ToList();
-
-            /* If we are strictly returning aggregate roots than we would return them with all their value types.
-             * This would be very expensive in this case.  Do a little research to see what the best practice is.
-            properties.ForEach(p =>
-            {
-                p.Weights = _settings.Weights;
-                p.PictureMetaData = (from prop in _context.Properties
-                                     join pic in _context.Pictures on prop.id equals pic.property_id
-                                     where prop.id == p.id
-                                     select new PictureMetaData
-                                     {
-                                         PictureId = pic.id,
-                                         PrimaryPicture = pic.mainPicture == 1,
-                                         SecondaryPicture = pic.secondaryPicture == 1,
-                                         FrontPage = pic.frontPage == 1
-                                     })
-                                    .ToList();
-            });
-            */
-
+            AppendMetaData(properties);
             return properties;
         }
 
@@ -82,6 +63,11 @@ namespace UtahPlanners.Infrastructure.Repository
             return property;
         }
 
+        public void Remove(Property property)
+        {
+            _context.Properties.Remove(property);
+        }
+
         public KeyValuePair<int, int> GetShowcaseProperty()
         {
             var count = _context.Pictures.Where(p => p.frontPage == 1)
@@ -112,6 +98,27 @@ namespace UtahPlanners.Infrastructure.Repository
                 .Include(p => p.StreetSafteyCode)
                 .Include(p => p.StreetType)
                 .Include(p => p.StreetwalkCode);
+        }
+
+        private void AppendMetaData(List<Property> properties)
+        {
+            var propertyIds = properties.Select(p => p.id).ToList();
+            var metaData = (from md in _context.Pictures
+                            where propertyIds.Contains(md.property_id.Value)
+                            select new PictureMetaData
+                            {
+                                PictureId = md.id,
+                                PrimaryPicture = md.mainPicture == 1,
+                                SecondaryPicture = md.secondaryPicture == 1,
+                                FrontPage = md.frontPage == 1,
+                                PropertyId = md.property_id.Value
+                            })
+                           .ToList();
+
+            properties.ForEach(p =>
+            {
+                p.PictureMetaData = metaData.Where(md => md.PropertyId == p.id).ToList();
+            });
         }
     }
 }

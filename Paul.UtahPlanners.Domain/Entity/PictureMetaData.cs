@@ -19,5 +19,7 @@ namespace UtahPlanners.Domain.Entity
         public bool FrontPage { get; set; }
         [DataMember]
         public bool Delete { get; set; }
+        [DataMember]
+        public int PropertyId { get; set; }
     }
 }

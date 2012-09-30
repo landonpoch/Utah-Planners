@@ -13,6 +13,8 @@ namespace UtahPlanners.MVC3.Controllers
     [Authorize(Roles="admin")]
     public class AdminController : Controller
     {
+        private const string PostMessageKey = "PostMessage";
+
         IServiceFactory _factory;
         
         public AdminController(IServiceFactory factory)
@@ -69,21 +71,38 @@ namespace UtahPlanners.MVC3.Controllers
         {
             var prop = SetCodes(model);
             var client = _factory.CreatePropertyService();
-            var result = client.SafeExecution(c => c.SaveProperty(model.Property));
+            var id = client.SafeExecution(c => c.SaveProperty(model.Property));
 
-            client = _factory.CreatePropertyService();
-            model.LookupValues = client.SafeExecution(c => c.GetLookupValues());
-            ViewBag.SubmitText = "Submit Changes";
-
-            return View(model);
+            // TODO: Figure out success/fail messaging and behavior
+            return RedirectToAction("Property", new { id });
         }
 
         public ActionResult PropertyList()
         {
             var client = _factory.CreatePropertyService();
             var props = client.SafeExecution(c => c.GetAllProperties());
-            
+
             return View(props.ToList());
+        }
+
+        public ActionResult PropertyGrid(string sort)
+        {
+            var client = _factory.CreatePropertyService();
+            var props = client.SafeExecution(c => c.GetAllProperties().ToList());
+
+            
+
+            return View(props);
+        }
+
+        [HttpPost]
+        public ActionResult DeleteProperty(int id)
+        {
+            var client = _factory.CreatePropertyService();
+            bool success = client.SafeExecution(c => c.DeleteProperty(id));
+
+            TempData[PostMessageKey] = success ? "Property Successfully Deleted." : "An error occurred while trying to delete the property.";
+            return RedirectToAction("PropertyList"); // Always redirect on posts to avoid the resend post-data browser message
         }
 
         public ActionResult CreateCodes()
