@@ -51,12 +51,12 @@ namespace Paul.UtahPlanners.Application
             }
         }
 
-        public List<Property> GetAllProperties()
+        public List<Property> GetAllProperties(PropertySort sort)
         {
             using (var unit = _factory.CreateUnitOfWork())
             {
                 var repo = unit.CreatePropertyRepository(_settings);
-                var props = repo.GetAllProperties();
+                var props = repo.GetAllProperties(sort);
                 return props;
             }
         }

@@ -6,6 +6,24 @@ using System.Linq.Expressions;
 
 namespace UtahPlanners.Domain.Entity
 {
+    public class PropertySort
+    {
+        public PropertyColumn Column { get; set; }
+        public Direction Direction { get; set; }
+    }
+
+    public enum PropertyColumn
+    {
+        Id,
+        City,
+        Description,
+        Density,
+        Units,
+        YearBuilt,
+        AdminNotes,
+        NotFinished
+    }
+
     public class IndexSort
     {
         public IndexColumn Column { get; set; }

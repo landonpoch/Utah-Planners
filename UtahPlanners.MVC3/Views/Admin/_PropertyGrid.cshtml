@@ -1,0 +1,39 @@
+﻿@using UtahPlanners.MVC3.Models.Admin
+@model PropertyGrid
+@{
+    ViewBag.AjaxOptions = new AjaxOptions { HttpMethod = "Get", UpdateTargetId = "propertyTable", InsertionMode = InsertionMode.Replace };
+}
+
+<table cellspacing="0" border="1" style="border-collapse:collapse; width: 100%;">
+	<thead>
+        <tr align="center" valign="middle" style="background-color:#CCCCCC;">
+			<th><a href="#">Edit</a></th>
+            <th><a href="#">Delete</a></th>
+            <th>@Ajax.ActionLink("ID", "PropertyGrid", new { sort = Model.SortOptions[1] }, (AjaxOptions)ViewBag.AjaxOptions)</th>
+            <th>@Ajax.ActionLink("City", "PropertyGrid", new { sort = Model.SortOptions[2] }, (AjaxOptions)ViewBag.AjaxOptions)</th>
+            <th>@Ajax.ActionLink("Description", "PropertyGrid", new { sort = Model.SortOptions[3] }, (AjaxOptions)ViewBag.AjaxOptions)</th>
+            <th>@Ajax.ActionLink("Density", "PropertyGrid", new { sort = Model.SortOptions[4] }, (AjaxOptions)ViewBag.AjaxOptions)</th>
+            <th>@Ajax.ActionLink("Units", "PropertyGrid", new { sort = Model.SortOptions[5] }, (AjaxOptions)ViewBag.AjaxOptions)</th>
+            <th>@Ajax.ActionLink("Year Built", "PropertyGrid", new { sort = Model.SortOptions[6] }, (AjaxOptions)ViewBag.AjaxOptions)</th>
+            <th>@Ajax.ActionLink("Admin Notes", "PropertyGrid", new { sort = Model.SortOptions[7] }, (AjaxOptions)ViewBag.AjaxOptions)</th>
+            <th>@Ajax.ActionLink("Not Finished", "PropertyGrid", new { sort = Model.SortOptions[8] }, (AjaxOptions)ViewBag.AjaxOptions)</th>
+		</tr>
+    </thead>
+    <tbody>
+        @foreach (var prop in Model.Properties)
+        {
+            <tr align="center">
+			    <td>@Html.ActionLink("Edit", "Property", "Admin", new { id = prop.id }, new { })</td>
+                <td><a class="delete" href="#" data-identifier="@prop.id">Delete</a></td>
+                <td>@prop.id</td>
+                <td>@prop.Address.city</td>
+                <td>@prop.PropertyType.description</td>
+                <td>@prop.density</td>
+                <td>@prop.units</td>
+                <td>@prop.yearBuilt</td>
+                <td>@prop.adminNotes</td>
+                <td>@prop.notFinished</td>
+		    </tr>
+        }
+	</tbody>
+</table>

@@ -87,6 +87,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Admin\AdminProperty.cs" />
+    <Compile Include="Models\Admin\PropertyGrid.cs" />
     <Compile Include="Models\User\ChangePassword.cs" />
     <Compile Include="Models\User\CreateAccount.cs" />
     <Compile Include="Models\User\ForgotPassword.cs" />
@@ -360,6 +361,7 @@
     </None>
     <Content Include="Views\User\_ChangePassword.cshtml" />
     <Content Include="Views\Admin\EditorTemplates\PictureMetaData.cshtml" />
+    <Content Include="Views\Admin\_PropertyGrid.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Home\Default.cshtml" />

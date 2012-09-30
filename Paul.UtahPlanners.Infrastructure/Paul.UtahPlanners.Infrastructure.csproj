@@ -69,6 +69,7 @@
       <CustomToolNamespace>UtahPlanners.Domain.Entity</CustomToolNamespace>
     </Compile>
     <Compile Include="Service\EmailService.cs" />
+    <Compile Include="Shared\InfrastructureExtensions.cs" />
     <Compile Include="UnitOfWork\UnitOfWork.cs" />
     <Compile Include="UnitOfWork\UnitOfWorkFactory.cs" />
   </ItemGroup>

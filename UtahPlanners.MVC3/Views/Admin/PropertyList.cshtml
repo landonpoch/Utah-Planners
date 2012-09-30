@@ -1,4 +1,5 @@
-﻿@model List<UtahPlanners.MVC3.PropertyService.Property>
+﻿@using UtahPlanners.MVC3.Models.Admin
+@model PropertyGrid
 @{
     Layout = "~/Views/Shared/_LayoutNoLeftNav.cshtml";
 }
@@ -11,38 +12,6 @@
 @using (Html.BeginForm("DeleteProperty", "Admin", FormMethod.Post))
 {
 <div id="propertyTable" style="width: 100%;">
-	<table cellspacing="0" align="Center" rules="all" border="1" id="ctl00_ContentPlaceHolder1_GridView1" style="border-collapse:collapse; width: 100%;">
-		<thead>
-            <tr align="center" valign="middle" style="background-color:#CCCCCC;">
-			    <th scope="col"><a href="javascript:__doPostBack('ctl00$ContentPlaceHolder1$GridView1','Sort$edit')">Edit</a></th>
-                <th scope="col"><a href="javascript:__doPostBack('ctl00$ContentPlaceHolder1$GridView1','Sort$delete')">Delete</a></th>
-                <th scope="col"><a href="javascript:__doPostBack('ctl00$ContentPlaceHolder1$GridView1','Sort$id')">ID</a></th>
-                <th scope="col"><a href="javascript:__doPostBack('ctl00$ContentPlaceHolder1$GridView1','Sort$city')">City</a></th>
-                <th scope="col"><a href="javascript:__doPostBack('ctl00$ContentPlaceHolder1$GridView1','Sort$description')">Description</a></th>
-                <th scope="col"><a href="javascript:__doPostBack('ctl00$ContentPlaceHolder1$GridView1','Sort$density')">Density</a></th>
-                <th scope="col"><a href="javascript:__doPostBack('ctl00$ContentPlaceHolder1$GridView1','Sort$units')">Units</a></th>
-                <th scope="col"><a href="javascript:__doPostBack('ctl00$ContentPlaceHolder1$GridView1','Sort$yearBuilt')">Year Built</a></th>
-                <th scope="col"><a href="javascript:__doPostBack('ctl00$ContentPlaceHolder1$GridView1','Sort$adminNotes')">Admin Notes</a></th>
-                <th scope="col"><a href="javascript:__doPostBack('ctl00$ContentPlaceHolder1$GridView1','Sort$notFinished')">Not Finished</a></th>
-		    </tr>
-        </thead>
-        <tbody>
-            @foreach (var prop in Model)
-            {
-                <tr align="center">
-			        <td>@Html.ActionLink("Edit", "Property", "Admin", new { id = prop.id }, new { })</td>
-                    <td><a class="delete" href="#" data-identifier="@prop.id">Delete</a></td>
-                    <td>@prop.id</td>
-                    <td>@prop.Address.city</td>
-                    <td>@prop.PropertyType.description</td>
-                    <td>@prop.density</td>
-                    <td>@prop.units</td>
-                    <td>@prop.yearBuilt</td>
-                    <td>@prop.adminNotes</td>
-                    <td>@prop.notFinished</td>
-		        </tr>
-            }
-	    </tbody>
-    </table>
+    @Html.Partial("_PropertyGrid", Model, new ViewDataDictionary())
 </div>
 }

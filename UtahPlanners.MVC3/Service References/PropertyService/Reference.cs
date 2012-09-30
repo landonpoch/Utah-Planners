@@ -865,6 +865,96 @@ namespace UtahPlanners.MVC3.PropertyService {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="PropertySort", Namespace="http://schemas.datacontract.org/2004/07/UtahPlanners.Domain.Entity")]
+    [System.SerializableAttribute()]
+    public partial class PropertySort : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private UtahPlanners.MVC3.PropertyService.PropertyColumn ColumnField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private UtahPlanners.MVC3.PropertyService.Direction DirectionField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public UtahPlanners.MVC3.PropertyService.PropertyColumn Column {
+            get {
+                return this.ColumnField;
+            }
+            set {
+                if ((this.ColumnField.Equals(value) != true)) {
+                    this.ColumnField = value;
+                    this.RaisePropertyChanged("Column");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public UtahPlanners.MVC3.PropertyService.Direction Direction {
+            get {
+                return this.DirectionField;
+            }
+            set {
+                if ((this.DirectionField.Equals(value) != true)) {
+                    this.DirectionField = value;
+                    this.RaisePropertyChanged("Direction");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="PropertyColumn", Namespace="http://schemas.datacontract.org/2004/07/UtahPlanners.Domain.Entity")]
+    public enum PropertyColumn : int {
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        Id = 0,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        City = 1,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        Description = 2,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        Density = 3,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        Units = 4,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        YearBuilt = 5,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        AdminNotes = 6,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        NotFinished = 7,
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="Property", Namespace="http://schemas.datacontract.org/2004/07/UtahPlanners.Domain.Entity", IsReference=true)]
     [System.SerializableAttribute()]
     public partial class Property : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
@@ -2436,6 +2526,9 @@ namespace UtahPlanners.MVC3.PropertyService {
         private bool PrimaryPictureField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int PropertyIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private bool SecondaryPictureField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
@@ -2496,6 +2589,19 @@ namespace UtahPlanners.MVC3.PropertyService {
                 if ((this.PrimaryPictureField.Equals(value) != true)) {
                     this.PrimaryPictureField = value;
                     this.RaisePropertyChanged("PrimaryPicture");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int PropertyId {
+            get {
+                return this.PropertyIdField;
+            }
+            set {
+                if ((this.PropertyIdField.Equals(value) != true)) {
+                    this.PropertyIdField = value;
+                    this.RaisePropertyChanged("PropertyId");
                 }
             }
         }
@@ -2870,7 +2976,7 @@ namespace UtahPlanners.MVC3.PropertyService {
         UtahPlanners.MVC3.PropertyService.PropertiesIndex[] GetIndecies(UtahPlanners.MVC3.PropertyService.IndexFilter filter, UtahPlanners.MVC3.PropertyService.IndexSort sort);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPropertyService/GetAllProperties", ReplyAction="http://tempuri.org/IPropertyService/GetAllPropertiesResponse")]
-        UtahPlanners.MVC3.PropertyService.Property[] GetAllProperties();
+        UtahPlanners.MVC3.PropertyService.Property[] GetAllProperties(UtahPlanners.MVC3.PropertyService.PropertySort sort);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPropertyService/GetProperty", ReplyAction="http://tempuri.org/IPropertyService/GetPropertyResponse")]
         UtahPlanners.MVC3.PropertyService.Property GetProperty(int id);
@@ -2934,8 +3040,8 @@ namespace UtahPlanners.MVC3.PropertyService {
             return base.Channel.GetIndecies(filter, sort);
         }
         
-        public UtahPlanners.MVC3.PropertyService.Property[] GetAllProperties() {
-            return base.Channel.GetAllProperties();
+        public UtahPlanners.MVC3.PropertyService.Property[] GetAllProperties(UtahPlanners.MVC3.PropertyService.PropertySort sort) {
+            return base.Channel.GetAllProperties(sort);
         }
         
         public UtahPlanners.MVC3.PropertyService.Property GetProperty(int id) {

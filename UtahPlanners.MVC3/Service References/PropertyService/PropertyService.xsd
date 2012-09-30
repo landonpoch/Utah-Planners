@@ -118,6 +118,26 @@
     </xs:restriction>
   </xs:simpleType>
   <xs:element name="Direction" nillable="true" type="tns:Direction" />
+  <xs:complexType name="PropertySort">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Column" type="tns:PropertyColumn" />
+      <xs:element minOccurs="0" name="Direction" type="tns:Direction" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PropertySort" nillable="true" type="tns:PropertySort" />
+  <xs:simpleType name="PropertyColumn">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Id" />
+      <xs:enumeration value="City" />
+      <xs:enumeration value="Description" />
+      <xs:enumeration value="Density" />
+      <xs:enumeration value="Units" />
+      <xs:enumeration value="YearBuilt" />
+      <xs:enumeration value="AdminNotes" />
+      <xs:enumeration value="NotFinished" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="PropertyColumn" nillable="true" type="tns:PropertyColumn" />
   <xs:complexType name="ArrayOfProperty">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="Property" nillable="true" type="tns:Property" />
@@ -227,6 +247,7 @@
       <xs:element minOccurs="0" name="FrontPage" type="xs:boolean" />
       <xs:element minOccurs="0" name="PictureId" type="xs:int" />
       <xs:element minOccurs="0" name="PrimaryPicture" type="xs:boolean" />
+      <xs:element minOccurs="0" name="PropertyId" type="xs:int" />
       <xs:element minOccurs="0" name="SecondaryPicture" type="xs:boolean" />
     </xs:sequence>
     <xs:attribute ref="ser:Id" />

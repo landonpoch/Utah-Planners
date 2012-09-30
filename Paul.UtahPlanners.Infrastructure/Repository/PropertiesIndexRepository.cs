@@ -5,6 +5,7 @@ using System.Linq;
 using UtahPlanners.Domain.Contract.Repository;
 using UtahPlanners.Domain.Entity;
 using UtahPlanners.Infrastructure.DAO;
+using UtahPlanners.Infrastructure.Shared;
 
 namespace UtahPlanners.Infrastructure.Repository
 {
@@ -25,11 +26,7 @@ namespace UtahPlanners.Infrastructure.Repository
             var props = filter != null ? GetFilteredIndexRecords(filter) 
                 : _context.PropertiesIndexes.AsQueryable();
             
-            // And sort - or not
-            if (sort != null)
-                props = PerformSort(sort, props);
-            
-            return props.ToList();
+            return props.Sort(sort).ToList();
         }
 
         #endregion
@@ -131,106 +128,55 @@ namespace UtahPlanners.Infrastructure.Repository
 
             return indecies;
         }
+    }
 
-        private IQueryable<PropertiesIndex> PerformSort(IndexSort sort, IQueryable<PropertiesIndex> props)
+    public static class PropertiesIndexExtensions
+    {
+        public static IQueryable<PropertiesIndex> Sort(this IQueryable<PropertiesIndex> props, IndexSort sort)
         {
-            switch (sort.Direction)
+            if (sort != null)
             {
-                case Direction.Descending:
-                    props = SortDescending(sort.Column, props);
-                    break;
-                case Direction.Ascending:
-                default:
-                    props = SortAscending(sort.Column, props);
-                    break;
-            }
-            return props;
-        }
-
-        private IQueryable<PropertiesIndex> SortAscending(IndexColumn column, IQueryable<PropertiesIndex> props)
-        {
-            switch (column)
-            {
-                case IndexColumn.Id:
-                    props = props.OrderBy(p => p.id);
-                    break;
-                case IndexColumn.City:
-                    props = props.OrderBy(p => p.city);
-                    break;
-                case IndexColumn.Score:
-                    props = props.OrderBy(p => p.OverallScore);
-                    break;
-                case IndexColumn.Type:
-                    props = props.OrderBy(p => p.PropertyTypeDescription);
-                    break;
-                case IndexColumn.Density:
-                    props = props.OrderBy(p => p.density);
-                    break;
-                case IndexColumn.Units:
-                    props = props.OrderBy(p => p.units);
-                    break;
-                case IndexColumn.Year:
-                    props = props.OrderBy(p => p.yearBuilt);
-                    break;
-                case IndexColumn.StreetType:
-                    props = props.OrderBy(p => p.StreetTypeDescription);
-                    break;
-                case IndexColumn.Walkability:
-                    props = props.OrderBy(p => p.StreetWalkDescription);
-                    break;
-                case IndexColumn.Walkscore:
-                    props = props.OrderBy(p => p.walkscore);
-                    break;
-                case IndexColumn.SocioEcon:
-                    props = props.OrderBy(p => p.SocioEconDescription);
-                    break;
-                case IndexColumn.TwoFiftySF:
-                    props = props.OrderBy(p => p.twoFiftySingleFam);
-                    break;
-            }
-            return props;
-        }
-
-        private IQueryable<PropertiesIndex> SortDescending(IndexColumn column, IQueryable<PropertiesIndex> props)
-        {
-            switch (column)
-            {
-                case IndexColumn.Id:
-                    props = props.OrderByDescending(p => p.id);
-                    break;
-                case IndexColumn.City:
-                    props = props.OrderByDescending(p => p.city);
-                    break;
-                case IndexColumn.Score:
-                    props = props.OrderByDescending(p => p.OverallScore);
-                    break;
-                case IndexColumn.Type:
-                    props = props.OrderByDescending(p => p.PropertyTypeDescription);
-                    break;
-                case IndexColumn.Density:
-                    props = props.OrderByDescending(p => p.density);
-                    break;
-                case IndexColumn.Units:
-                    props = props.OrderByDescending(p => p.units);
-                    break;
-                case IndexColumn.Year:
-                    props = props.OrderByDescending(p => p.yearBuilt);
-                    break;
-                case IndexColumn.StreetType:
-                    props = props.OrderByDescending(p => p.StreetTypeDescription);
-                    break;
-                case IndexColumn.Walkability:
-                    props = props.OrderByDescending(p => p.StreetWalkDescription);
-                    break;
-                case IndexColumn.Walkscore:
-                    props = props.OrderByDescending(p => p.walkscore);
-                    break;
-                case IndexColumn.SocioEcon:
-                    props = props.OrderByDescending(p => p.SocioEconDescription);
-                    break;
-                case IndexColumn.TwoFiftySF:
-                    props = props.OrderByDescending(p => p.twoFiftySingleFam);
-                    break;
+                var column = sort.Column;
+                var direction = sort.Direction;
+                switch (column)
+                {
+                    case IndexColumn.Id:
+                        props = props.Sort(p => p.id, direction);
+                        break;
+                    case IndexColumn.City:
+                        props = props.Sort(p => p.city, direction);
+                        break;
+                    case IndexColumn.Score:
+                        props = props.Sort(p => p.OverallScore, direction);
+                        break;
+                    case IndexColumn.Type:
+                        props = props.Sort(p => p.PropertyTypeDescription, direction);
+                        break;
+                    case IndexColumn.Density:
+                        props = props.Sort(p => p.density, direction);
+                        break;
+                    case IndexColumn.Units:
+                        props = props.Sort(p => p.units, direction);
+                        break;
+                    case IndexColumn.Year:
+                        props = props.Sort(p => p.yearBuilt, direction);
+                        break;
+                    case IndexColumn.StreetType:
+                        props = props.Sort(p => p.StreetTypeDescription, direction);
+                        break;
+                    case IndexColumn.Walkability:
+                        props = props.Sort(p => p.StreetWalkDescription, direction);
+                        break;
+                    case IndexColumn.Walkscore:
+                        props = props.Sort(p => p.walkscore, direction);
+                        break;
+                    case IndexColumn.SocioEcon:
+                        props = props.Sort(p => p.SocioEconDescription, direction);
+                        break;
+                    case IndexColumn.TwoFiftySF:
+                        props = props.Sort(p => p.twoFiftySingleFam, direction);
+                        break;
+                }
             }
             return props;
         }

@@ -80,19 +80,31 @@ namespace UtahPlanners.MVC3.Controllers
         public ActionResult PropertyList()
         {
             var client = _factory.CreatePropertyService();
-            var props = client.SafeExecution(c => c.GetAllProperties());
+            var props = client.SafeExecution(c => c.GetAllProperties(null));
 
-            return View(props.ToList());
+            var model = new PropertyGrid
+            {
+                Properties = props.ToList(),
+                SortOptions = GetDefaultSortOptions()
+            };
+
+            return View(model);
         }
 
         public ActionResult PropertyGrid(string sort)
         {
+            PropertyService.PropertySort propSort = Convert(sort);
+
             var client = _factory.CreatePropertyService();
-            var props = client.SafeExecution(c => c.GetAllProperties().ToList());
+            var props = client.SafeExecution(c => c.GetAllProperties(propSort));
 
+            var model = new PropertyGrid
+            {
+                Properties = props.ToList(),
+                SortOptions = GetSortOptions(sort)
+            };
             
-
-            return View(props);
+            return PartialView("_PropertyGrid", model);
         }
 
         [HttpPost]
@@ -130,6 +142,32 @@ namespace UtahPlanners.MVC3.Controllers
             return View();
         }
 
+        private Dictionary<int, string> GetDefaultSortOptions()
+        {
+            return new Dictionary<int, string>
+            {
+                { 1, "1d" },
+                { 2, "2a" },
+                { 3, "3a" },
+                { 4, "4a" },
+                { 5, "5a" },
+                { 6, "6a" },
+                { 7, "7a" },
+                { 8, "8a" }
+            };
+        }
+
+        private Dictionary<int, string> GetSortOptions(string sort)
+        {
+            int column = Int32.Parse(sort[0].ToString());
+            string direction = sort[1].ToString();
+            var sortOptions = GetDefaultSortOptions();
+            sortOptions[1] = "1a";
+            string nextDirection = direction == "a" ? "d" : "a";
+            sortOptions[column] = column.ToString() + nextDirection;
+            return sortOptions;
+        }
+
         private PropertyService.Property SetCodes(AdminProperty model)
         {
             var property = model.Property;
@@ -146,6 +184,44 @@ namespace UtahPlanners.MVC3.Controllers
             property.neighCondition = Int32.Parse(model.NeighborhoodCondition);
             
             return property;
+        }
+
+        private PropertyService.PropertySort Convert(string sort)
+        {
+            if (String.IsNullOrEmpty(sort))
+                return null;
+
+            return new PropertyService.PropertySort
+            {
+                Column = ConvertColumn(sort[0]),
+                Direction = ConvertDirection(sort[1])
+            };
+        }
+
+        private PropertyService.PropertyColumn ConvertColumn(char column)
+        {
+            var result = PropertyService.PropertyColumn.Id; // Default
+            
+            if (column == '1') result = PropertyService.PropertyColumn.Id;
+            if (column == '2') result = PropertyService.PropertyColumn.City;
+            if (column == '3') result = PropertyService.PropertyColumn.Description;
+            if (column == '4') result = PropertyService.PropertyColumn.Density;
+            if (column == '5') result = PropertyService.PropertyColumn.Units;
+            if (column == '6') result = PropertyService.PropertyColumn.YearBuilt;
+            if (column == '7') result = PropertyService.PropertyColumn.AdminNotes;
+            if (column == '8') result = PropertyService.PropertyColumn.NotFinished;
+
+            return result;
+        }
+
+        private PropertyService.Direction ConvertDirection(char direction)
+        {
+            var result = PropertyService.Direction.Ascending; // Default
+
+            if (direction == 'a') result = PropertyService.Direction.Ascending;
+            if (direction == 'd') result = PropertyService.Direction.Descending;
+
+            return result;
         }
     }
 }

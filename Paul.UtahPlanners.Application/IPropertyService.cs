@@ -21,7 +21,7 @@ namespace Paul.UtahPlanners.Application
         List<PropertiesIndex> GetIndecies(IndexFilter filter, IndexSort sort);
 
         [OperationContract]
-        List<Property> GetAllProperties();
+        List<Property> GetAllProperties(PropertySort sort);
 
         [OperationContract]
         Property GetProperty(int id);

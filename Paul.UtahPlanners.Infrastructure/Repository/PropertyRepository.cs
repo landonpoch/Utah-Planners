@@ -6,6 +6,7 @@ using UtahPlanners.Domain.Contract.Repository;
 using UtahPlanners.Domain.Contract.Service;
 using UtahPlanners.Domain.Entity;
 using UtahPlanners.Infrastructure.DAO;
+using UtahPlanners.Infrastructure.Shared;
 
 namespace UtahPlanners.Infrastructure.Repository
 {
@@ -27,9 +28,9 @@ namespace UtahPlanners.Infrastructure.Repository
             _context.Properties.Add(property);
         }
 
-        public List<Property> GetAllProperties()
+        public List<Property> GetAllProperties(PropertySort sort)
         {
-            var properties = GetPropertiesQuery().ToList();
+            var properties = GetPropertiesQuery().Sort(sort).ToList();
             AppendMetaData(properties);
             return properties;
         }
@@ -119,6 +120,45 @@ namespace UtahPlanners.Infrastructure.Repository
             {
                 p.PictureMetaData = metaData.Where(md => md.PropertyId == p.id).ToList();
             });
+        }
+    }
+
+    public static class PropertyExtensions
+    {
+        public static IQueryable<Property> Sort(this IQueryable<Property> props, PropertySort sort)
+        {
+            if (sort != null)
+            {
+                Direction direction = sort.Direction;
+                switch (sort.Column)
+                {
+                    case PropertyColumn.Id:
+                        props = props.Sort(p => p.id, direction);
+                        break;
+                    case PropertyColumn.City:
+                        props = props.Sort(p => p.Address.city, direction);
+                        break;
+                    case PropertyColumn.Description:
+                        props = props.Sort(p => p.PropertyType.description, direction);
+                        break;
+                    case PropertyColumn.Density:
+                        props = props.Sort(p => p.density, direction);
+                        break;
+                    case PropertyColumn.Units:
+                        props = props.Sort(p => p.units, direction);
+                        break;
+                    case PropertyColumn.YearBuilt:
+                        props = props.Sort(p => p.yearBuilt, direction);
+                        break;
+                    case PropertyColumn.AdminNotes:
+                        props = props.Sort(p => p.adminNotes, direction);
+                        break;
+                    case PropertyColumn.NotFinished:
+                        props = props.Sort(p => p.notFinished, direction);
+                        break;
+                }
+            }
+            return props;
         }
     }
 }

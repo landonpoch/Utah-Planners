@@ -74,4 +74,9 @@ namespace UtahPlanners.Domain.Entity
             return twoFiftyAptsScore;
         }
     }
+
+    public partial class PropertiesIndex
+    {
+        public Property Property { get; set; }
+    }
 }
