@@ -1,6 +1,5 @@
 ﻿@model IndexModel
 @{
-    ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_LayoutNoLeftNav.cshtml";
 }
 
@@ -54,78 +53,77 @@
 <h2 class="trigger"><a href="#">Index Filter</a></h2>
 <div class="toggle_container" style="display: none;">
     <div class="block">
-    
 
     <div class="searchLeft">
-        <h3 style="margin-left:50px;">Property Details:</h3>
+    <h3 style="margin-left:50px;">Property Details:</h3>
         
-        <span class="searchLabel">Property Number:</span>
-        @Html.TextBoxFor(m => m.Filter.PropertyId, new { @class = "newwidth" })
+    <span class="searchLabel">Property Number:</span>
+    @Html.TextBoxFor(m => m.IndexGridModel.Filter.PropertyId, new { @class = "newwidth" })
         
-        <span class="searchLabel">City:</span>
-        @Html.TextBoxFor(m => m.Filter.City, new { @class = "newwidth" })
+    <span class="searchLabel">City:</span>
+    @Html.TextBoxFor(m => m.IndexGridModel.Filter.City, new { @class = "newwidth" })
 
-        <span class="searchLabel">Property Type:</span>
-        @Html.DropDownListFor(m => m.Filter.PropertyType, Model.DropDowns.PropertyTypes, String.Empty, new { @class = "newwidth" })<br />
+    <span class="searchLabel">Property Type:</span>
+    @Html.DropDownListFor(m => m.IndexGridModel.Filter.PropertyType, Model.DropDowns.PropertyTypes, String.Empty, new { @class = "newwidth" })<br />
         
-        <span class="searchLabel">Density Between:</span>
-        @Html.TextBoxFor(m => m.Filter.DensityRange.LowValue, new { @class = "smallwidth" }) and 
-        @Html.TextBoxFor(m => m.Filter.DensityRange.HighValue, new { @class = "smallwidth" })<br />
+    <span class="searchLabel">Density Between:</span>
+    @Html.TextBoxFor(m => m.IndexGridModel.Filter.DensityRange.LowValue, new { @class = "smallwidth" }) and 
+    @Html.TextBoxFor(m => m.IndexGridModel.Filter.DensityRange.HighValue, new { @class = "smallwidth" })<br />
         
-        <span class="searchLabel">Area Between:</span>
-        @Html.TextBoxFor(m => m.Filter.AreaRange.LowValue, new { @class = "smallwidth" }) and 
-        @Html.TextBoxFor(m => m.Filter.AreaRange.HighValue, new { @class = "smallwidth" })<br />
+    <span class="searchLabel">Area Between:</span>
+    @Html.TextBoxFor(m => m.IndexGridModel.Filter.AreaRange.LowValue, new { @class = "smallwidth" }) and 
+    @Html.TextBoxFor(m => m.IndexGridModel.Filter.AreaRange.HighValue, new { @class = "smallwidth" })<br />
         
-        <span class="searchLabel">Units Between:</span>
-        @Html.TextBoxFor(m => m.Filter.UnitRange.LowValue, new { @class = "smallwidth" }) and 
-        @Html.TextBoxFor(m => m.Filter.UnitRange.HighValue, new { @class = "smallwidth" })<br />
+    <span class="searchLabel">Units Between:</span>
+    @Html.TextBoxFor(m => m.IndexGridModel.Filter.UnitRange.LowValue, new { @class = "smallwidth" }) and 
+    @Html.TextBoxFor(m => m.IndexGridModel.Filter.UnitRange.HighValue, new { @class = "smallwidth" })<br />
         
-        <span class="searchLabel">Street Type:</span>
-        @Html.DropDownListFor(m => m.Filter.StreetType, Model.DropDowns.StreetTypes, String.Empty, new { @class = "newwidth" })<br />
+    <span class="searchLabel">Street Type:</span>
+    @Html.DropDownListFor(m => m.IndexGridModel.Filter.StreetType, Model.DropDowns.StreetTypes, String.Empty, new { @class = "newwidth" })<br />
         
-        <span class="searchLabel">Year Built Between:</span>
-        @Html.TextBoxFor(m => m.Filter.YearBuiltRange.LowValue, new { @class = "smallwidth" }) and 
-        @Html.TextBoxFor(m => m.Filter.YearBuiltRange.HighValue, new { @class = "smallwidth" })<br />
+    <span class="searchLabel">Year Built Between:</span>
+    @Html.TextBoxFor(m => m.IndexGridModel.Filter.YearBuiltRange.LowValue, new { @class = "smallwidth" }) and 
+    @Html.TextBoxFor(m => m.IndexGridModel.Filter.YearBuiltRange.HighValue, new { @class = "smallwidth" })<br />
         
-        <span class="searchLabel">Socio Econ:</span>
-        @Html.DropDownListFor(m => m.Filter.SocioEconType, Model.DropDowns.SocioEconCodes, String.Empty, new { @class = "newwidth" })<br />
+    <span class="searchLabel">Socio Econ:</span>
+    @Html.DropDownListFor(m => m.IndexGridModel.Filter.SocioEconType, Model.DropDowns.SocioEconCodes, String.Empty, new { @class = "newwidth" })<br />
     </div>
     
     <div class="searchRight">
-        <h3>Rating Details:</h3>
-        <span class="searchLabel">Overall Score Between:</span> 
-        @Html.TextBoxFor(m => m.Filter.ScoreRange.LowValue, new { @class = "smallwidth" }) and 
-        @Html.TextBoxFor(m => m.Filter.ScoreRange.HighValue, new { @class = "smallwidth" })<br />
+    <h3>Rating Details:</h3>
+    <span class="searchLabel">Overall Score Between:</span> 
+    @Html.TextBoxFor(m => m.IndexGridModel.Filter.ScoreRange.LowValue, new { @class = "smallwidth" }) and 
+    @Html.TextBoxFor(m => m.IndexGridModel.Filter.ScoreRange.HighValue, new { @class = "smallwidth" })<br />
         
-        <span class="searchLabel">Street Safety:</span> 
-        @Html.DropDownListFor(m => m.Filter.StreetSafetyType, Model.DropDowns.StreetSafetyCodes, String.Empty, new { @class = "newwidth" })<br />
+    <span class="searchLabel">Street Safety:</span> 
+    @Html.DropDownListFor(m => m.IndexGridModel.Filter.StreetSafetyType, Model.DropDowns.StreetSafetyCodes, String.Empty, new { @class = "newwidth" })<br />
         
-        <span class="searchLabel">Building Enclosure:</span> 
-        @Html.DropDownListFor(m => m.Filter.BuildingEnclosureType, Model.DropDowns.EnclosureCodes, String.Empty, new { @class = "newwidth" })<br />
+    <span class="searchLabel">Building Enclosure:</span> 
+    @Html.DropDownListFor(m => m.IndexGridModel.Filter.BuildingEnclosureType, Model.DropDowns.EnclosureCodes, String.Empty, new { @class = "newwidth" })<br />
         
-        <span class="searchLabel">Common Areas:</span> 
-        @Html.DropDownListFor(m => m.Filter.CommonAreasType, Model.DropDowns.CommonCodes, String.Empty, new { @class = "newwidth" })<br />
+    <span class="searchLabel">Common Areas:</span> 
+    @Html.DropDownListFor(m => m.IndexGridModel.Filter.CommonAreasType, Model.DropDowns.CommonCodes, String.Empty, new { @class = "newwidth" })<br />
         
-        <span class="searchLabel">Street Connectivity:</span> 
-        @Html.DropDownListFor(m => m.Filter.StreetConnectivityType, Model.DropDowns.StreetconnCodes, String.Empty, new { @class = "newwidth" })<br />
+    <span class="searchLabel">Street Connectivity:</span> 
+    @Html.DropDownListFor(m => m.IndexGridModel.Filter.StreetConnectivityType, Model.DropDowns.StreetconnCodes, String.Empty, new { @class = "newwidth" })<br />
         
-        <span class="searchLabel">Street Walkability:</span> 
-        @Html.DropDownListFor(m => m.Filter.StreetWalkabilityType, Model.DropDowns.StreetwalkCodes, String.Empty, new { @class = "newwidth" })<br />
+    <span class="searchLabel">Street Walkability:</span> 
+    @Html.DropDownListFor(m => m.IndexGridModel.Filter.StreetWalkabilityType, Model.DropDowns.StreetwalkCodes, String.Empty, new { @class = "newwidth" })<br />
         
-        <span class="searchLabel">Walkscore Between:</span> 
-        @Html.TextBoxFor(m => m.Filter.WalkscoreRange.LowValue, new { @class = "smallwidth" }) and 
-        @Html.TextBoxFor(m => m.Filter.WalkscoreRange.HighValue, new { @class = "smallwidth" })<br />
+    <span class="searchLabel">Walkscore Between:</span> 
+    @Html.TextBoxFor(m => m.IndexGridModel.Filter.WalkscoreRange.LowValue, new { @class = "smallwidth" }) and 
+    @Html.TextBoxFor(m => m.IndexGridModel.Filter.WalkscoreRange.HighValue, new { @class = "smallwidth" })<br />
         
-        <span class="searchLabel">Neighborhood Condition:</span> 
-        @Html.DropDownListFor(m => m.Filter.NeighborhoodConditionType, Model.DropDowns.NeighborhoodCodes, String.Empty, new { @class = "newwidth" })<br />
+    <span class="searchLabel">Neighborhood Condition:</span> 
+    @Html.DropDownListFor(m => m.IndexGridModel.Filter.NeighborhoodConditionType, Model.DropDowns.NeighborhoodCodes, String.Empty, new { @class = "newwidth" })<br />
         
-        <span class="searchLabel">250 SF Between:</span> 
-        @Html.TextBoxFor(m => m.Filter.TwoFiftySingleFamilyRange.LowValue, new { @class = "smallwidth" }) and 
-        @Html.TextBoxFor(m => m.Filter.TwoFiftySingleFamilyRange.HighValue, new { @class = "smallwidth" })<br />
+    <span class="searchLabel">250 SF Between:</span> 
+    @Html.TextBoxFor(m => m.IndexGridModel.Filter.TwoFiftySingleFamilyRange.LowValue, new { @class = "smallwidth" }) and 
+    @Html.TextBoxFor(m => m.IndexGridModel.Filter.TwoFiftySingleFamilyRange.HighValue, new { @class = "smallwidth" })<br />
         
-        <span class="searchLabel">250 Apts Between:</span> 
-        @Html.TextBoxFor(m => m.Filter.TwoFiftyApartmentsRange.LowValue, new { @class = "smallwidth" }) and 
-        @Html.TextBoxFor(m => m.Filter.TwoFiftyApartmentsRange.HighValue, new { @class = "smallwidth" })<br />
+    <span class="searchLabel">250 Apts Between:</span> 
+    @Html.TextBoxFor(m => m.IndexGridModel.Filter.TwoFiftyApartmentsRange.LowValue, new { @class = "smallwidth" }) and 
+    @Html.TextBoxFor(m => m.IndexGridModel.Filter.TwoFiftyApartmentsRange.HighValue, new { @class = "smallwidth" })<br />
     </div>
     
     <div style="text-align:center; margin-bottom:10px;">
@@ -138,53 +136,13 @@
     </div>
     
     </div>
-    </div>
-
-
-@Html.HiddenFor(m => m.Sort.Column, new { @id = "columnField" })
-@Html.HiddenFor(m => m.Sort.Direction, new { @id = "directionField" })
-<table id="indexTable" cellspacing="0" rules="all" border="1" style="border-collapse:collapse;">
-    <thead>
-    <tr align="center" style="background-color: #CCCCCC; border-style: solid;">
-    <th scope="col"><a id="city" href="#">City</a></th>
-    <th scope="col"><a id="id" href="#">Property Number</a></th>
-    <th scope="col"><a id="score" href="#">Overall Score</a></th>
-    <th scope="col"><a id="type" href="#">Type</a></th>
-    <th scope="col"><a id="density" href="#">Density</a></th>
-    <th scope="col"><a id="units" href="#">Units</a></th>
-    <th scope="col"><a id="year" href="#">Year Built</a></th>
-    <th scope="col"><a id="streetType" href="#">Street Type</a></th>
-    <th scope="col"><a id="walkability" href="#">Walkability</a></th>
-    <th scope="col"><a id="walkscore" href="#">Walkscore</a></th>
-    <th scope="col"><a id="socioEcon" href="#">Socio Econ</a></th>
-    <th scope="col"><a id="twoFiftySF" href="#">250 Single Fam</a></th>
-    </tr>
-    </thead>
-
-    <tbody>
-    @foreach (UtahPlanners.MVC3.Models.Home.Index prop in Model.Records)
-    {
-        <tr align="center" valign="middle" style="height: 35px;">
-        <td>@Html.ActionLink(prop.City, "Property", new { id = prop.Id })</td>
-        <td>@prop.Id</td>
-        <td>@prop.Score</td>
-        <td>@prop.PropertyType</td>
-        <td>@prop.Density</td>
-        <td>@prop.Units</td>
-        <td>@prop.YearBuilt</td>
-        <td>@prop.StreetType</td>
-        <td>@prop.StreetWalkDescription</td>
-        <td>@prop.Walkscore</td>
-        <td>@prop.SocioEconDescription</td>
-        <td>@prop.TwoFiftySingleFamily</td>
-        </tr>
-    }
-    </tbody>
-
-</table>
-
+</div>
 @Html.HiddenFor(m => m.PropType)
 @Html.HiddenFor(m => m.Density)
 @Html.HiddenFor(m => m.Walkscore)
 @Html.HiddenFor(m => m.ResetView, new { @id = "resetView" })
+
+<div id="indexTable" style="width: 100%;">
+    @Html.Partial("_IndexGrid", Model.IndexGridModel)
+</div>
 }

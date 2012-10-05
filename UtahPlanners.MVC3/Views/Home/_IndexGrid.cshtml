@@ -1,0 +1,47 @@
+﻿@model IndexGridModel
+@{
+    ViewBag.AjaxOptions = new AjaxOptions { HttpMethod = "Post", UpdateTargetId = "indexTable", InsertionMode = InsertionMode.Replace };
+}
+
+@Html.HiddenFor(m => m.Filter)
+@Html.HiddenFor(m => m.Sort.Column, new { @id = "columnField" })
+@Html.HiddenFor(m => m.Sort.Direction, new { @id = "directionField" })
+<table id="indexTable" cellspacing="0" rules="all" border="1" style="border-collapse:collapse;">
+    <thead>
+    <tr align="center" style="background-color: #CCCCCC; border-style: solid;">
+    <th>@Ajax.ActionLink("City", "IndexGrid", (AjaxOptions)ViewBag.AjaxOptions)</th>
+    <th><a id="id" href="#">Property Number</a></th>
+    <th><a id="score" href="#">Overall Score</a></th>
+    <th><a id="type" href="#">Type</a></th>
+    <th><a id="density" href="#">Density</a></th>
+    <th><a id="units" href="#">Units</a></th>
+    <th><a id="year" href="#">Year Built</a></th>
+    <th><a id="streetType" href="#">Street Type</a></th>
+    <th><a id="walkability" href="#">Walkability</a></th>
+    <th><a id="walkscore" href="#">Walkscore</a></th>
+    <th><a id="socioEcon" href="#">Socio Econ</a></th>
+    <th><a id="twoFiftySF" href="#">250 Single Fam</a></th>
+    </tr>
+    </thead>
+
+    <tbody>
+    @foreach (UtahPlanners.MVC3.Models.Home.Index prop in Model.Records)
+    {
+        <tr align="center" valign="middle" style="height: 35px;">
+        <td>@Html.ActionLink(prop.City, "Property", new { id = prop.Id })</td>
+        <td>@prop.Id</td>
+        <td>@prop.Score</td>
+        <td>@prop.PropertyType</td>
+        <td>@prop.Density</td>
+        <td>@prop.Units</td>
+        <td>@prop.YearBuilt</td>
+        <td>@prop.StreetType</td>
+        <td>@prop.StreetWalkDescription</td>
+        <td>@prop.Walkscore</td>
+        <td>@prop.SocioEconDescription</td>
+        <td>@prop.TwoFiftySingleFamily</td>
+        </tr>
+    }
+    </tbody>
+
+</table>

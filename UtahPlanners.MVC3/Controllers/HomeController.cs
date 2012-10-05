@@ -5,6 +5,7 @@ using UtahPlanners.MVC3.Models.Home;
 using System;
 using System.Linq;
 using System.Collections.Generic;
+using UtahPlanners.MVC3.Presentation;
 
 namespace UtahPlanners.MVC3.Controllers
 {
@@ -19,9 +20,11 @@ namespace UtahPlanners.MVC3.Controllers
 
         public ActionResult Default()
         {
-            var client = _factory.CreatePropertyService();
-            var prop = client.GetShowcaseProperty();
-            return View(prop);
+            using (var wcf = _factory.CreatePropertyService())
+            {
+                var prop = wcf.Client.GetShowcaseProperty();
+                return View(prop);
+            }
         }
 
         public ActionResult Index(IndexModel model, string proptype, string density, string walkscore)
@@ -29,42 +32,65 @@ namespace UtahPlanners.MVC3.Controllers
             if (model.ResetView)
                 return RedirectToAction("Index");
 
-            var client = _factory.CreatePropertyService();
-            var lookupValues = client.SafeExecution(c => c.GetLookupValues());
-
-            model.PropType = proptype ?? model.PropType;
-            model.Density = density ?? model.Density;
-            model.Walkscore = walkscore ?? model.Walkscore;
-            PropertyService.IndexFilter filter = GetPrimaryFilterFromModel(model.PropType, model.Density, model.Walkscore);
-            filter = filter ?? Convert(model.Filter);
-            
-            var sort = Convert(model.Sort);
-
-            //Get index table rows, including the calculated overall score
-            client = _factory.CreatePropertyService();
-            List<PropertyService.PropertiesIndex> indecies;
-            indecies = client.SafeExecution(c => c.GetIndecies(filter, sort)).ToList();
-
-            model = new IndexModel
+            using (var wcf = _factory.CreatePropertyService())
             {
-                Records = Convert(indecies),
-                Filter = Convert(filter),
-                Sort = Convert(sort),
-                DropDowns = Convert(lookupValues),
-                PropType = model.PropType,
-                Density = model.Density,
-                Walkscore = model.Walkscore
-            };
-            return View(model);
+                var lookupValues = wcf.Client.GetLookupValues();
+
+                model.IndexGridModel = model.IndexGridModel ?? new IndexGridModel();
+                model.PropType = proptype ?? model.PropType;
+                model.Density = density ?? model.Density;
+                model.Walkscore = walkscore ?? model.Walkscore;
+                PropertyService.IndexFilter filter = GetPrimaryFilterFromModel(model.PropType, model.Density, model.Walkscore);
+                filter = filter ?? Convert(model.IndexGridModel.Filter);
+
+                var sort = Convert(model.IndexGridModel.Sort);
+
+                //Get index table rows, including the calculated overall score
+                List<PropertyService.PropertiesIndex> indecies = wcf.Client.GetIndecies(filter, sort).ToList();
+
+                model = new IndexModel
+                {
+                    IndexGridModel = new IndexGridModel
+                    {
+                        Records = Convert(indecies),
+                        Filter = Convert(filter),
+                        Sort = Convert(sort)
+                    },
+                    DropDowns = Convert(lookupValues),
+                    PropType = model.PropType,
+                    Density = model.Density,
+                    Walkscore = model.Walkscore
+                };
+                return View(model);
+            }
+        }
+
+        public ActionResult IndexGrid(IndexGridModel model)
+        {
+            var filter = Convert(model.Filter);
+            var sort = Convert(model.Sort);
+            using (var wcf = _factory.CreatePropertyService())
+            {
+                var indicies = wcf.Client.GetIndecies(filter, sort).ToList();
+                model = new IndexGridModel
+                {
+                    Records = Convert(indicies),
+                    Filter = Convert(filter),
+                    Sort = Convert(sort)
+                };
+                return PartialView("_IndexGrid", model);
+            }
         }
 
         public ActionResult Property(int id)
         {
             //Get the details for a property
-            var client = _factory.CreatePropertyService();
-            var property = client.SafeExecution(c => c.GetProperty(id));
-            var prop = Convert(property);
-            return View(prop);
+            using (var wcf = _factory.CreatePropertyService())
+            {
+                var property = wcf.Client.GetProperty(id);
+                var prop = Convert(property);
+                return View(prop);
+            }
         }
 
         public ActionResult About()
@@ -74,9 +100,11 @@ namespace UtahPlanners.MVC3.Controllers
 
         public ActionResult GetPicture(int id)
         {
-            var client = _factory.CreatePropertyService();
-            var picture = client.GetPicture(id);
-            return File(picture.binaryData, "image/png");
+            using (var wcf = _factory.CreatePropertyService())
+            {
+                var picture = wcf.Client.GetPicture(id);
+                return File(picture.binaryData, "image/png");
+            }
         }
 
         #region Mapping Methods

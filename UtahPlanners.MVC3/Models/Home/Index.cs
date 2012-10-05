@@ -8,15 +8,20 @@ namespace UtahPlanners.MVC3.Models.Home
 {
     public class IndexModel
     {
-        public List<Index> Records { get; set; }
-        public IndexFilter Filter { get; set; }
-        public IndexSort Sort { get; set; }
+        public IndexGridModel IndexGridModel { get; set; }
         public DropDowns DropDowns { get; set; }
 
         public string PropType { get; set; }
         public string Density { get; set; }
         public string Walkscore { get; set; }
         public bool ResetView { get; set; }
+    }
+
+    public class IndexGridModel
+    {
+        public List<Index> Records { get; set; }
+        public IndexSort Sort { get; set; }
+        public IndexFilter Filter { get; set; }
     }
 
     public class DropDowns

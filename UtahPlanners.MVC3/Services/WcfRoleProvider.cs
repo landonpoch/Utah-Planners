@@ -22,14 +22,18 @@ namespace UtahPlanners.MVC3.Services
 
         public override bool IsUserInRole(string username, string roleName)
         {
-            var client = _factory.CreateUserService();
-            return client.SafeExecution(c => c.IsUserInRole(username, roleName));
+            using (var wcf = _factory.CreateUserService())
+            {
+                return wcf.Client.IsUserInRole(username, roleName);
+            }
         }
 
         public override string[] GetRolesForUser(string username)
         {
-            var client = _factory.CreateUserService();
-            return client.SafeExecution(c => c.GetRolesForUser(username));
+            using (var wcf = _factory.CreateUserService())
+            {
+                return wcf.Client.GetRolesForUser(username);
+            }
         }
 
         #region Unimplemented Methods

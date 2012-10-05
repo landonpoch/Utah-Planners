@@ -56,6 +56,7 @@ namespace UtahPlanners.MVC3
             {
                 "Default",
                 "Index",
+                "IndexGrid",
                 "About",
                 "Property"
             };

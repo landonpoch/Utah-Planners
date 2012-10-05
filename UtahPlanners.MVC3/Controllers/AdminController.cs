@@ -29,92 +29,100 @@ namespace UtahPlanners.MVC3.Controllers
 
         public ActionResult Property(int? id)
         {
-            var client = _factory.CreatePropertyService();
-            var lookupValues = client.SafeExecution(c => c.GetLookupValues());
-            var model = new AdminProperty
+            using (var wcf = _factory.CreatePropertyService())
             {
-                LookupValues = lookupValues
-            };
+                var lookupValues = wcf.Client.GetLookupValues();
+                var model = new AdminProperty
+                {
+                    LookupValues = lookupValues
+                };
 
-            if (id.HasValue)
-            {
-                ViewBag.Title = "Edit Property";
-                ViewBag.NewPictureTitle = "Add New Pictures:";
-                ViewBag.SubmitText = "Submit Changes";
+                if (id.HasValue)
+                {
+                    ViewBag.Title = "Edit Property";
+                    ViewBag.NewPictureTitle = "Add New Pictures:";
+                    ViewBag.SubmitText = "Submit Changes";
 
-                client = _factory.CreatePropertyService();
-                var property = client.SafeExecution(c => c.GetProperty(id.Value));
+                    var property = wcf.Client.GetProperty(id.Value);
+                    model.Property = property;
+                    model.PropertyType = property.PropertyType.id.ToString();
+                    model.StreetType = property.StreetType.id.ToString();
+                    model.SocioEcon = property.SocioEconCode.id.ToString();
+                    model.StreetSafety = property.StreetSafteyCode.id.ToString();
+                    model.BuildingEnclosure = property.EnclosureCode.id.ToString();
+                    model.CommonAreas = property.CommonCode.id.ToString();
+                    model.StreetConnectivity = property.StreetconnCode.id.ToString();
+                    model.StreetWalkability = property.StreetwalkCode.id.ToString();
+                    model.NeighborhoodCondition = property.NeighborhoodCode.id.ToString();
+                }
+                else
+                {
+                    ViewBag.Title = "Create New Property";
+                    ViewBag.NewPictureTitle = "Pictures:";
+                    ViewBag.SubmitText = "Create New Property";
+                }
 
-                model.Property = property;
-                model.PropertyType = property.PropertyType.id.ToString();
-                model.StreetType = property.StreetType.id.ToString();
-                model.SocioEcon = property.SocioEconCode.id.ToString();
-                model.StreetSafety = property.StreetSafteyCode.id.ToString();
-                model.BuildingEnclosure = property.EnclosureCode.id.ToString();
-                model.CommonAreas = property.CommonCode.id.ToString();
-                model.StreetConnectivity = property.StreetconnCode.id.ToString();
-                model.StreetWalkability = property.StreetwalkCode.id.ToString();
-                model.NeighborhoodCondition = property.NeighborhoodCode.id.ToString();
+                return View(model);
             }
-            else
-            {
-                ViewBag.Title = "Create New Property";
-                ViewBag.NewPictureTitle = "Pictures:";
-                ViewBag.SubmitText = "Create New Property";
-            }
-
-            return View(model);
         }
 
         [HttpPost]
         public ActionResult Property(AdminProperty model)
         {
             var prop = SetCodes(model);
-            var client = _factory.CreatePropertyService();
-            var id = client.SafeExecution(c => c.SaveProperty(model.Property));
+            using (var wcf = _factory.CreatePropertyService())
+            {
+                var id = wcf.Client.SaveProperty(model.Property);
 
-            // TODO: Figure out success/fail messaging and behavior
-            return RedirectToAction("Property", new { id });
+                // TODO: Figure out success/fail messaging and behavior
+                return RedirectToAction("Property", new { id });
+            }
         }
 
         public ActionResult PropertyList()
         {
-            var client = _factory.CreatePropertyService();
-            var props = client.SafeExecution(c => c.GetAllProperties(null));
-
-            var model = new PropertyGrid
+            using (var wcf = _factory.CreatePropertyService())
             {
-                Properties = props.ToList(),
-                SortOptions = GetDefaultSortOptions()
-            };
+                var props = wcf.Client.GetAllProperties(null);
 
-            return View(model);
+                var model = new PropertyGrid
+                {
+                    Properties = props.ToList(),
+                    SortOptions = GetDefaultSortOptions()
+                };
+
+                return View(model);
+            }
         }
 
         public ActionResult PropertyGrid(string sort)
         {
             PropertyService.PropertySort propSort = Convert(sort);
 
-            var client = _factory.CreatePropertyService();
-            var props = client.SafeExecution(c => c.GetAllProperties(propSort));
-
-            var model = new PropertyGrid
+            using (var wcf = _factory.CreatePropertyService())
             {
-                Properties = props.ToList(),
-                SortOptions = GetSortOptions(sort)
-            };
-            
-            return PartialView("_PropertyGrid", model);
+                var props = wcf.Client.GetAllProperties(propSort);
+
+                var model = new PropertyGrid
+                {
+                    Properties = props.ToList(),
+                    SortOptions = GetSortOptions(sort)
+                };
+
+                return PartialView("_PropertyGrid", model);
+            }
         }
 
         [HttpPost]
         public ActionResult DeleteProperty(int id)
         {
-            var client = _factory.CreatePropertyService();
-            bool success = client.SafeExecution(c => c.DeleteProperty(id));
+            using (var wcf = _factory.CreatePropertyService())
+            {
+                bool success = wcf.Client.DeleteProperty(id);
 
-            TempData[PostMessageKey] = success ? "Property Successfully Deleted." : "An error occurred while trying to delete the property.";
-            return RedirectToAction("PropertyList"); // Always redirect on posts to avoid the resend post-data browser message
+                TempData[PostMessageKey] = success ? "Property Successfully Deleted." : "An error occurred while trying to delete the property.";
+                return RedirectToAction("PropertyList"); // Always redirect on posts to avoid the resend post-data browser message
+            }
         }
 
         public ActionResult CreateCodes()
@@ -141,6 +149,8 @@ namespace UtahPlanners.MVC3.Controllers
         {
             return View();
         }
+
+        #region Private Methods
 
         private Dictionary<int, string> GetDefaultSortOptions()
         {
@@ -182,7 +192,7 @@ namespace UtahPlanners.MVC3.Controllers
             property.streetConn = Int32.Parse(model.StreetConnectivity);
             property.streetWalk = Int32.Parse(model.StreetWalkability);
             property.neighCondition = Int32.Parse(model.NeighborhoodCondition);
-            
+
             return property;
         }
 
@@ -201,7 +211,7 @@ namespace UtahPlanners.MVC3.Controllers
         private PropertyService.PropertyColumn ConvertColumn(char column)
         {
             var result = PropertyService.PropertyColumn.Id; // Default
-            
+
             if (column == '1') result = PropertyService.PropertyColumn.Id;
             if (column == '2') result = PropertyService.PropertyColumn.City;
             if (column == '3') result = PropertyService.PropertyColumn.Description;
@@ -223,5 +233,7 @@ namespace UtahPlanners.MVC3.Controllers
 
             return result;
         }
+
+        #endregion
     }
 }

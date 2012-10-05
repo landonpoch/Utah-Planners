@@ -5,6 +5,7 @@ using System.Web;
 using UtahPlanners.MVC3.PropertyService;
 using System.ServiceModel;
 using UtahPlanners.MVC3.UserService;
+using UtahPlanners.MVC3.Presentation;
 
 
 namespace UtahPlanners.MVC3.Services
@@ -19,14 +20,14 @@ namespace UtahPlanners.MVC3.Services
 
     public class ServiceFactory : IServiceFactory
     {
-        public virtual IPropertyServiceProxy CreatePropertyService()
+        public virtual WcfClient<IPropertyServiceProxy> CreatePropertyService()
         {
-            return new PropertyServiceClient() as IPropertyServiceProxy;
+            return new WcfClient<IPropertyServiceProxy>(new PropertyServiceClient() as IPropertyServiceProxy);
         }
 
-        public IUserServiceProxy CreateUserService()
+        public WcfClient<IUserServiceProxy> CreateUserService()
         {
-            return new UserServiceClient() as IUserServiceProxy;
+            return new WcfClient<IUserServiceProxy>(new UserServiceClient() as IUserServiceProxy);
         }
 
         public IFormsAuthenticationService CreateFormsAuthenticationService()
