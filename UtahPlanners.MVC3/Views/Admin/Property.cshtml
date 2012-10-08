@@ -6,8 +6,52 @@
 @section Head
 {
     <link href="../../Content/uploadify/uploadify.css" rel="stylesheet" type="text/css" />
+}
+
+@section Scripts
+{
     <script src="../../Content/uploadify/jquery.uploadify.v2.1.0.min.js" type="text/javascript"></script>
     <script src="../../Content/uploadify/swfobject.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        // <![CDATA[
+        $(document).ready(function () {
+
+            var mainPicture = 0;
+            var secondaryPicture = 0;
+            var frontPage = 0;
+
+            var auth = '@Request.Cookies[FormsAuthentication.FormsCookieName].Value';
+            var ASPSESSID = '@Session.SessionID';
+
+            $("#checkbox1").click(function () {
+                mainPicture = (mainPicture == 1) ? 0 : 1;
+                $("#fileInput").uploadifySettings('scriptData',
+                    { 'mainPicture': mainPicture, 'secondaryPicture': secondaryPicture, 'frontPage': frontPage });
+            });
+            $("#checkbox2").click(function () {
+                secondaryPicture = (secondaryPicture == 1) ? 0 : 1;
+                $("#fileInput").uploadifySettings('scriptData',
+                { 'mainPicture': mainPicture, 'secondaryPicture': secondaryPicture, 'frontPage': frontPage });
+            });
+            $("#checkbox3").click(function () {
+                frontPage = (frontPage == 1) ? 0 : 1;
+                $("#fileInput").uploadifySettings('scriptData',
+                { 'mainPicture': mainPicture, 'secondaryPicture': secondaryPicture, 'frontPage': frontPage });
+            });
+
+
+            $('#fileInput').uploadify({
+                'uploader': '../../Content/uploadify/uploadify.swf',
+                'script': '../../Content/uploadify/Upload.ashx',
+                'cancelImg': '../../Content/uploadify/cancel.png',
+                'auto': true,
+                'folder': '../../Content/uploadify/',
+                'scriptData': { ASPSESSID: ASPSESSID, AUTHID: auth }
+            });
+
+        });
+        // ]]>
+    </script>
 }
 
 <h2>@ViewBag.Title</h2>
@@ -134,47 +178,6 @@
     <!-- File Upload Control -->
     <input id="fileInput" name="fileInput" type="file" style="display: none;" />
     <div id="fileInputQueue" class="uploadifyQueue"></div>
-    
-    <script type="text/javascript">
-        // <![CDATA[
-        $(document).ready(function () {
-
-            var mainPicture = 0;
-            var secondaryPicture = 0;
-            var frontPage = 0;
-
-            var auth = '@Request.Cookies[FormsAuthentication.FormsCookieName].Value';
-            var ASPSESSID = '@Session.SessionID';
-
-            $("#checkbox1").click(function () {
-                mainPicture = (mainPicture == 1) ? 0 : 1;
-                $("#fileInput").uploadifySettings('scriptData',
-                    { 'mainPicture': mainPicture, 'secondaryPicture': secondaryPicture, 'frontPage': frontPage });
-            });
-            $("#checkbox2").click(function () {
-                secondaryPicture = (secondaryPicture == 1) ? 0 : 1;
-                $("#fileInput").uploadifySettings('scriptData',
-                { 'mainPicture': mainPicture, 'secondaryPicture': secondaryPicture, 'frontPage': frontPage });
-            });
-            $("#checkbox3").click(function () {
-                frontPage = (frontPage == 1) ? 0 : 1;
-                $("#fileInput").uploadifySettings('scriptData',
-                { 'mainPicture': mainPicture, 'secondaryPicture': secondaryPicture, 'frontPage': frontPage });
-            });
-
-
-            $('#fileInput').uploadify({
-                'uploader': '../../Content/uploadify/uploadify.swf',
-                'script': '../../Content/uploadify/Upload.ashx',
-                'cancelImg': '../../Content/uploadify/cancel.png',
-                'auto': true,
-                'folder': '../../Content/uploadify/',
-                'scriptData': { ASPSESSID: ASPSESSID, AUTHID: auth }
-            });
-
-        });
-        // ]]>
-    </script>
     <!-- End File Upload Control -->
     </div>
 

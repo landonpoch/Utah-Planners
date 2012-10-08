@@ -58,7 +58,7 @@ namespace UtahPlanners.MVC3.Controllers
         }
 
         [HttpPost]
-        public ActionResult Index(IndexModel model)
+        public ActionResult IndexGrid(IndexModel model)
         {
             PropertyService.IndexFilter filter = GetPrimaryFilterFromModel(model.PropType, model.Density, model.Walkscore);
             filter = filter ?? Convert(model.IndexGridModel.Filter);
