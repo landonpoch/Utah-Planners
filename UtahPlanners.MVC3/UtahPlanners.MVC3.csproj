@@ -363,7 +363,7 @@
     <Content Include="Views\User\_ChangePassword.cshtml" />
     <Content Include="Views\Admin\EditorTemplates\PictureMetaData.cshtml" />
     <Content Include="Views\Admin\_PropertyGrid.cshtml" />
-    <Content Include="Views\Home\_IndexGrid.cshtml" />
+    <Content Include="Views\Home\EditorTemplates\IndexGridModel.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Home\Default.cshtml" />

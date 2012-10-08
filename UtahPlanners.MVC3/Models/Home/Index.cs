@@ -14,7 +14,6 @@ namespace UtahPlanners.MVC3.Models.Home
         public string PropType { get; set; }
         public string Density { get; set; }
         public string Walkscore { get; set; }
-        public bool ResetView { get; set; }
     }
 
     public class IndexGridModel

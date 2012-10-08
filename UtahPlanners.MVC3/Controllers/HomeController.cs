@@ -27,28 +27,20 @@ namespace UtahPlanners.MVC3.Controllers
             }
         }
 
-        public ActionResult Index(IndexModel model, string proptype, string density, string walkscore)
+        public ActionResult Index(string proptype, string density, string walkscore)
         {
-            if (model.ResetView)
-                return RedirectToAction("Index");
-
             using (var wcf = _factory.CreatePropertyService())
             {
                 var lookupValues = wcf.Client.GetLookupValues();
 
-                model.IndexGridModel = model.IndexGridModel ?? new IndexGridModel();
-                model.PropType = proptype ?? model.PropType;
-                model.Density = density ?? model.Density;
-                model.Walkscore = walkscore ?? model.Walkscore;
-                PropertyService.IndexFilter filter = GetPrimaryFilterFromModel(model.PropType, model.Density, model.Walkscore);
-                filter = filter ?? Convert(model.IndexGridModel.Filter);
-
-                var sort = Convert(model.IndexGridModel.Sort);
-
+                // Get default filter and sort
+                PropertyService.IndexFilter filter = GetPrimaryFilterFromModel(proptype, density, walkscore);
+                PropertyService.IndexSort sort = null;
+                
                 //Get index table rows, including the calculated overall score
                 List<PropertyService.PropertiesIndex> indecies = wcf.Client.GetIndecies(filter, sort).ToList();
 
-                model = new IndexModel
+                var model = new IndexModel
                 {
                     IndexGridModel = new IndexGridModel
                     {
@@ -57,28 +49,37 @@ namespace UtahPlanners.MVC3.Controllers
                         Sort = Convert(sort)
                     },
                     DropDowns = Convert(lookupValues),
-                    PropType = model.PropType,
-                    Density = model.Density,
-                    Walkscore = model.Walkscore
+                    PropType = proptype,
+                    Density = density,
+                    Walkscore = walkscore
                 };
                 return View(model);
             }
         }
 
-        public ActionResult IndexGrid(IndexGridModel model)
+        [HttpPost]
+        public ActionResult Index(IndexModel model)
         {
-            var filter = Convert(model.Filter);
-            var sort = Convert(model.Sort);
+            PropertyService.IndexFilter filter = GetPrimaryFilterFromModel(model.PropType, model.Density, model.Walkscore);
+            filter = filter ?? Convert(model.IndexGridModel.Filter);
+            var sort = Convert(model.IndexGridModel.Sort);
+
             using (var wcf = _factory.CreatePropertyService())
             {
                 var indicies = wcf.Client.GetIndecies(filter, sort).ToList();
-                model = new IndexGridModel
+                model = new IndexModel
                 {
-                    Records = Convert(indicies),
-                    Filter = Convert(filter),
-                    Sort = Convert(sort)
+                    IndexGridModel = new IndexGridModel
+                    {
+                        Records = Convert(indicies),
+                        Filter = Convert(filter),
+                        Sort = Convert(sort)
+                    },
+                    PropType = model.PropType,
+                    Density = model.Density,
+                    Walkscore = model.Walkscore
                 };
-                return PartialView("_IndexGrid", model);
+                return PartialView("~/Views/Home/EditorTemplates/IndexGridModel.cshtml", model.IndexGridModel);
             }
         }
 

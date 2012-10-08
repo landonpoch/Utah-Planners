@@ -1,15 +1,9 @@
 ﻿@model IndexGridModel
-@{
-    ViewBag.AjaxOptions = new AjaxOptions { HttpMethod = "Post", UpdateTargetId = "indexTable", InsertionMode = InsertionMode.Replace };
-}
 
-@Html.HiddenFor(m => m.Filter)
-@Html.HiddenFor(m => m.Sort.Column, new { @id = "columnField" })
-@Html.HiddenFor(m => m.Sort.Direction, new { @id = "directionField" })
 <table id="indexTable" cellspacing="0" rules="all" border="1" style="border-collapse:collapse;">
     <thead>
     <tr align="center" style="background-color: #CCCCCC; border-style: solid;">
-    <th>@Ajax.ActionLink("City", "IndexGrid", (AjaxOptions)ViewBag.AjaxOptions)</th>
+    <th><a id="city" href="#">City</a></th>
     <th><a id="id" href="#">Property Number</a></th>
     <th><a id="score" href="#">Overall Score</a></th>
     <th><a id="type" href="#">Type</a></th>
@@ -45,3 +39,35 @@
     </tbody>
 
 </table>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#indexTable>thead>tr>th a').each(function () {
+            $(this).click(function (event) {
+                event.preventDefault();
+                sort(this);
+                $("form").submit();
+            });
+        });
+    });
+
+    function sort(column) {
+        var previousSort = $('#columnField').val();
+        applySortColumn(column);
+        var nextSort = $('#columnField').val();
+        applySortDirection(previousSort, nextSort);
+    }
+
+    function applySortColumn(column) {
+        column = $(column).attr('id');
+        $('#columnField').val(column);
+    }
+
+    function applySortDirection(previousSort, nextSort) {
+        var currentDirection = $('#directionField').val();
+        $('#directionField').val('ascending');
+        if (previousSort == nextSort && currentDirection == 'ascending') {
+            $('#directionField').val('descending');
+        }
+    }
+</script>

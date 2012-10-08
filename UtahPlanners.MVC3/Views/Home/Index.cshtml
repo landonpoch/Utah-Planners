@@ -1,6 +1,7 @@
 ﻿@model IndexModel
 @{
     Layout = "~/Views/Shared/_LayoutNoLeftNav.cshtml";
+    ViewBag.AjaxOptions = new AjaxOptions { HttpMethod = "Post", UpdateTargetId = "indexTable", InsertionMode = InsertionMode.Replace };
 }
 
 @section Head
@@ -14,41 +15,13 @@
         });
 
         $('#clearButton').click(function () {
-            $('#resetView').val(true);
-        });
-
-        $('#indexTable>thead>tr>th a').each(function () {
-            $(this).click(function (event) {
-                event.preventDefault();
-                sort(this);
-                $("form").submit();
-            });
+            document.location.href = "/Index";
         });
     });
-
-    function sort(column) {
-        var previousSort = $('#columnField').val();
-        applySortColumn(column);
-        var nextSort = $('#columnField').val();
-        applySortDirection(previousSort, nextSort);
-    }
-
-    function applySortColumn(column) {
-        column = $(column).attr('id');
-        $('#columnField').val(column);
-    }
-
-    function applySortDirection(previousSort, nextSort) {
-        var currentDirection = $('#directionField').val();
-        $('#directionField').val('ascending');
-        if (previousSort == nextSort && currentDirection == 'ascending') {
-            $('#directionField').val('descending');
-        }
-    }
 </script>
 }
 
-@using (Html.BeginForm("Index", "Home", FormMethod.Post))
+@using (Ajax.BeginForm("Index", "Home", new AjaxOptions { HttpMethod = "Post", UpdateTargetId = "indexTable", InsertionMode = InsertionMode.Replace }))
 { 
 <h2 class="trigger"><a href="#">Index Filter</a></h2>
 <div class="toggle_container" style="display: none;">
@@ -140,9 +113,10 @@
 @Html.HiddenFor(m => m.PropType)
 @Html.HiddenFor(m => m.Density)
 @Html.HiddenFor(m => m.Walkscore)
-@Html.HiddenFor(m => m.ResetView, new { @id = "resetView" })
+@Html.HiddenFor(m => m.IndexGridModel.Sort.Column, new { @id = "columnField", Value = "id" })
+@Html.HiddenFor(m => m.IndexGridModel.Sort.Direction, new { @id = "directionField", Value = "ascending" })
 
 <div id="indexTable" style="width: 100%;">
-    @Html.Partial("_IndexGrid", Model.IndexGridModel)
+    @Html.EditorFor(m => m.IndexGridModel)
 </div>
 }
