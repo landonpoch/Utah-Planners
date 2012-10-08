@@ -1,27 +1,64 @@
 ﻿@model IndexModel
 @{
     Layout = "~/Views/Shared/_LayoutNoLeftNav.cshtml";
-    ViewBag.AjaxOptions = new AjaxOptions { HttpMethod = "Post", UpdateTargetId = "indexTable", InsertionMode = InsertionMode.Replace };
+    ViewBag.AjaxOptions = new AjaxOptions 
+    { 
+        HttpMethod = "Post", 
+        UpdateTargetId = "indexTable", 
+        InsertionMode = InsertionMode.Replace, 
+        OnComplete = "registerSortEvents();" 
+    };
 }
 
-@section Head
+@section Scripts
 {
-<script type="text/javascript" src="http://code.jquery.com/jquery-1.4.2.min.js"></script>
-<script type="text/javascript">
-    $(document).ready(function () {
-        $("h2.trigger").click(function (event) {
-            event.preventDefault();
-            $(this).toggleClass("active").next().slideToggle("slow");
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("h2.trigger").click(function (event) {
+                event.preventDefault();
+                $(this).toggleClass("active").next().slideToggle("slow");
+            });
+
+            $('#clearButton').click(function () {
+                document.location.href = "/Index";
+            });
+
+            registerSortEvents();
         });
 
-        $('#clearButton').click(function () {
-            document.location.href = "/Index";
-        });
-    });
-</script>
+        function registerSortEvents() {
+            $('#indexTable>thead>tr>th a').each(function () {
+                $(this).click(function (event) {
+                    event.preventDefault();
+                    sort(this);
+                    $("form").submit();
+                });
+            });
+        }
+
+        function sort(column) {
+            var previousSort = $('#columnField').val();
+            applySortColumn(column);
+            var nextSort = $('#columnField').val();
+            applySortDirection(previousSort, nextSort);
+        }
+
+        function applySortColumn(column) {
+            column = $(column).attr('id');
+            $('#columnField').val(column);
+        }
+
+        function applySortDirection(previousSort, nextSort) {
+            var currentDirection = $('#directionField').val();
+            $('#directionField').val('ascending');
+            if (previousSort == nextSort && currentDirection == 'ascending') {
+                $('#directionField').val('descending');
+            }
+        }
+    </script>
 }
 
-@using (Ajax.BeginForm("Index", "Home", new AjaxOptions { HttpMethod = "Post", UpdateTargetId = "indexTable", InsertionMode = InsertionMode.Replace }))
+@using (Ajax.BeginForm("Index", "Home", (AjaxOptions)ViewBag.AjaxOptions))
 { 
 <h2 class="trigger"><a href="#">Index Filter</a></h2>
 <div class="toggle_container" style="display: none;">

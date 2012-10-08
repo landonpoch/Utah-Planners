@@ -39,35 +39,3 @@
     </tbody>
 
 </table>
-
-<script type="text/javascript">
-    $(document).ready(function () {
-        $('#indexTable>thead>tr>th a').each(function () {
-            $(this).click(function (event) {
-                event.preventDefault();
-                sort(this);
-                $("form").submit();
-            });
-        });
-    });
-
-    function sort(column) {
-        var previousSort = $('#columnField').val();
-        applySortColumn(column);
-        var nextSort = $('#columnField').val();
-        applySortDirection(previousSort, nextSort);
-    }
-
-    function applySortColumn(column) {
-        column = $(column).attr('id');
-        $('#columnField').val(column);
-    }
-
-    function applySortDirection(previousSort, nextSort) {
-        var currentDirection = $('#directionField').val();
-        $('#directionField').val('ascending');
-        if (previousSort == nextSort && currentDirection == 'ascending') {
-            $('#directionField').val('descending');
-        }
-    }
-</script>
