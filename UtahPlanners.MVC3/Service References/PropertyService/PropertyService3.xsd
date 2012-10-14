@@ -59,17 +59,17 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="GetAllProperties">
+  <xs:element name="FindAllAdminIndecies">
     <xs:complexType>
       <xs:sequence>
         <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/UtahPlanners.Domain.Entity" minOccurs="0" name="sort" nillable="true" type="q7:PropertySort" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="GetAllPropertiesResponse">
+  <xs:element name="FindAllAdminIndeciesResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/UtahPlanners.Domain.Entity" minOccurs="0" name="GetAllPropertiesResult" nillable="true" type="q8:ArrayOfProperty" />
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/UtahPlanners.Domain.DTO" minOccurs="0" name="FindAllAdminIndeciesResult" nillable="true" type="q8:ArrayOfAdminPropertyIndexDTO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -101,10 +101,36 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="FindShowcaseProperty">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="FindShowcasePropertyResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/System.Collections.Generic" minOccurs="0" name="FindShowcasePropertyResult" type="q11:KeyValuePairOfintint" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="FindPicture">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="id" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="FindPictureResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/UtahPlanners.Domain.Entity" minOccurs="0" name="FindPictureResult" nillable="true" type="q12:Picture" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="SaveProperty">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/UtahPlanners.Domain.Entity" minOccurs="0" name="property" nillable="true" type="q11:Property" />
+        <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/UtahPlanners.Domain.Entity" minOccurs="0" name="property" nillable="true" type="q13:Property" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -126,32 +152,6 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="DeletePropertyResult" type="xs:boolean" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="GetShowcaseProperty">
-    <xs:complexType>
-      <xs:sequence />
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="GetShowcasePropertyResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/System.Collections.Generic" minOccurs="0" name="GetShowcasePropertyResult" type="q12:KeyValuePairOfintint" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="GetPicture">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="id" type="xs:int" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="GetPictureResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/UtahPlanners.Domain.Entity" minOccurs="0" name="GetPictureResult" nillable="true" type="q13:Picture" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

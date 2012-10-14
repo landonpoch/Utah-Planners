@@ -60,7 +60,7 @@
       <CustomToolNamespace>UtahPlanners.Domain.Entity</CustomToolNamespace>
     </Compile>
     <Compile Include="Repository\LookupRepository.cs" />
-    <Compile Include="Repository\PictureRepository.cs" />
+    <Compile Include="Finder\PictureFinder.cs" />
     <Compile Include="Finder\PropertiesIndexFinder.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\PropertyRepository.cs" />

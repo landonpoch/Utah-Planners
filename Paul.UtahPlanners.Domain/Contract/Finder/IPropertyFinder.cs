@@ -9,7 +9,8 @@ namespace UtahPlanners.Domain.Contract.Finder
 {
     public interface IPropertyFinder
     {
-        UserPropertyDTO FindProperty(int id);
+        UserPropertyDTO FindProperty(int id, Weight weights);
         AdminPropertyDTO FindAdminProperty(int id);
+        KeyValuePair<int, int> FindShowcaseProperty();
     }
 }

@@ -23,16 +23,16 @@
         @foreach (var prop in Model.Properties)
         {
             <tr align="center">
-			    <td>@Html.ActionLink("Edit", "Property", "Admin", new { id = prop.id }, new { })</td>
-                <td><a class="delete" href="#" data-identifier="@prop.id">Delete</a></td>
-                <td>@prop.id</td>
-                <td>@prop.Address.city</td>
-                <td>@prop.PropertyType.description</td>
-                <td>@prop.density</td>
-                <td>@prop.units</td>
-                <td>@prop.yearBuilt</td>
-                <td>@prop.adminNotes</td>
-                <td>@prop.notFinished</td>
+			    <td>@Html.ActionLink("Edit", "Property", "Admin", new { id = prop.Id }, new { })</td>
+                <td><a class="delete" href="#" data-identifier="@prop.Id">Delete</a></td>
+                <td>@prop.Id</td>
+                <td>@prop.City</td>
+                <td>@prop.Description</td>
+                <td>@prop.Density</td>
+                <td>@prop.Units</td>
+                <td>@prop.YearBuilt</td>
+                <td>@prop.AdminNotes</td>
+                <td>@prop.NotFinished</td>
 		    </tr>
         }
 	</tbody>

@@ -1,6 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/UtahPlanners.Domain.DTO" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/UtahPlanners.Domain.DTO" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:import schemaLocation="http://localhost:3109/PropertyService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/UtahPlanners.Domain.Entity" />
+  <xs:complexType name="ArrayOfAdminPropertyIndexDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="AdminPropertyIndexDTO" nillable="true" type="tns:AdminPropertyIndexDTO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfAdminPropertyIndexDTO" nillable="true" type="tns:ArrayOfAdminPropertyIndexDTO" />
+  <xs:complexType name="AdminPropertyIndexDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AdminNotes" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="City" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Density" type="xs:double" />
+      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="NotFinished" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Units" type="xs:int" />
+      <xs:element minOccurs="0" name="YearBuilt" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AdminPropertyIndexDTO" nillable="true" type="tns:AdminPropertyIndexDTO" />
   <xs:complexType name="UserPropertyDTO">
     <xs:complexContent mixed="false">
       <xs:extension base="tns:PropertyDTO">

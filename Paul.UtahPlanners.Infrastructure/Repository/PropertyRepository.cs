@@ -28,13 +28,6 @@ namespace UtahPlanners.Infrastructure.Repository
             _context.Properties.Add(property);
         }
 
-        public List<Property> GetAllProperties(PropertySort sort)
-        {
-            var properties = GetPropertiesQuery().Sort(sort).ToList();
-            AppendMetaData(properties);
-            return properties;
-        }
-
         public Property Get(int id)
         {
             // TODO: Try to do this in 1 DB hit
@@ -67,21 +60,6 @@ namespace UtahPlanners.Infrastructure.Repository
         public void Remove(Property property)
         {
             _context.Properties.Remove(property);
-        }
-
-        public KeyValuePair<int, int> GetShowcaseProperty()
-        {
-            var count = _context.Pictures.Where(p => p.frontPage == 1)
-                .Count();
-
-            var index = new Random().Next(count);
-
-            var result = _context.Pictures.Where(p => p.frontPage == 1)
-                .OrderBy(p => p.id)
-                .Skip(index)
-                .Select(p => new { PropertyId = p.property_id.Value, PictureId = p.id })
-                .FirstOrDefault();
-            return new KeyValuePair<int, int>(result.PropertyId, result.PictureId);
         }
 
         #endregion

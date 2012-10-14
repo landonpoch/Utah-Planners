@@ -22,8 +22,8 @@ namespace Paul.UtahPlanners.Application
         List<PropertiesIndex> FindIndecies(IndexFilter filter, IndexSort sort);
 
         [OperationContract]
-        List<Property> GetAllProperties(PropertySort sort);
-
+        List<AdminPropertyIndexDTO> FindAllAdminIndecies(PropertySort sort);
+        
         [OperationContract]
         UserPropertyDTO FindUserProperty(int id);
 
@@ -31,16 +31,16 @@ namespace Paul.UtahPlanners.Application
         AdminPropertyDTO FindAdminProperty(int id);
 
         [OperationContract]
+        KeyValuePair<int, int> FindShowcaseProperty();
+
+        [OperationContract]
+        Picture FindPicture(int id);
+        
+        [OperationContract]
         int SaveProperty(Property property);
 
         [OperationContract]
         bool DeleteProperty(int propertyId);
-
-        [OperationContract]
-        KeyValuePair<int, int> GetShowcaseProperty();
-
-        [OperationContract]
-        Picture GetPicture(int id);
 
         [OperationContract]
         LookupValues GetLookupValues();

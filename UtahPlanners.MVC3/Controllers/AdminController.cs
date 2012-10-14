@@ -84,7 +84,7 @@ namespace UtahPlanners.MVC3.Controllers
         {
             using (var wcf = _factory.CreatePropertyServiceWrapper())
             {
-                var props = wcf.Client.GetAllProperties(null);
+                var props = wcf.Client.FindAllAdminIndecies(null);
 
                 var model = new PropertyGrid
                 {
@@ -102,7 +102,7 @@ namespace UtahPlanners.MVC3.Controllers
 
             using (var wcf = _factory.CreatePropertyServiceWrapper())
             {
-                var props = wcf.Client.GetAllProperties(propSort);
+                var props = wcf.Client.FindAllAdminIndecies(propSort);
 
                 var model = new PropertyGrid
                 {

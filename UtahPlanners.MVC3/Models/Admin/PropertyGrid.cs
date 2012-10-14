@@ -7,7 +7,7 @@ namespace UtahPlanners.MVC3.Models.Admin
 {
     public class PropertyGrid
     {
-        public List<PropertyService.Property> Properties { get; set; }
+        public List<PropertyService.AdminPropertyIndexDTO> Properties { get; set; }
         public Dictionary<int, string> SortOptions { get; set; }
     }
 }

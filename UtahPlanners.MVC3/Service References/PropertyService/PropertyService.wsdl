@@ -42,11 +42,11 @@
   <wsdl:message name="IPropertyService_FindIndecies_OutputMessage">
     <wsdl:part name="parameters" element="tns:FindIndeciesResponse" />
   </wsdl:message>
-  <wsdl:message name="IPropertyService_GetAllProperties_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetAllProperties" />
+  <wsdl:message name="IPropertyService_FindAllAdminIndecies_InputMessage">
+    <wsdl:part name="parameters" element="tns:FindAllAdminIndecies" />
   </wsdl:message>
-  <wsdl:message name="IPropertyService_GetAllProperties_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetAllPropertiesResponse" />
+  <wsdl:message name="IPropertyService_FindAllAdminIndecies_OutputMessage">
+    <wsdl:part name="parameters" element="tns:FindAllAdminIndeciesResponse" />
   </wsdl:message>
   <wsdl:message name="IPropertyService_FindUserProperty_InputMessage">
     <wsdl:part name="parameters" element="tns:FindUserProperty" />
@@ -60,6 +60,18 @@
   <wsdl:message name="IPropertyService_FindAdminProperty_OutputMessage">
     <wsdl:part name="parameters" element="tns:FindAdminPropertyResponse" />
   </wsdl:message>
+  <wsdl:message name="IPropertyService_FindShowcaseProperty_InputMessage">
+    <wsdl:part name="parameters" element="tns:FindShowcaseProperty" />
+  </wsdl:message>
+  <wsdl:message name="IPropertyService_FindShowcaseProperty_OutputMessage">
+    <wsdl:part name="parameters" element="tns:FindShowcasePropertyResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPropertyService_FindPicture_InputMessage">
+    <wsdl:part name="parameters" element="tns:FindPicture" />
+  </wsdl:message>
+  <wsdl:message name="IPropertyService_FindPicture_OutputMessage">
+    <wsdl:part name="parameters" element="tns:FindPictureResponse" />
+  </wsdl:message>
   <wsdl:message name="IPropertyService_SaveProperty_InputMessage">
     <wsdl:part name="parameters" element="tns:SaveProperty" />
   </wsdl:message>
@@ -71,18 +83,6 @@
   </wsdl:message>
   <wsdl:message name="IPropertyService_DeleteProperty_OutputMessage">
     <wsdl:part name="parameters" element="tns:DeletePropertyResponse" />
-  </wsdl:message>
-  <wsdl:message name="IPropertyService_GetShowcaseProperty_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetShowcaseProperty" />
-  </wsdl:message>
-  <wsdl:message name="IPropertyService_GetShowcaseProperty_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetShowcasePropertyResponse" />
-  </wsdl:message>
-  <wsdl:message name="IPropertyService_GetPicture_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetPicture" />
-  </wsdl:message>
-  <wsdl:message name="IPropertyService_GetPicture_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetPictureResponse" />
   </wsdl:message>
   <wsdl:message name="IPropertyService_GetLookupValues_InputMessage">
     <wsdl:part name="parameters" element="tns:GetLookupValues" />
@@ -107,9 +107,9 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IPropertyService/FindIndecies" message="tns:IPropertyService_FindIndecies_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IPropertyService/FindIndeciesResponse" message="tns:IPropertyService_FindIndecies_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="GetAllProperties">
-      <wsdl:input wsaw:Action="http://tempuri.org/IPropertyService/GetAllProperties" message="tns:IPropertyService_GetAllProperties_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IPropertyService/GetAllPropertiesResponse" message="tns:IPropertyService_GetAllProperties_OutputMessage" />
+    <wsdl:operation name="FindAllAdminIndecies">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPropertyService/FindAllAdminIndecies" message="tns:IPropertyService_FindAllAdminIndecies_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPropertyService/FindAllAdminIndeciesResponse" message="tns:IPropertyService_FindAllAdminIndecies_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="FindUserProperty">
       <wsdl:input wsaw:Action="http://tempuri.org/IPropertyService/FindUserProperty" message="tns:IPropertyService_FindUserProperty_InputMessage" />
@@ -119,6 +119,14 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IPropertyService/FindAdminProperty" message="tns:IPropertyService_FindAdminProperty_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IPropertyService/FindAdminPropertyResponse" message="tns:IPropertyService_FindAdminProperty_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="FindShowcaseProperty">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPropertyService/FindShowcaseProperty" message="tns:IPropertyService_FindShowcaseProperty_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPropertyService/FindShowcasePropertyResponse" message="tns:IPropertyService_FindShowcaseProperty_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="FindPicture">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPropertyService/FindPicture" message="tns:IPropertyService_FindPicture_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPropertyService/FindPictureResponse" message="tns:IPropertyService_FindPicture_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="SaveProperty">
       <wsdl:input wsaw:Action="http://tempuri.org/IPropertyService/SaveProperty" message="tns:IPropertyService_SaveProperty_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IPropertyService/SavePropertyResponse" message="tns:IPropertyService_SaveProperty_OutputMessage" />
@@ -126,14 +134,6 @@
     <wsdl:operation name="DeleteProperty">
       <wsdl:input wsaw:Action="http://tempuri.org/IPropertyService/DeleteProperty" message="tns:IPropertyService_DeleteProperty_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IPropertyService/DeletePropertyResponse" message="tns:IPropertyService_DeleteProperty_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="GetShowcaseProperty">
-      <wsdl:input wsaw:Action="http://tempuri.org/IPropertyService/GetShowcaseProperty" message="tns:IPropertyService_GetShowcaseProperty_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IPropertyService/GetShowcasePropertyResponse" message="tns:IPropertyService_GetShowcaseProperty_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="GetPicture">
-      <wsdl:input wsaw:Action="http://tempuri.org/IPropertyService/GetPicture" message="tns:IPropertyService_GetPicture_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IPropertyService/GetPictureResponse" message="tns:IPropertyService_GetPicture_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetLookupValues">
       <wsdl:input wsaw:Action="http://tempuri.org/IPropertyService/GetLookupValues" message="tns:IPropertyService_GetLookupValues_InputMessage" />
@@ -179,8 +179,8 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetAllProperties">
-      <soap12:operation soapAction="http://tempuri.org/IPropertyService/GetAllProperties" style="document" />
+    <wsdl:operation name="FindAllAdminIndecies">
+      <soap12:operation soapAction="http://tempuri.org/IPropertyService/FindAllAdminIndecies" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -206,6 +206,24 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="FindShowcaseProperty">
+      <soap12:operation soapAction="http://tempuri.org/IPropertyService/FindShowcaseProperty" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FindPicture">
+      <soap12:operation soapAction="http://tempuri.org/IPropertyService/FindPicture" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="SaveProperty">
       <soap12:operation soapAction="http://tempuri.org/IPropertyService/SaveProperty" style="document" />
       <wsdl:input>
@@ -217,24 +235,6 @@
     </wsdl:operation>
     <wsdl:operation name="DeleteProperty">
       <soap12:operation soapAction="http://tempuri.org/IPropertyService/DeleteProperty" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetShowcaseProperty">
-      <soap12:operation soapAction="http://tempuri.org/IPropertyService/GetShowcaseProperty" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetPicture">
-      <soap12:operation soapAction="http://tempuri.org/IPropertyService/GetPicture" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

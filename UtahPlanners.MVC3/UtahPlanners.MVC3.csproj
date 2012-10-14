@@ -266,6 +266,9 @@
     <None Include="Service References\PropertyService\UtahPlanners.MVC3.PropertyService.AdminPropertyDTO.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Service References\PropertyService\UtahPlanners.MVC3.PropertyService.AdminPropertyIndexDTO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Service References\PropertyService\UtahPlanners.MVC3.PropertyService.UserPropertyDTO.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
@@ -331,9 +334,6 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\PropertyService\UtahPlanners.MVC3.PropertyService.PropertiesIndex.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Service References\PropertyService\UtahPlanners.MVC3.PropertyService.Property.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <Content Include="Views\Admin\Admin.cshtml" />

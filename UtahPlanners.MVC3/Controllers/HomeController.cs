@@ -22,7 +22,7 @@ namespace UtahPlanners.MVC3.Controllers
         {
             using (var wcf = _factory.CreatePropertyServiceWrapper())
             {
-                var prop = wcf.Client.GetShowcaseProperty();
+                var prop = wcf.Client.FindShowcaseProperty();
                 return View(prop);
             }
         }
@@ -103,7 +103,7 @@ namespace UtahPlanners.MVC3.Controllers
         {
             using (var wcf = _factory.CreatePropertyServiceWrapper())
             {
-                var picture = wcf.Client.GetPicture(id);
+                var picture = wcf.Client.FindPicture(id);
                 return File(picture.binaryData, "image/png");
             }
         }

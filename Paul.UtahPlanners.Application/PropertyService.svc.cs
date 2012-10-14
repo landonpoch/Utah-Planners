@@ -41,6 +41,8 @@ namespace Paul.UtahPlanners.Application
 
         #region IPropertyService Members
 
+        #region Queries
+        
         public List<PropertiesIndex> FindAllIndecies()
         {
             return FindIndecies(null, null);
@@ -55,22 +57,22 @@ namespace Paul.UtahPlanners.Application
             }
         }
 
-        public List<Property> GetAllProperties(PropertySort sort)
+        public List<AdminPropertyIndexDTO> FindAllAdminIndecies(PropertySort sort)
         {
             using (var unit = _factory.CreateUnitOfWork())
             {
-                var repo = unit.CreatePropertyRepository(_settings);
-                var props = repo.GetAllProperties(sort);
+                var finder = unit.CreateIndexFinder();
+                var props = finder.FindAdminIndecies(sort);
                 return props;
             }
         }
-
+        
         public UserPropertyDTO FindUserProperty(int id)
         {
             using (var unit = _factory.CreateUnitOfWork())
             {
-                var finder = unit.CreatePropertyFinder(_settings);
-                var prop = finder.FindProperty(id);
+                var finder = unit.CreatePropertyFinder();
+                var prop = finder.FindProperty(id, _settings.Weights);
                 return prop;
             }
         }
@@ -79,11 +81,40 @@ namespace Paul.UtahPlanners.Application
         {
             using (var unit = _factory.CreateUnitOfWork())
             {
-                var finder = unit.CreatePropertyFinder(_settings);
+                var finder = unit.CreatePropertyFinder();
                 var prop = finder.FindAdminProperty(id);
                 return prop;
             }
         }
+
+        public KeyValuePair<int, int> FindShowcaseProperty()
+        {
+            using (var unit = _factory.CreateUnitOfWork())
+            {
+                var finder = unit.CreatePropertyFinder();
+                var showcaseProp = finder.FindShowcaseProperty();
+                return showcaseProp;
+            }
+        }
+
+        public Picture FindPicture(int id)
+        {
+            using (var unit = _factory.CreateUnitOfWork())
+            {
+                var finder = unit.CreatePictureFinder();
+                return finder.FindPicture(id);
+            }
+        }
+
+        public LookupValues GetLookupValues()
+        {
+            return _settings.LookupValues;
+        }
+
+        #endregion
+
+        // TODO: Refactor to use commands
+        #region Commands
 
         public int SaveProperty(Property dtoProp)
         {
@@ -129,34 +160,13 @@ namespace Paul.UtahPlanners.Application
             }
             catch (Exception e)
             {
-                // TODO: Logging
+                _logger.Warning("An error occurred while deleting the property", e);
             }
             return result;
         }
 
-        public KeyValuePair<int, int> GetShowcaseProperty()
-        {
-            using (var unit = _factory.CreateUnitOfWork())
-            {
-                var repo = unit.CreatePropertyRepository(_settings);
-                return repo.GetShowcaseProperty();
-            }
-        }
-
-        public Picture GetPicture(int id)
-        {
-            using (var unit = _factory.CreateUnitOfWork())
-            {
-                var repo = unit.CreatePictureRepository();
-                return repo.GetPicture(id);
-            }
-        }
-
-        public LookupValues GetLookupValues()
-        {
-            return _settings.LookupValues;
-        }
-
+        #endregion
+        
         #endregion
 
         private void UpdateProperty(Property ctxProp, Property dtoProp)

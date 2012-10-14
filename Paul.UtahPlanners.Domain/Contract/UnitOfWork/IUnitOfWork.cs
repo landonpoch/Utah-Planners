@@ -11,12 +11,12 @@ namespace UtahPlanners.Domain.Contract.UnitOfWork
     public interface IUnitOfWork : IDisposable
     {
         // Query Model
-        IPropertyFinder CreatePropertyFinder(IConfigSettings settings);
+        IPropertyFinder CreatePropertyFinder();
         IPropertiesIndexFinder CreateIndexFinder();
+        IPictureFinder CreatePictureFinder();
 
         // Command Model
         IPropertyRepository CreatePropertyRepository(IConfigSettings settings);
-        IPictureRepository CreatePictureRepository();
         IConfigRepository CreateConfigRepository();
         
         void Commit();

@@ -13,19 +13,16 @@ namespace UtahPlanners.Infrastructure.Finder
     public class PropertyFinder : IPropertyFinder
     {
         private PropertiesDB _context;
-        private IConfigSettings _settings;
 
-        public PropertyFinder(PropertiesDB context, IConfigSettings settings)
+        public PropertyFinder(PropertiesDB context)
         {
             _context = context;
-            _settings = settings;
         }
 
         #region IPropertyFinder Members
 
-        public UserPropertyDTO FindProperty(int id)
+        public UserPropertyDTO FindProperty(int id, Weight weights)
         {
-            var weights = _settings.Weights;
             var dto = (from p in _context.Properties
                         join a in _context.Addresses on p.Address.id equals a.id
                         join pt in _context.PropertyTypes on p.PropertyType.id equals pt.id
@@ -137,6 +134,21 @@ namespace UtahPlanners.Infrastructure.Finder
             return dto;
         }
 
+        public KeyValuePair<int, int> FindShowcaseProperty()
+        {
+            var count = _context.Pictures.Where(p => p.frontPage == 1)
+                .Count();
+
+            var index = new Random().Next(count);
+
+            var result = _context.Pictures.Where(p => p.frontPage == 1)
+                .OrderBy(p => p.id)
+                .Skip(index)
+                .Select(p => new { PropertyId = p.property_id.Value, PictureId = p.id })
+                .FirstOrDefault();
+            return new KeyValuePair<int, int>(result.PropertyId, result.PictureId);
+        }
+
         #endregion
 
         private List<PictureMetaData> GetPictureMetaData(int propertyNumber)
@@ -151,6 +163,7 @@ namespace UtahPlanners.Infrastructure.Finder
                         SecondaryPicture = pic.secondaryPicture == 1,
                         FrontPage = pic.frontPage == 1
                     })
+                    .OrderByDescending(md => md.PrimaryPicture)
                     .ToList();
         }
     }

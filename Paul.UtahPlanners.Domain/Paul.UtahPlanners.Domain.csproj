@@ -49,6 +49,7 @@
     <Compile Include="Contract\Service\IEmailService.cs" />
     <Compile Include="DTO\AddressDTO.cs" />
     <Compile Include="DTO\AdminPropertyDTO.cs" />
+    <Compile Include="DTO\AdminPropertyIndexDTO.cs" />
     <Compile Include="DTO\PropertyDTO.cs" />
     <Compile Include="DTO\UserPropertyDTO.cs" />
     <Compile Include="Entity\Address.cs">
@@ -74,7 +75,7 @@
     <Compile Include="Contract\Service\IConfigSettings.cs" />
     <Compile Include="Entity\IndexFilter.cs" />
     <Compile Include="Entity\IndexSort.cs" />
-    <Compile Include="Contract\Repository\IPictureRepository.cs" />
+    <Compile Include="Contract\Finder\IPictureFinder.cs" />
     <Compile Include="Contract\Finder\IPropertiesIndexFinder.cs" />
     <Compile Include="Contract\Repository\IPropertyRepository.cs" />
     <Compile Include="Contract\UnitOfWork\IUnitOfWork.cs" />

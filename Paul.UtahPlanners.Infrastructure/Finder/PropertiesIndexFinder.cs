@@ -7,6 +7,7 @@ using UtahPlanners.Domain.Entity;
 using UtahPlanners.Infrastructure.DAO;
 using UtahPlanners.Infrastructure.Shared;
 using UtahPlanners.Domain.Contract.Finder;
+using UtahPlanners.Domain.DTO;
 
 namespace UtahPlanners.Infrastructure.Finder
 {
@@ -28,6 +29,26 @@ namespace UtahPlanners.Infrastructure.Finder
                 : _context.PropertiesIndexes.AsQueryable();
             
             return props.Sort(sort).ToList();
+        }
+
+        public List<AdminPropertyIndexDTO> FindAdminIndecies(PropertySort sort)
+        {
+            var indicies = from p in _context.Properties
+                           join a in _context.Addresses on p.Address.id equals a.id
+                           join pt in _context.PropertyTypes on p.PropertyType.id equals pt.id
+                           select new AdminPropertyIndexDTO
+                           {
+                               Id = p.id,
+                               City = a.city,
+                               Description = pt.description,
+                               Density = p.density.Value,
+                               Units = p.units.Value,
+                               YearBuilt = p.yearBuilt.Value,
+                               AdminNotes = p.adminNotes,
+                               NotFinished = p.notFinished
+                           };
+            indicies = indicies.Sort(sort);
+            return indicies.ToList();
         }
 
         #endregion
@@ -176,6 +197,43 @@ namespace UtahPlanners.Infrastructure.Finder
                         break;
                     case IndexColumn.TwoFiftySF:
                         props = props.Sort(p => p.twoFiftySingleFam, direction);
+                        break;
+                }
+            }
+            return props;
+        }
+
+        public static IQueryable<AdminPropertyIndexDTO> Sort(this IQueryable<AdminPropertyIndexDTO> props, PropertySort sort)
+        {
+            if (sort != null)
+            {
+                var column = sort.Column;
+                var direction = sort.Direction;
+                switch (column)
+                {
+                    case PropertyColumn.Id:
+                        props = props.Sort(p => p.Id, direction);
+                        break;
+                    case PropertyColumn.City:
+                        props = props.Sort(p => p.City, direction);
+                        break;
+                    case PropertyColumn.Description:
+                        props = props.Sort(p => p.Description, direction);
+                        break;
+                    case PropertyColumn.Density:
+                        props = props.Sort(p => p.Density, direction);
+                        break;
+                    case PropertyColumn.Units:
+                        props = props.Sort(p => p.Units, direction);
+                        break;
+                    case PropertyColumn.YearBuilt:
+                        props = props.Sort(p => p.YearBuilt, direction);
+                        break;
+                    case PropertyColumn.AdminNotes:
+                        props = props.Sort(p => p.AdminNotes, direction);
+                        break;
+                    case PropertyColumn.NotFinished:
+                        props = props.Sort(p => p.NotFinished, direction);
                         break;
                 }
             }
