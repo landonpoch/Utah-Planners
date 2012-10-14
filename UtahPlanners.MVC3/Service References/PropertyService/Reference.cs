@@ -3853,8 +3853,11 @@ namespace UtahPlanners.MVC3.PropertyService {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPropertyService/GetAllLookupValues", ReplyAction="http://tempuri.org/IPropertyService/GetAllLookupValuesResponse")]
         UtahPlanners.MVC3.PropertyService.LookupValues GetAllLookupValues();
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPropertyService/GetLookupValues", ReplyAction="http://tempuri.org/IPropertyService/GetLookupValuesResponse")]
-        System.Collections.Generic.Dictionary<int, string> GetLookupValues(UtahPlanners.MVC3.PropertyService.LookupType lookupType);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPropertyService/GetLookupTypes", ReplyAction="http://tempuri.org/IPropertyService/GetLookupTypesResponse")]
+        System.Collections.Generic.Dictionary<int, string> GetLookupTypes(UtahPlanners.MVC3.PropertyService.LookupType lookupType);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPropertyService/GetLookupCodes", ReplyAction="http://tempuri.org/IPropertyService/GetLookupCodesResponse")]
+        System.Collections.Generic.Dictionary<int, System.Tuple<string, int>> GetLookupCodes(UtahPlanners.MVC3.PropertyService.LookupCode lookupCode);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPropertyService/SaveProperty", ReplyAction="http://tempuri.org/IPropertyService/SavePropertyResponse")]
         int SaveProperty(UtahPlanners.MVC3.PropertyService.Property property);
@@ -3948,8 +3951,12 @@ namespace UtahPlanners.MVC3.PropertyService {
             return base.Channel.GetAllLookupValues();
         }
         
-        public System.Collections.Generic.Dictionary<int, string> GetLookupValues(UtahPlanners.MVC3.PropertyService.LookupType lookupType) {
-            return base.Channel.GetLookupValues(lookupType);
+        public System.Collections.Generic.Dictionary<int, string> GetLookupTypes(UtahPlanners.MVC3.PropertyService.LookupType lookupType) {
+            return base.Channel.GetLookupTypes(lookupType);
+        }
+        
+        public System.Collections.Generic.Dictionary<int, System.Tuple<string, int>> GetLookupCodes(UtahPlanners.MVC3.PropertyService.LookupCode lookupCode) {
+            return base.Channel.GetLookupCodes(lookupCode);
         }
         
         public int SaveProperty(UtahPlanners.MVC3.PropertyService.Property property) {

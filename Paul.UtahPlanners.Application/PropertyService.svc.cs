@@ -112,7 +112,7 @@ namespace Paul.UtahPlanners.Application
             return _settings.LookupValues;
         }
 
-        public Dictionary<int, string> GetLookupValues(LookupType lookupType)
+        public Dictionary<int, string> GetLookupTypes(LookupType lookupType)
         {
             using (var unit = _factory.CreateUnitOfWork())
             {
@@ -120,16 +120,55 @@ namespace Paul.UtahPlanners.Application
                 switch (lookupType)
                 {
                     case LookupType.PropertyType:
-                        var propTypeRepo = unit.CreateLookupValueRepository<PropertyType>();
-                        result = propTypeRepo.GetAllLookupValues().ToDictionary(l => l.id, l => l.description);
+                        result = GetAllLookupValues<PropertyType>(unit).ToDictionary(l => l.id, l => l.description);
                         break;
                     case LookupType.StreetType:
-                        var streetTypeRepo = unit.CreateLookupValueRepository<StreetType>();
-                        result = streetTypeRepo.GetAllLookupValues().ToDictionary(l => l.id, l => l.description);
+                        result = GetAllLookupValues<StreetType>(unit).ToDictionary(l => l.id, l => l.description);
                         break;
                     case LookupType.SocioEconType:
-                        var socioEconRepo = unit.CreateLookupValueRepository<SocioEconCode>();
-                        result = socioEconRepo.GetAllLookupValues().ToDictionary(l => l.id, l => l.description);
+                        result = GetAllLookupValues<SocioEconCode>(unit).ToDictionary(l => l.id, l => l.description);
+                        break;
+                }
+                return result;
+            }
+        }
+
+        public Dictionary<int, Tuple<string, int>> GetLookupCodes(LookupCode lookupCode)
+        {
+            using (var unit = _factory.CreateUnitOfWork())
+            {
+                var result = new Dictionary<int, Tuple<string, int>>();
+                switch (lookupCode)
+                {
+                    case LookupCode.CommonCode:
+                        result = GetAllLookupValues<CommonCode>(unit)
+                            .ToDictionary<CommonCode, int, Tuple<string, int>>
+                                (cc => cc.id, cc => new Tuple<string, int>(cc.description, cc.weight.Value));
+                        break;
+                    case LookupCode.EnclosureCode:
+                        result = GetAllLookupValues<EnclosureCode>(unit)
+                            .ToDictionary<EnclosureCode, int, Tuple<string, int>>
+                                (cc => cc.id, cc => new Tuple<string, int>(cc.description, cc.weight.Value));
+                        break;
+                    case LookupCode.NeighborhoodCode:
+                        result = GetAllLookupValues<NeighborhoodCode>(unit)
+                            .ToDictionary<NeighborhoodCode, int, Tuple<string, int>>
+                                (cc => cc.id, cc => new Tuple<string, int>(cc.description, cc.weight.Value));
+                        break;
+                    case LookupCode.StreetConnCode:
+                        result = GetAllLookupValues<StreetconnCode>(unit)
+                            .ToDictionary<StreetconnCode, int, Tuple<string, int>>
+                                (cc => cc.id, cc => new Tuple<string, int>(cc.description, cc.weight.Value));
+                        break;
+                    case LookupCode.StreetSafetyCode:
+                        result = GetAllLookupValues<StreetSafteyCode>(unit)
+                            .ToDictionary<StreetSafteyCode, int, Tuple<string, int>>
+                                (cc => cc.id, cc => new Tuple<string, int>(cc.description, cc.weight.Value));
+                        break;
+                    case LookupCode.StreetWalkCode:
+                        result = GetAllLookupValues<StreetwalkCode>(unit)
+                            .ToDictionary<StreetwalkCode, int, Tuple<string, int>>
+                                (cc => cc.id, cc => new Tuple<string, int>(cc.description, cc.weight.Value));
                         break;
                 }
                 return result;
@@ -425,6 +464,13 @@ namespace Paul.UtahPlanners.Application
         {
             var repo = unit.CreateLookupValueRepository<T>();
             repo.RemoveLookupValue(id);
+        }
+
+        private List<T> GetAllLookupValues<T>(IUnitOfWork unit)
+            where T : class
+        {
+            var repo = unit.CreateLookupValueRepository<T>();
+            return repo.GetAllLookupValues();
         }
     }
 }

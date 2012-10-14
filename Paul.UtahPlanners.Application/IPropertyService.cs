@@ -3,6 +3,7 @@ using System.Runtime.Serialization;
 using System.ServiceModel;
 using UtahPlanners.Domain.Entity;
 using UtahPlanners.Domain.DTO;
+using System;
 
 namespace Paul.UtahPlanners.Application
 {
@@ -40,7 +41,10 @@ namespace Paul.UtahPlanners.Application
         LookupValues GetAllLookupValues();
 
         [OperationContract]
-        Dictionary<int, string> GetLookupValues(LookupType lookupType);
+        Dictionary<int, string> GetLookupTypes(LookupType lookupType);
+
+        [OperationContract]
+        Dictionary<int, Tuple<string, int>> GetLookupCodes(LookupCode lookupCode);
 
         [OperationContract]
         int SaveProperty(Property property);

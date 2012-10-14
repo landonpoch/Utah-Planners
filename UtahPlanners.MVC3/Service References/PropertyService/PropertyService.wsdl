@@ -16,6 +16,7 @@
       <xsd:import schemaLocation="http://localhost:3109/PropertyService.svc?xsd=xsd4" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
       <xsd:import schemaLocation="http://localhost:3109/PropertyService.svc?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/UtahPlanners.Domain.DTO" />
       <xsd:import schemaLocation="http://localhost:3109/PropertyService.svc?xsd=xsd6" namespace="http://schemas.datacontract.org/2004/07/System.Collections.Generic" />
+      <xsd:import schemaLocation="http://localhost:3109/PropertyService.svc?xsd=xsd7" namespace="http://schemas.datacontract.org/2004/07/System" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="IPropertyService_GetData_InputMessage">
@@ -78,11 +79,17 @@
   <wsdl:message name="IPropertyService_GetAllLookupValues_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetAllLookupValuesResponse" />
   </wsdl:message>
-  <wsdl:message name="IPropertyService_GetLookupValues_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetLookupValues" />
+  <wsdl:message name="IPropertyService_GetLookupTypes_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetLookupTypes" />
   </wsdl:message>
-  <wsdl:message name="IPropertyService_GetLookupValues_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetLookupValuesResponse" />
+  <wsdl:message name="IPropertyService_GetLookupTypes_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetLookupTypesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPropertyService_GetLookupCodes_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetLookupCodes" />
+  </wsdl:message>
+  <wsdl:message name="IPropertyService_GetLookupCodes_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetLookupCodesResponse" />
   </wsdl:message>
   <wsdl:message name="IPropertyService_SaveProperty_InputMessage">
     <wsdl:part name="parameters" element="tns:SaveProperty" />
@@ -173,9 +180,13 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IPropertyService/GetAllLookupValues" message="tns:IPropertyService_GetAllLookupValues_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IPropertyService/GetAllLookupValuesResponse" message="tns:IPropertyService_GetAllLookupValues_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="GetLookupValues">
-      <wsdl:input wsaw:Action="http://tempuri.org/IPropertyService/GetLookupValues" message="tns:IPropertyService_GetLookupValues_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IPropertyService/GetLookupValuesResponse" message="tns:IPropertyService_GetLookupValues_OutputMessage" />
+    <wsdl:operation name="GetLookupTypes">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPropertyService/GetLookupTypes" message="tns:IPropertyService_GetLookupTypes_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPropertyService/GetLookupTypesResponse" message="tns:IPropertyService_GetLookupTypes_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLookupCodes">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPropertyService/GetLookupCodes" message="tns:IPropertyService_GetLookupCodes_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPropertyService/GetLookupCodesResponse" message="tns:IPropertyService_GetLookupCodes_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="SaveProperty">
       <wsdl:input wsaw:Action="http://tempuri.org/IPropertyService/SaveProperty" message="tns:IPropertyService_SaveProperty_InputMessage" />
@@ -303,8 +314,17 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetLookupValues">
-      <soap12:operation soapAction="http://tempuri.org/IPropertyService/GetLookupValues" style="document" />
+    <wsdl:operation name="GetLookupTypes">
+      <soap12:operation soapAction="http://tempuri.org/IPropertyService/GetLookupTypes" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLookupCodes">
+      <soap12:operation soapAction="http://tempuri.org/IPropertyService/GetLookupCodes" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

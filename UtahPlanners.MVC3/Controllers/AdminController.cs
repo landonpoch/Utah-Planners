@@ -155,7 +155,7 @@ namespace UtahPlanners.MVC3.Controllers
                 var model = new ReadTypeModel
                 {
                     SelectedType = 0,
-                    KeyValuePairs = client.GetLookupValues(PropertyService.LookupType.PropertyType)
+                    KeyValuePairs = client.GetLookupTypes(PropertyService.LookupType.PropertyType)
                 };
                 return View(model);
             }
@@ -166,7 +166,7 @@ namespace UtahPlanners.MVC3.Controllers
         {
             using (var client = _factory.CreatePropertyServiceProxy())
             {
-                model.KeyValuePairs = client.GetLookupValues((PropertyService.LookupType)model.SelectedType);
+                model.KeyValuePairs = client.GetLookupTypes((PropertyService.LookupType)model.SelectedType);
                 return View(model);
             }
         }

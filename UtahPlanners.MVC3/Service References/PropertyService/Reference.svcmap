@@ -30,6 +30,7 @@
     <MetadataFile FileName="PropertyService1.xsd" MetadataType="Schema" ID="39f5eab8-8371-49f0-a928-cfb2740b026f" SourceId="1" SourceUrl="http://localhost:3109/PropertyService.svc?xsd=xsd2" />
     <MetadataFile FileName="PropertyService2.xsd" MetadataType="Schema" ID="3da13f36-a123-4526-aab6-90caa8d80139" SourceId="1" SourceUrl="http://localhost:3109/PropertyService.svc?xsd=xsd1" />
     <MetadataFile FileName="PropertyService3.xsd" MetadataType="Schema" ID="35a93dc9-43d5-4600-b522-72eaea0d8196" SourceId="1" SourceUrl="http://localhost:3109/PropertyService.svc?xsd=xsd0" />
+    <MetadataFile FileName="PropertyService7.xsd" MetadataType="Schema" ID="a4caf8e7-8f9b-4288-be1e-3a6fd8382bf0" SourceId="1" SourceUrl="http://localhost:3109/PropertyService.svc?xsd=xsd7" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
