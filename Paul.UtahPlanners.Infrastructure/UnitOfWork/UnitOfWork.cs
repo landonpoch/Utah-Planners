@@ -3,6 +3,8 @@ using UtahPlanners.Domain.Contract.Service;
 using UtahPlanners.Domain.Contract.UnitOfWork;
 using UtahPlanners.Infrastructure.DAO;
 using UtahPlanners.Infrastructure.Repository;
+using UtahPlanners.Domain.Contract.Finder;
+using UtahPlanners.Infrastructure.Finder;
 
 namespace UtahPlanners.Infrastructure.UnitOfWork
 {
@@ -21,14 +23,19 @@ namespace UtahPlanners.Infrastructure.UnitOfWork
 
         #region IUnitOfWork Members
 
+        public IPropertyFinder CreatePropertyFinder(IConfigSettings settings)
+        {
+            return new PropertyFinder(_context, settings);
+        }
+
+        public IPropertiesIndexFinder CreateIndexFinder()
+        {
+            return new PropertiesIndexFinder(_context);
+        }
+
         public IPropertyRepository CreatePropertyRepository(IConfigSettings settings)
         {
             return new PropertyRepository(_context, settings);
-        }
-
-        public IPropertiesIndexRepository CreateIndexRepository()
-        {
-            return new PropertiesIndexRepository(_context);
         }
 
         public IPictureRepository CreatePictureRepository()

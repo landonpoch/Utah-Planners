@@ -5,7 +5,7 @@ using UtahPlanners.MVC3.Models.Home;
 using System;
 using System.Linq;
 using System.Collections.Generic;
-using UtahPlanners.MVC3.Presentation;
+using UtahPlanners.MVC3.Helper;
 
 namespace UtahPlanners.MVC3.Controllers
 {
@@ -20,7 +20,7 @@ namespace UtahPlanners.MVC3.Controllers
 
         public ActionResult Default()
         {
-            using (var wcf = _factory.CreatePropertyService())
+            using (var wcf = _factory.CreatePropertyServiceWrapper())
             {
                 var prop = wcf.Client.GetShowcaseProperty();
                 return View(prop);
@@ -29,16 +29,16 @@ namespace UtahPlanners.MVC3.Controllers
 
         public ActionResult Index(string proptype, string density, string walkscore)
         {
-            using (var wcf = _factory.CreatePropertyService())
+            using (var client = _factory.CreatePropertyServiceProxy())
             {
-                var lookupValues = wcf.Client.GetLookupValues();
+                var lookupValues = client.GetLookupValues();
 
                 // Get default filter and sort
                 PropertyService.IndexFilter filter = GetPrimaryFilterFromModel(proptype, density, walkscore);
                 PropertyService.IndexSort sort = null;
                 
                 //Get index table rows, including the calculated overall score
-                List<PropertyService.PropertiesIndex> indecies = wcf.Client.GetIndecies(filter, sort).ToList();
+                List<PropertyService.PropertiesIndex> indecies = client.GetIndecies(filter, sort).ToList();
 
                 var model = new IndexModel
                 {
@@ -64,7 +64,7 @@ namespace UtahPlanners.MVC3.Controllers
             filter = filter ?? Convert(model.IndexGridModel.Filter);
             var sort = Convert(model.IndexGridModel.Sort);
 
-            using (var wcf = _factory.CreatePropertyService())
+            using (var wcf = _factory.CreatePropertyServiceWrapper())
             {
                 var indicies = wcf.Client.GetIndecies(filter, sort).ToList();
                 model = new IndexModel
@@ -86,9 +86,9 @@ namespace UtahPlanners.MVC3.Controllers
         public ActionResult Property(int id)
         {
             //Get the details for a property
-            using (var wcf = _factory.CreatePropertyService())
+            using (var wcf = _factory.CreatePropertyServiceWrapper())
             {
-                var property = wcf.Client.GetProperty(id);
+                var property = wcf.Client.GetUserProperty(id);
                 var prop = Convert(property);
                 return View(prop);
             }
@@ -101,7 +101,7 @@ namespace UtahPlanners.MVC3.Controllers
 
         public ActionResult GetPicture(int id)
         {
-            using (var wcf = _factory.CreatePropertyService())
+            using (var wcf = _factory.CreatePropertyServiceWrapper())
             {
                 var picture = wcf.Client.GetPicture(id);
                 return File(picture.binaryData, "image/png");
@@ -172,11 +172,11 @@ namespace UtahPlanners.MVC3.Controllers
             return filter ?? queryStringFilter;
         }
 
-        private Property Convert(PropertyService.Property p)
+        private Property Convert(PropertyService.UserPropertyDTO p)
         {
             return new Property
             {
-                Id = p.id,
+                Id = p.Id,
                 Address = Convert(p.Address),
                 PictureIds = p.PictureMetaData
                     .ToList()
@@ -188,35 +188,35 @@ namespace UtahPlanners.MVC3.Controllers
                     .Where(md => md.SecondaryPicture)
                     .Select(md => md.PictureId)
                     .FirstOrDefault(),
-                PropertyType = p.PropertyType.description,
+                PropertyType = p.Type,
                 Score = p.Score,
-                StreetSafety = p.StreetSafteyCode.description,
-                BuildingEnclosure = p.EnclosureCode.description,
-                CommonAreas = p.CommonCode.description,
-                StreetConnectivity = p.StreetconnCode.description,
-                StreetWalkability = p.StreetwalkCode.description,
-                Walkscore = p.walkscore.HasValue ? p.walkscore.Value : 0,
-                NeighborhoodCondition = p.NeighborhoodCode.description,
-                TwoFiftySingleFamily = p.twoFiftySingleFam.HasValue ? p.twoFiftySingleFam.Value : 0,
-                TwoFiftyApartments = p.twoFiftyApts.HasValue ? p.twoFiftyApts.Value : 0,
-                Density = p.density.HasValue ? p.density.Value : 0,
-                Area = p.area.HasValue ? p.area.Value : 0,
-                Units = p.units.HasValue ? p.units.Value : 0,
-                StreetType = p.StreetType.description,
-                YearBuilt = p.yearBuilt.HasValue ? p.yearBuilt.Value : 0,
-                SocioEcon = p.SocioEconCode.description,
-                Notes = p.notes
+                StreetSafety = p.StreetSafety,
+                BuildingEnclosure = p.BuildingEnclosure,
+                CommonAreas = p.CommonAreas,
+                StreetConnectivity = p.StreetConnectivity,
+                StreetWalkability = p.StreetWalkability,
+                Walkscore = p.Walkscore,
+                NeighborhoodCondition = p.NeighborhoodCondition,
+                TwoFiftySingleFamily = p.TwoFiftySingleFamily,
+                TwoFiftyApartments = p.TwoFiftyAppartments,
+                Density = p.Density,
+                Area = p.Area,
+                Units = p.Units,
+                StreetType = p.StreetType,
+                YearBuilt = p.YearBuilt,
+                SocioEcon = p.SocioEcon,
+                Notes = p.Notes
             };
         }
 
-        private Address Convert(PropertyService.Address a)
+        private Address Convert(PropertyService.AddressDTO a)
         {
             return new Address
             {
-                Street = a.street1,
-                City = a.city,
-                State = a.state,
-                ZipCode = a.zip
+                Street = a.Street1,
+                City = a.City,
+                State = a.State,
+                ZipCode = a.Zip
             };
         }
 

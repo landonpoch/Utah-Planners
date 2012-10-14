@@ -67,6 +67,7 @@ namespace Paul.UtahPlanners.Application.App_Start
             kernel.Bind<IMembershipService>().To<DefaultMembershipService>();
             kernel.Bind<IProfileService>().To<DefaultProfileService>();
             kernel.Bind<IRoleService>().To<DefaultRoleService>();
+            kernel.Bind<ILogger>().To<Logger>();
         }
     }
 }

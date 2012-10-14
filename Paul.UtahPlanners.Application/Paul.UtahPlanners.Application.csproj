@@ -92,6 +92,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\NinjectWebCommon.cs" />
+    <Compile Include="Contract\ILogger.cs" />
     <Compile Include="Contract\IProfileService.cs" />
     <Compile Include="DTO\CreateUserRequest.cs" />
     <Compile Include="DTO\User.cs" />
@@ -99,6 +100,7 @@
     <Compile Include="Contract\IMembershipService.cs" />
     <Compile Include="Contract\IRoleService.cs" />
     <Compile Include="IUserService.cs" />
+    <Compile Include="Service\Logger.cs" />
     <Compile Include="UserService.svc.cs">
       <DependentUpon>UserService.svc</DependentUpon>
     </Compile>

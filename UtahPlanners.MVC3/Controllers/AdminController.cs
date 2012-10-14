@@ -29,7 +29,7 @@ namespace UtahPlanners.MVC3.Controllers
 
         public ActionResult Property(int? id)
         {
-            using (var wcf = _factory.CreatePropertyService())
+            using (var wcf = _factory.CreatePropertyServiceWrapper())
             {
                 var lookupValues = wcf.Client.GetLookupValues();
                 var model = new AdminProperty
@@ -43,17 +43,17 @@ namespace UtahPlanners.MVC3.Controllers
                     ViewBag.NewPictureTitle = "Add New Pictures:";
                     ViewBag.SubmitText = "Submit Changes";
 
-                    var property = wcf.Client.GetProperty(id.Value);
+                    var property = wcf.Client.GetAdminProperty(id.Value);
                     model.Property = property;
-                    model.PropertyType = property.PropertyType.id.ToString();
-                    model.StreetType = property.StreetType.id.ToString();
-                    model.SocioEcon = property.SocioEconCode.id.ToString();
-                    model.StreetSafety = property.StreetSafteyCode.id.ToString();
-                    model.BuildingEnclosure = property.EnclosureCode.id.ToString();
-                    model.CommonAreas = property.CommonCode.id.ToString();
-                    model.StreetConnectivity = property.StreetconnCode.id.ToString();
-                    model.StreetWalkability = property.StreetwalkCode.id.ToString();
-                    model.NeighborhoodCondition = property.NeighborhoodCode.id.ToString();
+                    model.PropertyType = property.Type.ToString();
+                    model.StreetType = property.StreetType.ToString();
+                    model.SocioEcon = property.SocioEcon.ToString();
+                    model.StreetSafety = property.StreetSafety.ToString();
+                    model.BuildingEnclosure = property.BuildingEnclosure.ToString();
+                    model.CommonAreas = property.CommonAreas.ToString();
+                    model.StreetConnectivity = property.StreetConnectivity.ToString();
+                    model.StreetWalkability = property.StreetWalkability.ToString();
+                    model.NeighborhoodCondition = property.NeighborhoodCondition.ToString();
                 }
                 else
                 {
@@ -70,9 +70,10 @@ namespace UtahPlanners.MVC3.Controllers
         public ActionResult Property(AdminProperty model)
         {
             var prop = SetCodes(model);
-            using (var wcf = _factory.CreatePropertyService())
+            using (var wcf = _factory.CreatePropertyServiceWrapper())
             {
-                var id = wcf.Client.SaveProperty(model.Property);
+                var property = Convert(model.Property);
+                var id = wcf.Client.SaveProperty(property);
 
                 // TODO: Figure out success/fail messaging and behavior
                 return RedirectToAction("Property", new { id });
@@ -81,7 +82,7 @@ namespace UtahPlanners.MVC3.Controllers
 
         public ActionResult PropertyList()
         {
-            using (var wcf = _factory.CreatePropertyService())
+            using (var wcf = _factory.CreatePropertyServiceWrapper())
             {
                 var props = wcf.Client.GetAllProperties(null);
 
@@ -99,7 +100,7 @@ namespace UtahPlanners.MVC3.Controllers
         {
             PropertyService.PropertySort propSort = Convert(sort);
 
-            using (var wcf = _factory.CreatePropertyService())
+            using (var wcf = _factory.CreatePropertyServiceWrapper())
             {
                 var props = wcf.Client.GetAllProperties(propSort);
 
@@ -116,7 +117,7 @@ namespace UtahPlanners.MVC3.Controllers
         [HttpPost]
         public ActionResult DeleteProperty(int id)
         {
-            using (var wcf = _factory.CreatePropertyService())
+            using (var wcf = _factory.CreatePropertyServiceWrapper())
             {
                 bool success = wcf.Client.DeleteProperty(id);
 
@@ -137,7 +138,14 @@ namespace UtahPlanners.MVC3.Controllers
 
         public ActionResult CreateTypes()
         {
-            return View();
+            return View(new CreateTypeModel());
+        }
+
+        [HttpPost]
+        public ActionResult CreateTypes(CreateTypeModel model)
+        {
+
+            return RedirectToAction("CreateTypes");
         }
 
         public ActionResult ReadTypes()
@@ -180,7 +188,7 @@ namespace UtahPlanners.MVC3.Controllers
 
         private PropertyService.Property SetCodes(AdminProperty model)
         {
-            var property = model.Property;
+            var property = Convert(model.Property);
 
             // Map new drop down selections
             property.typeCode = Int32.Parse(model.PropertyType);
@@ -232,6 +240,27 @@ namespace UtahPlanners.MVC3.Controllers
             if (direction == 'd') result = PropertyService.Direction.Descending;
 
             return result;
+        }
+
+        private PropertyService.Property Convert(PropertyService.PropertyDTO dto)
+        {
+            return new PropertyService.Property
+            {
+                Address = Convert(dto.Address)
+            };
+        }
+
+        private PropertyService.Address Convert(PropertyService.AddressDTO dto)
+        {
+            return new PropertyService.Address
+            {
+                street1 = dto.Street1,
+                street2 = dto.Street2,
+                city = dto.City,
+                state = dto.State,
+                zip = dto.Zip,
+                country = dto.Country,
+            };
         }
 
         #endregion

@@ -39,7 +39,7 @@ namespace UtahPlanners.MVC3.Controllers
         {
             if (ModelState.IsValid)
             {
-                using (var wcf = _factory.CreateUserService())
+                using (var wcf = _factory.CreateUserServiceWrapper())
                 {
                     if (wcf.Client.ValidateUser(model.Username, model.Password))
                     {
@@ -74,7 +74,7 @@ namespace UtahPlanners.MVC3.Controllers
                 SecurityAnswer = model.SecurityAnswer
             };
 
-            using (var wcf = _factory.CreateUserService())
+            using (var wcf = _factory.CreateUserServiceWrapper())
             {
                 var status = wcf.Client.CreateUser(request);
                 if (status == MembershipStatus.Success)
@@ -91,12 +91,12 @@ namespace UtahPlanners.MVC3.Controllers
 
         public ActionResult ForgotPassword(ForgotPassword model)
         {
-            using (var wcf = _factory.CreateUserService())
+            using (var wcf = _factory.CreateUserServiceWrapper())
             {
                 if (String.IsNullOrEmpty(model.SecurityAnswer)
                     && !String.IsNullOrEmpty(model.Username))
                 {
-                    var client = _factory.CreateUserService();
+                    var client = _factory.CreateUserServiceWrapper();
                     var user = wcf.Client.GetUser(model.Username);
                     model = new ForgotPassword
                     {
@@ -110,7 +110,7 @@ namespace UtahPlanners.MVC3.Controllers
                     && !String.IsNullOrEmpty(model.Email)
                     && !String.IsNullOrEmpty(model.SecurityAnswer))
                 {
-                    var client = _factory.CreateUserService();
+                    var client = _factory.CreateUserServiceWrapper();
                     bool result = wcf.Client.ResetPassword(model.Username, model.Email, model.SecurityAnswer);
                     model = new ForgotPassword
                     {
@@ -129,7 +129,7 @@ namespace UtahPlanners.MVC3.Controllers
         [HttpPost]
         public ActionResult ChangePassword(ChangePassword model)
         {
-            using (var wcf = _factory.CreateUserService())
+            using (var wcf = _factory.CreateUserServiceWrapper())
             {
                 bool result = wcf.Client.ChangePassword(model.Username, model.OldPassword, model.ConfirmPassword);
                 model = new ChangePassword { ChangePasswordResult = result };
@@ -140,7 +140,7 @@ namespace UtahPlanners.MVC3.Controllers
         [Authorize]
         public ActionResult Profile()
         {
-            using (var wcf = _factory.CreateUserService())
+            using (var wcf = _factory.CreateUserServiceWrapper())
             {
                 User user = wcf.Client.GetUser(User.Identity.Name);
                 var profile = new Profile
@@ -174,7 +174,7 @@ namespace UtahPlanners.MVC3.Controllers
                 }
             };
 
-            using (var wcf = _factory.CreateUserService())
+            using (var wcf = _factory.CreateUserServiceWrapper())
             {
                 var result = wcf.Client.UpdateUser(user);
 

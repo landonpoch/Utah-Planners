@@ -6,14 +6,15 @@ using UtahPlanners.Domain.Contract.Repository;
 using UtahPlanners.Domain.Entity;
 using UtahPlanners.Infrastructure.DAO;
 using UtahPlanners.Infrastructure.Shared;
+using UtahPlanners.Domain.Contract.Finder;
 
-namespace UtahPlanners.Infrastructure.Repository
+namespace UtahPlanners.Infrastructure.Finder
 {
-    public class PropertiesIndexRepository : IPropertiesIndexRepository
+    public class PropertiesIndexFinder : IPropertiesIndexFinder
     {
         private PropertiesDB _context;
 
-        public PropertiesIndexRepository(PropertiesDB context)
+        public PropertiesIndexFinder(PropertiesDB context)
         {
             _context = context;
         }

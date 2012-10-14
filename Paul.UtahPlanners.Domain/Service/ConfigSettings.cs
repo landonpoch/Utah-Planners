@@ -11,9 +11,8 @@ namespace UtahPlanners.Domain.Services
     public class ConfigSettings : IConfigSettings
     {
         private IUnitOfWorkFactory _factory;
-
-        public Weight _weights;
-        public LookupValues _lookupValues;
+        private Weight _weights;
+        private LookupValues _lookupValues;
 
         public ConfigSettings(IUnitOfWorkFactory factory)
         {

@@ -4,15 +4,21 @@ using System.Linq;
 using System.Text;
 using UtahPlanners.Domain.Contract.Repository;
 using UtahPlanners.Domain.Contract.Service;
+using UtahPlanners.Domain.Contract.Finder;
 
 namespace UtahPlanners.Domain.Contract.UnitOfWork
 {
     public interface IUnitOfWork : IDisposable
     {
+        // Query Model
+        IPropertyFinder CreatePropertyFinder(IConfigSettings settings);
+        IPropertiesIndexFinder CreateIndexFinder();
+
+        // Command Model
         IPropertyRepository CreatePropertyRepository(IConfigSettings settings);
-        IPropertiesIndexRepository CreateIndexRepository();
         IPictureRepository CreatePictureRepository();
         IConfigRepository CreateConfigRepository();
+        
         void Commit();
     }
 }

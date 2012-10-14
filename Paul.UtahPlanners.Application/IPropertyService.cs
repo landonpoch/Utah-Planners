@@ -2,6 +2,7 @@
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using UtahPlanners.Domain.Entity;
+using UtahPlanners.Domain.DTO;
 
 namespace Paul.UtahPlanners.Application
 {
@@ -24,7 +25,10 @@ namespace Paul.UtahPlanners.Application
         List<Property> GetAllProperties(PropertySort sort);
 
         [OperationContract]
-        Property GetProperty(int id);
+        UserPropertyDTO GetUserProperty(int id);
+
+        [OperationContract]
+        AdminPropertyDTO GetAdminProperty(int id);
 
         [OperationContract]
         int SaveProperty(Property property);

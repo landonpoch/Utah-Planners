@@ -1,0 +1,39 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using UtahPlanners.Domain.Contract.Repository;
+using UtahPlanners.Infrastructure.DAO;
+
+namespace UtahPlanners.Infrastructure.Repository
+{
+    public class LookupRepository<TEntity> : ILookupRepository<TEntity>
+        where TEntity : class
+    {
+        private PropertiesDB _context;
+
+        public LookupRepository(PropertiesDB context)
+        {
+            _context = context;
+        }
+
+        #region ILookupRepository<T> Members
+
+        public TEntity GetLookupValue(int id)
+        {
+            return _context.Set<TEntity>().Find(id);
+        }
+
+        public List<TEntity> GetAllLookupValues()
+        {
+            return _context.Set<TEntity>().ToList();
+        }
+
+        public void AddLookupValue(TEntity lookupValue)
+        {
+            _context.Set<TEntity>().Add(lookupValue);
+        }
+
+        #endregion
+    }
+}

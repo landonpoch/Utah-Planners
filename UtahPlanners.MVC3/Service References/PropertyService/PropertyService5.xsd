@@ -1,20 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
-<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/System.Collections.Generic" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/System.Collections.Generic" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:import schemaLocation="http://localhost:3109/PropertyService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
-  <xs:complexType name="KeyValuePairOfintint">
-    <xs:annotation>
-      <xs:appinfo>
-        <GenericType Name="KeyValuePairOf{0}{1}{#}" Namespace="http://schemas.datacontract.org/2004/07/System.Collections.Generic" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
-          <GenericParameter Name="int" Namespace="http://www.w3.org/2001/XMLSchema" />
-          <GenericParameter Name="int" Namespace="http://www.w3.org/2001/XMLSchema" />
-        </GenericType>
-        <IsValueType xmlns="http://schemas.microsoft.com/2003/10/Serialization/">true</IsValueType>
-      </xs:appinfo>
-    </xs:annotation>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/UtahPlanners.Domain.DTO" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/UtahPlanners.Domain.DTO" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:3109/PropertyService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/UtahPlanners.Domain.Entity" />
+  <xs:complexType name="UserPropertyDTO">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:PropertyDTO">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="BuildingEnclosure" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="CommonAreas" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="NeighborhoodCondition" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Score" type="xs:int" />
+          <xs:element minOccurs="0" name="SocioEcon" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="StreetConnectivity" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="StreetSafety" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="StreetType" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="StreetWalkability" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Type" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="UserPropertyDTO" nillable="true" type="tns:UserPropertyDTO" />
+  <xs:complexType name="PropertyDTO">
     <xs:sequence>
-      <xs:element name="key" type="xs:int" />
-      <xs:element name="value" type="xs:int" />
+      <xs:element minOccurs="0" name="Address" nillable="true" type="tns:AddressDTO" />
+      <xs:element minOccurs="0" name="Area" type="xs:int" />
+      <xs:element minOccurs="0" name="Density" type="xs:double" />
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="Notes" nillable="true" type="xs:string" />
+      <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/UtahPlanners.Domain.Entity" minOccurs="0" name="PictureMetaData" nillable="true" type="q1:ArrayOfPictureMetaData" />
+      <xs:element minOccurs="0" name="TwoFiftyAppartments" type="xs:int" />
+      <xs:element minOccurs="0" name="TwoFiftySingleFamily" type="xs:int" />
+      <xs:element minOccurs="0" name="Units" type="xs:int" />
+      <xs:element minOccurs="0" name="Walkscore" type="xs:int" />
+      <xs:element minOccurs="0" name="YearBuilt" type="xs:int" />
     </xs:sequence>
   </xs:complexType>
-  <xs:element name="KeyValuePairOfintint" nillable="true" type="tns:KeyValuePairOfintint" />
+  <xs:element name="PropertyDTO" nillable="true" type="tns:PropertyDTO" />
+  <xs:complexType name="AddressDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="City" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Country" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="State" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Street1" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Street2" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Zip" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AddressDTO" nillable="true" type="tns:AddressDTO" />
+  <xs:complexType name="AdminPropertyDTO">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:PropertyDTO">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="AdminNotes" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="BuildingEnclosure" type="xs:int" />
+          <xs:element minOccurs="0" name="CommonAreas" type="xs:int" />
+          <xs:element minOccurs="0" name="NeighborhoodCondition" type="xs:int" />
+          <xs:element minOccurs="0" name="NotFinished" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="SocioEcon" type="xs:int" />
+          <xs:element minOccurs="0" name="StreetConnectivity" type="xs:int" />
+          <xs:element minOccurs="0" name="StreetSafety" type="xs:int" />
+          <xs:element minOccurs="0" name="StreetType" type="xs:int" />
+          <xs:element minOccurs="0" name="StreetWalkability" type="xs:int" />
+          <xs:element minOccurs="0" name="Type" type="xs:int" />
+          <xs:element minOccurs="0" name="WalkscoreNotes" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="AdminPropertyDTO" nillable="true" type="tns:AdminPropertyDTO" />
 </xs:schema>

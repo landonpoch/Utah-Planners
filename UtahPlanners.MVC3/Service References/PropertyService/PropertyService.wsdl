@@ -14,7 +14,8 @@
       <xsd:import schemaLocation="http://localhost:3109/PropertyService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Paul.UtahPlanners.Application" />
       <xsd:import schemaLocation="http://localhost:3109/PropertyService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/UtahPlanners.Domain.Entity" />
       <xsd:import schemaLocation="http://localhost:3109/PropertyService.svc?xsd=xsd4" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
-      <xsd:import schemaLocation="http://localhost:3109/PropertyService.svc?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/System.Collections.Generic" />
+      <xsd:import schemaLocation="http://localhost:3109/PropertyService.svc?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/UtahPlanners.Domain.DTO" />
+      <xsd:import schemaLocation="http://localhost:3109/PropertyService.svc?xsd=xsd6" namespace="http://schemas.datacontract.org/2004/07/System.Collections.Generic" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="IPropertyService_GetData_InputMessage">
@@ -47,11 +48,17 @@
   <wsdl:message name="IPropertyService_GetAllProperties_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetAllPropertiesResponse" />
   </wsdl:message>
-  <wsdl:message name="IPropertyService_GetProperty_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetProperty" />
+  <wsdl:message name="IPropertyService_GetUserProperty_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserProperty" />
   </wsdl:message>
-  <wsdl:message name="IPropertyService_GetProperty_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetPropertyResponse" />
+  <wsdl:message name="IPropertyService_GetUserProperty_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserPropertyResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPropertyService_GetAdminProperty_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAdminProperty" />
+  </wsdl:message>
+  <wsdl:message name="IPropertyService_GetAdminProperty_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAdminPropertyResponse" />
   </wsdl:message>
   <wsdl:message name="IPropertyService_SaveProperty_InputMessage">
     <wsdl:part name="parameters" element="tns:SaveProperty" />
@@ -104,9 +111,13 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IPropertyService/GetAllProperties" message="tns:IPropertyService_GetAllProperties_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IPropertyService/GetAllPropertiesResponse" message="tns:IPropertyService_GetAllProperties_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="GetProperty">
-      <wsdl:input wsaw:Action="http://tempuri.org/IPropertyService/GetProperty" message="tns:IPropertyService_GetProperty_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IPropertyService/GetPropertyResponse" message="tns:IPropertyService_GetProperty_OutputMessage" />
+    <wsdl:operation name="GetUserProperty">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPropertyService/GetUserProperty" message="tns:IPropertyService_GetUserProperty_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPropertyService/GetUserPropertyResponse" message="tns:IPropertyService_GetUserProperty_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAdminProperty">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPropertyService/GetAdminProperty" message="tns:IPropertyService_GetAdminProperty_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPropertyService/GetAdminPropertyResponse" message="tns:IPropertyService_GetAdminProperty_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="SaveProperty">
       <wsdl:input wsaw:Action="http://tempuri.org/IPropertyService/SaveProperty" message="tns:IPropertyService_SaveProperty_InputMessage" />
@@ -177,8 +188,17 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetProperty">
-      <soap12:operation soapAction="http://tempuri.org/IPropertyService/GetProperty" style="document" />
+    <wsdl:operation name="GetUserProperty">
+      <soap12:operation soapAction="http://tempuri.org/IPropertyService/GetUserProperty" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAdminProperty">
+      <soap12:operation soapAction="http://tempuri.org/IPropertyService/GetAdminProperty" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

@@ -81,8 +81,9 @@
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="Models\Admin\CreateTypeModel.cs" />
     <Compile Include="Presentation\HelperExtensions.cs" />
-    <Compile Include="Presentation\WcfExtensions.cs" />
+    <Compile Include="Presentation\WcfHelpers.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -95,7 +96,6 @@
     <Compile Include="Models\Home\Index.cs" />
     <Compile Include="Models\Home\Property.cs" />
     <Compile Include="Models\User\Profile.cs" />
-    <Compile Include="Presentation\WcfClient.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service References\PropertyService\Reference.cs">
       <AutoGen>True</AutoGen>
@@ -256,9 +256,18 @@
     <None Include="Service References\PropertyService\PropertyService5.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Service References\PropertyService\PropertyService6.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\PropertyService\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\PropertyService\UtahPlanners.MVC3.PropertyService.AdminPropertyDTO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\PropertyService\UtahPlanners.MVC3.PropertyService.UserPropertyDTO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\UserService\UserService.disco" />
     <None Include="Service References\UserService\configuration91.svcinfo" />

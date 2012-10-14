@@ -22,7 +22,7 @@ namespace UtahPlanners.MVC3.Services
 
         public override bool IsUserInRole(string username, string roleName)
         {
-            using (var wcf = _factory.CreateUserService())
+            using (var wcf = _factory.CreateUserServiceWrapper())
             {
                 return wcf.Client.IsUserInRole(username, roleName);
             }
@@ -30,7 +30,7 @@ namespace UtahPlanners.MVC3.Services
 
         public override string[] GetRolesForUser(string username)
         {
-            using (var wcf = _factory.CreateUserService())
+            using (var wcf = _factory.CreateUserServiceWrapper())
             {
                 return wcf.Client.GetRolesForUser(username);
             }

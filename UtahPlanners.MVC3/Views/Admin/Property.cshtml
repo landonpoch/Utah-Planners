@@ -62,59 +62,59 @@
 @using (Html.BeginForm("Property", "Admin", FormMethod.Post))
 {
     <div class="propform">
-    @Html.HiddenFor(m => m.Property.id)
+    @Html.HiddenFor(m => m.Property.Id)
     
     <span class="newproperty">Street1:</span>
-    @Html.TextBoxFor(m => m.Property.Address.street1)<br />
+    @Html.TextBoxFor(m => m.Property.Address.Street1)<br />
 
     <span class="newproperty">Street2:</span>
-    @Html.TextBoxFor(m => m.Property.Address.street2)<br />
+    @Html.TextBoxFor(m => m.Property.Address.Street2)<br />
 
     <span id="ctl00_ContentPlaceHolder1_lblCity" class="newproperty">City:</span>
-    @Html.TextBoxFor(m => m.Property.Address.city)<br />
+    @Html.TextBoxFor(m => m.Property.Address.City)<br />
 
     <span id="ctl00_ContentPlaceHolder1_lblState" class="newproperty">State:</span>
-    @Html.TextBoxFor(m => m.Property.Address.state)<br />
+    @Html.TextBoxFor(m => m.Property.Address.State)<br />
 
     <span id="ctl00_ContentPlaceHolder1_lblZip" class="newproperty">Zip:</span>
-    @Html.TextBoxFor(m => m.Property.Address.zip)<br />
+    @Html.TextBoxFor(m => m.Property.Address.Zip)<br />
 
     <span id="ctl00_ContentPlaceHolder1_lblCountry" class="newproperty">Country:</span>
-    @Html.TextBoxFor(m => m.Property.Address.country)<br /><br />
+    @Html.TextBoxFor(m => m.Property.Address.Country)<br /><br />
 
     <h3>General Attributes:</h3>
     <span id="ctl00_ContentPlaceHolder1_lblDensity" class="newproperty">Density:</span>
-    @Html.TextBoxFor(m => m.Property.density)
+    @Html.TextBoxFor(m => m.Property.Density)
     <span id="ctl00_ContentPlaceHolder1_RegularExpressionValidator2" style="color:Red;display:none;">Please enter in a numeric value</span>
     <span id="ctl00_ContentPlaceHolder1_RequiredFieldValidator2" style="color:Red;display:none;">This is a required field</span><br />
 
     <span id="ctl00_ContentPlaceHolder1_lblArea" class="newproperty">Area:</span>
-    @Html.TextBoxFor(m => m.Property.area)
+    @Html.TextBoxFor(m => m.Property.Area)
     <span id="ctl00_ContentPlaceHolder1_RegularExpressionValidator1" style="color:Red;display:none;">Please enter in a numeric value</span>
     <span id="ctl00_ContentPlaceHolder1_RequiredFieldValidator3" style="color:Red;display:none;">This is a required field</span><br />
 
     <span id="ctl00_ContentPlaceHolder1_lblUnits" class="newproperty">Units:</span>
-    @Html.TextBoxFor(m => m.Property.units)
+    @Html.TextBoxFor(m => m.Property.Units)
     <span id="ctl00_ContentPlaceHolder1_RegularExpressionValidator3" style="color:Red;display:none;">Please enter in a numeric value</span>
     <span id="ctl00_ContentPlaceHolder1_RequiredFieldValidator6" style="color:Red;display:none;">This is a required field</span><br />
 
     <span id="ctl00_ContentPlaceHolder1_lblYearBuilt" class="newproperty">Year Built:</span>
-    @Html.TextBoxFor(m => m.Property.yearBuilt)
+    @Html.TextBoxFor(m => m.Property.YearBuilt)
     <span id="ctl00_ContentPlaceHolder1_RegularExpressionValidator4" style="color:Red;display:none;">Please enter in a numeric value</span>
     <span id="ctl00_ContentPlaceHolder1_RequiredFieldValidator1" style="color:Red;display:none;">This is a required field</span><br />
 
     <span id="ctl00_ContentPlaceHolder1_lblWalkscore" class="newproperty">Walkscore:</span>
-    @Html.TextBoxFor(m => m.Property.walkscore)
+    @Html.TextBoxFor(m => m.Property.Walkscore)
     <span id="ctl00_ContentPlaceHolder1_RegularExpressionValidator5" style="color:Red;display:none;">Please enter in a numeric value</span>
     <span id="ctl00_ContentPlaceHolder1_RequiredFieldValidator5" style="color:Red;display:none;">This is a required field</span><br />
 
     <span id="ctl00_ContentPlaceHolder1_lbl250sf" class="newproperty">250 Single Fam:</span>
-    @Html.TextBoxFor(m => m.Property.twoFiftySingleFam)
+    @Html.TextBoxFor(m => m.Property.TwoFiftySingleFamily)
     <span id="ctl00_ContentPlaceHolder1_RegularExpressionValidator6" style="color:Red;display:none;">Please enter in a numeric value</span>
     <span id="ctl00_ContentPlaceHolder1_RequiredFieldValidator7" style="color:Red;display:none;">This is a required field</span><br />
 
     <span id="ctl00_ContentPlaceHolder1_lbl250apts" class="newproperty">250 Apartments:</span>
-    @Html.TextBoxFor(m => m.Property.twoFiftyApts)
+    @Html.TextBoxFor(m => m.Property.TwoFiftyAppartments)
     <span id="ctl00_ContentPlaceHolder1_RegularExpressionValidator7" style="color:Red;display:none;">Please enter in a numeric value</span>
     <span id="ctl00_ContentPlaceHolder1_RequiredFieldValidator8" style="color:Red;display:none;">This is a required field</span><br />
 
@@ -146,17 +146,17 @@
     @Html.DropDownListFor(m => m.NeighborhoodCondition, Model.LookupValues.NeighborhoodCodes.ToSelectList("id", "description"))<br />
 
     <span id="ctl00_ContentPlaceHolder1_lblNotes" class="newproperty">Notes:</span>
-    @Html.TextAreaFor(m => m.Property.notes, new { style = "height:100px; width:400px;" })<br /><br />
+    @Html.TextAreaFor(m => m.Property.Notes, new { style = "height:100px; width:400px;" })<br /><br />
 
     <h3>Hidden Attributes:</h3>
     <span id="ctl00_ContentPlaceHolder1_lblAdminNotes" class="newproperty">Admin Notes:</span>
-    @Html.TextAreaFor(m => m.Property.adminNotes, new { style = "height:100px; width:400px;" })<br />
+    @Html.TextAreaFor(m => m.Property.AdminNotes, new { style = "height:100px; width:400px;" })<br />
 
     <span id="ctl00_ContentPlaceHolder1_lblWalkscoreNotes" class="newproperty">Walkscore Notes:</span>
-    @Html.TextAreaFor(m => m.Property.walkscoreNotes, new { style = "height:100px; width:400px;" })<br />
+    @Html.TextAreaFor(m => m.Property.WalkscoreNotes, new { style = "height:100px; width:400px;" })<br />
 
     <span id="ctl00_ContentPlaceHolder1_lblNotFinished" class="newproperty">Not Finished:</span>
-    @Html.TextAreaFor(m => m.Property.notFinished, new { style = "height:100px; width:400px;" })<br /><br />
+    @Html.TextAreaFor(m => m.Property.NotFinished, new { style = "height:100px; width:400px;" })<br /><br />
 
     @if (Model.Property != null)
     {

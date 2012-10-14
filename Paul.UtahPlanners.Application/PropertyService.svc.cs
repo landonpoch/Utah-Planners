@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UtahPlanners.Domain.Contract.Service;
 using UtahPlanners.Domain.Contract.UnitOfWork;
 using UtahPlanners.Domain.Entity;
+using Paul.UtahPlanners.Application.Contract;
+using UtahPlanners.Domain.DTO;
 
 namespace Paul.UtahPlanners.Application
 {
@@ -10,11 +12,13 @@ namespace Paul.UtahPlanners.Application
     {
         private IUnitOfWorkFactory _factory;
         private IConfigSettings _settings;
+        private ILogger _logger;
 
-        public PropertyService(IUnitOfWorkFactory factory, IConfigSettings settings)
+        public PropertyService(IUnitOfWorkFactory factory, IConfigSettings settings, ILogger logger)
         {
             _factory = factory;
             _settings = settings;
+            _logger = logger;
         }
 
         public string GetData(int value)
@@ -46,7 +50,7 @@ namespace Paul.UtahPlanners.Application
         {
             using (var unit = _factory.CreateUnitOfWork())
             {
-                var repo = unit.CreateIndexRepository();
+                var repo = unit.CreateIndexFinder();
                 return repo.GetIndecies(filter, sort);
             }
         }
@@ -61,12 +65,22 @@ namespace Paul.UtahPlanners.Application
             }
         }
 
-        public Property GetProperty(int id)
+        public UserPropertyDTO GetUserProperty(int id)
         {
             using (var unit = _factory.CreateUnitOfWork())
             {
-                var repo = unit.CreatePropertyRepository(_settings);
-                var prop = repo.Get(id);
+                var finder = unit.CreatePropertyFinder(_settings);
+                var prop = finder.FindProperty(id);
+                return prop;
+            }
+        }
+
+        public AdminPropertyDTO GetAdminProperty(int id)
+        {
+            using (var unit = _factory.CreateUnitOfWork())
+            {
+                var finder = unit.CreatePropertyFinder(_settings);
+                var prop = finder.FindAdminProperty(id);
                 return prop;
             }
         }
@@ -94,7 +108,7 @@ namespace Paul.UtahPlanners.Application
             }
             catch (Exception e)
             {
-                // TODO: Logging
+                _logger.Warning("An error occured while saving the property", e);
             }
             return result;
         }
