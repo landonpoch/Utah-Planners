@@ -7,12 +7,12 @@ using UtahPlanners.Infrastructure.DAO;
 
 namespace UtahPlanners.Infrastructure.Repository
 {
-    public class LookupRepository<TEntity> : ILookupRepository<TEntity>
+    public class LookupValueRepository<TEntity> : ILookupValueRepository<TEntity>
         where TEntity : class
     {
         private PropertiesDB _context;
 
-        public LookupRepository(PropertiesDB context)
+        public LookupValueRepository(PropertiesDB context)
         {
             _context = context;
         }

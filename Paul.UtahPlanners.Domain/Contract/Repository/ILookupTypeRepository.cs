@@ -5,7 +5,7 @@ using System.Text;
 
 namespace UtahPlanners.Domain.Contract.Repository
 {
-    public interface ILookupRepository<TEntity>
+    public interface ILookupValueRepository<TEntity>
     {
         TEntity GetLookupValue(int id);
         List<TEntity> GetAllLookupValues();

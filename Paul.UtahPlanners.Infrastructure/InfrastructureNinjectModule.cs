@@ -14,7 +14,7 @@ namespace UtahPlanners.Infrastructure
         {
             Bind<IUnitOfWorkFactory>().To<UnitOfWorkFactory>();
             Bind<IEmailService>().To<EmailService>();
-            Bind(typeof(ILookupRepository<>)).To(typeof(LookupRepository<>));
+            Bind(typeof(ILookupValueRepository<>)).To(typeof(LookupValueRepository<>));
         }
     }
 }

@@ -412,4 +412,15 @@
     </xs:restriction>
   </xs:simpleType>
   <xs:element name="LookupType" nillable="true" type="tns:LookupType" />
+  <xs:simpleType name="LookupCode">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="CommonCode" />
+      <xs:enumeration value="EnclosureCode" />
+      <xs:enumeration value="NeighborhoodCode" />
+      <xs:enumeration value="StreetConnCode" />
+      <xs:enumeration value="StreetSafetyCode" />
+      <xs:enumeration value="StreetWalkCode" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="LookupCode" nillable="true" type="tns:LookupCode" />
 </xs:schema>

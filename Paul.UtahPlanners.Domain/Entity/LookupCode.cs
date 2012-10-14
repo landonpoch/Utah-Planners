@@ -7,5 +7,11 @@ namespace UtahPlanners.Domain.Entity
 {
     public enum LookupCode
     {
+        CommonCode,
+        EnclosureCode,
+        NeighborhoodCode,
+        StreetConnCode,
+        StreetSafetyCode,
+        StreetWalkCode,
     }
 }

@@ -45,7 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Contract\Finder\IPropertyFinder.cs" />
-    <Compile Include="Contract\Repository\ILookupRepository.cs" />
+    <Compile Include="Contract\Repository\ILookupTypeRepository.cs" />
     <Compile Include="Contract\Service\IEmailService.cs" />
     <Compile Include="DTO\AddressDTO.cs" />
     <Compile Include="DTO\AdminPropertyDTO.cs" />

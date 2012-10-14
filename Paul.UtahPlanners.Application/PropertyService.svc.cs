@@ -120,15 +120,15 @@ namespace Paul.UtahPlanners.Application
                 switch (lookupType)
                 {
                     case LookupType.PropertyType:
-                        var propTypeRepo = unit.CreateLookupRepository<PropertyType>();
+                        var propTypeRepo = unit.CreateLookupValueRepository<PropertyType>();
                         result = propTypeRepo.GetAllLookupValues().ToDictionary(l => l.id, l => l.description);
                         break;
                     case LookupType.StreetType:
-                        var streetTypeRepo = unit.CreateLookupRepository<StreetType>();
+                        var streetTypeRepo = unit.CreateLookupValueRepository<StreetType>();
                         result = streetTypeRepo.GetAllLookupValues().ToDictionary(l => l.id, l => l.description);
                         break;
                     case LookupType.SocioEconType:
-                        var socioEconRepo = unit.CreateLookupRepository<SocioEconCode>();
+                        var socioEconRepo = unit.CreateLookupValueRepository<SocioEconCode>();
                         result = socioEconRepo.GetAllLookupValues().ToDictionary(l => l.id, l => l.description);
                         break;
                 }
@@ -143,30 +143,22 @@ namespace Paul.UtahPlanners.Application
 
         public int SaveProperty(Property dtoProp)
         {
-            var result = 0;
-            try
+            string errorMessage = "An error occured while saving the property";
+            return CommandWrapper(errorMessage, (IUnitOfWork unit) =>
             {
-                using (var unit = _factory.CreateUnitOfWork())
+                var repo = unit.CreatePropertyRepository();
+                if (dtoProp.id > 0)
                 {
-                    var repo = unit.CreatePropertyRepository();
-                    if (dtoProp.id > 0)
-                    {
-                        var ctxProp = repo.Get(dtoProp.id);
-                        UpdateProperty(ctxProp, dtoProp);
-                    }
-                    else
-                    {
-                        repo.Add(dtoProp);
-                    }
-                    unit.Commit();
-                    result = dtoProp.id;
+                    var ctxProp = repo.Get(dtoProp.id);
+                    UpdateProperty(ctxProp, dtoProp);
                 }
-            }
-            catch (Exception e)
-            {
-                _logger.Warning("An error occured while saving the property", e);
-            }
-            return result;
+                else
+                {
+                    repo.Add(dtoProp);
+                }
+                unit.Commit();
+                return dtoProp.id;
+            });
         }
 
         public bool DeleteProperty(int propertyId)
@@ -188,16 +180,13 @@ namespace Paul.UtahPlanners.Application
                 switch (lookupType)
                 {
                     case LookupType.PropertyType:
-                        var propTypeRepo = unit.CreateLookupRepository<PropertyType>();
-                        propTypeRepo.AddLookupValue(new PropertyType { description = value });
+                        CreateLookupValue(unit, new PropertyType { description = value });
                         break;
                     case LookupType.StreetType:
-                        var streetTypeRepo = unit.CreateLookupRepository<StreetType>();
-                        streetTypeRepo.AddLookupValue(new StreetType { description = value });
+                        CreateLookupValue(unit, new StreetType { description = value });
                         break;
                     case LookupType.SocioEconType:
-                        var socioEconRepo = unit.CreateLookupRepository<SocioEconCode>();
-                        socioEconRepo.AddLookupValue(new SocioEconCode { description = value });
+                        CreateLookupValue(unit, new SocioEconCode { description = value });
                         break;
                 }
             });
@@ -211,16 +200,13 @@ namespace Paul.UtahPlanners.Application
                 switch (lookupType)
                 {
                     case LookupType.PropertyType:
-                        var propTypeRepo = unit.CreateLookupRepository<PropertyType>();
-                        propTypeRepo.GetLookupValue(id).description = value;
+                        GetLookupValue<PropertyType>(unit, id).description = value;
                         break;
                     case LookupType.StreetType:
-                        var streetTypeRepo = unit.CreateLookupRepository<StreetType>();
-                        streetTypeRepo.GetLookupValue(id).description = value;
+                        GetLookupValue<StreetType>(unit, id).description = value;
                         break;
                     case LookupType.SocioEconType:
-                        var socioEconRepo = unit.CreateLookupRepository<SocioEconCode>();
-                        socioEconRepo.GetLookupValue(id).description = value;
+                        GetLookupValue<SocioEconCode>(unit, id).description = value;
                         break;
                 }
             });
@@ -234,16 +220,112 @@ namespace Paul.UtahPlanners.Application
                 switch (lookupType)
                 {
                     case LookupType.PropertyType:
-                        var propTypeRepo = unit.CreateLookupRepository<PropertyType>();
-                        propTypeRepo.RemoveLookupValue(id);
+                        RemoveLookupValue<PropertyType>(unit, id);
                         break;
                     case LookupType.StreetType:
-                        var streetTypeRepo = unit.CreateLookupRepository<StreetType>();
-                        streetTypeRepo.RemoveLookupValue(id);
+                        RemoveLookupValue<StreetType>(unit, id);
                         break;
                     case LookupType.SocioEconType:
-                        var socioEconRepo = unit.CreateLookupRepository<SocioEconCode>();
-                        socioEconRepo.RemoveLookupValue(id);
+                        RemoveLookupValue<SocioEconCode>(unit, id);
+                        break;
+                }
+            });
+        }
+
+        public bool CreateLookupCode(LookupCode lookupCode, string value, int weight)
+        {
+            string errorMessage = "An error occured while tring to create the lookup code.";
+            return CommandWrapper(errorMessage, (IUnitOfWork unit) =>
+            {
+                switch (lookupCode)
+                {
+                    case LookupCode.CommonCode:
+                        CreateLookupValue(unit, new CommonCode { description = value, weight = weight });
+                        break;
+                    case LookupCode.EnclosureCode:
+                        CreateLookupValue(unit, new EnclosureCode { description = value, weight = weight });
+                        break;
+                    case LookupCode.NeighborhoodCode:
+                        CreateLookupValue(unit, new NeighborhoodCode { description = value, weight = weight });
+                        break;
+                    case LookupCode.StreetConnCode:
+                        CreateLookupValue(unit, new StreetconnCode { description = value, weight = weight });
+                        break;
+                    case LookupCode.StreetSafetyCode:
+                        CreateLookupValue(unit, new StreetSafteyCode { description = value, weight = weight });
+                        break;
+                    case LookupCode.StreetWalkCode:
+                        CreateLookupValue(unit, new StreetwalkCode { description = value, weight = weight });
+                        break;
+                }
+            });
+        }
+
+        public bool ModifyLookupCode(LookupCode lookupCode, int id, string value, int weight)
+        {
+            string errorMessage = "An error occured while tring to modify the lookup code.";
+            return CommandWrapper(errorMessage, (IUnitOfWork unit) =>
+            {
+                switch (lookupCode)
+                {
+                    case LookupCode.CommonCode:
+                        var commonCode = GetLookupValue<CommonCode>(unit, id);
+                        commonCode.description = value;
+                        commonCode.weight = weight;
+                        break;
+                    case LookupCode.EnclosureCode:
+                        var enclosureCode = GetLookupValue<EnclosureCode>(unit, id);
+                        enclosureCode.description = value;
+                        enclosureCode.weight = weight;
+                        break;
+                    case LookupCode.NeighborhoodCode:
+                        var neighborhoodCode = GetLookupValue<NeighborhoodCode>(unit, id);
+                        neighborhoodCode.description = value;
+                        neighborhoodCode.weight = weight;
+                        break;
+                    case LookupCode.StreetConnCode:
+                        var streetConnCode = GetLookupValue<StreetconnCode>(unit, id);
+                        streetConnCode.description = value;
+                        streetConnCode.weight = weight;
+                        break;
+                    case LookupCode.StreetSafetyCode:
+                        var streetSafetyCode = GetLookupValue<StreetSafteyCode>(unit, id);
+                        streetSafetyCode.description = value;
+                        streetSafetyCode.weight = weight;
+                        break;
+                    case LookupCode.StreetWalkCode:
+                        var streetWalkCode = GetLookupValue<StreetwalkCode>(unit, id);
+                        streetWalkCode.description = value;
+                        streetWalkCode.weight = weight;
+                        break;
+                }
+            });
+        }
+
+        public bool DeleteLookupCode(LookupCode lookupCode, int id)
+        {
+            string errorMessage = "An error occured while tring to delete the lookup code.";
+            return CommandWrapper(errorMessage, (IUnitOfWork unit) =>
+            {
+                switch (lookupCode)
+                {
+                    case LookupCode.CommonCode:
+                        RemoveLookupValue<CommonCode>(unit, id);
+                        break;
+                    case LookupCode.EnclosureCode:
+                        RemoveLookupValue<EnclosureCode>(unit, id);
+                        break;
+                    case LookupCode.NeighborhoodCode:
+                        RemoveLookupValue<NeighborhoodCode>(unit, id);
+                        break;
+                    case LookupCode.StreetConnCode:
+                        RemoveLookupValue<StreetconnCode>(unit, id);
+                        break;
+                    case LookupCode.StreetSafetyCode:
+                        RemoveLookupValue<StreetSafteyCode>(unit, id);
+                        break;
+                    case LookupCode.StreetWalkCode:
+                        RemoveLookupValue<StreetwalkCode>(unit, id);
                         break;
                 }
             });
@@ -288,6 +370,23 @@ namespace Paul.UtahPlanners.Application
             ctxProp.notFinished = dtoProp.notFinished;
         }
 
+        private int CommandWrapper(string errorMessage, Func<IUnitOfWork, int> func)
+        {
+            var result = 0;
+            try
+            {
+                using (var unit = _factory.CreateUnitOfWork())
+                {
+                    result = func.Invoke(unit);
+                }
+            }
+            catch (Exception e)
+            {
+                _logger.Warning(errorMessage, e);
+            }
+            return result;
+        }
+
         private bool CommandWrapper(string errorMessage, Action<IUnitOfWork> action)
         {
             bool result = false;
@@ -305,6 +404,27 @@ namespace Paul.UtahPlanners.Application
                 _logger.Warning(errorMessage, e);
             }
             return result;
+        }
+
+        private void CreateLookupValue<T>(IUnitOfWork unit, T lookupValue)
+            where T : class
+        {
+            var repo = unit.CreateLookupValueRepository<T>();
+            repo.AddLookupValue(lookupValue);
+        }
+
+        private T GetLookupValue<T>(IUnitOfWork unit, int id)
+            where T : class
+        {
+            var repo = unit.CreateLookupValueRepository<T>();
+            return repo.GetLookupValue(id);
+        }
+
+        private void RemoveLookupValue<T>(IUnitOfWork unit, int id)
+            where T : class
+        {
+            var repo = unit.CreateLookupValueRepository<T>();
+            repo.RemoveLookupValue(id);
         }
     }
 }

@@ -59,7 +59,7 @@
       <DependentUpon>CommandModel.Context.tt</DependentUpon>
       <CustomToolNamespace>UtahPlanners.Domain.Entity</CustomToolNamespace>
     </Compile>
-    <Compile Include="Repository\LookupRepository.cs" />
+    <Compile Include="Repository\LookupTypeRepository.cs" />
     <Compile Include="Finder\PictureFinder.cs" />
     <Compile Include="Finder\PropertiesIndexFinder.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

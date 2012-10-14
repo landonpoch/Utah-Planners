@@ -56,6 +56,15 @@ namespace Paul.UtahPlanners.Application
 
         [OperationContract]
         bool DeleteLookupType(LookupType lookupType, int id);
+
+        [OperationContract]
+        bool CreateLookupCode(LookupCode lookupCode, string value, int weight);
+
+        [OperationContract]
+        bool ModifyLookupCode(LookupCode lookupCode, int id, string value, int weight);
+
+        [OperationContract]
+        bool DeleteLookupCode(LookupCode lookupCode, int id);
     }
 
 

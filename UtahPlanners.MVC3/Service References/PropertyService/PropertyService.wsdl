@@ -114,6 +114,24 @@
   <wsdl:message name="IPropertyService_DeleteLookupType_OutputMessage">
     <wsdl:part name="parameters" element="tns:DeleteLookupTypeResponse" />
   </wsdl:message>
+  <wsdl:message name="IPropertyService_CreateLookupCode_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreateLookupCode" />
+  </wsdl:message>
+  <wsdl:message name="IPropertyService_CreateLookupCode_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateLookupCodeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPropertyService_ModifyLookupCode_InputMessage">
+    <wsdl:part name="parameters" element="tns:ModifyLookupCode" />
+  </wsdl:message>
+  <wsdl:message name="IPropertyService_ModifyLookupCode_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ModifyLookupCodeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPropertyService_DeleteLookupCode_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteLookupCode" />
+  </wsdl:message>
+  <wsdl:message name="IPropertyService_DeleteLookupCode_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteLookupCodeResponse" />
+  </wsdl:message>
   <wsdl:portType name="IPropertyService">
     <wsdl:operation name="GetData">
       <wsdl:input wsaw:Action="http://tempuri.org/IPropertyService/GetData" message="tns:IPropertyService_GetData_InputMessage" />
@@ -178,6 +196,18 @@
     <wsdl:operation name="DeleteLookupType">
       <wsdl:input wsaw:Action="http://tempuri.org/IPropertyService/DeleteLookupType" message="tns:IPropertyService_DeleteLookupType_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IPropertyService/DeleteLookupTypeResponse" message="tns:IPropertyService_DeleteLookupType_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateLookupCode">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPropertyService/CreateLookupCode" message="tns:IPropertyService_CreateLookupCode_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPropertyService/CreateLookupCodeResponse" message="tns:IPropertyService_CreateLookupCode_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ModifyLookupCode">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPropertyService/ModifyLookupCode" message="tns:IPropertyService_ModifyLookupCode_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPropertyService/ModifyLookupCodeResponse" message="tns:IPropertyService_ModifyLookupCode_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteLookupCode">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPropertyService/DeleteLookupCode" message="tns:IPropertyService_DeleteLookupCode_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPropertyService/DeleteLookupCodeResponse" message="tns:IPropertyService_DeleteLookupCode_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="WSHttpBinding_IPropertyService" type="tns:IPropertyService">
@@ -320,6 +350,33 @@
     </wsdl:operation>
     <wsdl:operation name="DeleteLookupType">
       <soap12:operation soapAction="http://tempuri.org/IPropertyService/DeleteLookupType" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateLookupCode">
+      <soap12:operation soapAction="http://tempuri.org/IPropertyService/CreateLookupCode" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ModifyLookupCode">
+      <soap12:operation soapAction="http://tempuri.org/IPropertyService/ModifyLookupCode" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteLookupCode">
+      <soap12:operation soapAction="http://tempuri.org/IPropertyService/DeleteLookupCode" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

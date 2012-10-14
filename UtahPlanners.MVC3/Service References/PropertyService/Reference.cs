@@ -3796,6 +3796,29 @@ namespace UtahPlanners.MVC3.PropertyService {
         SocioEconType = 2,
     }
     
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="LookupCode", Namespace="http://schemas.datacontract.org/2004/07/UtahPlanners.Domain.Entity")]
+    public enum LookupCode : int {
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        CommonCode = 0,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        EnclosureCode = 1,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        NeighborhoodCode = 2,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        StreetConnCode = 3,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        StreetSafetyCode = 4,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        StreetWalkCode = 5,
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="PropertyService.IPropertyService")]
     public interface IPropertyService {
@@ -3847,6 +3870,15 @@ namespace UtahPlanners.MVC3.PropertyService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPropertyService/DeleteLookupType", ReplyAction="http://tempuri.org/IPropertyService/DeleteLookupTypeResponse")]
         bool DeleteLookupType(UtahPlanners.MVC3.PropertyService.LookupType lookupType, int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPropertyService/CreateLookupCode", ReplyAction="http://tempuri.org/IPropertyService/CreateLookupCodeResponse")]
+        bool CreateLookupCode(UtahPlanners.MVC3.PropertyService.LookupCode lookupCode, string value, int weight);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPropertyService/ModifyLookupCode", ReplyAction="http://tempuri.org/IPropertyService/ModifyLookupCodeResponse")]
+        bool ModifyLookupCode(UtahPlanners.MVC3.PropertyService.LookupCode lookupCode, int id, string value, int weight);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPropertyService/DeleteLookupCode", ReplyAction="http://tempuri.org/IPropertyService/DeleteLookupCodeResponse")]
+        bool DeleteLookupCode(UtahPlanners.MVC3.PropertyService.LookupCode lookupCode, int id);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -3938,6 +3970,18 @@ namespace UtahPlanners.MVC3.PropertyService {
         
         public bool DeleteLookupType(UtahPlanners.MVC3.PropertyService.LookupType lookupType, int id) {
             return base.Channel.DeleteLookupType(lookupType, id);
+        }
+        
+        public bool CreateLookupCode(UtahPlanners.MVC3.PropertyService.LookupCode lookupCode, string value, int weight) {
+            return base.Channel.CreateLookupCode(lookupCode, value, weight);
+        }
+        
+        public bool ModifyLookupCode(UtahPlanners.MVC3.PropertyService.LookupCode lookupCode, int id, string value, int weight) {
+            return base.Channel.ModifyLookupCode(lookupCode, id, value, weight);
+        }
+        
+        public bool DeleteLookupCode(UtahPlanners.MVC3.PropertyService.LookupCode lookupCode, int id) {
+            return base.Channel.DeleteLookupCode(lookupCode, id);
         }
     }
 }

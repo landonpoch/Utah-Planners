@@ -54,10 +54,10 @@ namespace UtahPlanners.Infrastructure.UnitOfWork
             return new ConfigRepository(_context);
         }
 
-        public ILookupRepository<T> CreateLookupRepository<T>()
+        public ILookupValueRepository<T> CreateLookupValueRepository<T>()
             where T : class
         {
-            return new LookupRepository<T>(_context);
+            return new LookupValueRepository<T>(_context);
         }
 
         #endregion
