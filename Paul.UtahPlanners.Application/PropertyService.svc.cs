@@ -41,17 +41,17 @@ namespace Paul.UtahPlanners.Application
 
         #region IPropertyService Members
 
-        public List<PropertiesIndex> GetAllIndecies()
+        public List<PropertiesIndex> FindAllIndecies()
         {
-            return GetIndecies(null, null);
+            return FindIndecies(null, null);
         }
 
-        public List<PropertiesIndex> GetIndecies(IndexFilter filter, IndexSort sort)
+        public List<PropertiesIndex> FindIndecies(IndexFilter filter, IndexSort sort)
         {
             using (var unit = _factory.CreateUnitOfWork())
             {
-                var repo = unit.CreateIndexFinder();
-                return repo.GetIndecies(filter, sort);
+                var finder = unit.CreateIndexFinder();
+                return finder.FindIndecies(filter, sort);
             }
         }
 
@@ -65,7 +65,7 @@ namespace Paul.UtahPlanners.Application
             }
         }
 
-        public UserPropertyDTO GetUserProperty(int id)
+        public UserPropertyDTO FindUserProperty(int id)
         {
             using (var unit = _factory.CreateUnitOfWork())
             {
@@ -75,7 +75,7 @@ namespace Paul.UtahPlanners.Application
             }
         }
 
-        public AdminPropertyDTO GetAdminProperty(int id)
+        public AdminPropertyDTO FindAdminProperty(int id)
         {
             using (var unit = _factory.CreateUnitOfWork())
             {

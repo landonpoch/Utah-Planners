@@ -38,7 +38,7 @@ namespace UtahPlanners.MVC3.Controllers
                 PropertyService.IndexSort sort = null;
                 
                 //Get index table rows, including the calculated overall score
-                List<PropertyService.PropertiesIndex> indecies = client.GetIndecies(filter, sort).ToList();
+                List<PropertyService.PropertiesIndex> indecies = client.FindIndecies(filter, sort).ToList();
 
                 var model = new IndexModel
                 {
@@ -66,7 +66,7 @@ namespace UtahPlanners.MVC3.Controllers
 
             using (var wcf = _factory.CreatePropertyServiceWrapper())
             {
-                var indicies = wcf.Client.GetIndecies(filter, sort).ToList();
+                var indicies = wcf.Client.FindIndecies(filter, sort).ToList();
                 model = new IndexModel
                 {
                     IndexGridModel = new IndexGridModel
@@ -88,7 +88,7 @@ namespace UtahPlanners.MVC3.Controllers
             //Get the details for a property
             using (var wcf = _factory.CreatePropertyServiceWrapper())
             {
-                var property = wcf.Client.GetUserProperty(id);
+                var property = wcf.Client.FindUserProperty(id);
                 var prop = Convert(property);
                 return View(prop);
             }

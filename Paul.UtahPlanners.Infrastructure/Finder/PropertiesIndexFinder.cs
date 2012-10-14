@@ -21,10 +21,10 @@ namespace UtahPlanners.Infrastructure.Finder
 
         #region IPropertiesIndexRepository Members
 
-        public List<PropertiesIndex> GetIndecies(IndexFilter filter, IndexSort sort)
+        public List<PropertiesIndex> FindIndecies(IndexFilter filter, IndexSort sort)
         {
             // Filter - or not
-            var props = filter != null ? GetFilteredIndexRecords(filter) 
+            var props = filter != null ? FindFilteredIndexRecords(filter) 
                 : _context.PropertiesIndexes.AsQueryable();
             
             return props.Sort(sort).ToList();
@@ -32,7 +32,7 @@ namespace UtahPlanners.Infrastructure.Finder
 
         #endregion
 
-        private IQueryable<PropertiesIndex> GetFilteredIndexRecords(IndexFilter filter)
+        private IQueryable<PropertiesIndex> FindFilteredIndexRecords(IndexFilter filter)
         {
             var props = _context.Properties.AsQueryable().Include(p => p.Address);
             if (filter.PropertyId.HasValue)

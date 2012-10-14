@@ -8,6 +8,6 @@ namespace UtahPlanners.Domain.Contract.Finder
 {
     public interface IPropertiesIndexFinder
     {
-        List<PropertiesIndex> GetIndecies(IndexFilter filter, IndexSort sort);
+        List<PropertiesIndex> FindIndecies(IndexFilter filter, IndexSort sort);
     }
 }

@@ -3667,20 +3667,20 @@ namespace UtahPlanners.MVC3.PropertyService {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPropertyService/GetDataUsingDataContract", ReplyAction="http://tempuri.org/IPropertyService/GetDataUsingDataContractResponse")]
         UtahPlanners.MVC3.PropertyService.CompositeType GetDataUsingDataContract(UtahPlanners.MVC3.PropertyService.CompositeType composite);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPropertyService/GetAllIndecies", ReplyAction="http://tempuri.org/IPropertyService/GetAllIndeciesResponse")]
-        UtahPlanners.MVC3.PropertyService.PropertiesIndex[] GetAllIndecies();
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPropertyService/FindAllIndecies", ReplyAction="http://tempuri.org/IPropertyService/FindAllIndeciesResponse")]
+        UtahPlanners.MVC3.PropertyService.PropertiesIndex[] FindAllIndecies();
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPropertyService/GetIndecies", ReplyAction="http://tempuri.org/IPropertyService/GetIndeciesResponse")]
-        UtahPlanners.MVC3.PropertyService.PropertiesIndex[] GetIndecies(UtahPlanners.MVC3.PropertyService.IndexFilter filter, UtahPlanners.MVC3.PropertyService.IndexSort sort);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPropertyService/FindIndecies", ReplyAction="http://tempuri.org/IPropertyService/FindIndeciesResponse")]
+        UtahPlanners.MVC3.PropertyService.PropertiesIndex[] FindIndecies(UtahPlanners.MVC3.PropertyService.IndexFilter filter, UtahPlanners.MVC3.PropertyService.IndexSort sort);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPropertyService/GetAllProperties", ReplyAction="http://tempuri.org/IPropertyService/GetAllPropertiesResponse")]
         UtahPlanners.MVC3.PropertyService.Property[] GetAllProperties(UtahPlanners.MVC3.PropertyService.PropertySort sort);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPropertyService/GetUserProperty", ReplyAction="http://tempuri.org/IPropertyService/GetUserPropertyResponse")]
-        UtahPlanners.MVC3.PropertyService.UserPropertyDTO GetUserProperty(int id);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPropertyService/FindUserProperty", ReplyAction="http://tempuri.org/IPropertyService/FindUserPropertyResponse")]
+        UtahPlanners.MVC3.PropertyService.UserPropertyDTO FindUserProperty(int id);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPropertyService/GetAdminProperty", ReplyAction="http://tempuri.org/IPropertyService/GetAdminPropertyResponse")]
-        UtahPlanners.MVC3.PropertyService.AdminPropertyDTO GetAdminProperty(int id);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPropertyService/FindAdminProperty", ReplyAction="http://tempuri.org/IPropertyService/FindAdminPropertyResponse")]
+        UtahPlanners.MVC3.PropertyService.AdminPropertyDTO FindAdminProperty(int id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPropertyService/SaveProperty", ReplyAction="http://tempuri.org/IPropertyService/SavePropertyResponse")]
         int SaveProperty(UtahPlanners.MVC3.PropertyService.Property property);
@@ -3733,24 +3733,24 @@ namespace UtahPlanners.MVC3.PropertyService {
             return base.Channel.GetDataUsingDataContract(composite);
         }
         
-        public UtahPlanners.MVC3.PropertyService.PropertiesIndex[] GetAllIndecies() {
-            return base.Channel.GetAllIndecies();
+        public UtahPlanners.MVC3.PropertyService.PropertiesIndex[] FindAllIndecies() {
+            return base.Channel.FindAllIndecies();
         }
         
-        public UtahPlanners.MVC3.PropertyService.PropertiesIndex[] GetIndecies(UtahPlanners.MVC3.PropertyService.IndexFilter filter, UtahPlanners.MVC3.PropertyService.IndexSort sort) {
-            return base.Channel.GetIndecies(filter, sort);
+        public UtahPlanners.MVC3.PropertyService.PropertiesIndex[] FindIndecies(UtahPlanners.MVC3.PropertyService.IndexFilter filter, UtahPlanners.MVC3.PropertyService.IndexSort sort) {
+            return base.Channel.FindIndecies(filter, sort);
         }
         
         public UtahPlanners.MVC3.PropertyService.Property[] GetAllProperties(UtahPlanners.MVC3.PropertyService.PropertySort sort) {
             return base.Channel.GetAllProperties(sort);
         }
         
-        public UtahPlanners.MVC3.PropertyService.UserPropertyDTO GetUserProperty(int id) {
-            return base.Channel.GetUserProperty(id);
+        public UtahPlanners.MVC3.PropertyService.UserPropertyDTO FindUserProperty(int id) {
+            return base.Channel.FindUserProperty(id);
         }
         
-        public UtahPlanners.MVC3.PropertyService.AdminPropertyDTO GetAdminProperty(int id) {
-            return base.Channel.GetAdminProperty(id);
+        public UtahPlanners.MVC3.PropertyService.AdminPropertyDTO FindAdminProperty(int id) {
+            return base.Channel.FindAdminProperty(id);
         }
         
         public int SaveProperty(UtahPlanners.MVC3.PropertyService.Property property) {

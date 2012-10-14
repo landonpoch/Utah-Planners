@@ -30,17 +30,17 @@
   <wsdl:message name="IPropertyService_GetDataUsingDataContract_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetDataUsingDataContractResponse" />
   </wsdl:message>
-  <wsdl:message name="IPropertyService_GetAllIndecies_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetAllIndecies" />
+  <wsdl:message name="IPropertyService_FindAllIndecies_InputMessage">
+    <wsdl:part name="parameters" element="tns:FindAllIndecies" />
   </wsdl:message>
-  <wsdl:message name="IPropertyService_GetAllIndecies_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetAllIndeciesResponse" />
+  <wsdl:message name="IPropertyService_FindAllIndecies_OutputMessage">
+    <wsdl:part name="parameters" element="tns:FindAllIndeciesResponse" />
   </wsdl:message>
-  <wsdl:message name="IPropertyService_GetIndecies_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetIndecies" />
+  <wsdl:message name="IPropertyService_FindIndecies_InputMessage">
+    <wsdl:part name="parameters" element="tns:FindIndecies" />
   </wsdl:message>
-  <wsdl:message name="IPropertyService_GetIndecies_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetIndeciesResponse" />
+  <wsdl:message name="IPropertyService_FindIndecies_OutputMessage">
+    <wsdl:part name="parameters" element="tns:FindIndeciesResponse" />
   </wsdl:message>
   <wsdl:message name="IPropertyService_GetAllProperties_InputMessage">
     <wsdl:part name="parameters" element="tns:GetAllProperties" />
@@ -48,17 +48,17 @@
   <wsdl:message name="IPropertyService_GetAllProperties_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetAllPropertiesResponse" />
   </wsdl:message>
-  <wsdl:message name="IPropertyService_GetUserProperty_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetUserProperty" />
+  <wsdl:message name="IPropertyService_FindUserProperty_InputMessage">
+    <wsdl:part name="parameters" element="tns:FindUserProperty" />
   </wsdl:message>
-  <wsdl:message name="IPropertyService_GetUserProperty_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetUserPropertyResponse" />
+  <wsdl:message name="IPropertyService_FindUserProperty_OutputMessage">
+    <wsdl:part name="parameters" element="tns:FindUserPropertyResponse" />
   </wsdl:message>
-  <wsdl:message name="IPropertyService_GetAdminProperty_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetAdminProperty" />
+  <wsdl:message name="IPropertyService_FindAdminProperty_InputMessage">
+    <wsdl:part name="parameters" element="tns:FindAdminProperty" />
   </wsdl:message>
-  <wsdl:message name="IPropertyService_GetAdminProperty_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetAdminPropertyResponse" />
+  <wsdl:message name="IPropertyService_FindAdminProperty_OutputMessage">
+    <wsdl:part name="parameters" element="tns:FindAdminPropertyResponse" />
   </wsdl:message>
   <wsdl:message name="IPropertyService_SaveProperty_InputMessage">
     <wsdl:part name="parameters" element="tns:SaveProperty" />
@@ -99,25 +99,25 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IPropertyService/GetDataUsingDataContract" message="tns:IPropertyService_GetDataUsingDataContract_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IPropertyService/GetDataUsingDataContractResponse" message="tns:IPropertyService_GetDataUsingDataContract_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="GetAllIndecies">
-      <wsdl:input wsaw:Action="http://tempuri.org/IPropertyService/GetAllIndecies" message="tns:IPropertyService_GetAllIndecies_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IPropertyService/GetAllIndeciesResponse" message="tns:IPropertyService_GetAllIndecies_OutputMessage" />
+    <wsdl:operation name="FindAllIndecies">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPropertyService/FindAllIndecies" message="tns:IPropertyService_FindAllIndecies_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPropertyService/FindAllIndeciesResponse" message="tns:IPropertyService_FindAllIndecies_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="GetIndecies">
-      <wsdl:input wsaw:Action="http://tempuri.org/IPropertyService/GetIndecies" message="tns:IPropertyService_GetIndecies_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IPropertyService/GetIndeciesResponse" message="tns:IPropertyService_GetIndecies_OutputMessage" />
+    <wsdl:operation name="FindIndecies">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPropertyService/FindIndecies" message="tns:IPropertyService_FindIndecies_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPropertyService/FindIndeciesResponse" message="tns:IPropertyService_FindIndecies_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetAllProperties">
       <wsdl:input wsaw:Action="http://tempuri.org/IPropertyService/GetAllProperties" message="tns:IPropertyService_GetAllProperties_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IPropertyService/GetAllPropertiesResponse" message="tns:IPropertyService_GetAllProperties_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="GetUserProperty">
-      <wsdl:input wsaw:Action="http://tempuri.org/IPropertyService/GetUserProperty" message="tns:IPropertyService_GetUserProperty_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IPropertyService/GetUserPropertyResponse" message="tns:IPropertyService_GetUserProperty_OutputMessage" />
+    <wsdl:operation name="FindUserProperty">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPropertyService/FindUserProperty" message="tns:IPropertyService_FindUserProperty_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPropertyService/FindUserPropertyResponse" message="tns:IPropertyService_FindUserProperty_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="GetAdminProperty">
-      <wsdl:input wsaw:Action="http://tempuri.org/IPropertyService/GetAdminProperty" message="tns:IPropertyService_GetAdminProperty_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IPropertyService/GetAdminPropertyResponse" message="tns:IPropertyService_GetAdminProperty_OutputMessage" />
+    <wsdl:operation name="FindAdminProperty">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPropertyService/FindAdminProperty" message="tns:IPropertyService_FindAdminProperty_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPropertyService/FindAdminPropertyResponse" message="tns:IPropertyService_FindAdminProperty_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="SaveProperty">
       <wsdl:input wsaw:Action="http://tempuri.org/IPropertyService/SaveProperty" message="tns:IPropertyService_SaveProperty_InputMessage" />
@@ -161,8 +161,8 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetAllIndecies">
-      <soap12:operation soapAction="http://tempuri.org/IPropertyService/GetAllIndecies" style="document" />
+    <wsdl:operation name="FindAllIndecies">
+      <soap12:operation soapAction="http://tempuri.org/IPropertyService/FindAllIndecies" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -170,8 +170,8 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetIndecies">
-      <soap12:operation soapAction="http://tempuri.org/IPropertyService/GetIndecies" style="document" />
+    <wsdl:operation name="FindIndecies">
+      <soap12:operation soapAction="http://tempuri.org/IPropertyService/FindIndecies" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -188,8 +188,8 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetUserProperty">
-      <soap12:operation soapAction="http://tempuri.org/IPropertyService/GetUserProperty" style="document" />
+    <wsdl:operation name="FindUserProperty">
+      <soap12:operation soapAction="http://tempuri.org/IPropertyService/FindUserProperty" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -197,8 +197,8 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetAdminProperty">
-      <soap12:operation soapAction="http://tempuri.org/IPropertyService/GetAdminProperty" style="document" />
+    <wsdl:operation name="FindAdminProperty">
+      <soap12:operation soapAction="http://tempuri.org/IPropertyService/FindAdminProperty" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

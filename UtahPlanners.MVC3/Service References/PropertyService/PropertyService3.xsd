@@ -32,19 +32,19 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="GetAllIndecies">
+  <xs:element name="FindAllIndecies">
     <xs:complexType>
       <xs:sequence />
     </xs:complexType>
   </xs:element>
-  <xs:element name="GetAllIndeciesResponse">
+  <xs:element name="FindAllIndeciesResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/UtahPlanners.Domain.Entity" minOccurs="0" name="GetAllIndeciesResult" nillable="true" type="q3:ArrayOfPropertiesIndex" />
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/UtahPlanners.Domain.Entity" minOccurs="0" name="FindAllIndeciesResult" nillable="true" type="q3:ArrayOfPropertiesIndex" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="GetIndecies">
+  <xs:element name="FindIndecies">
     <xs:complexType>
       <xs:sequence>
         <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/UtahPlanners.Domain.Entity" minOccurs="0" name="filter" nillable="true" type="q4:IndexFilter" />
@@ -52,10 +52,10 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="GetIndeciesResponse">
+  <xs:element name="FindIndeciesResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/UtahPlanners.Domain.Entity" minOccurs="0" name="GetIndeciesResult" nillable="true" type="q6:ArrayOfPropertiesIndex" />
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/UtahPlanners.Domain.Entity" minOccurs="0" name="FindIndeciesResult" nillable="true" type="q6:ArrayOfPropertiesIndex" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -73,31 +73,31 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="GetUserProperty">
+  <xs:element name="FindUserProperty">
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="id" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="GetUserPropertyResponse">
+  <xs:element name="FindUserPropertyResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/UtahPlanners.Domain.DTO" minOccurs="0" name="GetUserPropertyResult" nillable="true" type="q9:UserPropertyDTO" />
+        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/UtahPlanners.Domain.DTO" minOccurs="0" name="FindUserPropertyResult" nillable="true" type="q9:UserPropertyDTO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="GetAdminProperty">
+  <xs:element name="FindAdminProperty">
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="id" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="GetAdminPropertyResponse">
+  <xs:element name="FindAdminPropertyResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/UtahPlanners.Domain.DTO" minOccurs="0" name="GetAdminPropertyResult" nillable="true" type="q10:AdminPropertyDTO" />
+        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/UtahPlanners.Domain.DTO" minOccurs="0" name="FindAdminPropertyResult" nillable="true" type="q10:AdminPropertyDTO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

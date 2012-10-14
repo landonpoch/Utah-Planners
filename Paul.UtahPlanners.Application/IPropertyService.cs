@@ -16,19 +16,19 @@ namespace Paul.UtahPlanners.Application
         CompositeType GetDataUsingDataContract(CompositeType composite);
 
         [OperationContract]
-        List<PropertiesIndex> GetAllIndecies();
+        List<PropertiesIndex> FindAllIndecies();
 
         [OperationContract]
-        List<PropertiesIndex> GetIndecies(IndexFilter filter, IndexSort sort);
+        List<PropertiesIndex> FindIndecies(IndexFilter filter, IndexSort sort);
 
         [OperationContract]
         List<Property> GetAllProperties(PropertySort sort);
 
         [OperationContract]
-        UserPropertyDTO GetUserProperty(int id);
+        UserPropertyDTO FindUserProperty(int id);
 
         [OperationContract]
-        AdminPropertyDTO GetAdminProperty(int id);
+        AdminPropertyDTO FindAdminProperty(int id);
 
         [OperationContract]
         int SaveProperty(Property property);

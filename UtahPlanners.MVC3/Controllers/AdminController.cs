@@ -43,7 +43,7 @@ namespace UtahPlanners.MVC3.Controllers
                     ViewBag.NewPictureTitle = "Add New Pictures:";
                     ViewBag.SubmitText = "Submit Changes";
 
-                    var property = wcf.Client.GetAdminProperty(id.Value);
+                    var property = wcf.Client.FindAdminProperty(id.Value);
                     model.Property = property;
                     model.PropertyType = property.Type.ToString();
                     model.StreetType = property.StreetType.ToString();
