@@ -18,6 +18,8 @@ namespace UtahPlanners.Domain.Contract.UnitOfWork
         // Command Model
         IPropertyRepository CreatePropertyRepository();
         IConfigRepository CreateConfigRepository();
+        ILookupRepository<T> CreateLookupRepository<T>()
+            where T : class;
         
         void Commit();
     }

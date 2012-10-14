@@ -55,6 +55,7 @@
     <Compile Include="Entity\Address.cs">
       <DependentUpon>CommandModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Entity\LookupCode.cs" />
     <Compile Include="Entity\CommonCode.cs">
       <DependentUpon>CommandModel.tt</DependentUpon>
     </Compile>
@@ -65,12 +66,12 @@
       <DependentUpon>CommandModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity\PictureMetaData.cs" />
+    <Compile Include="Entity\LookupType.cs" />
     <Compile Include="Service\ConfigSettings.cs" />
     <Compile Include="DomainNinjectModule.cs" />
     <Compile Include="Entity\EnclosureCode.cs">
       <DependentUpon>CommandModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Entity\PropertyExtensions.cs" />
     <Compile Include="Contract\Repository\IConfigRepository.cs" />
     <Compile Include="Contract\Service\IConfigSettings.cs" />
     <Compile Include="Entity\IndexFilter.cs" />

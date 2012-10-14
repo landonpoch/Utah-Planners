@@ -178,10 +178,8 @@
       <xs:element minOccurs="0" name="CommonCode" nillable="true" type="tns:CommonCode" />
       <xs:element minOccurs="0" name="EnclosureCode" nillable="true" type="tns:EnclosureCode" />
       <xs:element minOccurs="0" name="NeighborhoodCode" nillable="true" type="tns:NeighborhoodCode" />
-      <xs:element minOccurs="0" name="PictureMetaData" nillable="true" type="tns:ArrayOfPictureMetaData" />
       <xs:element minOccurs="0" name="Pictures" nillable="true" type="tns:ArrayOfPicture" />
       <xs:element minOccurs="0" name="PropertyType" nillable="true" type="tns:PropertyType" />
-      <xs:element minOccurs="0" name="Score" type="xs:int" />
       <xs:element minOccurs="0" name="SocioEconCode" nillable="true" type="tns:SocioEconCode" />
       <xs:element minOccurs="0" name="StreetSafteyCode" nillable="true" type="tns:StreetSafteyCode" />
       <xs:element minOccurs="0" name="StreetType" nillable="true" type="tns:StreetType" />
@@ -406,4 +404,12 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ArrayOfStreetwalkCode" nillable="true" type="tns:ArrayOfStreetwalkCode" />
+  <xs:simpleType name="LookupType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="PropertyType" />
+      <xs:enumeration value="StreetType" />
+      <xs:enumeration value="SocioEconType" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="LookupType" nillable="true" type="tns:LookupType" />
 </xs:schema>

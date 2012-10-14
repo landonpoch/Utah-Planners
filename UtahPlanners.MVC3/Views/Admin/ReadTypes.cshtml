@@ -1,58 +1,31 @@
-﻿@{
+﻿@using UtahPlanners.MVC3.Models.Admin
+@model ReadTypeModel
+@{
     ViewBag.Title = "ReadTypes";
     Layout = "~/Views/Shared/_LayoutNoLeftNav.cshtml";
 }
 
-    <select name="ctl00$ContentPlaceHolder1$DropDownList1" id="ctl00_ContentPlaceHolder1_DropDownList1">
-	<option value="PropertyTypes">PropertyTypes</option>
-	<option value="StreetTypes">StreetTypes</option>
-	<option value="SocioEconCodes">SocioEconCodes</option>
+@using (Html.BeginForm("ReadTypes", "Admin", FormMethod.Post))
+{ 
 
-</select>
-    <br><br>
-    <input type="submit" name="ctl00$ContentPlaceHolder1$Button1" value="Select Different Type" id="ctl00_ContentPlaceHolder1_Button1">
-    <br><br>
+    @Html.DropDownListFor(m => m.SelectedType, Model.TypeEnums)<br /><br />
+    <input type="submit" value="Select Different Type" /><br /><br />
+    
     <div>
-	<table cellspacing="0" rules="all" border="1" id="ctl00_ContentPlaceHolder1_GridView1" style="border-collapse:collapse;">
-		<tbody><tr>
-			<th scope="col">&nbsp;</th><th scope="col">&nbsp;</th><th scope="col">Description</th>
-		</tr><tr>
-			<td><a href="javascript:__doPostBack('ctl00$ContentPlaceHolder1$GridView1','Edit$0')">Edit</a></td><td>
-                    <a onclick="return confirm(&quot;Are you sure you want to delete this entry?&quot;);" id="ctl00_ContentPlaceHolder1_GridView1_ctl02_LinkButton1" href="javascript:__doPostBack('ctl00$ContentPlaceHolder1$GridView1$ctl02$LinkButton1','')">Delete</a>
-                </td><td>Apartment Complex</td>
-		</tr><tr>
-			<td><a href="javascript:__doPostBack('ctl00$ContentPlaceHolder1$GridView1','Edit$1')">Edit</a></td><td>
-                    <a onclick="return confirm(&quot;Are you sure you want to delete this entry?&quot;);" id="ctl00_ContentPlaceHolder1_GridView1_ctl03_LinkButton1" href="javascript:__doPostBack('ctl00$ContentPlaceHolder1$GridView1$ctl03$LinkButton1','')">Delete</a>
-                </td><td>Townhouse (with carport)</td>
-		</tr><tr>
-			<td><a href="javascript:__doPostBack('ctl00$ContentPlaceHolder1$GridView1','Edit$2')">Edit</a></td><td>
-                    <a onclick="return confirm(&quot;Are you sure you want to delete this entry?&quot;);" id="ctl00_ContentPlaceHolder1_GridView1_ctl04_LinkButton1" href="javascript:__doPostBack('ctl00$ContentPlaceHolder1$GridView1$ctl04$LinkButton1','')">Delete</a>
-                </td><td>Townhouse (with garage)</td>
-		</tr><tr>
-			<td><a href="javascript:__doPostBack('ctl00$ContentPlaceHolder1$GridView1','Edit$3')">Edit</a></td><td>
-                    <a onclick="return confirm(&quot;Are you sure you want to delete this entry?&quot;);" id="ctl00_ContentPlaceHolder1_GridView1_ctl05_LinkButton1" href="javascript:__doPostBack('ctl00$ContentPlaceHolder1$GridView1$ctl05$LinkButton1','')">Delete</a>
-                </td><td>Mixed Use</td>
-		</tr><tr>
-			<td><a href="javascript:__doPostBack('ctl00$ContentPlaceHolder1$GridView1','Edit$4')">Edit</a></td><td>
-                    <a onclick="return confirm(&quot;Are you sure you want to delete this entry?&quot;);" id="ctl00_ContentPlaceHolder1_GridView1_ctl06_LinkButton1" href="javascript:__doPostBack('ctl00$ContentPlaceHolder1$GridView1$ctl06$LinkButton1','')">Delete</a>
-                </td><td>Twin Home</td>
-		</tr><tr>
-			<td><a href="javascript:__doPostBack('ctl00$ContentPlaceHolder1$GridView1','Edit$5')">Edit</a></td><td>
-                    <a onclick="return confirm(&quot;Are you sure you want to delete this entry?&quot;);" id="ctl00_ContentPlaceHolder1_GridView1_ctl07_LinkButton1" href="javascript:__doPostBack('ctl00$ContentPlaceHolder1$GridView1$ctl07$LinkButton1','')">Delete</a>
-                </td><td>Stacked Flat</td>
-		</tr><tr>
-			<td><a href="javascript:__doPostBack('ctl00$ContentPlaceHolder1$GridView1','Edit$6')">Edit</a></td><td>
-                    <a onclick="return confirm(&quot;Are you sure you want to delete this entry?&quot;);" id="ctl00_ContentPlaceHolder1_GridView1_ctl08_LinkButton1" href="javascript:__doPostBack('ctl00$ContentPlaceHolder1$GridView1$ctl08$LinkButton1','')">Delete</a>
-                </td><td>Multiple Type Development</td>
-		</tr><tr>
-			<td><a href="javascript:__doPostBack('ctl00$ContentPlaceHolder1$GridView1','Edit$7')">Edit</a></td><td>
-                    <a onclick="return confirm(&quot;Are you sure you want to delete this entry?&quot;);" id="ctl00_ContentPlaceHolder1_GridView1_ctl09_LinkButton1" href="javascript:__doPostBack('ctl00$ContentPlaceHolder1$GridView1$ctl09$LinkButton1','')">Delete</a>
-                </td><td>Other </td>
-		</tr><tr>
-			<td><a href="javascript:__doPostBack('ctl00$ContentPlaceHolder1$GridView1','Edit$8')">Edit</a></td><td>
-                    <a onclick="return confirm(&quot;Are you sure you want to delete this entry?&quot;);" id="ctl00_ContentPlaceHolder1_GridView1_ctl10_LinkButton1" href="javascript:__doPostBack('ctl00$ContentPlaceHolder1$GridView1$ctl10$LinkButton1','')">Delete</a>
-                </td><td>"3 Plex" Type</td>
-		</tr>
-	</tbody></table>
-</div>
-
+	    <table cellspacing="0" rules="all" border="1" style="border-collapse:collapse;">
+		    <thead>
+                <tr><th></th><th></th><th>Description</th></tr>
+            </thead>
+            <tbody>
+                @foreach (var pair in Model.KeyValuePairs)
+                { 
+                    <tr>
+			            <td><a href="#">Edit</a></td>
+                        <td><a href="#">Delete</a></td>
+                        <td>@pair.Value</td>
+		            </tr>
+                }
+	        </tbody>
+        </table>
+    </div>
+}

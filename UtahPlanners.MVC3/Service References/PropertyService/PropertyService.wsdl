@@ -72,6 +72,18 @@
   <wsdl:message name="IPropertyService_FindPicture_OutputMessage">
     <wsdl:part name="parameters" element="tns:FindPictureResponse" />
   </wsdl:message>
+  <wsdl:message name="IPropertyService_GetAllLookupValues_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllLookupValues" />
+  </wsdl:message>
+  <wsdl:message name="IPropertyService_GetAllLookupValues_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllLookupValuesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPropertyService_GetLookupValues_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetLookupValues" />
+  </wsdl:message>
+  <wsdl:message name="IPropertyService_GetLookupValues_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetLookupValuesResponse" />
+  </wsdl:message>
   <wsdl:message name="IPropertyService_SaveProperty_InputMessage">
     <wsdl:part name="parameters" element="tns:SaveProperty" />
   </wsdl:message>
@@ -84,11 +96,11 @@
   <wsdl:message name="IPropertyService_DeleteProperty_OutputMessage">
     <wsdl:part name="parameters" element="tns:DeletePropertyResponse" />
   </wsdl:message>
-  <wsdl:message name="IPropertyService_GetLookupValues_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetLookupValues" />
+  <wsdl:message name="IPropertyService_CreateLookupType_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreateLookupType" />
   </wsdl:message>
-  <wsdl:message name="IPropertyService_GetLookupValues_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetLookupValuesResponse" />
+  <wsdl:message name="IPropertyService_CreateLookupType_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateLookupTypeResponse" />
   </wsdl:message>
   <wsdl:portType name="IPropertyService">
     <wsdl:operation name="GetData">
@@ -127,6 +139,14 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IPropertyService/FindPicture" message="tns:IPropertyService_FindPicture_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IPropertyService/FindPictureResponse" message="tns:IPropertyService_FindPicture_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="GetAllLookupValues">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPropertyService/GetAllLookupValues" message="tns:IPropertyService_GetAllLookupValues_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPropertyService/GetAllLookupValuesResponse" message="tns:IPropertyService_GetAllLookupValues_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLookupValues">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPropertyService/GetLookupValues" message="tns:IPropertyService_GetLookupValues_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPropertyService/GetLookupValuesResponse" message="tns:IPropertyService_GetLookupValues_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="SaveProperty">
       <wsdl:input wsaw:Action="http://tempuri.org/IPropertyService/SaveProperty" message="tns:IPropertyService_SaveProperty_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IPropertyService/SavePropertyResponse" message="tns:IPropertyService_SaveProperty_OutputMessage" />
@@ -135,9 +155,9 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IPropertyService/DeleteProperty" message="tns:IPropertyService_DeleteProperty_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IPropertyService/DeletePropertyResponse" message="tns:IPropertyService_DeleteProperty_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="GetLookupValues">
-      <wsdl:input wsaw:Action="http://tempuri.org/IPropertyService/GetLookupValues" message="tns:IPropertyService_GetLookupValues_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IPropertyService/GetLookupValuesResponse" message="tns:IPropertyService_GetLookupValues_OutputMessage" />
+    <wsdl:operation name="CreateLookupType">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPropertyService/CreateLookupType" message="tns:IPropertyService_CreateLookupType_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPropertyService/CreateLookupTypeResponse" message="tns:IPropertyService_CreateLookupType_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="WSHttpBinding_IPropertyService" type="tns:IPropertyService">
@@ -224,6 +244,24 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="GetAllLookupValues">
+      <soap12:operation soapAction="http://tempuri.org/IPropertyService/GetAllLookupValues" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLookupValues">
+      <soap12:operation soapAction="http://tempuri.org/IPropertyService/GetLookupValues" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="SaveProperty">
       <soap12:operation soapAction="http://tempuri.org/IPropertyService/SaveProperty" style="document" />
       <wsdl:input>
@@ -242,8 +280,8 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetLookupValues">
-      <soap12:operation soapAction="http://tempuri.org/IPropertyService/GetLookupValues" style="document" />
+    <wsdl:operation name="CreateLookupType">
+      <soap12:operation soapAction="http://tempuri.org/IPropertyService/CreateLookupType" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

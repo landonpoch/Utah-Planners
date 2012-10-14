@@ -31,7 +31,7 @@ namespace UtahPlanners.MVC3.Controllers
         {
             using (var client = _factory.CreatePropertyServiceProxy())
             {
-                var lookupValues = client.GetLookupValues();
+                var lookupValues = client.GetAllLookupValues();
 
                 // Get default filter and sort
                 PropertyService.IndexFilter filter = GetPrimaryFilterFromModel(proptype, density, walkscore);

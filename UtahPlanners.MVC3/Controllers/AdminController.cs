@@ -27,11 +27,13 @@ namespace UtahPlanners.MVC3.Controllers
             return View();
         }
 
+        #region Property Maintenance
+        
         public ActionResult Property(int? id)
         {
             using (var wcf = _factory.CreatePropertyServiceWrapper())
             {
-                var lookupValues = wcf.Client.GetLookupValues();
+                var lookupValues = wcf.Client.GetAllLookupValues();
                 var model = new AdminProperty
                 {
                     LookupValues = lookupValues
@@ -126,6 +128,65 @@ namespace UtahPlanners.MVC3.Controllers
             }
         }
 
+        #endregion
+
+        #region LookupTypes
+
+        public ActionResult CreateTypes()
+        {
+            return View(new CreateTypeModel());
+        }
+
+        [HttpPost]
+        public ActionResult CreateTypes(CreateTypeModel model)
+        {
+            using (var client = _factory.CreatePropertyServiceProxy())
+            {
+                var lookupType = (PropertyService.LookupType)model.SelectedType;
+                bool result = client.CreateLookupType(lookupType, model.TypeDescription);
+            }
+            return RedirectToAction("CreateTypes");
+        }
+
+        public ActionResult ReadTypes()
+        {
+            using (var client = _factory.CreatePropertyServiceProxy())
+            {
+                var model = new ReadTypeModel
+                {
+                    SelectedType = 0,
+                    KeyValuePairs = client.GetLookupValues(PropertyService.LookupType.PropertyType)
+                };
+                return View(model);
+            }
+        }
+
+        [HttpPost]
+        public ActionResult ReadTypes(ReadTypeModel model)
+        {
+            using (var client = _factory.CreatePropertyServiceProxy())
+            {
+                model.KeyValuePairs = client.GetLookupValues((PropertyService.LookupType)model.SelectedType);
+                return View(model);
+            }
+        }
+
+        [HttpPost]
+        public ActionResult ModifyType(ReadTypeModel model)
+        {
+            return RedirectToAction("ReadTypes");
+        }
+
+        [HttpPost]
+        public ActionResult DeleteType(ReadTypeModel model)
+        {
+            return RedirectToAction("ReadTypes");
+        }
+
+        #endregion
+
+        #region LookupCodes
+        
         public ActionResult CreateCodes()
         {
             return View();
@@ -136,22 +197,7 @@ namespace UtahPlanners.MVC3.Controllers
             return View();
         }
 
-        public ActionResult CreateTypes()
-        {
-            return View(new CreateTypeModel());
-        }
-
-        [HttpPost]
-        public ActionResult CreateTypes(CreateTypeModel model)
-        {
-
-            return RedirectToAction("CreateTypes");
-        }
-
-        public ActionResult ReadTypes()
-        {
-            return View();
-        }
+        #endregion
 
         public ActionResult Weights()
         {

@@ -35,7 +35,13 @@ namespace Paul.UtahPlanners.Application
 
         [OperationContract]
         Picture FindPicture(int id);
-        
+
+        [OperationContract]
+        LookupValues GetAllLookupValues();
+
+        [OperationContract]
+        Dictionary<int, string> GetLookupValues(LookupType lookupType);
+
         [OperationContract]
         int SaveProperty(Property property);
 
@@ -43,7 +49,7 @@ namespace Paul.UtahPlanners.Application
         bool DeleteProperty(int propertyId);
 
         [OperationContract]
-        LookupValues GetLookupValues();
+        bool CreateLookupType(LookupType lookupType, string value);
     }
 
 

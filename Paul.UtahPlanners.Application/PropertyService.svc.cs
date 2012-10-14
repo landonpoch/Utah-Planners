@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Collections.Generic;
 using UtahPlanners.Domain.Contract.Service;
 using UtahPlanners.Domain.Contract.UnitOfWork;
@@ -106,9 +107,33 @@ namespace Paul.UtahPlanners.Application
             }
         }
 
-        public LookupValues GetLookupValues()
+        public LookupValues GetAllLookupValues()
         {
             return _settings.LookupValues;
+        }
+
+        public Dictionary<int, string> GetLookupValues(LookupType lookupType)
+        {
+            using (var unit = _factory.CreateUnitOfWork())
+            {
+                var result = new Dictionary<int, string>();
+                switch (lookupType)
+                {
+                    case LookupType.PropertyType:
+                        var propTypeRepo = unit.CreateLookupRepository<PropertyType>();
+                        result = propTypeRepo.GetAllLookupValues().ToDictionary(l => l.id, l => l.description);
+                        break;
+                    case LookupType.StreetType:
+                        var streetTypeRepo = unit.CreateLookupRepository<StreetType>();
+                        result = streetTypeRepo.GetAllLookupValues().ToDictionary(l => l.id, l => l.description);
+                        break;
+                    case LookupType.SocioEconType:
+                        var socioEconRepo = unit.CreateLookupRepository<SocioEconCode>();
+                        result = socioEconRepo.GetAllLookupValues().ToDictionary(l => l.id, l => l.description);
+                        break;
+                }
+                return result;
+            }
         }
 
         #endregion
@@ -165,12 +190,38 @@ namespace Paul.UtahPlanners.Application
             return result;
         }
 
-        public bool CreateLookupValue(int lookupType, string value)
+        public bool CreateLookupType(LookupType lookupType, string value)
         {
-            using (var unit = _factory.CreateUnitOfWork())
+            bool result = false;
+            try
             {
-                throw new NotImplementedException();
+                using (var unit = _factory.CreateUnitOfWork())
+                {
+                    switch (lookupType)
+                    {
+                        case LookupType.PropertyType:
+                            var propTypeRepo = unit.CreateLookupRepository<PropertyType>();
+                            propTypeRepo.AddLookupValue(new PropertyType { description = value });
+                            break;
+                        case LookupType.StreetType:
+                            var streetTypeRepo = unit.CreateLookupRepository<StreetType>();
+                            streetTypeRepo.AddLookupValue(new StreetType { description = value });
+                            break;
+                        case LookupType.SocioEconType:
+                            var socioEconRepo = unit.CreateLookupRepository<SocioEconCode>();
+                            socioEconRepo.AddLookupValue(new SocioEconCode { description = value });
+                            break;
+                    }
+
+                    unit.Commit();
+                    result = true;
+                }
             }
+            catch (Exception e)
+            {
+                _logger.Warning("An error occured while trying to create a new lookup type", e);
+            }
+            return result;
         }
 
         #endregion
@@ -211,5 +262,7 @@ namespace Paul.UtahPlanners.Application
             ctxProp.walkscoreNotes = dtoProp.walkscoreNotes;
             ctxProp.notFinished = dtoProp.notFinished;
         }
+
+
     }
 }

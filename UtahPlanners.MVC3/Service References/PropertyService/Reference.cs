@@ -2112,16 +2112,10 @@ namespace UtahPlanners.MVC3.PropertyService {
         private UtahPlanners.MVC3.PropertyService.NeighborhoodCode NeighborhoodCodeField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private UtahPlanners.MVC3.PropertyService.PictureMetaData[] PictureMetaDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private UtahPlanners.MVC3.PropertyService.Picture[] PicturesField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private UtahPlanners.MVC3.PropertyService.PropertyType PropertyTypeField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int ScoreField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private UtahPlanners.MVC3.PropertyService.SocioEconCode SocioEconCodeField;
@@ -2270,19 +2264,6 @@ namespace UtahPlanners.MVC3.PropertyService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public UtahPlanners.MVC3.PropertyService.PictureMetaData[] PictureMetaData {
-            get {
-                return this.PictureMetaDataField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.PictureMetaDataField, value) != true)) {
-                    this.PictureMetaDataField = value;
-                    this.RaisePropertyChanged("PictureMetaData");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
         public UtahPlanners.MVC3.PropertyService.Picture[] Pictures {
             get {
                 return this.PicturesField;
@@ -2304,19 +2285,6 @@ namespace UtahPlanners.MVC3.PropertyService {
                 if ((object.ReferenceEquals(this.PropertyTypeField, value) != true)) {
                     this.PropertyTypeField = value;
                     this.RaisePropertyChanged("PropertyType");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int Score {
-            get {
-                return this.ScoreField;
-            }
-            set {
-                if ((this.ScoreField.Equals(value) != true)) {
-                    this.ScoreField = value;
-                    this.RaisePropertyChanged("Score");
                 }
             }
         }
@@ -3814,6 +3782,20 @@ namespace UtahPlanners.MVC3.PropertyService {
         }
     }
     
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="LookupType", Namespace="http://schemas.datacontract.org/2004/07/UtahPlanners.Domain.Entity")]
+    public enum LookupType : int {
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        PropertyType = 0,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        StreetType = 1,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        SocioEconType = 2,
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="PropertyService.IPropertyService")]
     public interface IPropertyService {
@@ -3845,14 +3827,20 @@ namespace UtahPlanners.MVC3.PropertyService {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPropertyService/FindPicture", ReplyAction="http://tempuri.org/IPropertyService/FindPictureResponse")]
         UtahPlanners.MVC3.PropertyService.Picture FindPicture(int id);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPropertyService/GetAllLookupValues", ReplyAction="http://tempuri.org/IPropertyService/GetAllLookupValuesResponse")]
+        UtahPlanners.MVC3.PropertyService.LookupValues GetAllLookupValues();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPropertyService/GetLookupValues", ReplyAction="http://tempuri.org/IPropertyService/GetLookupValuesResponse")]
+        System.Collections.Generic.Dictionary<int, string> GetLookupValues(UtahPlanners.MVC3.PropertyService.LookupType lookupType);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPropertyService/SaveProperty", ReplyAction="http://tempuri.org/IPropertyService/SavePropertyResponse")]
         int SaveProperty(UtahPlanners.MVC3.PropertyService.Property property);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPropertyService/DeleteProperty", ReplyAction="http://tempuri.org/IPropertyService/DeletePropertyResponse")]
         bool DeleteProperty(int propertyId);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPropertyService/GetLookupValues", ReplyAction="http://tempuri.org/IPropertyService/GetLookupValuesResponse")]
-        UtahPlanners.MVC3.PropertyService.LookupValues GetLookupValues();
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPropertyService/CreateLookupType", ReplyAction="http://tempuri.org/IPropertyService/CreateLookupTypeResponse")]
+        bool CreateLookupType(UtahPlanners.MVC3.PropertyService.LookupType lookupType, string value);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -3918,6 +3906,14 @@ namespace UtahPlanners.MVC3.PropertyService {
             return base.Channel.FindPicture(id);
         }
         
+        public UtahPlanners.MVC3.PropertyService.LookupValues GetAllLookupValues() {
+            return base.Channel.GetAllLookupValues();
+        }
+        
+        public System.Collections.Generic.Dictionary<int, string> GetLookupValues(UtahPlanners.MVC3.PropertyService.LookupType lookupType) {
+            return base.Channel.GetLookupValues(lookupType);
+        }
+        
         public int SaveProperty(UtahPlanners.MVC3.PropertyService.Property property) {
             return base.Channel.SaveProperty(property);
         }
@@ -3926,8 +3922,8 @@ namespace UtahPlanners.MVC3.PropertyService {
             return base.Channel.DeleteProperty(propertyId);
         }
         
-        public UtahPlanners.MVC3.PropertyService.LookupValues GetLookupValues() {
-            return base.Channel.GetLookupValues();
+        public bool CreateLookupType(UtahPlanners.MVC3.PropertyService.LookupType lookupType, string value) {
+            return base.Channel.CreateLookupType(lookupType, value);
         }
     }
 }

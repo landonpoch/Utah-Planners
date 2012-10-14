@@ -6,6 +6,7 @@ using System.Runtime.Serialization;
 
 namespace UtahPlanners.Domain.Entity
 {
+    // TODO: See if this can be converted to a specification
     public class IndexFilter
     {
         public int? PropertyId { get; set; }

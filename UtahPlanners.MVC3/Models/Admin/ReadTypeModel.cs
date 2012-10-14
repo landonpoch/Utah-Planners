@@ -7,7 +7,7 @@ using UtahPlanners.MVC3.Presentation;
 
 namespace UtahPlanners.MVC3.Models.Admin
 {
-    public class CreateTypeModel
+    public class ReadTypeModel
     {
         public SelectList TypeEnums
         {
@@ -17,6 +17,6 @@ namespace UtahPlanners.MVC3.Models.Admin
             }
         }
         public int SelectedType { get; set; }
-        public string TypeDescription { get; set; }
+        public Dictionary<int, string> KeyValuePairs { get; set; }
     }
 }
