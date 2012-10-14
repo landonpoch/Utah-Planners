@@ -123,7 +123,7 @@ namespace Paul.UtahPlanners.Application
             {
                 using (var unit = _factory.CreateUnitOfWork())
                 {
-                    var repo = unit.CreatePropertyRepository(_settings);
+                    var repo = unit.CreatePropertyRepository();
                     if (dtoProp.id > 0)
                     {
                         var ctxProp = repo.Get(dtoProp.id);
@@ -151,7 +151,7 @@ namespace Paul.UtahPlanners.Application
             {
                 using (var unit = _factory.CreateUnitOfWork())
                 {
-                    var repo = unit.CreatePropertyRepository(_settings);
+                    var repo = unit.CreatePropertyRepository();
                     var property = repo.Get(propertyId);
                     repo.Remove(property);
                     unit.Commit();
@@ -163,6 +163,14 @@ namespace Paul.UtahPlanners.Application
                 _logger.Warning("An error occurred while deleting the property", e);
             }
             return result;
+        }
+
+        public bool CreateLookupValue(int lookupType, string value)
+        {
+            using (var unit = _factory.CreateUnitOfWork())
+            {
+                throw new NotImplementedException();
+            }
         }
 
         #endregion

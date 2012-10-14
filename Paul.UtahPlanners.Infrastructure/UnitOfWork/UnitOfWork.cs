@@ -23,6 +23,8 @@ namespace UtahPlanners.Infrastructure.UnitOfWork
 
         #region IUnitOfWork Members
 
+        #region Finders
+        
         public IPropertyFinder CreatePropertyFinder()
         {
             return new PropertyFinder(_context);
@@ -38,15 +40,21 @@ namespace UtahPlanners.Infrastructure.UnitOfWork
             return new PictureFinder(_context.Pictures);
         }
 
-        public IPropertyRepository CreatePropertyRepository(IConfigSettings settings)
+        #endregion
+
+        #region Repositories
+        
+        public IPropertyRepository CreatePropertyRepository()
         {
-            return new PropertyRepository(_context, settings);
+            return new PropertyRepository(_context);
         }
 
         public IConfigRepository CreateConfigRepository()
         {
             return new ConfigRepository(_context);
         }
+
+        #endregion
 
         public void Commit()
         {

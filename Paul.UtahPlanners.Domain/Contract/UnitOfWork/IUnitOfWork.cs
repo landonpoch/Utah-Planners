@@ -16,7 +16,7 @@ namespace UtahPlanners.Domain.Contract.UnitOfWork
         IPictureFinder CreatePictureFinder();
 
         // Command Model
-        IPropertyRepository CreatePropertyRepository(IConfigSettings settings);
+        IPropertyRepository CreatePropertyRepository();
         IConfigRepository CreateConfigRepository();
         
         void Commit();
