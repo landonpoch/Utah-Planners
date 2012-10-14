@@ -171,57 +171,82 @@ namespace Paul.UtahPlanners.Application
 
         public bool DeleteProperty(int propertyId)
         {
-            bool result = false;
-            try
+            string message = "An error occurred while deleting the property";
+            return CommandWrapper(message, (IUnitOfWork unit) =>
             {
-                using (var unit = _factory.CreateUnitOfWork())
-                {
-                    var repo = unit.CreatePropertyRepository();
-                    var property = repo.Get(propertyId);
-                    repo.Remove(property);
-                    unit.Commit();
-                    result = true;
-                }
-            }
-            catch (Exception e)
-            {
-                _logger.Warning("An error occurred while deleting the property", e);
-            }
-            return result;
+                var repo = unit.CreatePropertyRepository();
+                var property = repo.Get(propertyId);
+                repo.Remove(property);
+            });
         }
 
         public bool CreateLookupType(LookupType lookupType, string value)
         {
-            bool result = false;
-            try
+            string message = "An error occured while trying to create a new lookup type";
+            return CommandWrapper(message, (IUnitOfWork unit) =>
             {
-                using (var unit = _factory.CreateUnitOfWork())
+                switch (lookupType)
                 {
-                    switch (lookupType)
-                    {
-                        case LookupType.PropertyType:
-                            var propTypeRepo = unit.CreateLookupRepository<PropertyType>();
-                            propTypeRepo.AddLookupValue(new PropertyType { description = value });
-                            break;
-                        case LookupType.StreetType:
-                            var streetTypeRepo = unit.CreateLookupRepository<StreetType>();
-                            streetTypeRepo.AddLookupValue(new StreetType { description = value });
-                            break;
-                        case LookupType.SocioEconType:
-                            var socioEconRepo = unit.CreateLookupRepository<SocioEconCode>();
-                            socioEconRepo.AddLookupValue(new SocioEconCode { description = value });
-                            break;
-                    }
-
-                    unit.Commit();
-                    result = true;
+                    case LookupType.PropertyType:
+                        var propTypeRepo = unit.CreateLookupRepository<PropertyType>();
+                        propTypeRepo.AddLookupValue(new PropertyType { description = value });
+                        break;
+                    case LookupType.StreetType:
+                        var streetTypeRepo = unit.CreateLookupRepository<StreetType>();
+                        streetTypeRepo.AddLookupValue(new StreetType { description = value });
+                        break;
+                    case LookupType.SocioEconType:
+                        var socioEconRepo = unit.CreateLookupRepository<SocioEconCode>();
+                        socioEconRepo.AddLookupValue(new SocioEconCode { description = value });
+                        break;
                 }
-            }
-            catch (Exception e)
+            });
+        }
+
+        public bool ModifyLookupType(LookupType lookupType, int id, string value)
+        {
+            string message = "An error occured while modifying the lookup type.";
+            return CommandWrapper(message, (IUnitOfWork unit) =>
+            { 
+                switch (lookupType)
+                {
+                    case LookupType.PropertyType:
+                        var propTypeRepo = unit.CreateLookupRepository<PropertyType>();
+                        propTypeRepo.GetLookupValue(id).description = value;
+                        break;
+                    case LookupType.StreetType:
+                        var streetTypeRepo = unit.CreateLookupRepository<StreetType>();
+                        streetTypeRepo.GetLookupValue(id).description = value;
+                        break;
+                    case LookupType.SocioEconType:
+                        var socioEconRepo = unit.CreateLookupRepository<SocioEconCode>();
+                        socioEconRepo.GetLookupValue(id).description = value;
+                        break;
+                }
+            });
+        }
+
+        public bool DeleteLookupType(LookupType lookupType, int id)
+        {
+            string message = "An error occured while trying to delete the lookup type.";
+            return CommandWrapper(message, (IUnitOfWork unit) =>
             {
-                _logger.Warning("An error occured while trying to create a new lookup type", e);
-            }
-            return result;
+                switch (lookupType)
+                {
+                    case LookupType.PropertyType:
+                        var propTypeRepo = unit.CreateLookupRepository<PropertyType>();
+                        propTypeRepo.RemoveLookupValue(id);
+                        break;
+                    case LookupType.StreetType:
+                        var streetTypeRepo = unit.CreateLookupRepository<StreetType>();
+                        streetTypeRepo.RemoveLookupValue(id);
+                        break;
+                    case LookupType.SocioEconType:
+                        var socioEconRepo = unit.CreateLookupRepository<SocioEconCode>();
+                        socioEconRepo.RemoveLookupValue(id);
+                        break;
+                }
+            });
         }
 
         #endregion
@@ -263,6 +288,23 @@ namespace Paul.UtahPlanners.Application
             ctxProp.notFinished = dtoProp.notFinished;
         }
 
-
+        private bool CommandWrapper(string errorMessage, Action<IUnitOfWork> action)
+        {
+            bool result = false;
+            try
+            {
+                using (var unit = _factory.CreateUnitOfWork())
+                {
+                    action.Invoke(unit);
+                    unit.Commit();
+                    result = true;
+                }
+            }
+            catch (Exception e)
+            {
+                _logger.Warning(errorMessage, e);
+            }
+            return result;
+        }
     }
 }

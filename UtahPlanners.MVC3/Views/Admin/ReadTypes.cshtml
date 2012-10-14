@@ -5,13 +5,25 @@
     Layout = "~/Views/Shared/_LayoutNoLeftNav.cshtml";
 }
 
+@section Scripts
+{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('td>a[data-delete]').click(function (event) {
+                event.preventDefault();
+                $('#SelectedId').val($(this).attr('data-delete'));
+                
+            });
+        });
+    </script>
+}
+
 @using (Html.BeginForm("ReadTypes", "Admin", FormMethod.Post))
 { 
-
     @Html.DropDownListFor(m => m.SelectedType, Model.TypeEnums)<br /><br />
     <input type="submit" value="Select Different Type" /><br /><br />
     
-    <div>
+    <div id="lookupTypes">
 	    <table cellspacing="0" rules="all" border="1" style="border-collapse:collapse;">
 		    <thead>
                 <tr><th></th><th></th><th>Description</th></tr>
@@ -20,12 +32,13 @@
                 @foreach (var pair in Model.KeyValuePairs)
                 { 
                     <tr>
-			            <td><a href="#">Edit</a></td>
-                        <td><a href="#">Delete</a></td>
+			            <td><a href="#" data-modify="@pair.Key">Edit</a></td>
+                        <td><a href="#" data-delete="@pair.Key">Delete</a></td>
                         <td>@pair.Value</td>
 		            </tr>
                 }
 	        </tbody>
         </table>
+        @Html.HiddenFor(m => m.SelectedId)
     </div>
 }

@@ -102,6 +102,18 @@
   <wsdl:message name="IPropertyService_CreateLookupType_OutputMessage">
     <wsdl:part name="parameters" element="tns:CreateLookupTypeResponse" />
   </wsdl:message>
+  <wsdl:message name="IPropertyService_ModifyLookupType_InputMessage">
+    <wsdl:part name="parameters" element="tns:ModifyLookupType" />
+  </wsdl:message>
+  <wsdl:message name="IPropertyService_ModifyLookupType_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ModifyLookupTypeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPropertyService_DeleteLookupType_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteLookupType" />
+  </wsdl:message>
+  <wsdl:message name="IPropertyService_DeleteLookupType_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteLookupTypeResponse" />
+  </wsdl:message>
   <wsdl:portType name="IPropertyService">
     <wsdl:operation name="GetData">
       <wsdl:input wsaw:Action="http://tempuri.org/IPropertyService/GetData" message="tns:IPropertyService_GetData_InputMessage" />
@@ -158,6 +170,14 @@
     <wsdl:operation name="CreateLookupType">
       <wsdl:input wsaw:Action="http://tempuri.org/IPropertyService/CreateLookupType" message="tns:IPropertyService_CreateLookupType_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IPropertyService/CreateLookupTypeResponse" message="tns:IPropertyService_CreateLookupType_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ModifyLookupType">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPropertyService/ModifyLookupType" message="tns:IPropertyService_ModifyLookupType_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPropertyService/ModifyLookupTypeResponse" message="tns:IPropertyService_ModifyLookupType_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteLookupType">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPropertyService/DeleteLookupType" message="tns:IPropertyService_DeleteLookupType_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPropertyService/DeleteLookupTypeResponse" message="tns:IPropertyService_DeleteLookupType_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="WSHttpBinding_IPropertyService" type="tns:IPropertyService">
@@ -282,6 +302,24 @@
     </wsdl:operation>
     <wsdl:operation name="CreateLookupType">
       <soap12:operation soapAction="http://tempuri.org/IPropertyService/CreateLookupType" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ModifyLookupType">
+      <soap12:operation soapAction="http://tempuri.org/IPropertyService/ModifyLookupType" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteLookupType">
+      <soap12:operation soapAction="http://tempuri.org/IPropertyService/DeleteLookupType" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

@@ -10,5 +10,6 @@ namespace UtahPlanners.Domain.Contract.Repository
         TEntity GetLookupValue(int id);
         List<TEntity> GetAllLookupValues();
         void AddLookupValue(TEntity lookupValue);
+        void RemoveLookupValue(int id);
     }
 }

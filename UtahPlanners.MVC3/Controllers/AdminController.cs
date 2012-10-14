@@ -174,12 +174,23 @@ namespace UtahPlanners.MVC3.Controllers
         [HttpPost]
         public ActionResult ModifyType(ReadTypeModel model)
         {
+            using (var client = _factory.CreatePropertyServiceProxy())
+            {
+                PropertyService.LookupType lookupType = (PropertyService.LookupType)model.SelectedType;
+                //client.ModifyLookupType(lookupType, )
+            }
             return RedirectToAction("ReadTypes");
         }
 
         [HttpPost]
         public ActionResult DeleteType(ReadTypeModel model)
         {
+            using (var client = _factory.CreatePropertyServiceProxy())
+            {
+                PropertyService.LookupType lookupType = (PropertyService.LookupType)model.SelectedType;
+
+                //client.DeleteLookupType(lookupType, model.SelectedId);
+            }
             return RedirectToAction("ReadTypes");
         }
 

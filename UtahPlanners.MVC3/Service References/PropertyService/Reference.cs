@@ -3841,6 +3841,12 @@ namespace UtahPlanners.MVC3.PropertyService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPropertyService/CreateLookupType", ReplyAction="http://tempuri.org/IPropertyService/CreateLookupTypeResponse")]
         bool CreateLookupType(UtahPlanners.MVC3.PropertyService.LookupType lookupType, string value);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPropertyService/ModifyLookupType", ReplyAction="http://tempuri.org/IPropertyService/ModifyLookupTypeResponse")]
+        bool ModifyLookupType(UtahPlanners.MVC3.PropertyService.LookupType lookupType, int id, string value);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPropertyService/DeleteLookupType", ReplyAction="http://tempuri.org/IPropertyService/DeleteLookupTypeResponse")]
+        bool DeleteLookupType(UtahPlanners.MVC3.PropertyService.LookupType lookupType, int id);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -3924,6 +3930,14 @@ namespace UtahPlanners.MVC3.PropertyService {
         
         public bool CreateLookupType(UtahPlanners.MVC3.PropertyService.LookupType lookupType, string value) {
             return base.Channel.CreateLookupType(lookupType, value);
+        }
+        
+        public bool ModifyLookupType(UtahPlanners.MVC3.PropertyService.LookupType lookupType, int id, string value) {
+            return base.Channel.ModifyLookupType(lookupType, id, value);
+        }
+        
+        public bool DeleteLookupType(UtahPlanners.MVC3.PropertyService.LookupType lookupType, int id) {
+            return base.Channel.DeleteLookupType(lookupType, id);
         }
     }
 }

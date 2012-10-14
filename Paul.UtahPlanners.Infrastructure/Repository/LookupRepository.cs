@@ -34,6 +34,11 @@ namespace UtahPlanners.Infrastructure.Repository
             _context.Set<TEntity>().Add(lookupValue);
         }
 
+        public void RemoveLookupValue(int id)
+        {
+            _context.Set<TEntity>().Remove(GetLookupValue(id));
+        }
+
         #endregion
     }
 }

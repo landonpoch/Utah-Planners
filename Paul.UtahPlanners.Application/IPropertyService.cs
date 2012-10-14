@@ -50,6 +50,12 @@ namespace Paul.UtahPlanners.Application
 
         [OperationContract]
         bool CreateLookupType(LookupType lookupType, string value);
+
+        [OperationContract]
+        bool ModifyLookupType(LookupType lookupType, int id, string value);
+
+        [OperationContract]
+        bool DeleteLookupType(LookupType lookupType, int id);
     }
 
 

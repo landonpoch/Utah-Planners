@@ -18,5 +18,7 @@ namespace UtahPlanners.MVC3.Models.Admin
         }
         public int SelectedType { get; set; }
         public Dictionary<int, string> KeyValuePairs { get; set; }
+        public int? SelectedId { get; set; }
+        public string Description { get; set; }
     }
 }
