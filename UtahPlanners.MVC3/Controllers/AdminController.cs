@@ -172,14 +172,18 @@ namespace UtahPlanners.MVC3.Controllers
         }
 
         [HttpPost]
-        public ActionResult ModifyType(ReadTypeModel model)
+        public string ModifyType(ReadTypeModel model)
         {
             using (var client = _factory.CreatePropertyServiceProxy())
             {
-                PropertyService.LookupType lookupType = (PropertyService.LookupType)model.SelectedType;
-                //client.ModifyLookupType(lookupType, )
+                if (model.SelectedId.HasValue)
+                {
+                    PropertyService.LookupType lookupType = (PropertyService.LookupType)model.SelectedType;
+                    client.ModifyLookupType(lookupType, model.SelectedId.Value, model.Description);
+                }
             }
-            return RedirectToAction("ReadTypes");
+            //return RedirectToAction("ReadTypes");
+            return String.Empty;
         }
 
         [HttpPost]
@@ -187,9 +191,11 @@ namespace UtahPlanners.MVC3.Controllers
         {
             using (var client = _factory.CreatePropertyServiceProxy())
             {
-                PropertyService.LookupType lookupType = (PropertyService.LookupType)model.SelectedType;
-
-                //client.DeleteLookupType(lookupType, model.SelectedId);
+                if (model.SelectedId.HasValue)
+                {
+                    PropertyService.LookupType lookupType = (PropertyService.LookupType)model.SelectedType;
+                    client.DeleteLookupType(lookupType, model.SelectedId.Value);
+                }
             }
             return RedirectToAction("ReadTypes");
         }
@@ -205,7 +211,15 @@ namespace UtahPlanners.MVC3.Controllers
 
         public ActionResult ReadCodes()
         {
-            return View();
+            using (var client = _factory.CreatePropertyServiceProxy())
+            {
+                var test = client.GetLookupCodes(PropertyService.LookupCode.CommonCode);
+                
+                // TODO: find out if there is something neater than tuples (they don't seem as good as python tuples at first glance)
+                var description = test[0].Item1;
+                var weight = test[0].Item2;
+                return View();
+            }
         }
 
         #endregion

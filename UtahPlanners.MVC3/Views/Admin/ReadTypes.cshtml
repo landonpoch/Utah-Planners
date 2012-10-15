@@ -8,11 +8,56 @@
 {
     <script type="text/javascript">
         $(document).ready(function () {
-            $('td>a[data-delete]').click(function (event) {
-                event.preventDefault();
-                $('#SelectedId').val($(this).attr('data-delete'));
-                
+
+            $('td>a[data-command=submit]').click(function (event) {
+                var row = initializeCommand(this, event);
+                $.ajax({
+                    url: 'ModifyType',
+                    type: 'post',
+                    data: $('form').serializeArray(),
+                    success: function (response, status, jqXHR) {
+                        console.log('success');
+                    },
+                    error: function (jqXHR, status, error) {
+                        console.log('error');
+                        console.log(error);
+                    },
+                    complete: function () {
+                        console.log('complete');
+                    }
+                });
             });
+
+            $('td>a[data-command=delete]').click(function (event) {
+                var row = initializeCommand(this, event);
+                if (confirm('Are you sure you want to delete this item?')) {
+                    alert('// TODO: DELETE');
+                }
+            });
+
+            $('td>a[data-command=modify]').click(function (event) {
+                var row = initializeCommand(this, event);
+                toggleRow(row);
+            });
+
+            $('td>a[data-command=cancel]').click(function (event) {
+                var row = initializeCommand(this, event);
+                toggleRow(row);
+            });
+
+            function toggleRow(row) {
+                row.find('td').children().each(function () {
+                    $(this).toggle();
+                });
+            }
+
+            function initializeCommand(linkClicked, event) {
+                event.preventDefault();
+                var key = $(linkClicked).parent().parent().attr('data-key');
+                $('#SelectedId').val(key);
+                var row = $('tr[data-key=' + key + ']');
+                return row;
+            }
         });
     </script>
 }
@@ -30,10 +75,21 @@
             <tbody>
                 @foreach (var pair in Model.KeyValuePairs)
                 { 
-                    <tr>
-			            <td><a href="#" data-modify="@pair.Key">Edit</a></td>
-                        <td><a href="#" data-delete="@pair.Key">Delete</a></td>
-                        <td>@pair.Value</td>
+                    <tr data-key="@pair.Key">
+                        <td>
+                        <a href="#" data-command="modify">Edit</a>
+                        <a href="#" data-command="submit" style="display: none;">Save</a>
+                        </td>
+                        
+                        <td>
+                        <a href="#" data-command="delete">Delete</a>
+                        <a href="#" data-command="cancel" style="display: none;">Cancel</a>
+                        </td>
+                        
+                        <td>
+                        <span>@pair.Value</span>
+                        <input type="text" style="display: none;" value="@pair.Value" name="Description" />
+                        </td>
 		            </tr>
                 }
 	        </tbody>
