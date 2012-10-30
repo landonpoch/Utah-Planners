@@ -1,5 +1,5 @@
-Project: UtahPlanners.com
-Website: www.utahplanners.com
+Project: UtahPlanners.com  
+Website: www.utahplanners.com  
 Author: Landon Poch
 
 UtahPlanners is an old school project that I wrote while
