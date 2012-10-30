@@ -81,7 +81,9 @@
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="Models\Admin\CreateCodeModel.cs" />
     <Compile Include="Models\Admin\CreateTypeModel.cs" />
+    <Compile Include="Models\Admin\ReadCodeModel.cs" />
     <Compile Include="Models\Admin\ReadTypeModel.cs" />
     <Compile Include="Presentation\Constants.cs" />
     <Compile Include="Presentation\HelperExtensions.cs" />

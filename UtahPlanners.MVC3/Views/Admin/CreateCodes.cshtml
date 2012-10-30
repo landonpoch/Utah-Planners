@@ -1,24 +1,23 @@
-﻿@{
+﻿@using UtahPlanners.MVC3.Models.Admin;
+@model CreateCodeModel
+@{
     ViewBag.Title = "CreateCodes";
     Layout = "~/Views/Shared/_LayoutNoLeftNav.cshtml";
 }
-                        
+       
+@using (Html.BeginForm("CreateCodes", "Admin", FormMethod.Post))
+{
+    
     <label for="codes" class="builddetail">Codes:</label>
-    <select name="ctl00$ContentPlaceHolder1$DropDownList1" id="ctl00_ContentPlaceHolder1_DropDownList1">
-	<option value="Common Codes">Common Codes</option>
-	<option value="Enclosure Codes">Enclosure Codes</option>
-	<option value="Neighborhood Codes">Neighborhood Codes</option>
-	<option value="Streetconn Codes">Streetconn Codes</option>
-	<option value="Street Saftey Codes">Street Saftey Codes</option>
-	<option value="Streetwalk Codes">Streetwalk Codes</option>
-
-</select><br>
+    @Html.DropDownListFor(m => m.SelectedCode, Model.CodeEnums)<br />
     
     <label for="desc" class="builddetail">Description:</label>
-    <input name="ctl00$ContentPlaceHolder1$desc" type="text" id="ctl00_ContentPlaceHolder1_desc"><br>
+    @Html.TextBoxFor(m => m.CodeDescription)<br />
     
     <label for="weigh" class="builddetail">Weight:</label>
-    <input name="ctl00$ContentPlaceHolder1$weigh" type="text" id="ctl00_ContentPlaceHolder1_weigh"><br>
+    @Html.TextBoxFor(m => m.Weight)<br />
     
     <label for="Button1" class="builddetail">&nbsp;</label>
-    <input type="submit" name="ctl00$ContentPlaceHolder1$Button1" value="Submit" id="ctl00_ContentPlaceHolder1_Button1">
+    <input type="submit" name="ctl00$ContentPlaceHolder1$Button1" value="Submit" id="ctl00_ContentPlaceHolder1_Button1" />
+
+}

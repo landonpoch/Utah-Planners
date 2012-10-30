@@ -174,16 +174,18 @@ namespace UtahPlanners.MVC3.Controllers
         [HttpPost]
         public string ModifyType(ReadTypeModel model)
         {
+            var result = "An error occured while submitting your request"; // Default response
             using (var client = _factory.CreatePropertyServiceProxy())
             {
                 if (model.SelectedId.HasValue)
                 {
                     PropertyService.LookupType lookupType = (PropertyService.LookupType)model.SelectedType;
-                    client.ModifyLookupType(lookupType, model.SelectedId.Value, model.Description);
+                    bool wasSuccessful = client.ModifyLookupType(lookupType, model.SelectedId.Value, model.Description);
+                    if (wasSuccessful) // Successful response
+                        result = "Successfully submitted your request";
                 }
             }
-            //return RedirectToAction("ReadTypes");
-            return String.Empty;
+            return result;
         }
 
         [HttpPost]
@@ -206,20 +208,72 @@ namespace UtahPlanners.MVC3.Controllers
         
         public ActionResult CreateCodes()
         {
-            return View();
+            return View(new CreateCodeModel());
+        }
+
+        [HttpPost]
+        public ActionResult CreateCodes(CreateCodeModel model)
+        {
+            using (var client = _factory.CreatePropertyServiceProxy())
+            {
+                var lookupCode = (PropertyService.LookupCode)model.SelectedCode;
+                bool result = client.CreateLookupCode(lookupCode, model.CodeDescription, model.Weight.Value);
+            }
+            return RedirectToAction("CreateCodes");
         }
 
         public ActionResult ReadCodes()
         {
             using (var client = _factory.CreatePropertyServiceProxy())
             {
-                var test = client.GetLookupCodes(PropertyService.LookupCode.CommonCode);
-                
-                // TODO: find out if there is something neater than tuples (they don't seem as good as python tuples at first glance)
-                var description = test[0].Item1;
-                var weight = test[0].Item2;
-                return View();
+                var model = new ReadCodeModel
+                {
+                    SelectedCode = 0,
+                    CodeData = client.GetLookupCodes(PropertyService.LookupCode.CommonCode)
+                };
+                return View(model);
             }
+        }
+
+        [HttpPost]
+        public ActionResult ReadCodes(ReadCodeModel model)
+        {
+            using (var client = _factory.CreatePropertyServiceProxy())
+            {
+                model.CodeData = client.GetLookupCodes((PropertyService.LookupCode)model.SelectedCode);
+                return View(model);
+            }
+        }
+
+        [HttpPost]
+        public string ModifyCode(ReadCodeModel model)
+        {
+            var result = "An error occured while submitting your request"; // Default response
+            using (var client = _factory.CreatePropertyServiceProxy())
+            {
+                if (model.SelectedId.HasValue)
+                {
+                    PropertyService.LookupCode lookupCode = (PropertyService.LookupCode)model.SelectedCode;
+                    bool wasSuccessful = client.ModifyLookupCode(lookupCode, model.SelectedId.Value, model.Description, model.Weight);
+                    if (wasSuccessful) // Successful response
+                        result = "Successfully submitted your request";
+                }
+            }
+            return result;
+        }
+
+        [HttpPost]
+        public ActionResult DeleteCode(ReadCodeModel model)
+        {
+            using (var client = _factory.CreatePropertyServiceProxy())
+            {
+                if (model.SelectedId.HasValue)
+                {
+                    PropertyService.LookupCode lookupCode = (PropertyService.LookupCode)model.SelectedCode;
+                    client.DeleteLookupCode(lookupCode, model.SelectedId.Value);
+                }
+            }
+            return RedirectToAction("ReadCodes");
         }
 
         #endregion

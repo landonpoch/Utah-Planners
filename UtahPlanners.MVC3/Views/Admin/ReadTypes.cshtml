@@ -16,14 +16,13 @@
                     type: 'post',
                     data: $('form').serializeArray(),
                     success: function (response, status, jqXHR) {
-                        console.log('success');
+                        $('#result').text(response);
                     },
                     error: function (jqXHR, status, error) {
-                        console.log('error');
-                        console.log(error);
+                        $('#result').text('An error occured while submitting your request');
                     },
-                    complete: function () {
-                        console.log('complete');
+                    complete: function (jqXHR, status, error) {
+                        toggleRow(row);
                     }
                 });
             });
@@ -61,6 +60,8 @@
         });
     </script>
 }
+
+<span id="result"></span>
 
 @using (Html.BeginForm("ReadTypes", "Admin", FormMethod.Post))
 { 
