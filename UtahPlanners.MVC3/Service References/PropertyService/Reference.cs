@@ -3819,6 +3819,195 @@ namespace UtahPlanners.MVC3.PropertyService {
         StreetWalkCode = 5,
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Weight", Namespace="http://schemas.datacontract.org/2004/07/UtahPlanners.Domain.Entity", IsReference=true)]
+    [System.SerializableAttribute()]
+    public partial class Weight : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<int> buildingEnclosureField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<int> commonAreasField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int idField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<int> neighConditionField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<int> streetConnField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<int> streetSafteyField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<int> streetWalkField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<int> twoFiftyAptsField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<int> twoFiftySingleFamField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<int> walkscoreField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<int> buildingEnclosure {
+            get {
+                return this.buildingEnclosureField;
+            }
+            set {
+                if ((this.buildingEnclosureField.Equals(value) != true)) {
+                    this.buildingEnclosureField = value;
+                    this.RaisePropertyChanged("buildingEnclosure");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<int> commonAreas {
+            get {
+                return this.commonAreasField;
+            }
+            set {
+                if ((this.commonAreasField.Equals(value) != true)) {
+                    this.commonAreasField = value;
+                    this.RaisePropertyChanged("commonAreas");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int id {
+            get {
+                return this.idField;
+            }
+            set {
+                if ((this.idField.Equals(value) != true)) {
+                    this.idField = value;
+                    this.RaisePropertyChanged("id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<int> neighCondition {
+            get {
+                return this.neighConditionField;
+            }
+            set {
+                if ((this.neighConditionField.Equals(value) != true)) {
+                    this.neighConditionField = value;
+                    this.RaisePropertyChanged("neighCondition");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<int> streetConn {
+            get {
+                return this.streetConnField;
+            }
+            set {
+                if ((this.streetConnField.Equals(value) != true)) {
+                    this.streetConnField = value;
+                    this.RaisePropertyChanged("streetConn");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<int> streetSaftey {
+            get {
+                return this.streetSafteyField;
+            }
+            set {
+                if ((this.streetSafteyField.Equals(value) != true)) {
+                    this.streetSafteyField = value;
+                    this.RaisePropertyChanged("streetSaftey");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<int> streetWalk {
+            get {
+                return this.streetWalkField;
+            }
+            set {
+                if ((this.streetWalkField.Equals(value) != true)) {
+                    this.streetWalkField = value;
+                    this.RaisePropertyChanged("streetWalk");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<int> twoFiftyApts {
+            get {
+                return this.twoFiftyAptsField;
+            }
+            set {
+                if ((this.twoFiftyAptsField.Equals(value) != true)) {
+                    this.twoFiftyAptsField = value;
+                    this.RaisePropertyChanged("twoFiftyApts");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<int> twoFiftySingleFam {
+            get {
+                return this.twoFiftySingleFamField;
+            }
+            set {
+                if ((this.twoFiftySingleFamField.Equals(value) != true)) {
+                    this.twoFiftySingleFamField = value;
+                    this.RaisePropertyChanged("twoFiftySingleFam");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<int> walkscore {
+            get {
+                return this.walkscoreField;
+            }
+            set {
+                if ((this.walkscoreField.Equals(value) != true)) {
+                    this.walkscoreField = value;
+                    this.RaisePropertyChanged("walkscore");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="PropertyService.IPropertyService")]
     public interface IPropertyService {
@@ -3859,6 +4048,9 @@ namespace UtahPlanners.MVC3.PropertyService {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPropertyService/GetLookupCodes", ReplyAction="http://tempuri.org/IPropertyService/GetLookupCodesResponse")]
         System.Collections.Generic.Dictionary<int, System.Tuple<string, int>> GetLookupCodes(UtahPlanners.MVC3.PropertyService.LookupCode lookupCode);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPropertyService/GetWeights", ReplyAction="http://tempuri.org/IPropertyService/GetWeightsResponse")]
+        UtahPlanners.MVC3.PropertyService.Weight GetWeights();
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPropertyService/SaveProperty", ReplyAction="http://tempuri.org/IPropertyService/SavePropertyResponse")]
         int SaveProperty(UtahPlanners.MVC3.PropertyService.Property property);
         
@@ -3882,6 +4074,9 @@ namespace UtahPlanners.MVC3.PropertyService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPropertyService/DeleteLookupCode", ReplyAction="http://tempuri.org/IPropertyService/DeleteLookupCodeResponse")]
         bool DeleteLookupCode(UtahPlanners.MVC3.PropertyService.LookupCode lookupCode, int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPropertyService/UpdateWeights", ReplyAction="http://tempuri.org/IPropertyService/UpdateWeightsResponse")]
+        bool UpdateWeights(UtahPlanners.MVC3.PropertyService.Weight weights);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -3959,6 +4154,10 @@ namespace UtahPlanners.MVC3.PropertyService {
             return base.Channel.GetLookupCodes(lookupCode);
         }
         
+        public UtahPlanners.MVC3.PropertyService.Weight GetWeights() {
+            return base.Channel.GetWeights();
+        }
+        
         public int SaveProperty(UtahPlanners.MVC3.PropertyService.Property property) {
             return base.Channel.SaveProperty(property);
         }
@@ -3989,6 +4188,10 @@ namespace UtahPlanners.MVC3.PropertyService {
         
         public bool DeleteLookupCode(UtahPlanners.MVC3.PropertyService.LookupCode lookupCode, int id) {
             return base.Channel.DeleteLookupCode(lookupCode, id);
+        }
+        
+        public bool UpdateWeights(UtahPlanners.MVC3.PropertyService.Weight weights) {
+            return base.Channel.UpdateWeights(weights);
         }
     }
 }

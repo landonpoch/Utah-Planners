@@ -8,7 +8,7 @@ namespace UtahPlanners.Domain.Contract.Service
 {
     public interface IConfigSettings
     {
-        Weight Weights { get; }
+        Weight Weights { get; set; }
         void ReloadWeights();
 
         LookupValues LookupValues { get; }

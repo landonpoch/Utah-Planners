@@ -16,9 +16,9 @@ namespace UtahPlanners.MVC3.Models.Admin
                 return new SelectList(Constants.LookupTypesDictionary, "Key", "Value");
             }
         }
-        public int SelectedType { get; set; }
         public Dictionary<int, string> KeyValuePairs { get; set; }
+        
+        public int SelectedType { get; set; }
         public int? SelectedId { get; set; }
-        public string Description { get; set; }
     }
 }

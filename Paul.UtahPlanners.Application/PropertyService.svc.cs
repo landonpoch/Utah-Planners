@@ -175,6 +175,11 @@ namespace Paul.UtahPlanners.Application
             }
         }
 
+        public Weight GetWeights()
+        {
+            return _settings.Weights;
+        }
+
         #endregion
 
         // TODO: Refactor to use commands
@@ -370,10 +375,26 @@ namespace Paul.UtahPlanners.Application
             });
         }
 
+        public bool UpdateWeights(Weight weights)
+        {
+            bool result = false;
+            try
+            {
+                _settings.Weights = weights;
+            }
+            catch (Exception e)
+            {
+                _logger.Error("An error occured while trying to update weights", e);
+            }
+            return result;
+        }
+
         #endregion
         
         #endregion
 
+        #region Private Methods
+        
         private void UpdateProperty(Property ctxProp, Property dtoProp)
         {
             // Map address attributes
@@ -472,5 +493,7 @@ namespace Paul.UtahPlanners.Application
             var repo = unit.CreateLookupValueRepository<T>();
             return repo.GetAllLookupValues();
         }
+
+        #endregion
     }
 }

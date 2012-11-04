@@ -279,6 +279,9 @@
     <None Include="Service References\PropertyService\UtahPlanners.MVC3.PropertyService.UserPropertyDTO.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Service References\PropertyService\UtahPlanners.MVC3.PropertyService.Weight.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Service References\UserService\UserService.disco" />
     <None Include="Service References\UserService\configuration91.svcinfo" />
     <None Include="Service References\UserService\configuration.svcinfo" />
@@ -286,6 +289,7 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
+    <Content Include="Scripts\Custom\utahplanners.lookupvalues.js" />
     <Content Include="Scripts\Custom\utahplanners.propertylist.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">

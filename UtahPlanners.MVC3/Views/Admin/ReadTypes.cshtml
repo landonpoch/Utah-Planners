@@ -6,58 +6,11 @@
 
 @section Scripts
 {
+    <script type="text/javascript" src="../../Scripts/Custom/utahplanners.lookupvalues.js"></script>
     <script type="text/javascript">
-        $(document).ready(function () {
-
-            $('td>a[data-command=submit]').click(function (event) {
-                var row = initializeCommand(this, event);
-                $.ajax({
-                    url: 'ModifyType',
-                    type: 'post',
-                    data: $('form').serializeArray(),
-                    success: function (response, status, jqXHR) {
-                        $('#result').text(response);
-                    },
-                    error: function (jqXHR, status, error) {
-                        $('#result').text('An error occured while submitting your request');
-                    },
-                    complete: function (jqXHR, status, error) {
-                        toggleRow(row);
-                    }
-                });
-            });
-
-            $('td>a[data-command=delete]').click(function (event) {
-                var row = initializeCommand(this, event);
-                if (confirm('Are you sure you want to delete this item?')) {
-                    alert('// TODO: DELETE');
-                }
-            });
-
-            $('td>a[data-command=modify]').click(function (event) {
-                var row = initializeCommand(this, event);
-                toggleRow(row);
-            });
-
-            $('td>a[data-command=cancel]').click(function (event) {
-                var row = initializeCommand(this, event);
-                toggleRow(row);
-            });
-
-            function toggleRow(row) {
-                row.find('td').children().each(function () {
-                    $(this).toggle();
-                });
-            }
-
-            function initializeCommand(linkClicked, event) {
-                event.preventDefault();
-                var key = $(linkClicked).parent().parent().attr('data-key');
-                $('#SelectedId').val(key);
-                var row = $('tr[data-key=' + key + ']');
-                return row;
-            }
-        });
+        function updateSuccessful(row) {
+            setColumnValues(row, 'description');
+        }
     </script>
 }
 
@@ -71,12 +24,17 @@
     <div id="lookupTypes">
 	    <table cellspacing="0" rules="all" border="1" style="border-collapse:collapse;">
 		    <thead>
-                <tr><th></th><th></th><th>Description</th></tr>
+                <tr>
+                <th></th>
+                <th></th>
+                <th>Description</th>
+                </tr>
             </thead>
             <tbody>
-                @foreach (var pair in Model.KeyValuePairs)
-                { 
-                    <tr data-key="@pair.Key">
+                @{int i = 0;}
+                @foreach (var kvp in Model.KeyValuePairs)
+                {
+                    <tr data-key="@kvp.Key">
                         <td>
                         <a href="#" data-command="modify">Edit</a>
                         <a href="#" data-command="submit" style="display: none;">Save</a>
@@ -87,11 +45,14 @@
                         <a href="#" data-command="cancel" style="display: none;">Cancel</a>
                         </td>
                         
-                        <td>
-                        <span>@pair.Value</span>
-                        <input type="text" style="display: none;" value="@pair.Value" name="Description" />
+                        <td data-column="description">
+                        <span>@kvp.Value</span>
+                        @*Did this instead of an editor template just to experiment*@
+                        <input type="hidden" name="KeyValuePairs[@i].Key" value="@kvp.Key" />
+                        <input type="text" name="KeyValuePairs[@i].Value" value="@kvp.Value" style="display: none;" />
                         </td>
 		            </tr>
+                    i++;
                 }
 	        </tbody>
         </table>

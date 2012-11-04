@@ -47,6 +47,9 @@ namespace Paul.UtahPlanners.Application
         Dictionary<int, Tuple<string, int>> GetLookupCodes(LookupCode lookupCode);
 
         [OperationContract]
+        Weight GetWeights();
+
+        [OperationContract]
         int SaveProperty(Property property);
 
         [OperationContract]
@@ -69,6 +72,9 @@ namespace Paul.UtahPlanners.Application
 
         [OperationContract]
         bool DeleteLookupCode(LookupCode lookupCode, int id);
+
+        [OperationContract]
+        bool UpdateWeights(Weight weights);
     }
 
 

@@ -9,6 +9,9 @@ namespace UtahPlanners.MVC3.Models.Admin
 {
     public class ReadCodeModel
     {
+        public ReadCodeModel()
+        {}
+
         public SelectList CodeEnums
         {
             get
@@ -17,8 +20,12 @@ namespace UtahPlanners.MVC3.Models.Admin
             }
         }
         public int SelectedCode { get; set; }
-        public Dictionary<int, Tuple<string, int>> CodeData { get; set; }
+        public Dictionary<int, CodeDetails> CodeData { get; set; }
         public int? SelectedId { get; set; }
+    }
+
+    public class CodeDetails
+    {
         public string Description { get; set; }
         public int Weight { get; set; }
     }

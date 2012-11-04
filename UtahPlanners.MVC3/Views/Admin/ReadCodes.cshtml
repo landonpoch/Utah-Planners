@@ -7,10 +7,12 @@
 
 @section Scripts
 {
+    <script type="text/javascript" src="../../Scripts/Custom/utahplanners.lookupvalues.js"></script>
     <script type="text/javascript">
-        $(document).ready(function () {
-            // TODO: Get modifying javascripty stuff to work
-        });
+        function updateSuccessful(row) {
+            setColumnValues(row, 'description');
+            setColumnValues(row, 'weight');
+        }
     </script>
 }
 
@@ -25,23 +27,43 @@
 	    <table cellspacing="0" rules="all" border="1" id="ctl00_ContentPlaceHolder1_GridView1" style="border-collapse:collapse;">
 		    <thead>
                 <tr>
-			    <th scope="col">&nbsp;</th>
-                <th scope="col">&nbsp;</th>
-                <th scope="col">Description</th>
-                <th scope="col">Weight</th>
+			    <th></th>
+                <th></th>
+                <th>Description</th>
+                <th>Weight</th>
 		        </tr>
             </thead>
             <tbody>
-                @foreach (var code in Model.CodeData)
+                @{int i = 0;}
+                @foreach (var kvp in Model.CodeData)
                 { 
-                    <tr>
-			        <td><a href="#">Edit</a></td>
-                    <td><a href="#">Delete</a></td>
-                    <td>@code.Value.Item1</td>
-                    <td>@code.Value.Item2</td>
+                    <tr data-key="@kvp.Key">
+			        <td>
+                    <a href="#" data-command="modify">Edit</a>
+                    <a href="#" data-command="submit" style="display: none;">Save</a>
+                    </td>
+
+                    <td>
+                    <a href="#" data-command="delete">Delete</a>
+                    <a href="#" data-command="cancel" style="display: none;">Cancel</a>
+                    </td>
+                    
+                    <td data-column="description">
+                    <span>@kvp.Value.Description</span>
+                    @*Did this instead of an editor template just to experiment*@
+                    <input type="hidden" name="CodeData[@i].Key" value="@kvp.Key" />
+                    <input type="text" name="CodeData[@i].Value.Description" value="@kvp.Value.Description" style="display: none;" />
+                    </td>
+                    
+                    <td data-column="weight">
+                    <span>@kvp.Value.Weight</span>
+                    <input type="text" name="CodeData[@i].Value.Weight" value="@kvp.Value.Weight" style="display: none;" />
+                    </td>
 		            </tr>
+                    i++;
                 }
 	        </tbody>
         </table>
+        @Html.HiddenFor(m => m.SelectedId)
     </div>
 }

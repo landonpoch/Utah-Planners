@@ -91,6 +91,12 @@
   <wsdl:message name="IPropertyService_GetLookupCodes_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetLookupCodesResponse" />
   </wsdl:message>
+  <wsdl:message name="IPropertyService_GetWeights_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetWeights" />
+  </wsdl:message>
+  <wsdl:message name="IPropertyService_GetWeights_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetWeightsResponse" />
+  </wsdl:message>
   <wsdl:message name="IPropertyService_SaveProperty_InputMessage">
     <wsdl:part name="parameters" element="tns:SaveProperty" />
   </wsdl:message>
@@ -138,6 +144,12 @@
   </wsdl:message>
   <wsdl:message name="IPropertyService_DeleteLookupCode_OutputMessage">
     <wsdl:part name="parameters" element="tns:DeleteLookupCodeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPropertyService_UpdateWeights_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateWeights" />
+  </wsdl:message>
+  <wsdl:message name="IPropertyService_UpdateWeights_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateWeightsResponse" />
   </wsdl:message>
   <wsdl:portType name="IPropertyService">
     <wsdl:operation name="GetData">
@@ -188,6 +200,10 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IPropertyService/GetLookupCodes" message="tns:IPropertyService_GetLookupCodes_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IPropertyService/GetLookupCodesResponse" message="tns:IPropertyService_GetLookupCodes_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="GetWeights">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPropertyService/GetWeights" message="tns:IPropertyService_GetWeights_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPropertyService/GetWeightsResponse" message="tns:IPropertyService_GetWeights_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="SaveProperty">
       <wsdl:input wsaw:Action="http://tempuri.org/IPropertyService/SaveProperty" message="tns:IPropertyService_SaveProperty_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IPropertyService/SavePropertyResponse" message="tns:IPropertyService_SaveProperty_OutputMessage" />
@@ -219,6 +235,10 @@
     <wsdl:operation name="DeleteLookupCode">
       <wsdl:input wsaw:Action="http://tempuri.org/IPropertyService/DeleteLookupCode" message="tns:IPropertyService_DeleteLookupCode_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IPropertyService/DeleteLookupCodeResponse" message="tns:IPropertyService_DeleteLookupCode_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateWeights">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPropertyService/UpdateWeights" message="tns:IPropertyService_UpdateWeights_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPropertyService/UpdateWeightsResponse" message="tns:IPropertyService_UpdateWeights_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="WSHttpBinding_IPropertyService" type="tns:IPropertyService">
@@ -332,6 +352,15 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="GetWeights">
+      <soap12:operation soapAction="http://tempuri.org/IPropertyService/GetWeights" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="SaveProperty">
       <soap12:operation soapAction="http://tempuri.org/IPropertyService/SaveProperty" style="document" />
       <wsdl:input>
@@ -397,6 +426,15 @@
     </wsdl:operation>
     <wsdl:operation name="DeleteLookupCode">
       <soap12:operation soapAction="http://tempuri.org/IPropertyService/DeleteLookupCode" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateWeights">
+      <soap12:operation soapAction="http://tempuri.org/IPropertyService/UpdateWeights" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

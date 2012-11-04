@@ -180,7 +180,7 @@ namespace UtahPlanners.MVC3.Controllers
                 if (model.SelectedId.HasValue)
                 {
                     PropertyService.LookupType lookupType = (PropertyService.LookupType)model.SelectedType;
-                    bool wasSuccessful = client.ModifyLookupType(lookupType, model.SelectedId.Value, model.Description);
+                    bool wasSuccessful = client.ModifyLookupType(lookupType, model.SelectedId.Value, model.KeyValuePairs[model.SelectedId.Value]);
                     if (wasSuccessful) // Successful response
                         result = "Successfully submitted your request";
                 }
@@ -189,17 +189,20 @@ namespace UtahPlanners.MVC3.Controllers
         }
 
         [HttpPost]
-        public ActionResult DeleteType(ReadTypeModel model)
+        public string DeleteType(ReadTypeModel model)
         {
+            var result = "An error occured while deleting the type";
             using (var client = _factory.CreatePropertyServiceProxy())
             {
                 if (model.SelectedId.HasValue)
                 {
                     PropertyService.LookupType lookupType = (PropertyService.LookupType)model.SelectedType;
-                    client.DeleteLookupType(lookupType, model.SelectedId.Value);
+                    bool wasSuccessful = client.DeleteLookupType(lookupType, model.SelectedId.Value);
+                    if (wasSuccessful)
+                        result = "Successfully deleted the type";
                 }
             }
-            return RedirectToAction("ReadTypes");
+            return result;
         }
 
         #endregion
@@ -226,10 +229,11 @@ namespace UtahPlanners.MVC3.Controllers
         {
             using (var client = _factory.CreatePropertyServiceProxy())
             {
+                var result = Convert(client.GetLookupCodes(PropertyService.LookupCode.CommonCode));
                 var model = new ReadCodeModel
                 {
                     SelectedCode = 0,
-                    CodeData = client.GetLookupCodes(PropertyService.LookupCode.CommonCode)
+                    CodeData = result
                 };
                 return View(model);
             }
@@ -240,7 +244,7 @@ namespace UtahPlanners.MVC3.Controllers
         {
             using (var client = _factory.CreatePropertyServiceProxy())
             {
-                model.CodeData = client.GetLookupCodes((PropertyService.LookupCode)model.SelectedCode);
+                model.CodeData = Convert(client.GetLookupCodes((PropertyService.LookupCode)model.SelectedCode));
                 return View(model);
             }
         }
@@ -254,7 +258,12 @@ namespace UtahPlanners.MVC3.Controllers
                 if (model.SelectedId.HasValue)
                 {
                     PropertyService.LookupCode lookupCode = (PropertyService.LookupCode)model.SelectedCode;
-                    bool wasSuccessful = client.ModifyLookupCode(lookupCode, model.SelectedId.Value, model.Description, model.Weight);
+                    bool wasSuccessful = client.ModifyLookupCode(
+                        lookupCode, 
+                        model.SelectedId.Value, 
+                        model.CodeData[model.SelectedId.Value].Description,
+                        model.CodeData[model.SelectedId.Value].Weight
+                    );
                     if (wasSuccessful) // Successful response
                         result = "Successfully submitted your request";
                 }
@@ -263,25 +272,48 @@ namespace UtahPlanners.MVC3.Controllers
         }
 
         [HttpPost]
-        public ActionResult DeleteCode(ReadCodeModel model)
+        public string DeleteCode(ReadCodeModel model)
         {
+            var result = "An error occured while deleting the code";
             using (var client = _factory.CreatePropertyServiceProxy())
             {
                 if (model.SelectedId.HasValue)
                 {
                     PropertyService.LookupCode lookupCode = (PropertyService.LookupCode)model.SelectedCode;
-                    client.DeleteLookupCode(lookupCode, model.SelectedId.Value);
+                    bool wasSuccessful = client.DeleteLookupCode(lookupCode, model.SelectedId.Value);
+                    if (wasSuccessful)
+                        result = "Successfully deleted the code";
                 }
             }
-            return RedirectToAction("ReadCodes");
+            return result;
         }
 
         #endregion
 
+        #region Weights
+        
         public ActionResult Weights()
         {
-            return View();
+            using (var client = _factory.CreatePropertyServiceProxy())
+            {
+                var weights = client.GetWeights();
+                return View(weights);
+            }
         }
+
+        [HttpPost]
+        public string Weights(PropertyService.Weight model)
+        {
+            var result = "Could not update the weights at this time";
+            using (var client = _factory.CreatePropertyServiceProxy())
+            {
+                if (client.UpdateWeights(model))
+                    result = "Successfully updated weights";
+                return result;
+            }
+        }
+
+        #endregion
 
         #region Private Methods
 
@@ -386,6 +418,11 @@ namespace UtahPlanners.MVC3.Controllers
                 zip = dto.Zip,
                 country = dto.Country,
             };
+        }
+
+        private Dictionary<int, CodeDetails> Convert(Dictionary<int, Tuple<string, int>> codes)
+        {
+            return codes.ToDictionary(c => c.Key, c => new CodeDetails { Description = c.Value.Item1, Weight = c.Value.Item2 });
         }
 
         #endregion

@@ -5,6 +5,7 @@ using System.Text;
 using UtahPlanners.Domain.Entity;
 using UtahPlanners.Domain.Contract.UnitOfWork;
 using UtahPlanners.Domain.Contract.Service;
+using UtahPlanners.Domain.Contract.Repository;
 
 namespace UtahPlanners.Domain.Services
 {
@@ -30,6 +31,24 @@ namespace UtahPlanners.Domain.Services
                     LoadWeights();
                 }
                 return _weights;
+            }
+            set
+            {
+                ConfigRepo((unit, repo) =>
+                {
+                    var w = repo.GetWeights();
+                    w.buildingEnclosure = value.buildingEnclosure;
+                    w.commonAreas = value.commonAreas;
+                    w.neighCondition = value.neighCondition;
+                    w.streetConn = value.streetConn;
+                    w.streetSaftey = value.streetSaftey;
+                    w.streetWalk = value.streetWalk;
+                    w.twoFiftyApts = value.twoFiftyApts;
+                    w.twoFiftySingleFam = value.twoFiftySingleFam;
+                    w.walkscore = value.walkscore;
+                    unit.Commit();
+                });
+                LoadWeights();
             }
         }
 
@@ -59,21 +78,27 @@ namespace UtahPlanners.Domain.Services
 
         private void LoadWeights()
         {
-            using (IUnitOfWork unit = _factory.CreateUnitOfWork())
+            ConfigRepo((unit, repo) =>
             {
-                var repo = unit.CreateConfigRepository();
                 _weights = repo.GetWeights();
-            }
+            });
         }
 
         private void LoadLookupValues()
         {
-            using (IUnitOfWork unit = _factory.CreateUnitOfWork())
+            ConfigRepo((unit, repo) =>
             {
-                var repo = unit.CreateConfigRepository();
                 _lookupValues = repo.GetLookupValues();
-            }
+            });
         }
 
+        private void ConfigRepo(Action<IUnitOfWork, IConfigRepository> action)
+        {
+            using (var unit = _factory.CreateUnitOfWork())
+            {
+                var repo = unit.CreateConfigRepository();
+                action.Invoke(unit, repo);
+            }
+        }
     }
 }

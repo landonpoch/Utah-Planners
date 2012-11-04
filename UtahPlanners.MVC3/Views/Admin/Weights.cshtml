@@ -1,17 +1,70 @@
-﻿@{
+﻿@using UtahPlanners.MVC3.PropertyService
+@model Weight
+@{
     ViewBag.Title = "Weights";
     Layout = "~/Views/Shared/_LayoutNoLeftNav.cshtml";
 }
 
-    
-    <h4>Edit these values to change the weighting of the scoring variables:</h4><br>
-    <div>
-	<table cellspacing="0" align="Center" rules="all" border="1" id="ctl00_ContentPlaceHolder1_GridView1" style="border-collapse:collapse;">
-		<tbody><tr align="center" valign="middle">
-			<th scope="col">&nbsp;</th><th scope="col">Street Walkability</th><th scope="col">Walkscore</th><th scope="col">250 Single Fam.</th><th scope="col">Building Enclosure</th><th scope="col">Street Connectivity</th><th scope="col">Common Areas</th><th scope="col">Street Saftey</th><th scope="col">Neighborhood Cond</th><th scope="col">250 Apartments</th>
-		</tr><tr align="center" valign="middle">
-			<td><a href="javascript:__doPostBack('ctl00$ContentPlaceHolder1$GridView1','Edit$0')">Edit</a></td><td>31</td><td>27</td><td>17</td><td>0</td><td>17</td><td>0</td><td>0</td><td>0</td><td>8</td>
-		</tr>
-	</tbody></table>
-</div>
-    <br>
+@section Scripts
+{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#editLink').click(function (event) {
+                event.preventDefault();
+                modifyWeights();
+            });
+        });
+
+        function modifyWeights() {
+            $.ajax({
+                url: 'Weights',
+                type: 'post',
+                data: '',
+                success: function (response, status, jqXHR) {
+                    $('#result').text(response);
+                    // updateSuccessful(row);
+                },
+                error: function (jqXHR, status, error) {
+                    $('#result').text('An error occured while submitting your request');
+                },
+                complete: function (jqXHR, status, error) {
+                    // toggleRow(row);
+                }
+            });
+        }
+    </script>
+}
+
+<span id="result"></span>
+<h4>Edit these values to change the weighting of the scoring variables:</h4><br />
+<div>
+    <table border="1" style="border-collapse:collapse;">
+		<tbody>
+            <tr align="center" valign="middle">
+			    <th>&nbsp;</th>
+                <th>Street Walkability</th>
+                <th>Walkscore</th>
+                <th>250 Single Fam.</th>
+                <th>Building Enclosure</th>
+                <th>Street Connectivity</th>
+                <th>Common Areas</th>
+                <th>Street Saftey</th>
+                <th>Neighborhood Cond</th>
+                <th>250 Apartments</th>
+		    </tr>
+            <tr align="center" valign="middle">
+			    @*TODO: Get Weight updates working*@
+                <td><a id="editLink" href="#">Edit</a></td>
+                <td>@Model.streetWalk.Value</td>
+                <td>@Model.walkscore.Value</td>
+                <td>@Model.twoFiftySingleFam.Value</td>
+                <td>@Model.buildingEnclosure.Value</td>
+                <td>@Model.streetConn.Value</td>
+                <td>@Model.commonAreas.Value</td>
+                <td>@Model.streetSaftey.Value</td>
+                <td>@Model.neighCondition.Value</td>
+                <td>@Model.twoFiftyApts.Value</td>
+		    </tr>
+	    </tbody>
+    </table>
+</div><br />
