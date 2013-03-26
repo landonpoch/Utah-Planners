@@ -80,6 +80,7 @@
     <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\Uploader.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Models\Admin\CreateCodeModel.cs" />
     <Compile Include="Models\Admin\CreateTypeModel.cs" />

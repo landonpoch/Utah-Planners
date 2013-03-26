@@ -319,7 +319,14 @@ namespace UtahPlanners.MVC3.Controllers
 
         public void Csv()
         {
-            var sort = new PropertyService.PropertySort { Column = PropertyService.PropertyColumn.Id, Direction = PropertyService.Direction.Ascending };
+            var columnNames = "ID,Prop_Type,Street1,Street2,City,State,Zip,Country," +
+                "Density,Area,Units,Street_Type,Year_Built,Socio_Econ," +
+                "Street_Safety,Building_Enclosure,Common_Areas,Street_Connectivity," +
+                "Street_Walkability,Walkscore,Neighborhood_Condition,250_SF,250_Apts" + Environment.NewLine;
+            var columnFormat = "{0},{1},{2},{3},{4},{5},{6},{7},{8},{9}," +
+                "{10},{11},{12},{13},{14},{15},{16},{17},{18},{19}," +
+                "{20},{21},{22}" + Environment.NewLine;
+
             var properties = new List<UtahPlanners.MVC3.PropertyService.CsvPropertyDTO>();
             using (var wcf = _factory.CreatePropertyServiceWrapper())
             {
@@ -328,17 +335,11 @@ namespace UtahPlanners.MVC3.Controllers
 
             Response.ContentType = "application/x-download";
             Response.AddHeader("Content-Disposition", "attachment;filename=properties.csv");
-
-            Response.Write("ID,Prop_Type,Street1,Street2,City,State,Zip,Country," +
-                "Density,Area,Units,Street_Type,Year_Built,Socio_Econ," +
-                "Street_Safety,Building_Enclosure,Common_Areas,Street_Connectivity," +
-                "Street_Walkability,Walkscore,Neighborhood_Condition,250_SF,250_Apts" + Environment.NewLine);
-            var format = "{0},{1},{2},{3},{4},{5},{6},{7},{8},{9}," +
-                "{10},{11},{12},{13},{14},{15},{16},{17},{18},{19}," + 
-                "{20},{21},{22}" + Environment.NewLine;
+            Response.Write(columnNames);
+            
             foreach (var prop in properties)
             {
-                Response.Write(String.Format(format, 
+                Response.Write(String.Format(columnFormat, 
                     prop.Id,
                     prop.PropertyType,
                     prop.Address.Street1,
@@ -363,7 +364,6 @@ namespace UtahPlanners.MVC3.Controllers
                     prop.TwoFiftySingleFamily,
                     prop.TwoFiftyAppartments));
             }
-
         }
 
         #endregion
