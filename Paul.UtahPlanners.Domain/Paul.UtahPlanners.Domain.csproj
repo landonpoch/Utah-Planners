@@ -50,6 +50,7 @@
     <Compile Include="DTO\AddressDTO.cs" />
     <Compile Include="DTO\AdminPropertyDTO.cs" />
     <Compile Include="DTO\AdminPropertyIndexDTO.cs" />
+    <Compile Include="DTO\CsvPropertyDTO.cs" />
     <Compile Include="DTO\PropertyDTO.cs" />
     <Compile Include="DTO\UserPropertyDTO.cs" />
     <Compile Include="Entity\Address.cs">

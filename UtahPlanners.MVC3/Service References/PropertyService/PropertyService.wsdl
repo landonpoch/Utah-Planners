@@ -61,6 +61,12 @@
   <wsdl:message name="IPropertyService_FindAdminProperty_OutputMessage">
     <wsdl:part name="parameters" element="tns:FindAdminPropertyResponse" />
   </wsdl:message>
+  <wsdl:message name="IPropertyService_FindAllCsvProperties_InputMessage">
+    <wsdl:part name="parameters" element="tns:FindAllCsvProperties" />
+  </wsdl:message>
+  <wsdl:message name="IPropertyService_FindAllCsvProperties_OutputMessage">
+    <wsdl:part name="parameters" element="tns:FindAllCsvPropertiesResponse" />
+  </wsdl:message>
   <wsdl:message name="IPropertyService_FindShowcaseProperty_InputMessage">
     <wsdl:part name="parameters" element="tns:FindShowcaseProperty" />
   </wsdl:message>
@@ -179,6 +185,10 @@
     <wsdl:operation name="FindAdminProperty">
       <wsdl:input wsaw:Action="http://tempuri.org/IPropertyService/FindAdminProperty" message="tns:IPropertyService_FindAdminProperty_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IPropertyService/FindAdminPropertyResponse" message="tns:IPropertyService_FindAdminProperty_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="FindAllCsvProperties">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPropertyService/FindAllCsvProperties" message="tns:IPropertyService_FindAllCsvProperties_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPropertyService/FindAllCsvPropertiesResponse" message="tns:IPropertyService_FindAllCsvProperties_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="FindShowcaseProperty">
       <wsdl:input wsaw:Action="http://tempuri.org/IPropertyService/FindShowcaseProperty" message="tns:IPropertyService_FindShowcaseProperty_InputMessage" />
@@ -300,6 +310,15 @@
     </wsdl:operation>
     <wsdl:operation name="FindAdminProperty">
       <soap12:operation soapAction="http://tempuri.org/IPropertyService/FindAdminProperty" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FindAllCsvProperties">
+      <soap12:operation soapAction="http://tempuri.org/IPropertyService/FindAllCsvProperties" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

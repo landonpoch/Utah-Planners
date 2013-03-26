@@ -276,6 +276,9 @@
     <None Include="Service References\PropertyService\UtahPlanners.MVC3.PropertyService.AdminPropertyIndexDTO.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Service References\PropertyService\UtahPlanners.MVC3.PropertyService.CsvPropertyDTO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Service References\PropertyService\UtahPlanners.MVC3.PropertyService.UserPropertyDTO.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>

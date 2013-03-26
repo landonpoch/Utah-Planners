@@ -88,6 +88,16 @@ namespace Paul.UtahPlanners.Application
             }
         }
 
+        public List<CsvPropertyDTO> FindAllCsvProperties()
+        {
+            using (var unit = _factory.CreateUnitOfWork())
+            {
+                var finder = unit.CreatePropertyFinder();
+                var props = finder.FindAllCsvProperties();
+                return props;
+            }
+        }
+
         public KeyValuePair<int, int> FindShowcaseProperty()
         {
             using (var unit = _factory.CreateUnitOfWork())

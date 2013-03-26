@@ -134,6 +134,42 @@ namespace UtahPlanners.Infrastructure.Finder
             return dto;
         }
 
+        public List<CsvPropertyDTO> FindAllCsvProperties()
+        {
+            var props = (from p in _context.Properties
+                         join a in _context.Addresses on p.Address.id equals a.id
+                         select new CsvPropertyDTO
+                         {
+                             Id = p.id,
+                             PropertyType = p.PropertyType.description,
+                             StreetType = p.StreetType.description,
+                             SocioEconType = p.SocioEconCode.description,
+                             StreetSafetyCode = p.StreetSafteyCode.description,
+                             BuildingEnclosureCode = p.EnclosureCode.description,
+                             CommonAreasCode = p.CommonCode.description,
+                             StreetConnectivityCode = p.StreetconnCode.description,
+                             StreetWalkabilityCode = p.StreetwalkCode.description,
+                             NeighborhoodConditionCode = p.NeighborhoodCode.description,
+                             Address = new AddressDTO
+                             {
+                                 Street1 = a.street1,
+                                 Street2 = a.street2,
+                                 City = a.city,
+                                 State = a.state,
+                                 Zip = a.zip,
+                                 Country = a.country
+                             },
+                             Walkscore = p.walkscore.HasValue ? p.walkscore.Value : 0,
+                             TwoFiftySingleFamily = p.twoFiftySingleFam.HasValue ? p.twoFiftySingleFam.Value : 0,
+                             TwoFiftyAppartments = p.twoFiftyApts.HasValue ? p.twoFiftyApts.Value : 0,
+                             Density = p.density.HasValue ? p.density.Value : 0,
+                             Area = p.area.HasValue ? p.area.Value : 0,
+                             Units = p.units.HasValue ? p.units.Value : 0,
+                             YearBuilt = p.yearBuilt.HasValue ? p.yearBuilt.Value : 0
+                         }).ToList();
+            return props;
+        }
+
         public KeyValuePair<int, int> FindShowcaseProperty()
         {
             var count = _context.Pictures.Where(p => p.frontPage == 1)

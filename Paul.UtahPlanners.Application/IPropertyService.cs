@@ -32,6 +32,9 @@ namespace Paul.UtahPlanners.Application
         AdminPropertyDTO FindAdminProperty(int id);
 
         [OperationContract]
+        List<CsvPropertyDTO> FindAllCsvProperties();
+
+        [OperationContract]
         KeyValuePair<int, int> FindShowcaseProperty();
 
         [OperationContract]

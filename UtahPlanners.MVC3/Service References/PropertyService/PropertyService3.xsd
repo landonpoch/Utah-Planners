@@ -102,6 +102,18 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="FindAllCsvProperties">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="FindAllCsvPropertiesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/UtahPlanners.Domain.DTO" minOccurs="0" name="FindAllCsvPropertiesResult" nillable="true" type="q11:ArrayOfCsvPropertyDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="FindShowcaseProperty">
     <xs:complexType>
       <xs:sequence />
@@ -110,7 +122,7 @@
   <xs:element name="FindShowcasePropertyResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/System.Collections.Generic" minOccurs="0" name="FindShowcasePropertyResult" type="q11:KeyValuePairOfintint" />
+        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/System.Collections.Generic" minOccurs="0" name="FindShowcasePropertyResult" type="q12:KeyValuePairOfintint" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -124,7 +136,7 @@
   <xs:element name="FindPictureResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/UtahPlanners.Domain.Entity" minOccurs="0" name="FindPictureResult" nillable="true" type="q12:Picture" />
+        <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/UtahPlanners.Domain.Entity" minOccurs="0" name="FindPictureResult" nillable="true" type="q13:Picture" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -136,35 +148,35 @@
   <xs:element name="GetAllLookupValuesResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/UtahPlanners.Domain.Entity" minOccurs="0" name="GetAllLookupValuesResult" nillable="true" type="q13:LookupValues" />
+        <xs:element xmlns:q14="http://schemas.datacontract.org/2004/07/UtahPlanners.Domain.Entity" minOccurs="0" name="GetAllLookupValuesResult" nillable="true" type="q14:LookupValues" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="GetLookupTypes">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q14="http://schemas.datacontract.org/2004/07/UtahPlanners.Domain.Entity" minOccurs="0" name="lookupType" type="q14:LookupType" />
+        <xs:element xmlns:q15="http://schemas.datacontract.org/2004/07/UtahPlanners.Domain.Entity" minOccurs="0" name="lookupType" type="q15:LookupType" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="GetLookupTypesResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q15="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="GetLookupTypesResult" nillable="true" type="q15:ArrayOfKeyValueOfintstring" />
+        <xs:element xmlns:q16="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="GetLookupTypesResult" nillable="true" type="q16:ArrayOfKeyValueOfintstring" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="GetLookupCodes">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q16="http://schemas.datacontract.org/2004/07/UtahPlanners.Domain.Entity" minOccurs="0" name="lookupCode" type="q16:LookupCode" />
+        <xs:element xmlns:q17="http://schemas.datacontract.org/2004/07/UtahPlanners.Domain.Entity" minOccurs="0" name="lookupCode" type="q17:LookupCode" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="GetLookupCodesResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q17="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="GetLookupCodesResult" nillable="true" type="q17:ArrayOfKeyValueOfintTupleOfstringintU6ho3Bhd" />
+        <xs:element xmlns:q18="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="GetLookupCodesResult" nillable="true" type="q18:ArrayOfKeyValueOfintTupleOfstringintU6ho3Bhd" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -176,14 +188,14 @@
   <xs:element name="GetWeightsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q18="http://schemas.datacontract.org/2004/07/UtahPlanners.Domain.Entity" minOccurs="0" name="GetWeightsResult" nillable="true" type="q18:Weight" />
+        <xs:element xmlns:q19="http://schemas.datacontract.org/2004/07/UtahPlanners.Domain.Entity" minOccurs="0" name="GetWeightsResult" nillable="true" type="q19:Weight" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="SaveProperty">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q19="http://schemas.datacontract.org/2004/07/UtahPlanners.Domain.Entity" minOccurs="0" name="property" nillable="true" type="q19:Property" />
+        <xs:element xmlns:q20="http://schemas.datacontract.org/2004/07/UtahPlanners.Domain.Entity" minOccurs="0" name="property" nillable="true" type="q20:Property" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -211,7 +223,7 @@
   <xs:element name="CreateLookupType">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q20="http://schemas.datacontract.org/2004/07/UtahPlanners.Domain.Entity" minOccurs="0" name="lookupType" type="q20:LookupType" />
+        <xs:element xmlns:q21="http://schemas.datacontract.org/2004/07/UtahPlanners.Domain.Entity" minOccurs="0" name="lookupType" type="q21:LookupType" />
         <xs:element minOccurs="0" name="value" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
@@ -226,7 +238,7 @@
   <xs:element name="ModifyLookupType">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q21="http://schemas.datacontract.org/2004/07/UtahPlanners.Domain.Entity" minOccurs="0" name="lookupType" type="q21:LookupType" />
+        <xs:element xmlns:q22="http://schemas.datacontract.org/2004/07/UtahPlanners.Domain.Entity" minOccurs="0" name="lookupType" type="q22:LookupType" />
         <xs:element minOccurs="0" name="id" type="xs:int" />
         <xs:element minOccurs="0" name="value" nillable="true" type="xs:string" />
       </xs:sequence>
@@ -242,7 +254,7 @@
   <xs:element name="DeleteLookupType">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q22="http://schemas.datacontract.org/2004/07/UtahPlanners.Domain.Entity" minOccurs="0" name="lookupType" type="q22:LookupType" />
+        <xs:element xmlns:q23="http://schemas.datacontract.org/2004/07/UtahPlanners.Domain.Entity" minOccurs="0" name="lookupType" type="q23:LookupType" />
         <xs:element minOccurs="0" name="id" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
@@ -257,7 +269,7 @@
   <xs:element name="CreateLookupCode">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q23="http://schemas.datacontract.org/2004/07/UtahPlanners.Domain.Entity" minOccurs="0" name="lookupCode" type="q23:LookupCode" />
+        <xs:element xmlns:q24="http://schemas.datacontract.org/2004/07/UtahPlanners.Domain.Entity" minOccurs="0" name="lookupCode" type="q24:LookupCode" />
         <xs:element minOccurs="0" name="value" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="weight" type="xs:int" />
       </xs:sequence>
@@ -273,7 +285,7 @@
   <xs:element name="ModifyLookupCode">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q24="http://schemas.datacontract.org/2004/07/UtahPlanners.Domain.Entity" minOccurs="0" name="lookupCode" type="q24:LookupCode" />
+        <xs:element xmlns:q25="http://schemas.datacontract.org/2004/07/UtahPlanners.Domain.Entity" minOccurs="0" name="lookupCode" type="q25:LookupCode" />
         <xs:element minOccurs="0" name="id" type="xs:int" />
         <xs:element minOccurs="0" name="value" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="weight" type="xs:int" />
@@ -290,7 +302,7 @@
   <xs:element name="DeleteLookupCode">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q25="http://schemas.datacontract.org/2004/07/UtahPlanners.Domain.Entity" minOccurs="0" name="lookupCode" type="q25:LookupCode" />
+        <xs:element xmlns:q26="http://schemas.datacontract.org/2004/07/UtahPlanners.Domain.Entity" minOccurs="0" name="lookupCode" type="q26:LookupCode" />
         <xs:element minOccurs="0" name="id" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
@@ -305,7 +317,7 @@
   <xs:element name="UpdateWeights">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q26="http://schemas.datacontract.org/2004/07/UtahPlanners.Domain.Entity" minOccurs="0" name="weights" nillable="true" type="q26:Weight" />
+        <xs:element xmlns:q27="http://schemas.datacontract.org/2004/07/UtahPlanners.Domain.Entity" minOccurs="0" name="weights" nillable="true" type="q27:Weight" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

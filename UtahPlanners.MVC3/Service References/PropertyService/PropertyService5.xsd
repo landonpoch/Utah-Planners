@@ -87,4 +87,28 @@
     </xs:complexContent>
   </xs:complexType>
   <xs:element name="AdminPropertyDTO" nillable="true" type="tns:AdminPropertyDTO" />
+  <xs:complexType name="ArrayOfCsvPropertyDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="CsvPropertyDTO" nillable="true" type="tns:CsvPropertyDTO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCsvPropertyDTO" nillable="true" type="tns:ArrayOfCsvPropertyDTO" />
+  <xs:complexType name="CsvPropertyDTO">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:PropertyDTO">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="BuildingEnclosureCode" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="CommonAreasCode" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="NeighborhoodConditionCode" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="PropertyType" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="SocioEconType" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="StreetConnectivityCode" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="StreetSafetyCode" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="StreetType" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="StreetWalkabilityCode" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="CsvPropertyDTO" nillable="true" type="tns:CsvPropertyDTO" />
 </xs:schema>

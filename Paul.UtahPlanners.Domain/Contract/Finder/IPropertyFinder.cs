@@ -11,6 +11,7 @@ namespace UtahPlanners.Domain.Contract.Finder
     {
         UserPropertyDTO FindProperty(int id, Weight weights);
         AdminPropertyDTO FindAdminProperty(int id);
+        List<CsvPropertyDTO> FindAllCsvProperties();
         KeyValuePair<int, int> FindShowcaseProperty();
     }
 }
