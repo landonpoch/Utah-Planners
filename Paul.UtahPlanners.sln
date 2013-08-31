@@ -1,6 +1,13 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{030A1897-1E66-44A9-88B3-9F94F46513AF}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\NuGet.Config = .nuget\NuGet.Config
+		.nuget\NuGet.exe = .nuget\NuGet.exe
+		.nuget\NuGet.targets = .nuget\NuGet.targets
+	EndProjectSection
+EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UtahPlanners.Test", "UtahPlanners.MVC.Tests\UtahPlanners.Test.csproj", "{3813ED75-7704-43EC-BC65-CC1F553F04B1}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UtahPlanners.MVC3", "UtahPlanners.MVC3\UtahPlanners.MVC3.csproj", "{8CBF41B7-4E2E-4598-89CB-E2F3493092C5}"
@@ -13,13 +20,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Paul.UtahPlanners.Domain", "Paul.UtahPlanners.Domain\Paul.UtahPlanners.Domain.csproj", "{43DCBCA9-0F66-40FD-94FF-1FEE07908BBF}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Paul.UtahPlanners.Application", "Paul.UtahPlanners.Application\Paul.UtahPlanners.Application.csproj", "{B1E0267B-DC6D-4B4C-861F-7CDE0FACC905}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{030A1897-1E66-44A9-88B3-9F94F46513AF}"
-	ProjectSection(SolutionItems) = preProject
-		.nuget\NuGet.Config = .nuget\NuGet.Config
-		.nuget\NuGet.exe = .nuget\NuGet.exe
-		.nuget\NuGet.targets = .nuget\NuGet.targets
-	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
