@@ -195,7 +195,7 @@
   <xs:element name="SaveProperty">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q20="http://schemas.datacontract.org/2004/07/UtahPlanners.Domain.Entity" minOccurs="0" name="property" nillable="true" type="q20:Property" />
+        <xs:element xmlns:q20="http://schemas.datacontract.org/2004/07/UtahPlanners.Domain.DTO" minOccurs="0" name="property" nillable="true" type="q20:AdminPropertyDTO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -325,6 +325,20 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="UpdateWeightsResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UploadPicture">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q28="http://schemas.datacontract.org/2004/07/UtahPlanners.Domain.Entity" minOccurs="0" name="pic" nillable="true" type="q28:Picture" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UploadPictureResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="UploadPictureResult" type="xs:boolean" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

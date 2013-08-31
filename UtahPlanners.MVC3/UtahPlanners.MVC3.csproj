@@ -94,7 +94,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\Admin\AdminProperty.cs" />
     <Compile Include="Models\Admin\PropertyGrid.cs" />
     <Compile Include="Models\User\ChangePassword.cs" />
     <Compile Include="Models\User\CreateAccount.cs" />

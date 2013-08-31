@@ -1,4 +1,5 @@
-﻿@model UtahPlanners.MVC3.Models.Admin.AdminProperty
+﻿@using UtahPlanners.MVC3.PropertyService
+@model AdminPropertyDTO
 @{
     Layout = "~/Views/Shared/_LayoutNoLeftNav.cshtml";
 }
@@ -15,7 +16,7 @@
     <script type="text/javascript">
         // <![CDATA[
         $(document).ready(function () {
-
+            var propertyId = @Model.Id;
             var mainPicture = 0;
             var secondaryPicture = 0;
             var frontPage = 0;
@@ -26,17 +27,17 @@
             $("#checkbox1").click(function () {
                 mainPicture = (mainPicture == 1) ? 0 : 1;
                 $("#fileInput").uploadifySettings('scriptData',
-                    { 'mainPicture': mainPicture, 'secondaryPicture': secondaryPicture, 'frontPage': frontPage });
+                    { 'propertyId': propertyId, 'mainPicture': mainPicture, 'secondaryPicture': secondaryPicture, 'frontPage': frontPage });
             });
             $("#checkbox2").click(function () {
                 secondaryPicture = (secondaryPicture == 1) ? 0 : 1;
                 $("#fileInput").uploadifySettings('scriptData',
-                { 'mainPicture': mainPicture, 'secondaryPicture': secondaryPicture, 'frontPage': frontPage });
+                { 'propertyId': propertyId, 'mainPicture': mainPicture, 'secondaryPicture': secondaryPicture, 'frontPage': frontPage });
             });
             $("#checkbox3").click(function () {
                 frontPage = (frontPage == 1) ? 0 : 1;
                 $("#fileInput").uploadifySettings('scriptData',
-                { 'mainPicture': mainPicture, 'secondaryPicture': secondaryPicture, 'frontPage': frontPage });
+                { 'propertyId': propertyId, 'mainPicture': mainPicture, 'secondaryPicture': secondaryPicture, 'frontPage': frontPage });
             });
 
 
@@ -62,111 +63,109 @@
 @using (Html.BeginForm("Property", "Admin", FormMethod.Post))
 {
     <div class="propform">
-    @Html.HiddenFor(m => m.Property.Id)
+    @Html.HiddenFor(m => m.Id)
     
     <span class="newproperty">Street1:</span>
-    @Html.TextBoxFor(m => m.Property.Address.Street1)<br />
+    @Html.TextBoxFor(m => m.Address.Street1)<br />
 
     <span class="newproperty">Street2:</span>
-    @Html.TextBoxFor(m => m.Property.Address.Street2)<br />
+    @Html.TextBoxFor(m => m.Address.Street2)<br />
 
     <span id="ctl00_ContentPlaceHolder1_lblCity" class="newproperty">City:</span>
-    @Html.TextBoxFor(m => m.Property.Address.City)<br />
+    @Html.TextBoxFor(m => m.Address.City)<br />
 
     <span id="ctl00_ContentPlaceHolder1_lblState" class="newproperty">State:</span>
-    @Html.TextBoxFor(m => m.Property.Address.State)<br />
+    @Html.TextBoxFor(m => m.Address.State)<br />
 
     <span id="ctl00_ContentPlaceHolder1_lblZip" class="newproperty">Zip:</span>
-    @Html.TextBoxFor(m => m.Property.Address.Zip)<br />
+    @Html.TextBoxFor(m => m.Address.Zip)<br />
 
     <span id="ctl00_ContentPlaceHolder1_lblCountry" class="newproperty">Country:</span>
-    @Html.TextBoxFor(m => m.Property.Address.Country)<br /><br />
+    @Html.TextBoxFor(m => m.Address.Country)<br /><br />
 
     <h3>General Attributes:</h3>
     <span id="ctl00_ContentPlaceHolder1_lblDensity" class="newproperty">Density:</span>
-    @Html.TextBoxFor(m => m.Property.Density)
+    @Html.TextBoxFor(m => m.Density)
     <span id="ctl00_ContentPlaceHolder1_RegularExpressionValidator2" style="color:Red;display:none;">Please enter in a numeric value</span>
     <span id="ctl00_ContentPlaceHolder1_RequiredFieldValidator2" style="color:Red;display:none;">This is a required field</span><br />
 
     <span id="ctl00_ContentPlaceHolder1_lblArea" class="newproperty">Area:</span>
-    @Html.TextBoxFor(m => m.Property.Area)
+    @Html.TextBoxFor(m => m.Area)
     <span id="ctl00_ContentPlaceHolder1_RegularExpressionValidator1" style="color:Red;display:none;">Please enter in a numeric value</span>
     <span id="ctl00_ContentPlaceHolder1_RequiredFieldValidator3" style="color:Red;display:none;">This is a required field</span><br />
 
     <span id="ctl00_ContentPlaceHolder1_lblUnits" class="newproperty">Units:</span>
-    @Html.TextBoxFor(m => m.Property.Units)
+    @Html.TextBoxFor(m => m.Units)
     <span id="ctl00_ContentPlaceHolder1_RegularExpressionValidator3" style="color:Red;display:none;">Please enter in a numeric value</span>
     <span id="ctl00_ContentPlaceHolder1_RequiredFieldValidator6" style="color:Red;display:none;">This is a required field</span><br />
 
     <span id="ctl00_ContentPlaceHolder1_lblYearBuilt" class="newproperty">Year Built:</span>
-    @Html.TextBoxFor(m => m.Property.YearBuilt)
+    @Html.TextBoxFor(m => m.YearBuilt)
     <span id="ctl00_ContentPlaceHolder1_RegularExpressionValidator4" style="color:Red;display:none;">Please enter in a numeric value</span>
     <span id="ctl00_ContentPlaceHolder1_RequiredFieldValidator1" style="color:Red;display:none;">This is a required field</span><br />
 
     <span id="ctl00_ContentPlaceHolder1_lblWalkscore" class="newproperty">Walkscore:</span>
-    @Html.TextBoxFor(m => m.Property.Walkscore)
+    @Html.TextBoxFor(m => m.Walkscore)
     <span id="ctl00_ContentPlaceHolder1_RegularExpressionValidator5" style="color:Red;display:none;">Please enter in a numeric value</span>
     <span id="ctl00_ContentPlaceHolder1_RequiredFieldValidator5" style="color:Red;display:none;">This is a required field</span><br />
 
     <span id="ctl00_ContentPlaceHolder1_lbl250sf" class="newproperty">250 Single Fam:</span>
-    @Html.TextBoxFor(m => m.Property.TwoFiftySingleFamily)
+    @Html.TextBoxFor(m => m.TwoFiftySingleFamily)
     <span id="ctl00_ContentPlaceHolder1_RegularExpressionValidator6" style="color:Red;display:none;">Please enter in a numeric value</span>
     <span id="ctl00_ContentPlaceHolder1_RequiredFieldValidator7" style="color:Red;display:none;">This is a required field</span><br />
 
     <span id="ctl00_ContentPlaceHolder1_lbl250apts" class="newproperty">250 Apartments:</span>
-    @Html.TextBoxFor(m => m.Property.TwoFiftyAppartments)
+    @Html.TextBoxFor(m => m.TwoFiftyAppartments)
     <span id="ctl00_ContentPlaceHolder1_RegularExpressionValidator7" style="color:Red;display:none;">Please enter in a numeric value</span>
     <span id="ctl00_ContentPlaceHolder1_RequiredFieldValidator8" style="color:Red;display:none;">This is a required field</span><br />
 
+    @{ var lookupValues = (LookupValues)ViewBag.LookupValues; }
     <span id="ctl00_ContentPlaceHolder1_lblPropertyType" class="newproperty">Property Type:</span>
-    @Html.DropDownListFor(m => m.PropertyType, Model.LookupValues.PropertyTypes.ToSelectList("id", "description"))<br />
+    @Html.DropDownListFor(m => m.Type, lookupValues.PropertyTypes.ToSelectList("id", "description"))<br />
 
     <span id="ctl00_ContentPlaceHolder1_lblStreetType" class="newproperty">Street Type:</span>
-    @Html.DropDownListFor(m => m.StreetType, Model.LookupValues.StreetTypes.ToSelectList("id", "description"))<br />
+    @Html.DropDownListFor(m => m.StreetType, lookupValues.StreetTypes.ToSelectList("id", "description"))<br />
 
     <span id="ctl00_ContentPlaceHolder1_lblSocioEcon" class="newproperty">Socio-Econ:</span>
-    @Html.DropDownListFor(m => m.SocioEcon, Model.LookupValues.SocioEconCodes.ToSelectList("id", "description"))<br />
+    @Html.DropDownListFor(m => m.SocioEcon, lookupValues.SocioEconCodes.ToSelectList("id", "description"))<br />
 
     <span id="ctl00_ContentPlaceHolder1_lblStreetSaftey" class="newproperty">Street Saftey:</span>
-    @Html.DropDownListFor(m => m.StreetSafety, Model.LookupValues.StreetSafetyCodes.ToSelectList("id", "description"))<br />
+    @Html.DropDownListFor(m => m.StreetSafety, lookupValues.StreetSafetyCodes.ToSelectList("id", "description"))<br />
 
     <span id="ctl00_ContentPlaceHolder1_lblBuildingEnclosure" class="newproperty">Building Enclosure:</span>
-    @Html.DropDownListFor(m => m.BuildingEnclosure, Model.LookupValues.EnclosureCodes.ToSelectList("id", "description"))<br />
+    @Html.DropDownListFor(m => m.BuildingEnclosure, lookupValues.EnclosureCodes.ToSelectList("id", "description"))<br />
 
     <span id="ctl00_ContentPlaceHolder1_lblCommonAreas" class="newproperty">Common Areas:</span>
-    @Html.DropDownListFor(m => m.CommonAreas, Model.LookupValues.CommonCodes.ToSelectList("id", "description"))<br />
+    @Html.DropDownListFor(m => m.CommonAreas, lookupValues.CommonCodes.ToSelectList("id", "description"))<br />
 
     <span id="ctl00_ContentPlaceHolder1_lblStreetConn" class="newproperty">Street Connectivity:</span>
-    @Html.DropDownListFor(m => m.StreetConnectivity, Model.LookupValues.StreetconnCodes.ToSelectList("id", "description"))<br />
+    @Html.DropDownListFor(m => m.StreetConnectivity, lookupValues.StreetconnCodes.ToSelectList("id", "description"))<br />
         
     <span id="ctl00_ContentPlaceHolder1_lblStreetWalk" class="newproperty">Street Walkability:</span>
-    @Html.DropDownListFor(m => m.StreetWalkability, Model.LookupValues.StreetwalkCodes.ToSelectList("id", "description"))<br />
+    @Html.DropDownListFor(m => m.StreetWalkability, lookupValues.StreetwalkCodes.ToSelectList("id", "description"))<br />
 
     <span id="ctl00_ContentPlaceHolder1_lblNeighCond" class="newproperty">Neighborhood Cond:</span>
-    @Html.DropDownListFor(m => m.NeighborhoodCondition, Model.LookupValues.NeighborhoodCodes.ToSelectList("id", "description"))<br />
+    @Html.DropDownListFor(m => m.NeighborhoodCondition, lookupValues.NeighborhoodCodes.ToSelectList("id", "description"))<br />
 
     <span id="ctl00_ContentPlaceHolder1_lblNotes" class="newproperty">Notes:</span>
-    @Html.TextAreaFor(m => m.Property.Notes, new { style = "height:100px; width:400px;" })<br /><br />
+    @Html.TextAreaFor(m => m.Notes, new { style = "height:100px; width:400px;" })<br /><br />
 
     <h3>Hidden Attributes:</h3>
     <span id="ctl00_ContentPlaceHolder1_lblAdminNotes" class="newproperty">Admin Notes:</span>
-    @Html.TextAreaFor(m => m.Property.AdminNotes, new { style = "height:100px; width:400px;" })<br />
+    @Html.TextAreaFor(m => m.AdminNotes, new { style = "height:100px; width:400px;" })<br />
 
     <span id="ctl00_ContentPlaceHolder1_lblWalkscoreNotes" class="newproperty">Walkscore Notes:</span>
-    @Html.TextAreaFor(m => m.Property.WalkscoreNotes, new { style = "height:100px; width:400px;" })<br />
+    @Html.TextAreaFor(m => m.WalkscoreNotes, new { style = "height:100px; width:400px;" })<br />
 
     <span id="ctl00_ContentPlaceHolder1_lblNotFinished" class="newproperty">Not Finished:</span>
-    @Html.TextAreaFor(m => m.Property.NotFinished, new { style = "height:100px; width:400px;" })<br /><br />
+    @Html.TextAreaFor(m => m.NotFinished, new { style = "height:100px; width:400px;" })<br /><br />
 
-    @if (Model.Property != null)
-    {
-        <div id="existingPictures">
-        <h3>Pictures:</h3>
-        <br /><br />
-        @Html.EditorFor(m => m.Property.PictureMetaData)
-        </div>
-        <br />
-    }
+    <div id="existingPictures">
+    <h3>Pictures:</h3>
+    <br /><br />
+    @Html.EditorFor(m => m.PictureMetaData)
+    </div>
+    <br />
     
     <div id="newPictures">
     <h3>@ViewBag.NewPictureTitle</h3><br />

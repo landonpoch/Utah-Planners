@@ -49,6 +49,11 @@ namespace UtahPlanners.Infrastructure.UnitOfWork
             return new PropertyRepository(_context);
         }
 
+        public IPictureRepository CreatePictureRepository()
+        {
+            return new PictureRepository(_context);
+        }
+
         public IConfigRepository CreateConfigRepository()
         {
             return new ConfigRepository(_context);

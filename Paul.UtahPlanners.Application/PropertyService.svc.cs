@@ -195,23 +195,34 @@ namespace Paul.UtahPlanners.Application
         // TODO: Refactor to use commands
         #region Commands
 
-        public int SaveProperty(Property dtoProp)
+        public int SaveProperty(AdminPropertyDTO dto)
         {
             string errorMessage = "An error occured while saving the property";
             return CommandWrapper(errorMessage, (IUnitOfWork unit) =>
             {
-                var repo = unit.CreatePropertyRepository();
-                if (dtoProp.id > 0)
+                var propRepo = unit.CreatePropertyRepository();
+                var picRepo = unit.CreatePictureRepository();
+                if (dto.Id > 0)
                 {
-                    var ctxProp = repo.Get(dtoProp.id);
-                    UpdateProperty(ctxProp, dtoProp);
+                    var prop = propRepo.Get(dto.Id);
+                    ModifyProperty(ref prop, dto);
+                    foreach (var metaPic in dto.PictureMetaData)
+                    {
+                        var pic = picRepo.Get(metaPic.PictureId); // Very inefficient, look into table splitting
+                        ModifyPicture(ref pic, metaPic);
+                        if (metaPic.Delete)
+                        {
+                            picRepo.Remove(pic);
+                        }
+                    }
                 }
                 else
                 {
-                    repo.Add(dtoProp);
+                    var prop = new Property();
+                    ModifyProperty(ref prop, dto);
+                    propRepo.Add(prop);
                 }
-                unit.Commit();
-                return dtoProp.id;
+                return dto.Id;
             });
         }
 
@@ -399,46 +410,21 @@ namespace Paul.UtahPlanners.Application
             return result;
         }
 
+        public bool UploadPicture(Picture pic)
+        {
+            string errorMessage = "An error occured while trying to upload a picture";
+            return CommandWrapper(errorMessage, (unit) =>
+            {
+                var repo = unit.CreatePictureRepository();
+                repo.Add(pic);
+            });
+        }
+
         #endregion
         
         #endregion
 
         #region Private Methods
-        
-        private void UpdateProperty(Property ctxProp, Property dtoProp)
-        {
-            // Map address attributes
-            ctxProp.Address.street1 = dtoProp.Address.street1;
-            ctxProp.Address.street2 = dtoProp.Address.street2;
-            ctxProp.Address.city = dtoProp.Address.city;
-            ctxProp.Address.state = dtoProp.Address.state;
-            ctxProp.Address.zip = dtoProp.Address.zip;
-            ctxProp.Address.country = dtoProp.Address.country;
-
-            // Map general attributes
-            ctxProp.density = dtoProp.density;
-            ctxProp.area = dtoProp.area;
-            ctxProp.units = dtoProp.units;
-            ctxProp.yearBuilt = dtoProp.yearBuilt;
-            ctxProp.walkscore = dtoProp.walkscore;
-            ctxProp.twoFiftySingleFam = dtoProp.twoFiftySingleFam;
-            ctxProp.twoFiftyApts = dtoProp.twoFiftyApts;
-            ctxProp.typeCode = dtoProp.typeCode;
-            ctxProp.streetCode = dtoProp.streetCode;
-            ctxProp.socioEcon = dtoProp.socioEcon;
-            ctxProp.streetSaftey = dtoProp.streetSaftey;
-            ctxProp.buildingEnclosure = dtoProp.buildingEnclosure;
-            ctxProp.commonAreas = dtoProp.commonAreas;
-            ctxProp.streetConn = dtoProp.streetConn;
-            ctxProp.streetWalk = dtoProp.streetWalk;
-            ctxProp.neighCondition = dtoProp.neighCondition;
-            ctxProp.notes = dtoProp.notes;
-
-            // Map hidden attributes
-            ctxProp.adminNotes = dtoProp.adminNotes;
-            ctxProp.walkscoreNotes = dtoProp.walkscoreNotes;
-            ctxProp.notFinished = dtoProp.notFinished;
-        }
 
         private int CommandWrapper(string errorMessage, Func<IUnitOfWork, int> func)
         {
@@ -448,6 +434,7 @@ namespace Paul.UtahPlanners.Application
                 using (var unit = _factory.CreateUnitOfWork())
                 {
                     result = func.Invoke(unit);
+                    unit.Commit();
                 }
             }
             catch (Exception e)
@@ -502,6 +489,56 @@ namespace Paul.UtahPlanners.Application
         {
             var repo = unit.CreateLookupValueRepository<T>();
             return repo.GetAllLookupValues();
+        }
+
+        #endregion
+
+        #region Mappers
+
+        private void ModifyProperty(ref Property prop, AdminPropertyDTO dto)
+        {
+            prop.Address = Convert(dto.Address, dto.Id);
+            prop.adminNotes = dto.AdminNotes;
+            prop.area = dto.Area;
+            prop.buildingEnclosure = dto.BuildingEnclosure;
+            prop.commonAreas = dto.CommonAreas;
+            prop.density = dto.Density;
+            prop.neighCondition = dto.NeighborhoodCondition;
+            prop.notes = dto.Notes;
+            prop.notFinished = dto.NotFinished;
+            prop.socioEcon = dto.SocioEcon;
+            prop.streetCode = dto.StreetType;
+            prop.streetConn = dto.StreetConnectivity;
+            prop.streetSaftey = dto.StreetSafety;
+            prop.streetWalk = dto.StreetWalkability;
+            prop.twoFiftyApts = dto.TwoFiftyAppartments;
+            prop.twoFiftySingleFam = dto.TwoFiftySingleFamily;
+            prop.typeCode = dto.Type;
+            prop.units = dto.Units;
+            prop.walkscore = dto.Walkscore;
+            prop.walkscoreNotes = dto.WalkscoreNotes;
+            prop.yearBuilt = dto.YearBuilt;
+        }
+
+        private Address Convert(AddressDTO dto, int id)
+        {
+            return new Address
+            {
+                city = dto.City,
+                country = dto.Country,
+                id = id,
+                state = dto.State,
+                street1 = dto.Street1,
+                street2 = dto.Street2,
+                zip = dto.Zip
+            };
+        }
+
+        private void ModifyPicture(ref Picture pic, PictureMetaData meta)
+        {
+            pic.frontPage = (short)(meta.FrontPage ? 1 : 0);
+            pic.mainPicture = (short)(meta.PrimaryPicture ? 1 : 0);
+            pic.secondaryPicture = (short)(meta.SecondaryPicture ? 1 : 0);
         }
 
         #endregion

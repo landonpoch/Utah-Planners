@@ -33,29 +33,15 @@ namespace UtahPlanners.MVC3.Controllers
         {
             using (var wcf = _factory.CreatePropertyServiceWrapper())
             {
-                var lookupValues = wcf.Client.GetAllLookupValues();
-                var model = new AdminProperty
-                {
-                    LookupValues = lookupValues
-                };
-
+                ViewBag.LookupValues = wcf.Client.GetAllLookupValues();
+                var model = new PropertyService.AdminPropertyDTO();
                 if (id.HasValue)
                 {
                     ViewBag.Title = "Edit Property";
                     ViewBag.NewPictureTitle = "Add New Pictures:";
                     ViewBag.SubmitText = "Submit Changes";
 
-                    var property = wcf.Client.FindAdminProperty(id.Value);
-                    model.Property = property;
-                    model.PropertyType = property.Type.ToString();
-                    model.StreetType = property.StreetType.ToString();
-                    model.SocioEcon = property.SocioEcon.ToString();
-                    model.StreetSafety = property.StreetSafety.ToString();
-                    model.BuildingEnclosure = property.BuildingEnclosure.ToString();
-                    model.CommonAreas = property.CommonAreas.ToString();
-                    model.StreetConnectivity = property.StreetConnectivity.ToString();
-                    model.StreetWalkability = property.StreetWalkability.ToString();
-                    model.NeighborhoodCondition = property.NeighborhoodCondition.ToString();
+                    model = wcf.Client.FindAdminProperty(id.Value);
                 }
                 else
                 {
@@ -63,19 +49,16 @@ namespace UtahPlanners.MVC3.Controllers
                     ViewBag.NewPictureTitle = "Pictures:";
                     ViewBag.SubmitText = "Create New Property";
                 }
-
                 return View(model);
             }
         }
 
         [HttpPost]
-        public ActionResult Property(AdminProperty model)
+        public ActionResult Property(PropertyService.AdminPropertyDTO model)
         {
-            var prop = SetCodes(model);
             using (var wcf = _factory.CreatePropertyServiceWrapper())
             {
-                var property = Convert(model.Property);
-                var id = wcf.Client.SaveProperty(property);
+                var id = wcf.Client.SaveProperty(model);
 
                 // TODO: Figure out success/fail messaging and behavior
                 return RedirectToAction("Property", new { id });
@@ -396,24 +379,6 @@ namespace UtahPlanners.MVC3.Controllers
             return sortOptions;
         }
 
-        private PropertyService.Property SetCodes(AdminProperty model)
-        {
-            var property = Convert(model.Property);
-
-            // Map new drop down selections
-            property.typeCode = Int32.Parse(model.PropertyType);
-            property.streetCode = Int32.Parse(model.StreetType);
-            property.socioEcon = Int32.Parse(model.SocioEcon);
-            property.streetSaftey = Int32.Parse(model.StreetSafety);
-            property.buildingEnclosure = Int32.Parse(model.BuildingEnclosure);
-            property.commonAreas = Int32.Parse(model.CommonAreas);
-            property.streetConn = Int32.Parse(model.StreetConnectivity);
-            property.streetWalk = Int32.Parse(model.StreetWalkability);
-            property.neighCondition = Int32.Parse(model.NeighborhoodCondition);
-
-            return property;
-        }
-
         private PropertyService.PropertySort Convert(string sort)
         {
             if (String.IsNullOrEmpty(sort))
@@ -452,14 +417,6 @@ namespace UtahPlanners.MVC3.Controllers
             return result;
         }
 
-        private PropertyService.Property Convert(PropertyService.PropertyDTO dto)
-        {
-            return new PropertyService.Property
-            {
-                Address = Convert(dto.Address)
-            };
-        }
-
         private PropertyService.Address Convert(PropertyService.AddressDTO dto)
         {
             return new PropertyService.Address
@@ -469,7 +426,7 @@ namespace UtahPlanners.MVC3.Controllers
                 city = dto.City,
                 state = dto.State,
                 zip = dto.Zip,
-                country = dto.Country,
+                country = dto.Country
             };
         }
 

@@ -53,7 +53,7 @@ namespace Paul.UtahPlanners.Application
         Weight GetWeights();
 
         [OperationContract]
-        int SaveProperty(Property property);
+        int SaveProperty(AdminPropertyDTO property);
 
         [OperationContract]
         bool DeleteProperty(int propertyId);
@@ -78,6 +78,9 @@ namespace Paul.UtahPlanners.Application
 
         [OperationContract]
         bool UpdateWeights(Weight weights);
+
+        [OperationContract]
+        bool UploadPicture(Picture pic);
     }
 
 
