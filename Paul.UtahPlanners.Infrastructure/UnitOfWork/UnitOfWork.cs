@@ -5,20 +5,28 @@ using UtahPlanners.Infrastructure.DAO;
 using UtahPlanners.Infrastructure.Repository;
 using UtahPlanners.Domain.Contract.Finder;
 using UtahPlanners.Infrastructure.Finder;
+using MongoDB.Driver;
+using UtahPlanners.Infrastructure.Repository.Mongo;
+using UtahPlanners.Infrastructure.Finder.Mongo;
 
 namespace UtahPlanners.Infrastructure.UnitOfWork
 {
     public class UnitOfWork : IUnitOfWork
     {
-        private PropertiesDB _context;
+        private const string MongoDbName = "UtahPlanners";
 
-        public UnitOfWork(PropertiesDB context)
+        private PropertiesDB _context;
+        private MongoDatabase _mongoDb;
+
+        public UnitOfWork(PropertiesDB context, MongoClient mongoClient)
         {
             _context = context;
 
             // Needed to be able to use the POCO classes over the wire
             _context.Configuration.LazyLoadingEnabled = false;
             _context.Configuration.ProxyCreationEnabled = false;
+
+            _mongoDb = mongoClient.GetServer().GetDatabase(MongoDbName);
         }
 
         #region IUnitOfWork Members
@@ -27,12 +35,14 @@ namespace UtahPlanners.Infrastructure.UnitOfWork
         
         public IPropertyFinder CreatePropertyFinder()
         {
-            return new PropertyFinder(_context);
+            //return new PropertyFinder(_context);
+            return new MongoPropertyFinder(_mongoDb, new MongoPropertyRepo(_mongoDb));
         }
 
         public IPropertiesIndexFinder CreateIndexFinder()
         {
-            return new PropertiesIndexFinder(_context);
+            //return new PropertiesIndexFinder(_context);
+            return new MongoPropIndexFinder(_mongoDb);
         }
 
         public IPictureFinder CreatePictureFinder()
@@ -46,7 +56,8 @@ namespace UtahPlanners.Infrastructure.UnitOfWork
         
         public IPropertyRepository CreatePropertyRepository()
         {
-            return new PropertyRepository(_context);
+            //return new PropertyRepository(_context);
+            return new MongoPropertyRepo(_mongoDb);
         }
 
         public IPictureRepository CreatePictureRepository()

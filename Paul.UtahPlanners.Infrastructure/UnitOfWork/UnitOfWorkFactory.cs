@@ -1,4 +1,5 @@
-﻿using UtahPlanners.Domain.Contract.UnitOfWork;
+﻿using MongoDB.Driver;
+using UtahPlanners.Domain.Contract.UnitOfWork;
 using UtahPlanners.Infrastructure.DAO;
 
 namespace UtahPlanners.Infrastructure.UnitOfWork
@@ -10,7 +11,7 @@ namespace UtahPlanners.Infrastructure.UnitOfWork
 
         public IUnitOfWork CreateUnitOfWork()
         {
-            return new UnitOfWork(new PropertiesDB());
+            return new UnitOfWork(new PropertiesDB(), new MongoClient());
         }
 
         #endregion

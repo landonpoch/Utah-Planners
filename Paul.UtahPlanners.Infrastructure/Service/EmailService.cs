@@ -28,7 +28,7 @@ namespace UtahPlanners.Infrastructure.Service
                 client.Send(message);
                 return true;
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 // TODO: Logging
                 return false;

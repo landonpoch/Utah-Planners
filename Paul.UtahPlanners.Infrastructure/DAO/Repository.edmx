@@ -1,25 +1,25 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
   <!-- EF Runtime content -->
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="Properties2Model.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+    <Schema Namespace="Properties2Model.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityContainer Name="Properties2ModelStoreContainer">
-          <EntitySet Name="Address" EntityType="Properties2Model.Store.Address" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="CommonCodes" EntityType="Properties2Model.Store.CommonCodes" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="EnclosureCodes" EntityType="Properties2Model.Store.EnclosureCodes" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="NeighborhoodCodes" EntityType="Properties2Model.Store.NeighborhoodCodes" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="Pictures" EntityType="Properties2Model.Store.Pictures" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="Properties" EntityType="Properties2Model.Store.Properties" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="PropertyTypes" EntityType="Properties2Model.Store.PropertyTypes" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="SocioEconCodes" EntityType="Properties2Model.Store.SocioEconCodes" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="StreetconnCodes" EntityType="Properties2Model.Store.StreetconnCodes" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="StreetSafteyCodes" EntityType="Properties2Model.Store.StreetSafteyCodes" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="StreetTypes" EntityType="Properties2Model.Store.StreetTypes" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="StreetwalkCodes" EntityType="Properties2Model.Store.StreetwalkCodes" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="Weights" EntityType="Properties2Model.Store.Weights" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="PropertiesIndex" EntityType="Properties2Model.Store.PropertiesIndex" store:Type="Views" store:Schema="dbo" store:Name="PropertiesIndex">
+          <EntitySet Name="Address" EntityType="Properties2Model.Store.Address" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="CommonCodes" EntityType="Properties2Model.Store.CommonCodes" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="EnclosureCodes" EntityType="Properties2Model.Store.EnclosureCodes" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="NeighborhoodCodes" EntityType="Properties2Model.Store.NeighborhoodCodes" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="Pictures" EntityType="Properties2Model.Store.Pictures" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="Properties" EntityType="Properties2Model.Store.Properties" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="PropertyTypes" EntityType="Properties2Model.Store.PropertyTypes" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="SocioEconCodes" EntityType="Properties2Model.Store.SocioEconCodes" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="StreetconnCodes" EntityType="Properties2Model.Store.StreetconnCodes" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="StreetSafteyCodes" EntityType="Properties2Model.Store.StreetSafteyCodes" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="StreetTypes" EntityType="Properties2Model.Store.StreetTypes" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="StreetwalkCodes" EntityType="Properties2Model.Store.StreetwalkCodes" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="Weights" EntityType="Properties2Model.Store.Weights" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="PropertiesIndex" EntityType="Properties2Model.Store.PropertiesIndex" store:Type="Views" store:Schema="dbo" store:Name="PropertiesIndex" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator">
             <DefiningQuery>SELECT 
       [PropertiesIndex].[city] AS [city], 
       [PropertiesIndex].[id] AS [id], 
@@ -371,8 +371,8 @@
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="UtahPlanners.Infrastructure.DAO" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
-        <EntityContainer Name="PropertiesDB" annotation:LazyLoadingEnabled="true">
+      <Schema Namespace="UtahPlanners.Infrastructure.DAO" Alias="Self" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="PropertiesDB" annotation:LazyLoadingEnabled="true" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation">
           <EntitySet Name="CommonCodes" EntityType="UtahPlanners.Infrastructure.DAO.CommonCode" />
           <EntitySet Name="EnclosureCodes" EntityType="UtahPlanners.Infrastructure.DAO.EnclosureCode" />
           <EntitySet Name="NeighborhoodCodes" EntityType="UtahPlanners.Infrastructure.DAO.NeighborhoodCode" />
@@ -436,7 +436,7 @@
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Name="description" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
           <Property Name="weight" Type="Int32" />
           <NavigationProperty Name="Properties" Relationship="UtahPlanners.Infrastructure.DAO.FK_CommonAreas" FromRole="CommonCodes" ToRole="Properties" />
@@ -445,7 +445,7 @@
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Name="description" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
           <Property Name="weight" Type="Int32" />
           <NavigationProperty Name="Properties" Relationship="UtahPlanners.Infrastructure.DAO.FK_BuildingEnclosure" FromRole="EnclosureCodes" ToRole="Properties" />
@@ -454,7 +454,7 @@
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Name="description" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
           <Property Name="weight" Type="Int32" />
           <NavigationProperty Name="Properties" Relationship="UtahPlanners.Infrastructure.DAO.FK_NeighCondition" FromRole="NeighborhoodCodes" ToRole="Properties" />
@@ -463,7 +463,7 @@
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Name="frontPage" Type="Int16" />
           <Property Name="mainPicture" Type="Int16" />
           <Property Name="secondaryPicture" Type="Int16" />
@@ -476,7 +476,7 @@
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Name="typeCode" Type="Int32" />
           <Property Name="density" Type="Double" />
           <Property Name="area" Type="Int32" />
@@ -515,7 +515,7 @@
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Name="description" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
           <NavigationProperty Name="Properties" Relationship="UtahPlanners.Infrastructure.DAO.FK_properties_ptid" FromRole="PropertyTypes" ToRole="Properties" />
         </EntityType>
@@ -523,7 +523,7 @@
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Name="description" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
           <NavigationProperty Name="Properties" Relationship="UtahPlanners.Infrastructure.DAO.FK_SocioEcon" FromRole="SocioEconCodes" ToRole="Properties" />
         </EntityType>
@@ -531,7 +531,7 @@
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Name="description" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
           <Property Name="weight" Type="Int32" />
           <NavigationProperty Name="Properties" Relationship="UtahPlanners.Infrastructure.DAO.FK_Streetconn" FromRole="StreetconnCodes" ToRole="Properties" />
@@ -540,7 +540,7 @@
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Name="description" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
           <Property Name="weight" Type="Int32" />
           <NavigationProperty Name="Properties" Relationship="UtahPlanners.Infrastructure.DAO.FK_StreetSaftey" FromRole="StreetSafteyCodes" ToRole="Properties" />
@@ -549,7 +549,7 @@
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Name="description" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
           <NavigationProperty Name="Properties" Relationship="UtahPlanners.Infrastructure.DAO.FK_properties_stid" FromRole="StreetTypes" ToRole="Properties" />
         </EntityType>
@@ -557,7 +557,7 @@
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Name="description" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
           <Property Name="weight" Type="Int32" />
           <NavigationProperty Name="Properties" Relationship="UtahPlanners.Infrastructure.DAO.FK_StreetWalk" FromRole="StreetwalkCodes" ToRole="Properties" />
@@ -566,7 +566,7 @@
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Name="streetWalk" Type="Int32" />
           <Property Name="walkscore" Type="Int32" />
           <Property Name="twoFiftySingleFam" Type="Int32" />
@@ -743,7 +743,7 @@
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
-      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="Properties2ModelStoreContainer" CdmEntityContainer="PropertiesDB">
           <EntitySetMapping Name="CommonCodes"><EntityTypeMapping TypeName="UtahPlanners.Infrastructure.DAO.CommonCode"><MappingFragment StoreEntitySet="CommonCodes">
             <ScalarProperty Name="id" ColumnName="id" />
@@ -869,7 +869,7 @@
     </edmx:Mappings>
   </edmx:Runtime>
   <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
-  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <Connection>
       <DesignerInfoPropertySet>
         <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
@@ -940,7 +940,7 @@
         </AssociationConnector>
         <EntityTypeShape EntityType="UtahPlanners.Infrastructure.DAO.PropertiesIndex" Width="1.5" PointX="0.5" PointY="6.625" Height="3.3263964843750031" />
         <EntityTypeShape EntityType="UtahPlanners.Infrastructure.DAO.Address" Width="1.5" PointX="7" PointY="0.5" Height="2.5571907552083388" />
-        <AssociationConnector Association="UtahPlanners.Infrastructure.DAO.FK_Address2_Address2" >
+        <AssociationConnector Association="UtahPlanners.Infrastructure.DAO.FK_Address2_Address2">
           <ConnectorPoint PointX="6.375" PointY="2.9035953776041694" />
           <ConnectorPoint PointX="7" PointY="2.9035953776041694" />
         </AssociationConnector>

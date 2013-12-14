@@ -104,7 +104,9 @@ namespace UtahPlanners.MVC3.Controllers
             using (var wcf = _factory.CreatePropertyServiceWrapper())
             {
                 var picture = wcf.Client.FindPicture(id);
-                return File(picture.binaryData, "image/png");
+                if (picture != null)
+                    return File(picture.binaryData, "image/png");
+                return null;
             }
         }
 
