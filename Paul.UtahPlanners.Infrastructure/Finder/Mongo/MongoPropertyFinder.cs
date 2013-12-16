@@ -8,6 +8,7 @@ using UtahPlanners.Domain.Contract.Finder;
 using UtahPlanners.Domain.Contract.Repository;
 using UtahPlanners.Domain.DTO;
 using UtahPlanners.Domain.Entity;
+using UtahPlanners.Infrastructure.DAO;
 using UtahPlanners.Infrastructure.Shared;
 
 namespace UtahPlanners.Infrastructure.Finder.Mongo
@@ -16,11 +17,13 @@ namespace UtahPlanners.Infrastructure.Finder.Mongo
     {
         private MongoDatabase _db;
         private IPropertyRepository _propRepo;
+        private PropertiesDB _context;
 
-        public MongoPropertyFinder(MongoDatabase db, IPropertyRepository propRepo)
+        public MongoPropertyFinder(MongoDatabase db, IPropertyRepository propRepo, PropertiesDB context)
         {
             _db = db;
             _propRepo = propRepo;
+            _context = context;
         }
 
         public UserPropertyDTO FindProperty(int id, Weight weights)
@@ -37,15 +40,15 @@ namespace UtahPlanners.Infrastructure.Finder.Mongo
                 Units = prop.units.GetValueOrDefault(),
                 Walkscore = prop.walkscore.GetValueOrDefault(),
                 YearBuilt = prop.yearBuilt.GetValueOrDefault(),
-                BuildingEnclosure = Utils.Convert<EnclosureCode>(_db, prop.buildingEnclosure, Utils.GetDescription),
-                CommonAreas = Utils.Convert<CommonCode>(_db, prop.commonAreas, Utils.GetDescription),
-                NeighborhoodCondition = Utils.Convert<NeighborhoodCode>(_db, prop.neighCondition, Utils.GetDescription),
-                SocioEcon = Utils.Convert<SocioEconCode>(_db, prop.socioEcon, Utils.GetDescription),
-                StreetConnectivity = Utils.Convert<StreetconnCode>(_db, prop.streetConn, Utils.GetDescription),
-                StreetSafety = Utils.Convert<StreetSafteyCode>(_db, prop.streetSaftey, Utils.GetDescription),
-                StreetType = Utils.Convert<StreetType>(_db, prop.streetCode, Utils.GetDescription),
-                StreetWalkability = Utils.Convert<StreetwalkCode>(_db, prop.streetWalk, Utils.GetDescription),
-                Type = Utils.Convert<PropertyType>(_db, prop.typeCode, Utils.GetDescription),
+                BuildingEnclosure = Utils.Convert<EnclosureCode>(_context, prop.buildingEnclosure, Utils.GetDescription),
+                CommonAreas = Utils.Convert<CommonCode>(_context, prop.commonAreas, Utils.GetDescription),
+                NeighborhoodCondition = Utils.Convert<NeighborhoodCode>(_context, prop.neighCondition, Utils.GetDescription),
+                SocioEcon = Utils.Convert<SocioEconCode>(_context, prop.socioEcon, Utils.GetDescription),
+                StreetConnectivity = Utils.Convert<StreetconnCode>(_context, prop.streetConn, Utils.GetDescription),
+                StreetSafety = Utils.Convert<StreetSafteyCode>(_context, prop.streetSaftey, Utils.GetDescription),
+                StreetType = Utils.Convert<StreetType>(_context, prop.streetCode, Utils.GetDescription),
+                StreetWalkability = Utils.Convert<StreetwalkCode>(_context, prop.streetWalk, Utils.GetDescription),
+                Type = Utils.Convert<PropertyType>(_context, prop.typeCode, Utils.GetDescription),
                 Notes = prop.notes,
                 PictureMetaData = null, // TODO
                 Score = 0 // TODO

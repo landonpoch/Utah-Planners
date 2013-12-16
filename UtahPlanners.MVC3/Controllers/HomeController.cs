@@ -180,16 +180,20 @@ namespace UtahPlanners.MVC3.Controllers
             {
                 Id = p.Id,
                 Address = Convert(p.Address),
-                PictureIds = p.PictureMetaData
-                    .ToList()
-                    .Where(md => !md.SecondaryPicture)
-                    .Select(md => md.PictureId)
-                    .ToList(),
-                SecondaryPictureId = p.PictureMetaData
-                    .ToList()
-                    .Where(md => md.SecondaryPicture)
-                    .Select(md => md.PictureId)
-                    .FirstOrDefault(),
+                PictureIds = p.PictureMetaData != null
+                    ? p.PictureMetaData
+                        .ToList()
+                        .Where(md => !md.SecondaryPicture)
+                        .Select(md => md.PictureId)
+                        .ToList()
+                    : new List<int> { 0 },
+                SecondaryPictureId = p.PictureMetaData != null
+                    ? p.PictureMetaData
+                        .ToList()
+                        .Where(md => md.SecondaryPicture)
+                        .Select(md => md.PictureId)
+                        .FirstOrDefault()
+                    : default(int),
                 PropertyType = p.Type,
                 Score = p.Score,
                 StreetSafety = p.StreetSafety,

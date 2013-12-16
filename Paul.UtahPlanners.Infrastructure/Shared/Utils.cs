@@ -5,6 +5,7 @@ using System.Text;
 using System.Linq.Expressions;
 using UtahPlanners.Domain.Entity;
 using MongoDB.Driver;
+using UtahPlanners.Infrastructure.DAO;
 
 namespace UtahPlanners.Infrastructure.Shared
 {
@@ -27,9 +28,19 @@ namespace UtahPlanners.Infrastructure.Shared
 
     public static class Utils
     {
-        public static string Convert<T>(MongoDatabase db, int? key, Func<T, string> getDescription)
+        public static string Convert<T>(PropertiesDB context, int? key, Func<T, string> getDescription)
+            where T : class
         {
-            var item = db.GetCollection<T>(typeof(T).Name).FindOneById(key);
+            var item = context.Set<T>()
+                .Find(key);
+            return getDescription(item);
+        }
+
+        public static string Convert<T>(MongoDatabase db, int? key, Func<T, string> getDescription)
+            where T : class
+        {
+            var item = db.GetCollection<T>(typeof(T).Name)
+                .FindOneById(key);
             return getDescription(item);
         }
 

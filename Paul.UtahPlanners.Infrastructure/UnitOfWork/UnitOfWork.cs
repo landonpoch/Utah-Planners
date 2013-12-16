@@ -36,13 +36,13 @@ namespace UtahPlanners.Infrastructure.UnitOfWork
         public IPropertyFinder CreatePropertyFinder()
         {
             //return new PropertyFinder(_context);
-            return new MongoPropertyFinder(_mongoDb, new MongoPropertyRepo(_mongoDb));
+            return new MongoPropertyFinder(_mongoDb, new MongoPropertyRepo(_mongoDb), _context);
         }
 
         public IPropertiesIndexFinder CreateIndexFinder()
         {
             //return new PropertiesIndexFinder(_context);
-            return new MongoPropIndexFinder(_mongoDb);
+            return new MongoPropIndexFinder(_mongoDb, _context);
         }
 
         public IPictureFinder CreatePictureFinder()
