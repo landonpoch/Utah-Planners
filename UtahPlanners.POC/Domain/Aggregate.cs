@@ -5,8 +5,15 @@ using System.Web;
 
 namespace UtahPlanners.POC.Domain
 {
-    public abstract class Aggregate
+    public abstract partial class Aggregate
     {
-        public object Id { get; set; }
+        public Guid Id { get; private set; }
     }
+
+    //// Extensions
+    //public abstract partial class Aggregate
+    //{
+    //    public Guid SqlId { get; private set; }
+    //    public ObjectId MongoId { get; private set; }
+    //}
 }

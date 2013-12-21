@@ -1,4 +1,5 @@
-﻿using MongoDB.Bson.Serialization;
+﻿using MongoDB.Bson;
+using MongoDB.Bson.Serialization;
 using MongoDB.Bson.Serialization.IdGenerators;
 using System;
 using System.Collections.Generic;
@@ -16,7 +17,8 @@ namespace UtahPlanners.POC.Repository.Mappings
             {
                 map.AutoMap();
                 map.MapIdProperty(a => a.Id);
-                map.IdMemberMap.SetIdGenerator(ObjectIdGenerator.Instance);
+                //map.IdMemberMap.SetIdGenerator(ObjectIdGenerator.Instance); // Can't really do this if you also want to support EF
+                map.IdMemberMap.SetIdGenerator(GuidGenerator.Instance);
             });
 
             BsonClassMap.RegisterClassMap<Property>(map =>

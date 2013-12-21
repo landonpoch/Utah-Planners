@@ -13,7 +13,7 @@ namespace UtahPlanners.POC.Repository
         /// </summary>
         /// <param name="property">The property to add</param>
         /// <returns>The identifier of the newly added property</returns>
-        object Add(Property property);
+        Guid Add(Property property);
 
         List<Property> GetAllProperties();
     }

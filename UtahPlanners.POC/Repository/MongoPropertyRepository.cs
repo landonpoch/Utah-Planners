@@ -1,4 +1,5 @@
-﻿using MongoDB.Driver;
+﻿using MongoDB.Bson;
+using MongoDB.Driver;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,7 +17,7 @@ namespace UtahPlanners.POC.Repository
             _db = db;
         }
 
-        public object Add(Property property)
+        public Guid Add(Property property)
         {
             var result = GetProperties()
                 .Insert<Property>(property);

@@ -204,6 +204,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\EfPropertyRepository.cs" />
     <Compile Include="Repository\IPropertyRepository.cs" />
+    <Compile Include="Repository\Mappings\PropertyContext.cs" />
     <Compile Include="Repository\Mappings\MongoMappings.cs" />
     <Compile Include="Repository\MongoPropertyRepository.cs" />
   </ItemGroup>

@@ -3,26 +3,30 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using UtahPlanners.POC.Domain;
+using UtahPlanners.POC.Repository.Mappings;
 
 namespace UtahPlanners.POC.Repository
 {
     public class EfPropertyRepository : IPropertyRepository
     {
-        private object _context;
+        private PropertyContext _context;
 
-        public EfPropertyRepository(object context)
+        public EfPropertyRepository(PropertyContext context)
         {
             _context = context;
         }
 
-        public object Add(Property property)
+        public Guid Add(Property property)
         {
-            throw new NotImplementedException();
+            
+            _context.Properties.Add(property);
+            _context.SaveChanges();
+            return property.Id;
         }
 
         public List<Property> GetAllProperties()
         {
-            throw new NotImplementedException();
+            return _context.Properties.ToList();
         }
     }
 }

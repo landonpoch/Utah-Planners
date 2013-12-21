@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.Mvc;
 using UtahPlanners.POC.Domain;
 using UtahPlanners.POC.Repository;
+using UtahPlanners.POC.Repository.Mappings;
 
 namespace UtahPlanners.POC.Controllers
 {
@@ -15,10 +16,8 @@ namespace UtahPlanners.POC.Controllers
 
         public HomeController()
         {
-            _repo = new MongoPropertyRepository(new MongoClient().GetServer().GetDatabase("POC"));
-            
-            // TODO: Test EF with the same entities
-            // _repo = new EfPropertyRepository(null);
+            //_repo = new MongoPropertyRepository(new MongoClient().GetServer().GetDatabase("POC"));
+            _repo = new EfPropertyRepository(new PropertyContext());
         }
 
         public ActionResult Index()

@@ -7,9 +7,11 @@ namespace UtahPlanners.POC.Domain
 {
     public class Property : Aggregate
     {
+        private Property() { }
+
         public Property(string name)
         {
-            name = Name;
+            Name = name;
         }
 
         public string Name { get; private set; }
