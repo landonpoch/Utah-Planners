@@ -65,30 +65,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DAO\PropertyContext.cs" />
     <Compile Include="Finder\Mongo\MongoPropertyFinder.cs" />
     <Compile Include="Finder\Mongo\MongoPropIndexFinder.cs" />
     <Compile Include="Finder\PropertyFinder.cs" />
     <Compile Include="Repository\ConfigRepository.cs" />
     <Compile Include="InfrastructureNinjectModule.cs" />
-    <Compile Include="DAO\CommandModel.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>CommandModel.Context.tt</DependentUpon>
-      <CustomToolNamespace>UtahPlanners.Domain.Entity</CustomToolNamespace>
-    </Compile>
     <Compile Include="Repository\LookupTypeRepository.cs" />
-    <Compile Include="Finder\PictureFinder.cs" />
     <Compile Include="Finder\PropertiesIndexFinder.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\Mongo\MongoPropertyRepo.cs" />
-    <Compile Include="Repository\PictureRepository.cs" />
     <Compile Include="Repository\PropertyRepository.cs" />
-    <Compile Include="DAO\Repository.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Repository.edmx</DependentUpon>
-      <CustomToolNamespace>UtahPlanners.Domain.Entity</CustomToolNamespace>
-    </Compile>
     <Compile Include="Service\EmailService.cs" />
     <Compile Include="Shared\Utils.cs" />
     <Compile Include="UnitOfWork\UnitOfWork.cs" />
@@ -96,16 +83,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.Config" />
-    <EntityDeploy Include="DAO\Repository.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Repository.Designer.cs</LastGenOutput>
-      <CustomToolNamespace>UtahPlanners.Domain.Entities</CustomToolNamespace>
-    </EntityDeploy>
-    <None Include="DAO\CommandModel.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>CommandModel.Context.cs</LastGenOutput>
-      <CustomToolNamespace>UtahPlanners.Infrastructure.DAO</CustomToolNamespace>
-    </None>
     <None Include="packages.config" />
     <None Include="Properties\DataSources\PropertiesDB.datasource" />
   </ItemGroup>

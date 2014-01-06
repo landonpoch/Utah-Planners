@@ -52,85 +52,36 @@
   <ItemGroup>
     <Compile Include="Contract\Finder\IPropertyFinder.cs" />
     <Compile Include="Contract\Repository\ILookupTypeRepository.cs" />
-    <Compile Include="Contract\Repository\IPictureRepository.cs" />
     <Compile Include="Contract\Service\IEmailService.cs" />
     <Compile Include="DTO\AddressDTO.cs" />
     <Compile Include="DTO\AdminPropertyDTO.cs" />
     <Compile Include="DTO\AdminPropertyIndexDTO.cs" />
     <Compile Include="DTO\CsvPropertyDTO.cs" />
+    <Compile Include="DTO\PropertiesIndex.cs" />
     <Compile Include="DTO\PropertyDTO.cs" />
     <Compile Include="DTO\UserPropertyDTO.cs" />
-    <Compile Include="Entity\Address.cs">
-      <DependentUpon>CommandModel.tt</DependentUpon>
-    </Compile>
+    <Compile Include="Entity\Address.cs" />
+    <Compile Include="Entity\Aggregate.cs" />
     <Compile Include="Entity\LookupCode.cs" />
-    <Compile Include="Entity\CommonCode.cs">
-      <DependentUpon>CommandModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Entity\MembershipStatus.cs" />
-    <Compile Include="Entity\CommandModel.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>CommandModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Entity\PictureMetaData.cs" />
     <Compile Include="Entity\LookupType.cs" />
+    <Compile Include="Entity\Property.cs" />
+    <Compile Include="Entity\Weight.cs" />
     <Compile Include="Service\ConfigSettings.cs" />
     <Compile Include="DomainNinjectModule.cs" />
-    <Compile Include="Entity\EnclosureCode.cs">
-      <DependentUpon>CommandModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Contract\Repository\IConfigRepository.cs" />
     <Compile Include="Contract\Service\IConfigSettings.cs" />
-    <Compile Include="Entity\IndexFilter.cs" />
-    <Compile Include="Entity\IndexSort.cs" />
-    <Compile Include="Contract\Finder\IPictureFinder.cs" />
+    <Compile Include="DTO\IndexFilter.cs" />
+    <Compile Include="DTO\IndexSort.cs" />
     <Compile Include="Contract\Finder\IPropertiesIndexFinder.cs" />
     <Compile Include="Contract\Repository\IPropertyRepository.cs" />
     <Compile Include="Contract\UnitOfWork\IUnitOfWork.cs" />
     <Compile Include="Contract\UnitOfWork\IUnitOfWorkFactory.cs" />
     <Compile Include="Entity\LookupValues.cs" />
-    <Compile Include="Entity\NeighborhoodCode.cs">
-      <DependentUpon>CommandModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Entity\Picture.cs">
-      <DependentUpon>CommandModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Entity\PropertiesIndex.cs">
-      <DependentUpon>CommandModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Entity\Property.cs">
-      <DependentUpon>CommandModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Entity\PropertyType.cs">
-      <DependentUpon>CommandModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Entity\SocioEconCode.cs">
-      <DependentUpon>CommandModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Entity\StreetconnCode.cs">
-      <DependentUpon>CommandModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Entity\StreetSafteyCode.cs">
-      <DependentUpon>CommandModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Entity\StreetType.cs">
-      <DependentUpon>CommandModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Entity\StreetwalkCode.cs">
-      <DependentUpon>CommandModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Entity\Weight.cs">
-      <DependentUpon>CommandModel.tt</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Entity\CommandModel.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>CommandModel.cs</LastGenOutput>
-      <CustomToolNamespace>UtahPlanners.Domain.Entity</CustomToolNamespace>
-    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

@@ -7,16 +7,16 @@ namespace UtahPlanners.Infrastructure.Repository
 {
     public class ConfigRepository : IConfigRepository
     {
-        private PropertiesDB _context;
+        private PropertyContext _context;
 
-        public ConfigRepository(PropertiesDB context)
+        public ConfigRepository(PropertyContext context)
         {
             _context = context;
         }
 
         #region IConfigRepository Members
 
-        public Weight GetWeights()
+        public Weights GetWeights()
         {
             return _context.Weights.FirstOrDefault();
         }
@@ -25,15 +25,15 @@ namespace UtahPlanners.Infrastructure.Repository
         {
             return new LookupValues
             {
-                PropertyTypes = _context.PropertyTypes.ToList(),
-                StreetTypes = _context.StreetTypes.ToList(),
-                SocioEconCodes = _context.SocioEconCodes.ToList(),
-                StreetSafetyCodes = _context.StreetSafteyCodes.ToList(),
-                EnclosureCodes = _context.EnclosureCodes.ToList(),
-                CommonCodes = _context.CommonCodes.ToList(),
-                StreetconnCodes = _context.StreetconnCodes.ToList(),
-                StreetwalkCodes = _context.StreetwalkCodes.ToList(),
-                NeighborhoodCodes = _context.NeighborhoodCodes.ToList()
+                PropertyTypeLookups = _context.PropertyTypeLookups.ToList(),
+                StreetTypeLookups = _context.StreetTypeLookups.ToList(),
+                SocioEconLookups = _context.SocioEconLookups.ToList(),
+                StreetSafetyLookups = _context.StreetSafetyLookups.ToList(),
+                BuildingEnclosureLookups = _context.BuildingEnclosureLookups.ToList(),
+                CommonAreaLookups = _context.CommonAreaLookups.ToList(),
+                StreetConnectivityLookups = _context.StreetConnectivityLookups.ToList(),
+                StreetWalkabilityLookups = _context.StreetWalkabilityLookups.ToList(),
+                NeighborhoodConditionLookups = _context.NeighborhoodConditionLookups.ToList()
             };
         }
 

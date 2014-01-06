@@ -9,7 +9,7 @@ namespace UtahPlanners.Domain.Contract.Repository
     public interface IPropertyRepository
     {
         void Add(Property property);
-        Property Get(int id);
+        Property Get(Guid id);
         void Remove(Property property);
     }
 }

@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Linq.Expressions;
-using UtahPlanners.Domain.Entity;
 using MongoDB.Driver;
 using UtahPlanners.Infrastructure.DAO;
+using UtahPlanners.Domain.DTO;
+using UtahPlanners.Domain.Entity;
 
 namespace UtahPlanners.Infrastructure.Shared
 {
@@ -28,7 +29,7 @@ namespace UtahPlanners.Infrastructure.Shared
 
     public static class Utils
     {
-        public static string Convert<T>(PropertiesDB context, int? key, Func<T, string> getDescription)
+        public static string Convert<T>(PropertyContext context, Guid? key, Func<T, string> getDescription)
             where T : class
         {
             var item = context.Set<T>()
@@ -36,7 +37,7 @@ namespace UtahPlanners.Infrastructure.Shared
             return getDescription(item);
         }
 
-        public static string Convert<T>(MongoDatabase db, int? key, Func<T, string> getDescription)
+        public static string Convert<T>(MongoDatabase db, Guid? key, Func<T, string> getDescription)
             where T : class
         {
             var item = db.GetCollection<T>(typeof(T).Name)
@@ -44,14 +45,14 @@ namespace UtahPlanners.Infrastructure.Shared
             return getDescription(item);
         }
 
-        public static string GetDescription(CommonCode code) { return code.description; }
-        public static string GetDescription(EnclosureCode code) { return code.description; }
-        public static string GetDescription(NeighborhoodCode code) { return code.description; }
-        public static string GetDescription(SocioEconCode code) { return code.description; }
-        public static string GetDescription(StreetconnCode code) { return code.description; }
-        public static string GetDescription(StreetSafteyCode code) { return code.description; }
-        public static string GetDescription(StreetType code) { return code.description; }
-        public static string GetDescription(StreetwalkCode code) { return code.description; }
-        public static string GetDescription(PropertyType code) { return code.description; }
+        public static string GetDescription(CommonAreas code) { return code.Description; }
+        public static string GetDescription(BuildingEnclosure code) { return code.Description; }
+        public static string GetDescription(NeighborhoodCondition code) { return code.Description; }
+        public static string GetDescription(SocioEcon code) { return code.Description; }
+        public static string GetDescription(StreetConnectivity code) { return code.Description; }
+        public static string GetDescription(StreetSafety code) { return code.Description; }
+        public static string GetDescription(StreetType code) { return code.Description; }
+        public static string GetDescription(StreetWalkability code) { return code.Description; }
+        public static string GetDescription(PropertyType code) { return code.Description; }
     }
 }

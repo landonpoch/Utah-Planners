@@ -17,10 +17,10 @@ namespace Paul.UtahPlanners.Application
         CompositeType GetDataUsingDataContract(CompositeType composite);
 
         [OperationContract]
-        List<PropertiesIndex> FindAllIndecies();
+        List<PropertyIndexDTO> FindAllIndecies();
 
         [OperationContract]
-        List<PropertiesIndex> FindIndecies(IndexFilter filter, IndexSort sort);
+        List<PropertyIndexDTO> FindIndecies(IndexFilter filter, IndexSort sort);
 
         [OperationContract]
         List<AdminPropertyIndexDTO> FindAllAdminIndecies(PropertySort sort);
@@ -50,7 +50,7 @@ namespace Paul.UtahPlanners.Application
         Dictionary<int, Tuple<string, int>> GetLookupCodes(LookupCode lookupCode);
 
         [OperationContract]
-        Weight GetWeights();
+        Weights GetWeights();
 
         [OperationContract]
         int SaveProperty(AdminPropertyDTO property);
@@ -77,7 +77,7 @@ namespace Paul.UtahPlanners.Application
         bool DeleteLookupCode(LookupCode lookupCode, int id);
 
         [OperationContract]
-        bool UpdateWeights(Weight weights);
+        bool UpdateWeights(Weights weights);
 
         [OperationContract]
         bool UploadPicture(Picture pic);

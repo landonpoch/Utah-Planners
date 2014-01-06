@@ -27,6 +27,5 @@ namespace UtahPlanners.POC.Repository.Mappings
 
             base.OnModelCreating(modelBuilder);
         }
-
     }
 }

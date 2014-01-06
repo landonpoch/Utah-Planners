@@ -12,7 +12,7 @@ namespace UtahPlanners.Domain.Services
     public class ConfigSettings : IConfigSettings
     {
         private IUnitOfWorkFactory _factory;
-        private Weight _weights;
+        private Weights _weights;
         private LookupValues _lookupValues;
 
         public ConfigSettings(IUnitOfWorkFactory factory)
@@ -22,7 +22,7 @@ namespace UtahPlanners.Domain.Services
 
         #region IConfigSettings Members
 
-        public Weight Weights
+        public Weights Weights
         {
             get 
             {
@@ -37,15 +37,15 @@ namespace UtahPlanners.Domain.Services
                 ConfigRepo((unit, repo) =>
                 {
                     var w = repo.GetWeights();
-                    w.buildingEnclosure = value.buildingEnclosure;
-                    w.commonAreas = value.commonAreas;
-                    w.neighCondition = value.neighCondition;
-                    w.streetConn = value.streetConn;
-                    w.streetSaftey = value.streetSaftey;
-                    w.streetWalk = value.streetWalk;
-                    w.twoFiftyApts = value.twoFiftyApts;
-                    w.twoFiftySingleFam = value.twoFiftySingleFam;
-                    w.walkscore = value.walkscore;
+                    w.BuildingEnclosure = value.BuildingEnclosure;
+                    w.CommonAreas = value.CommonAreas;
+                    w.NeighborhoodCondition = value.NeighborhoodCondition;
+                    w.StreetConnectivity = value.StreetConnectivity;
+                    w.StreetSafety = value.StreetSafety;
+                    w.StreetWalkability = value.StreetWalkability;
+                    w.TwoFiftyApartments = value.TwoFiftyApartments;
+                    w.TwoFiftySingleFamily = value.TwoFiftySingleFamily;
+                    w.Walkscore = value.Walkscore;
                     unit.Commit();
                 });
                 LoadWeights();

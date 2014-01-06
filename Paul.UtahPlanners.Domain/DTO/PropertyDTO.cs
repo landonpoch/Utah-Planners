@@ -8,7 +8,7 @@ namespace UtahPlanners.Domain.DTO
 {
     public abstract class PropertyDTO
     {
-        public int Id { get; set; }
+        public Guid Id { get; set; }
         public AddressDTO Address { get; set; }
         public int Walkscore { get; set; }
         public int TwoFiftySingleFamily { get; set; }

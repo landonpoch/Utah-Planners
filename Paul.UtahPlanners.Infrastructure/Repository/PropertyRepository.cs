@@ -12,9 +12,9 @@ namespace UtahPlanners.Infrastructure.Repository
 {
     public class PropertyRepository : IPropertyRepository
     {
-        private PropertiesDB _context;
+        private PropertyContext _context;
 
-        public PropertyRepository(PropertiesDB context)
+        public PropertyRepository(PropertyContext context)
         {
             _context = context;
         }
@@ -26,11 +26,11 @@ namespace UtahPlanners.Infrastructure.Repository
             _context.Properties.Add(property);
         }
 
-        public Property Get(int id)
+        public Property Get(Guid id)
         {
             return _context.Properties
                 .Include(p => p.Address)
-                .Where(p => p.id == id)
+                .Where(p => p.Id == id)
                 .FirstOrDefault();
         }
 

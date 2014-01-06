@@ -1,5 +1,6 @@
 ﻿using MongoDB.Driver;
 using MongoDB.Driver.Builders;
+using System;
 using UtahPlanners.Domain.Contract.Repository;
 using UtahPlanners.Domain.Entity;
 
@@ -19,14 +20,14 @@ namespace UtahPlanners.Infrastructure.Repository.Mongo
             _props.Insert(property);
         }
 
-        public Property Get(int id)
+        public Property Get(Guid id)
         {
-            return _props.FindOneAs<Property>(Query<Property>.EQ(p => p.id, id));
+            return _props.FindOneAs<Property>(Query<Property>.EQ(p => p.Id, id));
         }
 
         public void Remove(Property property)
         {
-            _props.Remove(Query<Property>.EQ(p => p.id, property.id));
+            _props.Remove(Query<Property>.EQ(p => p.Id, property.Id));
         }
     }
 }

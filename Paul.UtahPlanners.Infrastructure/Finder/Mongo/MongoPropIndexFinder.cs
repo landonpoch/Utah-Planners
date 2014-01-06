@@ -16,17 +16,17 @@ namespace UtahPlanners.Infrastructure.Finder.Mongo
     public class MongoPropIndexFinder : IPropertiesIndexFinder
     {
         private MongoDatabase _db;
-        private PropertiesDB _context;
+        private PropertyContext _context;
 
-        public MongoPropIndexFinder(MongoDatabase db, PropertiesDB context)
+        public MongoPropIndexFinder(MongoDatabase db, PropertyContext context)
         {
             _db = db;
             _context = context;
         }
 
-        public List<PropertiesIndex> FindIndecies(IndexFilter filter, IndexSort sort)
+        public List<PropertyIndexDTO> FindIndecies(IndexFilter filter, IndexSort sort)
         {
-            var props = GetIndicies<PropertiesIndex>(MapToPropertyIndex);
+            var props = GetIndicies<PropertyIndexDTO>(MapToPropertyIndex);
             return props;
         }
 
@@ -46,38 +46,40 @@ namespace UtahPlanners.Infrastructure.Finder.Mongo
             return indicies;
         }
 
-        private PropertiesIndex MapToPropertyIndex(Property prop)
+        private PropertyIndexDTO MapToPropertyIndex(Property prop)
         {
-            return new PropertiesIndex
-            {
-                id = prop.id,
-                city = prop.Address.city,
-                density = prop.density.GetValueOrDefault(),
-                OverallScore = 0,
-                PropertyTypeDescription = Utils.Convert<PropertyType>(_context, prop.typeCode, Utils.GetDescription),
-                SocioEconDescription = Utils.Convert<SocioEconCode>(_context, prop.socioEcon, Utils.GetDescription),
-                StreetTypeDescription = Utils.Convert<StreetType>(_context, prop.streetCode, Utils.GetDescription),
-                StreetWalkDescription = Utils.Convert<StreetwalkCode>(_context, prop.streetWalk, Utils.GetDescription),
-                twoFiftySingleFam = prop.twoFiftySingleFam.GetValueOrDefault(),
-                units = prop.units.GetValueOrDefault(),
-                walkscore = prop.walkscore.GetValueOrDefault(),
-                yearBuilt = prop.yearBuilt.GetValueOrDefault()
-            };
+            //return new PropertyIndexDTO
+            //{
+            //    Id = prop.Id,
+            //    City = prop.Address.city,
+            //    Density = prop.density.GetValueOrDefault(),
+            //    OverallScore = 0,
+            //    PropertyTypeDescription = Utils.Convert<PropertyType>(_context, prop.typeCode, Utils.GetDescription),
+            //    SocioEconDescription = Utils.Convert<SocioEconCode>(_context, prop.socioEcon, Utils.GetDescription),
+            //    StreetTypeDescription = Utils.Convert<StreetType>(_context, prop.streetCode, Utils.GetDescription),
+            //    StreetWalkDescription = Utils.Convert<StreetwalkCode>(_context, prop.streetWalk, Utils.GetDescription),
+            //    TwoFiftySingleFamily = prop.twoFiftySingleFam.GetValueOrDefault(),
+            //    Units = prop.units.GetValueOrDefault(),
+            //    Walkscore = prop.walkscore.GetValueOrDefault(),
+            //    YearBuilt = prop.yearBuilt.GetValueOrDefault()
+            //};
+            throw new NotImplementedException();
         }
 
         private AdminPropertyIndexDTO MapToAdminPropertyIndex(Property prop)
         {
-            return new AdminPropertyIndexDTO
-            {
-                Id = prop.id,
-                AdminNotes = prop.adminNotes,
-                City = prop.Address.city,
-                Density = prop.density.GetValueOrDefault(),
-                Description = "Description", // TODO
-                NotFinished = prop.notFinished,
-                Units = prop.units.GetValueOrDefault(),
-                YearBuilt = prop.yearBuilt.GetValueOrDefault()
-            };
+            //return new AdminPropertyIndexDTO
+            //{
+            //    Id = prop.id,
+            //    AdminNotes = prop.adminNotes,
+            //    City = prop.Address.city,
+            //    Density = prop.density.GetValueOrDefault(),
+            //    Description = "Description", // TODO
+            //    NotFinished = prop.notFinished,
+            //    Units = prop.units.GetValueOrDefault(),
+            //    YearBuilt = prop.yearBuilt.GetValueOrDefault()
+            //};
+            throw new NotImplementedException();
         }
     }
 }

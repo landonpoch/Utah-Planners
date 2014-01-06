@@ -10,9 +10,9 @@ namespace UtahPlanners.Infrastructure.Repository
     public class LookupValueRepository<TEntity> : ILookupValueRepository<TEntity>
         where TEntity : class
     {
-        private PropertiesDB _context;
+        private PropertyContext _context;
 
-        public LookupValueRepository(PropertiesDB context)
+        public LookupValueRepository(PropertyContext context)
         {
             _context = context;
         }

@@ -15,10 +15,10 @@ namespace UtahPlanners.Infrastructure.UnitOfWork
     {
         private const string MongoDbName = "UtahPlanners";
 
-        private PropertiesDB _context;
+        private PropertyContext _context;
         private MongoDatabase _mongoDb;
 
-        public UnitOfWork(PropertiesDB context, MongoClient mongoClient)
+        public UnitOfWork(PropertyContext context, MongoClient mongoClient)
         {
             _context = context;
 
@@ -45,11 +45,6 @@ namespace UtahPlanners.Infrastructure.UnitOfWork
             return new MongoPropIndexFinder(_mongoDb, _context);
         }
 
-        public IPictureFinder CreatePictureFinder()
-        {
-            return new PictureFinder(_context.Pictures);
-        }
-
         #endregion
 
         #region Repositories
@@ -58,11 +53,6 @@ namespace UtahPlanners.Infrastructure.UnitOfWork
         {
             //return new PropertyRepository(_context);
             return new MongoPropertyRepo(_mongoDb);
-        }
-
-        public IPictureRepository CreatePictureRepository()
-        {
-            return new PictureRepository(_context);
         }
 
         public IConfigRepository CreateConfigRepository()

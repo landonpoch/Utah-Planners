@@ -44,12 +44,12 @@ namespace Paul.UtahPlanners.Application
 
         #region Queries
         
-        public List<PropertiesIndex> FindAllIndecies()
+        public List<PropertyIndexDTO> FindAllIndecies()
         {
             return FindIndecies(null, null);
         }
 
-        public List<PropertiesIndex> FindIndecies(IndexFilter filter, IndexSort sort)
+        public List<PropertyIndexDTO> FindIndecies(IndexFilter filter, IndexSort sort)
         {
             using (var unit = _factory.CreateUnitOfWork())
             {
@@ -70,12 +70,13 @@ namespace Paul.UtahPlanners.Application
         
         public UserPropertyDTO FindUserProperty(int id)
         {
-            using (var unit = _factory.CreateUnitOfWork())
-            {
-                var finder = unit.CreatePropertyFinder();
-                var prop = finder.FindProperty(id, _settings.Weights);
-                return prop;
-            }
+            //using (var unit = _factory.CreateUnitOfWork())
+            //{
+            //    var finder = unit.CreatePropertyFinder();
+            //    var prop = finder.FindProperty(id, _settings.Weights);
+            //    return prop;
+            //}
+            throw new NotImplementedException();
         }
 
         public AdminPropertyDTO FindAdminProperty(int id)
@@ -110,11 +111,12 @@ namespace Paul.UtahPlanners.Application
 
         public Picture FindPicture(int id)
         {
-            using (var unit = _factory.CreateUnitOfWork())
-            {
-                var finder = unit.CreatePictureFinder();
-                return finder.FindPicture(id);
-            }
+            //using (var unit = _factory.CreateUnitOfWork())
+            //{
+            //    var finder = unit.CreatePictureFinder();
+            //    return finder.FindPicture(id);
+            //}
+            throw new NotImplementedException();
         }
 
         public LookupValues GetAllLookupValues()
@@ -124,68 +126,70 @@ namespace Paul.UtahPlanners.Application
 
         public Dictionary<int, string> GetLookupTypes(LookupType lookupType)
         {
-            using (var unit = _factory.CreateUnitOfWork())
-            {
-                var result = new Dictionary<int, string>();
-                switch (lookupType)
-                {
-                    case LookupType.PropertyType:
-                        result = GetAllLookupValues<PropertyType>(unit).ToDictionary(l => l.id, l => l.description);
-                        break;
-                    case LookupType.StreetType:
-                        result = GetAllLookupValues<StreetType>(unit).ToDictionary(l => l.id, l => l.description);
-                        break;
-                    case LookupType.SocioEconType:
-                        result = GetAllLookupValues<SocioEconCode>(unit).ToDictionary(l => l.id, l => l.description);
-                        break;
-                }
-                return result;
-            }
+            //using (var unit = _factory.CreateUnitOfWork())
+            //{
+            //    var result = new Dictionary<int, string>();
+            //    switch (lookupType)
+            //    {
+            //        case LookupType.PropertyType:
+            //            result = GetAllLookupValues<PropertyType>(unit).ToDictionary(l => l.Id, l => l.Description);
+            //            break;
+            //        case LookupType.StreetType:
+            //            result = GetAllLookupValues<StreetType>(unit).ToDictionary(l => l.Id, l => l.Description);
+            //            break;
+            //        case LookupType.SocioEconType:
+            //            result = GetAllLookupValues<SocioEconCode>(unit).ToDictionary(l => l.Id, l => l.Description);
+            //            break;
+            //    }
+            //    return result;
+            //}
+            throw new NotImplementedException();
         }
 
         public Dictionary<int, Tuple<string, int>> GetLookupCodes(LookupCode lookupCode)
         {
-            using (var unit = _factory.CreateUnitOfWork())
-            {
-                var result = new Dictionary<int, Tuple<string, int>>();
-                switch (lookupCode)
-                {
-                    case LookupCode.CommonCode:
-                        result = GetAllLookupValues<CommonCode>(unit)
-                            .ToDictionary<CommonCode, int, Tuple<string, int>>
-                                (cc => cc.id, cc => new Tuple<string, int>(cc.description, cc.weight.Value));
-                        break;
-                    case LookupCode.EnclosureCode:
-                        result = GetAllLookupValues<EnclosureCode>(unit)
-                            .ToDictionary<EnclosureCode, int, Tuple<string, int>>
-                                (cc => cc.id, cc => new Tuple<string, int>(cc.description, cc.weight.Value));
-                        break;
-                    case LookupCode.NeighborhoodCode:
-                        result = GetAllLookupValues<NeighborhoodCode>(unit)
-                            .ToDictionary<NeighborhoodCode, int, Tuple<string, int>>
-                                (cc => cc.id, cc => new Tuple<string, int>(cc.description, cc.weight.Value));
-                        break;
-                    case LookupCode.StreetConnCode:
-                        result = GetAllLookupValues<StreetconnCode>(unit)
-                            .ToDictionary<StreetconnCode, int, Tuple<string, int>>
-                                (cc => cc.id, cc => new Tuple<string, int>(cc.description, cc.weight.Value));
-                        break;
-                    case LookupCode.StreetSafetyCode:
-                        result = GetAllLookupValues<StreetSafteyCode>(unit)
-                            .ToDictionary<StreetSafteyCode, int, Tuple<string, int>>
-                                (cc => cc.id, cc => new Tuple<string, int>(cc.description, cc.weight.Value));
-                        break;
-                    case LookupCode.StreetWalkCode:
-                        result = GetAllLookupValues<StreetwalkCode>(unit)
-                            .ToDictionary<StreetwalkCode, int, Tuple<string, int>>
-                                (cc => cc.id, cc => new Tuple<string, int>(cc.description, cc.weight.Value));
-                        break;
-                }
-                return result;
-            }
+            //using (var unit = _factory.CreateUnitOfWork())
+            //{
+            //    var result = new Dictionary<int, Tuple<string, int>>();
+            //    switch (lookupCode)
+            //    {
+            //        case LookupCode.CommonCode:
+            //            result = GetAllLookupValues<CommonCode>(unit)
+            //                .ToDictionary<CommonCode, int, Tuple<string, int>>
+            //                    (cc => cc.id, cc => new Tuple<string, int>(cc.description, cc.weight.Value));
+            //            break;
+            //        case LookupCode.EnclosureCode:
+            //            result = GetAllLookupValues<EnclosureCode>(unit)
+            //                .ToDictionary<EnclosureCode, int, Tuple<string, int>>
+            //                    (cc => cc.id, cc => new Tuple<string, int>(cc.description, cc.weight.Value));
+            //            break;
+            //        case LookupCode.NeighborhoodCode:
+            //            result = GetAllLookupValues<NeighborhoodCode>(unit)
+            //                .ToDictionary<NeighborhoodCode, int, Tuple<string, int>>
+            //                    (cc => cc.id, cc => new Tuple<string, int>(cc.description, cc.weight.Value));
+            //            break;
+            //        case LookupCode.StreetConnCode:
+            //            result = GetAllLookupValues<StreetconnCode>(unit)
+            //                .ToDictionary<StreetconnCode, int, Tuple<string, int>>
+            //                    (cc => cc.id, cc => new Tuple<string, int>(cc.description, cc.weight.Value));
+            //            break;
+            //        case LookupCode.StreetSafetyCode:
+            //            result = GetAllLookupValues<StreetSafteyCode>(unit)
+            //                .ToDictionary<StreetSafteyCode, int, Tuple<string, int>>
+            //                    (cc => cc.id, cc => new Tuple<string, int>(cc.description, cc.weight.Value));
+            //            break;
+            //        case LookupCode.StreetWalkCode:
+            //            result = GetAllLookupValues<StreetwalkCode>(unit)
+            //                .ToDictionary<StreetwalkCode, int, Tuple<string, int>>
+            //                    (cc => cc.id, cc => new Tuple<string, int>(cc.description, cc.weight.Value));
+            //            break;
+            //    }
+            //    return result;
+            //}
+            throw new NotImplementedException();
         }
 
-        public Weight GetWeights()
+        public Weights GetWeights()
         {
             return _settings.Weights;
         }
@@ -197,206 +201,214 @@ namespace Paul.UtahPlanners.Application
 
         public int SaveProperty(AdminPropertyDTO dto)
         {
-            string errorMessage = "An error occured while saving the property";
-            return CommandWrapper(errorMessage, (IUnitOfWork unit) =>
-            {
-                var propRepo = unit.CreatePropertyRepository();
-                var picRepo = unit.CreatePictureRepository();
-                if (dto.Id > 0)
-                {
-                    var prop = propRepo.Get(dto.Id);
-                    ModifyProperty(ref prop, dto);
-                    foreach (var metaPic in dto.PictureMetaData)
-                    {
-                        var pic = picRepo.Get(metaPic.PictureId); // Very inefficient, look into table splitting
-                        ModifyPicture(ref pic, metaPic);
-                        if (metaPic.Delete)
-                        {
-                            picRepo.Remove(pic);
-                        }
-                    }
-                }
-                else
-                {
-                    var prop = new Property();
-                    ModifyProperty(ref prop, dto);
-                    propRepo.Add(prop);
-                }
-                return dto.Id;
-            });
+            //string errorMessage = "An error occured while saving the property";
+            //return CommandWrapper(errorMessage, (IUnitOfWork unit) =>
+            //{
+            //    var propRepo = unit.CreatePropertyRepository();
+            //    var picRepo = unit.CreatePictureRepository();
+            //    if (dto.Id > 0)
+            //    {
+            //        var prop = propRepo.Get(dto.Id);
+            //        ModifyProperty(ref prop, dto);
+            //        foreach (var metaPic in dto.PictureMetaData)
+            //        {
+            //            var pic = picRepo.Get(metaPic.PictureId); // Very inefficient, look into table splitting
+            //            ModifyPicture(ref pic, metaPic);
+            //            if (metaPic.Delete)
+            //            {
+            //                picRepo.Remove(pic);
+            //            }
+            //        }
+            //    }
+            //    else
+            //    {
+            //        var prop = new Property();
+            //        ModifyProperty(ref prop, dto);
+            //        propRepo.Add(prop);
+            //    }
+            //    return dto.Id;
+            //});
+            throw new NotImplementedException();
         }
 
         public bool DeleteProperty(int propertyId)
         {
-            string message = "An error occurred while deleting the property";
-            return CommandWrapper(message, (IUnitOfWork unit) =>
-            {
-                var repo = unit.CreatePropertyRepository();
-                var property = repo.Get(propertyId);
-                repo.Remove(property);
-            });
+            //string message = "An error occurred while deleting the property";
+            //return CommandWrapper(message, (IUnitOfWork unit) =>
+            //{
+            //    var repo = unit.CreatePropertyRepository();
+            //    var property = repo.Get(propertyId);
+            //    repo.Remove(property);
+            //});
+            throw new NotImplementedException();
         }
 
         public bool CreateLookupType(LookupType lookupType, string value)
         {
-            string message = "An error occured while trying to create a new lookup type";
-            return CommandWrapper(message, (IUnitOfWork unit) =>
-            {
-                switch (lookupType)
-                {
-                    case LookupType.PropertyType:
-                        CreateLookupValue(unit, new PropertyType { description = value });
-                        break;
-                    case LookupType.StreetType:
-                        CreateLookupValue(unit, new StreetType { description = value });
-                        break;
-                    case LookupType.SocioEconType:
-                        CreateLookupValue(unit, new SocioEconCode { description = value });
-                        break;
-                }
-            });
+            //string message = "An error occured while trying to create a new lookup type";
+            //return CommandWrapper(message, (IUnitOfWork unit) =>
+            //{
+            //    switch (lookupType)
+            //    {
+            //        case LookupType.PropertyType:
+            //            CreateLookupValue(unit, new PropertyType { description = value });
+            //            break;
+            //        case LookupType.StreetType:
+            //            CreateLookupValue(unit, new StreetType { description = value });
+            //            break;
+            //        case LookupType.SocioEconType:
+            //            CreateLookupValue(unit, new SocioEconCode { description = value });
+            //            break;
+            //    }
+            //});
+            throw new NotImplementedException();
         }
 
         public bool ModifyLookupType(LookupType lookupType, int id, string value)
         {
-            string message = "An error occured while modifying the lookup type.";
-            return CommandWrapper(message, (IUnitOfWork unit) =>
-            { 
-                switch (lookupType)
-                {
-                    case LookupType.PropertyType:
-                        GetLookupValue<PropertyType>(unit, id).description = value;
-                        break;
-                    case LookupType.StreetType:
-                        GetLookupValue<StreetType>(unit, id).description = value;
-                        break;
-                    case LookupType.SocioEconType:
-                        GetLookupValue<SocioEconCode>(unit, id).description = value;
-                        break;
-                }
-            });
+            //string message = "An error occured while modifying the lookup type.";
+            //return CommandWrapper(message, (IUnitOfWork unit) =>
+            //{ 
+            //    switch (lookupType)
+            //    {
+            //        case LookupType.PropertyType:
+            //            GetLookupValue<PropertyType>(unit, id).description = value;
+            //            break;
+            //        case LookupType.StreetType:
+            //            GetLookupValue<StreetType>(unit, id).description = value;
+            //            break;
+            //        case LookupType.SocioEconType:
+            //            GetLookupValue<SocioEconCode>(unit, id).description = value;
+            //            break;
+            //    }
+            //});
+            throw new NotImplementedException();
         }
 
         public bool DeleteLookupType(LookupType lookupType, int id)
         {
-            string message = "An error occured while trying to delete the lookup type.";
-            return CommandWrapper(message, (IUnitOfWork unit) =>
-            {
-                switch (lookupType)
-                {
-                    case LookupType.PropertyType:
-                        RemoveLookupValue<PropertyType>(unit, id);
-                        break;
-                    case LookupType.StreetType:
-                        RemoveLookupValue<StreetType>(unit, id);
-                        break;
-                    case LookupType.SocioEconType:
-                        RemoveLookupValue<SocioEconCode>(unit, id);
-                        break;
-                }
-            });
+            //string message = "An error occured while trying to delete the lookup type.";
+            //return CommandWrapper(message, (IUnitOfWork unit) =>
+            //{
+            //    switch (lookupType)
+            //    {
+            //        case LookupType.PropertyType:
+            //            RemoveLookupValue<PropertyType>(unit, id);
+            //            break;
+            //        case LookupType.StreetType:
+            //            RemoveLookupValue<StreetType>(unit, id);
+            //            break;
+            //        case LookupType.SocioEconType:
+            //            RemoveLookupValue<SocioEconCode>(unit, id);
+            //            break;
+            //    }
+            //});
+            throw new NotImplementedException();
         }
 
         public bool CreateLookupCode(LookupCode lookupCode, string value, int weight)
         {
-            string errorMessage = "An error occured while tring to create the lookup code.";
-            return CommandWrapper(errorMessage, (IUnitOfWork unit) =>
-            {
-                switch (lookupCode)
-                {
-                    case LookupCode.CommonCode:
-                        CreateLookupValue(unit, new CommonCode { description = value, weight = weight });
-                        break;
-                    case LookupCode.EnclosureCode:
-                        CreateLookupValue(unit, new EnclosureCode { description = value, weight = weight });
-                        break;
-                    case LookupCode.NeighborhoodCode:
-                        CreateLookupValue(unit, new NeighborhoodCode { description = value, weight = weight });
-                        break;
-                    case LookupCode.StreetConnCode:
-                        CreateLookupValue(unit, new StreetconnCode { description = value, weight = weight });
-                        break;
-                    case LookupCode.StreetSafetyCode:
-                        CreateLookupValue(unit, new StreetSafteyCode { description = value, weight = weight });
-                        break;
-                    case LookupCode.StreetWalkCode:
-                        CreateLookupValue(unit, new StreetwalkCode { description = value, weight = weight });
-                        break;
-                }
-            });
+            //string errorMessage = "An error occured while tring to create the lookup code.";
+            //return CommandWrapper(errorMessage, (IUnitOfWork unit) =>
+            //{
+            //    switch (lookupCode)
+            //    {
+            //        case LookupCode.CommonCode:
+            //            CreateLookupValue(unit, new CommonCode { description = value, weight = weight });
+            //            break;
+            //        case LookupCode.EnclosureCode:
+            //            CreateLookupValue(unit, new EnclosureCode { description = value, weight = weight });
+            //            break;
+            //        case LookupCode.NeighborhoodCode:
+            //            CreateLookupValue(unit, new NeighborhoodCode { description = value, weight = weight });
+            //            break;
+            //        case LookupCode.StreetConnCode:
+            //            CreateLookupValue(unit, new StreetconnCode { description = value, weight = weight });
+            //            break;
+            //        case LookupCode.StreetSafetyCode:
+            //            CreateLookupValue(unit, new StreetSafteyCode { description = value, weight = weight });
+            //            break;
+            //        case LookupCode.StreetWalkCode:
+            //            CreateLookupValue(unit, new StreetwalkCode { description = value, weight = weight });
+            //            break;
+            //    }
+            //});
+            throw new NotImplementedException();
         }
 
         public bool ModifyLookupCode(LookupCode lookupCode, int id, string value, int weight)
         {
-            string errorMessage = "An error occured while tring to modify the lookup code.";
-            return CommandWrapper(errorMessage, (IUnitOfWork unit) =>
-            {
-                switch (lookupCode)
-                {
-                    case LookupCode.CommonCode:
-                        var commonCode = GetLookupValue<CommonCode>(unit, id);
-                        commonCode.description = value;
-                        commonCode.weight = weight;
-                        break;
-                    case LookupCode.EnclosureCode:
-                        var enclosureCode = GetLookupValue<EnclosureCode>(unit, id);
-                        enclosureCode.description = value;
-                        enclosureCode.weight = weight;
-                        break;
-                    case LookupCode.NeighborhoodCode:
-                        var neighborhoodCode = GetLookupValue<NeighborhoodCode>(unit, id);
-                        neighborhoodCode.description = value;
-                        neighborhoodCode.weight = weight;
-                        break;
-                    case LookupCode.StreetConnCode:
-                        var streetConnCode = GetLookupValue<StreetconnCode>(unit, id);
-                        streetConnCode.description = value;
-                        streetConnCode.weight = weight;
-                        break;
-                    case LookupCode.StreetSafetyCode:
-                        var streetSafetyCode = GetLookupValue<StreetSafteyCode>(unit, id);
-                        streetSafetyCode.description = value;
-                        streetSafetyCode.weight = weight;
-                        break;
-                    case LookupCode.StreetWalkCode:
-                        var streetWalkCode = GetLookupValue<StreetwalkCode>(unit, id);
-                        streetWalkCode.description = value;
-                        streetWalkCode.weight = weight;
-                        break;
-                }
-            });
+            //string errorMessage = "An error occured while tring to modify the lookup code.";
+            //return CommandWrapper(errorMessage, (IUnitOfWork unit) =>
+            //{
+            //    switch (lookupCode)
+            //    {
+            //        case LookupCode.CommonCode:
+            //            var commonCode = GetLookupValue<CommonCode>(unit, id);
+            //            commonCode.description = value;
+            //            commonCode.weight = weight;
+            //            break;
+            //        case LookupCode.EnclosureCode:
+            //            var enclosureCode = GetLookupValue<EnclosureCode>(unit, id);
+            //            enclosureCode.description = value;
+            //            enclosureCode.weight = weight;
+            //            break;
+            //        case LookupCode.NeighborhoodCode:
+            //            var neighborhoodCode = GetLookupValue<NeighborhoodCode>(unit, id);
+            //            neighborhoodCode.description = value;
+            //            neighborhoodCode.weight = weight;
+            //            break;
+            //        case LookupCode.StreetConnCode:
+            //            var streetConnCode = GetLookupValue<StreetconnCode>(unit, id);
+            //            streetConnCode.description = value;
+            //            streetConnCode.weight = weight;
+            //            break;
+            //        case LookupCode.StreetSafetyCode:
+            //            var streetSafetyCode = GetLookupValue<StreetSafteyCode>(unit, id);
+            //            streetSafetyCode.description = value;
+            //            streetSafetyCode.weight = weight;
+            //            break;
+            //        case LookupCode.StreetWalkCode:
+            //            var streetWalkCode = GetLookupValue<StreetwalkCode>(unit, id);
+            //            streetWalkCode.description = value;
+            //            streetWalkCode.weight = weight;
+            //            break;
+            //    }
+            //});
+            throw new NotImplementedException();
         }
 
         public bool DeleteLookupCode(LookupCode lookupCode, int id)
         {
-            string errorMessage = "An error occured while tring to delete the lookup code.";
-            return CommandWrapper(errorMessage, (IUnitOfWork unit) =>
-            {
-                switch (lookupCode)
-                {
-                    case LookupCode.CommonCode:
-                        RemoveLookupValue<CommonCode>(unit, id);
-                        break;
-                    case LookupCode.EnclosureCode:
-                        RemoveLookupValue<EnclosureCode>(unit, id);
-                        break;
-                    case LookupCode.NeighborhoodCode:
-                        RemoveLookupValue<NeighborhoodCode>(unit, id);
-                        break;
-                    case LookupCode.StreetConnCode:
-                        RemoveLookupValue<StreetconnCode>(unit, id);
-                        break;
-                    case LookupCode.StreetSafetyCode:
-                        RemoveLookupValue<StreetSafteyCode>(unit, id);
-                        break;
-                    case LookupCode.StreetWalkCode:
-                        RemoveLookupValue<StreetwalkCode>(unit, id);
-                        break;
-                }
-            });
+            //string errorMessage = "An error occured while tring to delete the lookup code.";
+            //return CommandWrapper(errorMessage, (IUnitOfWork unit) =>
+            //{
+            //    switch (lookupCode)
+            //    {
+            //        case LookupCode.CommonCode:
+            //            RemoveLookupValue<CommonCode>(unit, id);
+            //            break;
+            //        case LookupCode.EnclosureCode:
+            //            RemoveLookupValue<EnclosureCode>(unit, id);
+            //            break;
+            //        case LookupCode.NeighborhoodCode:
+            //            RemoveLookupValue<NeighborhoodCode>(unit, id);
+            //            break;
+            //        case LookupCode.StreetConnCode:
+            //            RemoveLookupValue<StreetconnCode>(unit, id);
+            //            break;
+            //        case LookupCode.StreetSafetyCode:
+            //            RemoveLookupValue<StreetSafteyCode>(unit, id);
+            //            break;
+            //        case LookupCode.StreetWalkCode:
+            //            RemoveLookupValue<StreetwalkCode>(unit, id);
+            //            break;
+            //    }
+            //});
+            throw new NotImplementedException();
         }
 
-        public bool UpdateWeights(Weight weights)
+        public bool UpdateWeights(Weights weights)
         {
             bool result = false;
             try
@@ -412,12 +424,13 @@ namespace Paul.UtahPlanners.Application
 
         public bool UploadPicture(Picture pic)
         {
-            string errorMessage = "An error occured while trying to upload a picture";
-            return CommandWrapper(errorMessage, (unit) =>
-            {
-                var repo = unit.CreatePictureRepository();
-                repo.Add(pic);
-            });
+            //string errorMessage = "An error occured while trying to upload a picture";
+            //return CommandWrapper(errorMessage, (unit) =>
+            //{
+            //    var repo = unit.CreatePictureRepository();
+            //    repo.Add(pic);
+            //});
+            throw new NotImplementedException();
         }
 
         #endregion
@@ -497,48 +510,51 @@ namespace Paul.UtahPlanners.Application
 
         private void ModifyProperty(ref Property prop, AdminPropertyDTO dto)
         {
-            prop.Address = Convert(dto.Address, dto.Id);
-            prop.adminNotes = dto.AdminNotes;
-            prop.area = dto.Area;
-            prop.buildingEnclosure = dto.BuildingEnclosure;
-            prop.commonAreas = dto.CommonAreas;
-            prop.density = dto.Density;
-            prop.neighCondition = dto.NeighborhoodCondition;
-            prop.notes = dto.Notes;
-            prop.notFinished = dto.NotFinished;
-            prop.socioEcon = dto.SocioEcon;
-            prop.streetCode = dto.StreetType;
-            prop.streetConn = dto.StreetConnectivity;
-            prop.streetSaftey = dto.StreetSafety;
-            prop.streetWalk = dto.StreetWalkability;
-            prop.twoFiftyApts = dto.TwoFiftyAppartments;
-            prop.twoFiftySingleFam = dto.TwoFiftySingleFamily;
-            prop.typeCode = dto.Type;
-            prop.units = dto.Units;
-            prop.walkscore = dto.Walkscore;
-            prop.walkscoreNotes = dto.WalkscoreNotes;
-            prop.yearBuilt = dto.YearBuilt;
+            //prop.Address = Convert(dto.Address, dto.Id);
+            //prop.adminNotes = dto.AdminNotes;
+            //prop.area = dto.Area;
+            //prop.buildingEnclosure = dto.BuildingEnclosure;
+            //prop.commonAreas = dto.CommonAreas;
+            //prop.density = dto.Density;
+            //prop.neighCondition = dto.NeighborhoodCondition;
+            //prop.notes = dto.Notes;
+            //prop.notFinished = dto.NotFinished;
+            //prop.socioEcon = dto.SocioEcon;
+            //prop.streetCode = dto.StreetType;
+            //prop.streetConn = dto.StreetConnectivity;
+            //prop.streetSaftey = dto.StreetSafety;
+            //prop.streetWalk = dto.StreetWalkability;
+            //prop.twoFiftyApts = dto.TwoFiftyAppartments;
+            //prop.twoFiftySingleFam = dto.TwoFiftySingleFamily;
+            //prop.typeCode = dto.Type;
+            //prop.units = dto.Units;
+            //prop.walkscore = dto.Walkscore;
+            //prop.walkscoreNotes = dto.WalkscoreNotes;
+            //prop.yearBuilt = dto.YearBuilt;
+            throw new NotImplementedException();
         }
 
         private Address Convert(AddressDTO dto, int id)
         {
-            return new Address
-            {
-                city = dto.City,
-                country = dto.Country,
-                id = id,
-                state = dto.State,
-                street1 = dto.Street1,
-                street2 = dto.Street2,
-                zip = dto.Zip
-            };
+            //return new Address
+            //{
+            //    City = dto.City,
+            //    Country = dto.Country,
+            //    Id = id,
+            //    State = dto.State,
+            //    Street1 = dto.Street1,
+            //    Street2 = dto.Street2,
+            //    Zip = dto.Zip
+            //};
+            throw new NotImplementedException();
         }
 
         private void ModifyPicture(ref Picture pic, PictureMetaData meta)
         {
-            pic.frontPage = (short)(meta.FrontPage ? 1 : 0);
-            pic.mainPicture = (short)(meta.PrimaryPicture ? 1 : 0);
-            pic.secondaryPicture = (short)(meta.SecondaryPicture ? 1 : 0);
+            //pic.frontPage = (short)(meta.FrontPage ? 1 : 0);
+            //pic.mainPicture = (short)(meta.PrimaryPicture ? 1 : 0);
+            //pic.secondaryPicture = (short)(meta.SecondaryPicture ? 1 : 0);
+            throw new NotImplementedException();
         }
 
         #endregion

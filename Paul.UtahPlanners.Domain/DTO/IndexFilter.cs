@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Runtime.Serialization;
 
-namespace UtahPlanners.Domain.Entity
+namespace UtahPlanners.Domain.DTO
 {
     // TODO: See if this can be converted to a specification
     public class IndexFilter

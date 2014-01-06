@@ -11,7 +11,7 @@ namespace UtahPlanners.Infrastructure.UnitOfWork
 
         public IUnitOfWork CreateUnitOfWork()
         {
-            return new UnitOfWork(new PropertiesDB(), new MongoClient());
+            return new UnitOfWork(new PropertyContext(), new MongoClient());
         }
 
         #endregion

@@ -13,11 +13,9 @@ namespace UtahPlanners.Domain.Contract.UnitOfWork
         // Query Model
         IPropertyFinder CreatePropertyFinder();
         IPropertiesIndexFinder CreateIndexFinder();
-        IPictureFinder CreatePictureFinder();
 
         // Command Model
         IPropertyRepository CreatePropertyRepository();
-        IPictureRepository CreatePictureRepository();
         IConfigRepository CreateConfigRepository();
         ILookupValueRepository<T> CreateLookupValueRepository<T>()
             where T : class;

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Linq.Expressions;
 
-namespace UtahPlanners.Domain.Entity
+namespace UtahPlanners.Domain.DTO
 {
     public class PropertySort
     {

@@ -8,7 +8,7 @@ namespace UtahPlanners.Domain.Contract.Repository
 {
     public interface IConfigRepository
     {
-        Weight GetWeights();
+        Weights GetWeights();
         LookupValues GetLookupValues();
     }
 }
