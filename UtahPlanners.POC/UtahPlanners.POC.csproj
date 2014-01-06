@@ -194,18 +194,25 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Domain\Address.cs" />
     <Compile Include="Domain\Aggregate.cs" />
+    <Compile Include="Domain\PictureMetaData.cs" />
     <Compile Include="Domain\Property.cs" />
+    <Compile Include="Domain\LookupValues.cs" />
+    <Compile Include="Domain\Setting.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountModels.cs" />
+    <Compile Include="Models\HomeModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\EfPropertyRepository.cs" />
+    <Compile Include="Repository\ILookupRepository.cs" />
     <Compile Include="Repository\IPropertyRepository.cs" />
     <Compile Include="Repository\Mappings\PropertyContext.cs" />
     <Compile Include="Repository\Mappings\MongoMappings.cs" />
+    <Compile Include="Repository\MongoLookupRepository.cs" />
     <Compile Include="Repository\MongoPropertyRepository.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -319,9 +326,11 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Web.config" />
+    <Content Include="Views\Home\LookupValuePartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Shared\EditorTemplates\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -342,7 +351,7 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>0</DevelopmentServerPort>
+          <DevelopmentServerPort>61958</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>http://localhost:54424/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>

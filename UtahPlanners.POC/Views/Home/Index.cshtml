@@ -1,5 +1,9 @@
-﻿@{
+﻿@model UtahPlanners.POC.Models.IndexModel
+@{
     ViewBag.Title = "Home Page";
+    
+}
+@section Scripts{
 }
 @section featured {
     <section class="featured">
@@ -43,3 +47,13 @@
         <a href="http://go.microsoft.com/fwlink/?LinkId=245157">Learn more…</a>
     </li>
 </ol>
+
+@foreach (var propertyType in Model.PropertyTypes)
+{
+    Html.RenderPartial("_LookupValue", propertyType);
+}
+
+<form action="Home/CreatePropertyType" method="post">
+    <input id="description" name="description" type="text" value="" />
+    <input type="submit" value="Create Property Type" />
+</form>

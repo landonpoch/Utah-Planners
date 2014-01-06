@@ -1,0 +1,16 @@
+﻿@model UtahPlanners.POC.Models.LookupValueModel
+
+<div style="display: block;">
+@using (Html.BeginForm("UpdateLookupValue", "Home", FormMethod.Post, new { style = "display: inline;" }))
+{
+    @Html.HiddenFor(m => m.Id)
+    @Html.TextBoxFor(m => m.Description)
+    <input type="submit" value="Save" />
+}
+
+@using (Html.BeginForm("DeletePropertyType", "Home", FormMethod.Post, new { style = "display: inline;" }))
+{
+    @Html.HiddenFor(m => m.Id)
+    <input type="submit" value="Delete" />
+}
+</div>

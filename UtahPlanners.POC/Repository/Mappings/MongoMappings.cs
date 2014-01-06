@@ -24,7 +24,7 @@ namespace UtahPlanners.POC.Repository.Mappings
             BsonClassMap.RegisterClassMap<Property>(map =>
             {
                 map.AutoMap();
-                map.MapCreator(p => new Property(p.Name));
+                //map.MapCreator(p => new Property(p.Name));
             });
         }
     }
