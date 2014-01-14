@@ -5,8 +5,9 @@ using System.Text;
 using UtahPlanners.Domain.Contract.Repository;
 using UtahPlanners.Domain.Contract.Service;
 using UtahPlanners.Domain.Contract.Finder;
+using UtahPlanners.Domain.Entity;
 
-namespace UtahPlanners.Domain.Contract.UnitOfWork
+namespace UtahPlanners.Domain.Contract.Persistence
 {
     public interface IUnitOfWork : IDisposable
     {
@@ -18,7 +19,7 @@ namespace UtahPlanners.Domain.Contract.UnitOfWork
         IPropertyRepository CreatePropertyRepository();
         IConfigRepository CreateConfigRepository();
         ILookupValueRepository<T> CreateLookupValueRepository<T>()
-            where T : class;
+            where T : LookupValue;
         
         void Commit();
     }

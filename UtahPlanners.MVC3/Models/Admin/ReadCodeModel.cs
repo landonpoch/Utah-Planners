@@ -20,8 +20,8 @@ namespace UtahPlanners.MVC3.Models.Admin
             }
         }
         public int SelectedCode { get; set; }
-        public Dictionary<int, CodeDetails> CodeData { get; set; }
-        public int? SelectedId { get; set; }
+        public Dictionary<Guid, CodeDetails> CodeData { get; set; }
+        public Guid? SelectedId { get; set; }
     }
 
     public class CodeDetails

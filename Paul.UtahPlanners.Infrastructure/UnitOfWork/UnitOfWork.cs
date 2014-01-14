@@ -1,6 +1,6 @@
 ﻿using UtahPlanners.Domain.Contract.Repository;
 using UtahPlanners.Domain.Contract.Service;
-using UtahPlanners.Domain.Contract.UnitOfWork;
+using UtahPlanners.Domain.Contract.Persistence;
 using UtahPlanners.Infrastructure.DAO;
 using UtahPlanners.Infrastructure.Repository;
 using UtahPlanners.Domain.Contract.Finder;
@@ -8,6 +8,7 @@ using UtahPlanners.Infrastructure.Finder;
 using MongoDB.Driver;
 using UtahPlanners.Infrastructure.Repository.Mongo;
 using UtahPlanners.Infrastructure.Finder.Mongo;
+using UtahPlanners.Domain.Entity;
 
 namespace UtahPlanners.Infrastructure.UnitOfWork
 {
@@ -57,13 +58,15 @@ namespace UtahPlanners.Infrastructure.UnitOfWork
 
         public IConfigRepository CreateConfigRepository()
         {
-            return new ConfigRepository(_context);
+            //return new ConfigRepository(_context);
+            return new MongoConfigRepository(_mongoDb);
         }
 
         public ILookupValueRepository<T> CreateLookupValueRepository<T>()
-            where T : class
+            where T : LookupValue
         {
-            return new LookupValueRepository<T>(_context);
+            //return new LookupValueRepository<T>(_context);
+            return new MongoLookupValueRepository<T>(_mongoDb);
         }
 
         #endregion

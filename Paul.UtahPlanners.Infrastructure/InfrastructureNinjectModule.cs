@@ -1,5 +1,5 @@
 ﻿using Ninject.Modules;
-using UtahPlanners.Domain.Contract.UnitOfWork;
+using UtahPlanners.Domain.Contract.Persistence;
 using UtahPlanners.Infrastructure.UnitOfWork;
 using UtahPlanners.Domain.Contract.Service;
 using UtahPlanners.Infrastructure.Service;
@@ -12,7 +12,7 @@ namespace UtahPlanners.Infrastructure
     {
         public override void Load()
         {
-            Bind<IUnitOfWorkFactory>().To<UnitOfWorkFactory>();
+            Bind<IPersistenceFactory>().To<PersistenceFactory>();
             Bind<IEmailService>().To<EmailService>();
             Bind(typeof(ILookupValueRepository<>)).To(typeof(LookupValueRepository<>));
         }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using UtahPlanners.Domain.Entity;
-using UtahPlanners.Domain.Contract.UnitOfWork;
+using UtahPlanners.Domain.Contract.Persistence;
 using UtahPlanners.Domain.Contract.Service;
 using UtahPlanners.Domain.Contract.Repository;
 
@@ -11,11 +11,11 @@ namespace UtahPlanners.Domain.Services
 {
     public class ConfigSettings : IConfigSettings
     {
-        private IUnitOfWorkFactory _factory;
+        private IPersistenceFactory _factory;
         private Weights _weights;
         private LookupValues _lookupValues;
 
-        public ConfigSettings(IUnitOfWorkFactory factory)
+        public ConfigSettings(IPersistenceFactory factory)
         {
             _factory = factory;
         }

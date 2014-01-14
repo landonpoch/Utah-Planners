@@ -110,7 +110,8 @@ namespace UtahPlanners.Infrastructure.Finder.Mongo
             //{
             //    return default(KeyValuePair<int, int>);
             //}
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
+            return new KeyValuePair<int,int>();
         }
 
         private AddressDTO Convert(Address a)

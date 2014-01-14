@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace UtahPlanners.Domain.Entity
 {
@@ -16,6 +17,7 @@ namespace UtahPlanners.Domain.Entity
     }
 
     #region Lookup Value Classes
+    [Serializable]
     public abstract class LookupValue : Aggregate
     {
         public LookupValue(string description)
@@ -26,6 +28,7 @@ namespace UtahPlanners.Domain.Entity
         public string Description { get; private set; }
     }
 
+    [Serializable]
     public class PropertyType : LookupValue
     {
         public PropertyType(string description)
@@ -34,6 +37,7 @@ namespace UtahPlanners.Domain.Entity
         }
     }
 
+    [Serializable]
     public class StreetType : LookupValue
     {
         public StreetType(string description)
@@ -42,6 +46,7 @@ namespace UtahPlanners.Domain.Entity
         }
     }
 
+    [Serializable]
     public class SocioEcon : LookupValue
     {
         public SocioEcon(string description)
@@ -49,51 +54,71 @@ namespace UtahPlanners.Domain.Entity
         {
         }
     }
+    #endregion
 
-    public class StreetSafety : LookupValue
+    #region Weighted Lookup Value Classes
+    [Serializable]
+    public abstract class WeightedLookupValue : LookupValue
     {
-        public StreetSafety(string description)
+        public WeightedLookupValue(string description, int weight)
             : base(description)
+        {
+            Weight = weight;
+        }
+
+        public int Weight { get; private set; }
+    }
+
+    [Serializable]
+    public class StreetSafety : WeightedLookupValue
+    {
+        public StreetSafety(string description, int weight)
+            : base(description, weight)
         {
         }
     }
 
-    public class BuildingEnclosure : LookupValue
+    [Serializable]
+    public class BuildingEnclosure : WeightedLookupValue
     {
-        public BuildingEnclosure(string description)
-            : base(description)
+        public BuildingEnclosure(string description, int weight)
+            : base(description, weight)
         {
         }
     }
 
-    public class CommonAreas : LookupValue
+    [Serializable]
+    public class CommonAreas : WeightedLookupValue
     {
-        public CommonAreas(string description)
-            : base(description)
+        public CommonAreas(string description, int weight)
+            : base(description, weight)
         {
         }
     }
 
-    public class StreetConnectivity : LookupValue
+    [Serializable]
+    public class StreetConnectivity : WeightedLookupValue
     {
-        public StreetConnectivity(string description)
-            : base(description)
+        public StreetConnectivity(string description, int weight)
+            : base(description, weight)
         {
         }
     }
 
-    public class StreetWalkability : LookupValue
+    [Serializable]
+    public class StreetWalkability : WeightedLookupValue
     {
-        public StreetWalkability(string description)
-            : base(description)
+        public StreetWalkability(string description, int weight)
+            : base(description, weight)
         {
         }
     }
 
-    public class NeighborhoodCondition : LookupValue
+    [Serializable]
+    public class NeighborhoodCondition : WeightedLookupValue
     {
-        public NeighborhoodCondition(string description)
-            : base(description)
+        public NeighborhoodCondition(string description, int weight)
+            : base(description, weight)
         {
         }
     }

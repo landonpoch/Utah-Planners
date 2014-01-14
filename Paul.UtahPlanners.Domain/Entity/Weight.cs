@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace UtahPlanners.Domain.Entity
 {
-    public class Weights
+    public class Weights : Aggregate
     {
         public int StreetWalkability { get; set; }
         public int Walkscore { get; set; }

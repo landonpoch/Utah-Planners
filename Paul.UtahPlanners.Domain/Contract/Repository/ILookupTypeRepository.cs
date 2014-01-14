@@ -2,14 +2,16 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using UtahPlanners.Domain.Entity;
 
 namespace UtahPlanners.Domain.Contract.Repository
 {
-    public interface ILookupValueRepository<TEntity>
+    public interface ILookupValueRepository<T>
+        where T : LookupValue
     {
-        TEntity GetLookupValue(int id);
-        List<TEntity> GetAllLookupValues();
-        void AddLookupValue(TEntity lookupValue);
-        void RemoveLookupValue(int id);
+        T GetLookupValue(Guid id);
+        List<T> GetAllLookupValues();
+        void AddLookupValue(T lookupValue);
+        void RemoveLookupValue(Guid id);
     }
 }

@@ -1,13 +1,17 @@
 ﻿@using UtahPlanners.MVC3.PropertyService
-@model Weight
+@model Weights
 @{
     ViewBag.Title = "Weights";
     Layout = "~/Views/Shared/_LayoutNoLeftNav.cshtml";
 }
+<style>
+    table input { width:80px}
+</style>
 
 @section Scripts
 {
-    <script type="text/javascript">
+    <script type="text/javascript" src="../../Scripts/Custom/utahplanners.lookupvalues.js"></script>
+    @*<script type="text/javascript">
         $(document).ready(function () {
             $('#editLink').click(function (event) {
                 event.preventDefault();
@@ -32,7 +36,7 @@
                 }
             });
         }
-    </script>
+    </script>*@
 }
 
 <span id="result"></span>
@@ -52,19 +56,91 @@
                 <th>Neighborhood Cond</th>
                 <th>250 Apartments</th>
 		    </tr>
-            <tr align="center" valign="middle">
-			    @*TODO: Get Weight updates working*@
-                <td><a id="editLink" href="#">Edit</a></td>
-                <td>@Model.streetWalk.Value</td>
-                <td>@Model.walkscore.Value</td>
-                <td>@Model.twoFiftySingleFam.Value</td>
-                <td>@Model.buildingEnclosure.Value</td>
-                <td>@Model.streetConn.Value</td>
-                <td>@Model.commonAreas.Value</td>
-                <td>@Model.streetSaftey.Value</td>
-                <td>@Model.neighCondition.Value</td>
-                <td>@Model.twoFiftyApts.Value</td>
-		    </tr>
+            <tr align="center" valign="middle" data-key="@Model.Idk__BackingField">
+            <td>
+            <a href="#" data-command="modify">Edit</a>
+            <a href="#" data-command="submit" style="display: none;">Update</a>
+            <a href="#" data-command="cancel" style="display: none;">Cancel</a>
+            </td>
+            @if (Model != null)
+            {
+                <td>
+                <span>@Model.StreetWalkability</span>
+                <input type="text" value="@Model.StreetWalkability" style="display:none" />
+                </td>
+                <td>
+                <span>@Model.Walkscore</span>
+                <input type="text" value="@Model.Walkscore" style="display:none" />
+                </td>
+                <td>
+                <span>@Model.TwoFiftySingleFamily</span>
+                <input type="text" value="@Model.TwoFiftySingleFamily" style="display:none" />
+                </td>
+                <td>
+                <span>@Model.BuildingEnclosure</span>
+                <input type="text" value="@Model.BuildingEnclosure" style="display:none" />
+                </td>
+                <td>
+                <span>@Model.StreetConnectivity</span>
+                <input type="text" value="@Model.StreetConnectivity" style="display:none" />
+                </td>
+                <td>
+                <span>@Model.CommonAreas</span>
+                <input type="text" value="@Model.CommonAreas" style="display:none" />
+                </td>
+                <td>
+                <span>@Model.StreetSafety</span>
+                <input type="text" value="@Model.StreetSafety" style="display:none" />
+                </td>
+                <td>
+                <span>@Model.NeighborhoodCondition</span>
+                <input type="text" value="@Model.NeighborhoodCondition" style="display:none" />
+                </td>
+                <td>
+                <span>@Model.TwoFiftyApartments</span>
+                <input type="text" value="@Model.TwoFiftyApartments" style="display:none" />
+                </td>
+            }
+            else
+            {
+                <td>
+                <span>0</span>
+                <input type="text" value="0" style="display:none" />
+                </td>
+                <td>
+                <span>0</span>
+                <input type="text" value="0" style="display:none" />
+                </td>
+                <td>
+                <span>0</span>
+                <input type="text" value="0" style="display:none" />
+                </td>
+                <td>
+                <span>0</span>
+                <input type="text" value="0" style="display:none" />
+                </td>
+                <td>
+                <span>0</span>
+                <input type="text" value="0" style="display:none" />
+                </td>
+                <td>
+                <span>0</span>
+                <input type="text" value="0" style="display:none" />
+                </td>
+                <td>
+                <span>0</span>
+                <input type="text" value="0" style="display:none" />
+                </td>
+                <td>
+                <span>0</span>
+                <input type="text" value="0" style="display:none" />
+                </td>
+                <td>
+                <span>0</span>
+                <input type="text" value="0" style="display:none" />
+                </td>
+            }
+            </tr>
 	    </tbody>
     </table>
 </div><br />

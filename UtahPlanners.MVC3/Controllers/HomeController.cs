@@ -38,7 +38,7 @@ namespace UtahPlanners.MVC3.Controllers
                 PropertyService.IndexSort sort = null;
                 
                 //Get index table rows, including the calculated overall score
-                List<PropertyService.PropertiesIndex> indecies = client.FindIndecies(filter, sort).ToList();
+                List<PropertyService.PropertyIndexDTO> indecies = client.FindIndecies(filter, sort).ToList();
 
                 var model = new IndexModel
                 {
@@ -105,7 +105,7 @@ namespace UtahPlanners.MVC3.Controllers
             {
                 var picture = wcf.Client.FindPicture(id);
                 if (picture != null)
-                    return File(picture.binaryData, "image/png");
+                    return null; // File(picture.binaryData, "image/png");
                 return null;
             }
         }
@@ -183,17 +183,17 @@ namespace UtahPlanners.MVC3.Controllers
                 PictureIds = p.PictureMetaData != null
                     ? p.PictureMetaData
                         .ToList()
-                        .Where(md => !md.SecondaryPicture)
-                        .Select(md => md.PictureId)
+                        .Where(md => !md.SecondaryPicturek__BackingField)
+                        .Select(md => md.Idk__BackingField)
                         .ToList()
-                    : new List<int> { 0 },
+                    : new List<Guid>{ },
                 SecondaryPictureId = p.PictureMetaData != null
                     ? p.PictureMetaData
                         .ToList()
-                        .Where(md => md.SecondaryPicture)
-                        .Select(md => md.PictureId)
+                        .Where(md => md.SecondaryPicturek__BackingField)
+                        .Select(md => md.Idk__BackingField)
                         .FirstOrDefault()
-                    : default(int),
+                    : default(Guid),
                 PropertyType = p.Type,
                 Score = p.Score,
                 StreetSafety = p.StreetSafety,
@@ -226,7 +226,7 @@ namespace UtahPlanners.MVC3.Controllers
             };
         }
 
-        private List<Index> Convert(List<PropertyService.PropertiesIndex> indecies)
+        private List<Index> Convert(List<PropertyService.PropertyIndexDTO> indecies)
         {
             var indexList = new List<Index>();
             indecies.ForEach(i =>
@@ -237,22 +237,22 @@ namespace UtahPlanners.MVC3.Controllers
             return indexList;
         }
 
-        private Index Convert(PropertyService.PropertiesIndex index)
+        private Index Convert(PropertyService.PropertyIndexDTO index)
         {
             return new Index
             {
-                Id = index.id,
-                City = index.city,
-                Score = index.OverallScore.HasValue ? index.OverallScore.Value : 0,
+                Id = index.Id,
+                City = index.City,
+                Score = index.OverallScore,
                 PropertyType = index.PropertyTypeDescription,
-                Density = index.density.HasValue ? index.density.Value : 0,
-                Units = index.units.HasValue ? index.units.Value : 0,
-                YearBuilt = index.yearBuilt.HasValue ? index.yearBuilt.ToString() : String.Empty,
+                Density = index.Density,
+                Units = index.Units,
+                YearBuilt = index.YearBuilt.ToString(),
                 StreetType = index.StreetTypeDescription,
                 StreetWalkDescription = index.StreetWalkDescription,
-                Walkscore = index.walkscore.HasValue ? index.walkscore.Value : 0,
+                Walkscore = index.Walkscore,
                 SocioEconDescription = index.SocioEconDescription,
-                TwoFiftySingleFamily = index.twoFiftySingleFam.HasValue ? index.twoFiftySingleFam.Value : 0
+                TwoFiftySingleFamily = index.TwoFiftySingleFamily
             };
         }
 
@@ -508,15 +508,15 @@ namespace UtahPlanners.MVC3.Controllers
             {
                 return new DropDowns
                 {
-                    PropertyTypes = Convert(lv.PropertyTypes),
-                    StreetTypes = Convert(lv.StreetTypes),
-                    SocioEconCodes = Convert(lv.SocioEconCodes),
-                    StreetSafetyCodes = Convert(lv.StreetSafetyCodes),
-                    EnclosureCodes = Convert(lv.EnclosureCodes),
-                    CommonCodes = Convert(lv.CommonCodes),
-                    StreetconnCodes = Convert(lv.StreetconnCodes),
-                    StreetwalkCodes = Convert(lv.StreetwalkCodes),
-                    NeighborhoodCodes = Convert(lv.NeighborhoodCodes)
+                    PropertyTypes = Convert(lv.PropertyTypeLookups),
+                    StreetTypes = Convert(lv.StreetTypeLookups),
+                    SocioEconCodes = Convert(lv.SocioEconLookups),
+                    StreetSafetyCodes = Convert(lv.StreetSafetyLookups),
+                    EnclosureCodes = Convert(lv.BuildingEnclosureLookups),
+                    CommonCodes = Convert(lv.CommonAreaLookups),
+                    StreetconnCodes = Convert(lv.StreetConnectivityLookups),
+                    StreetwalkCodes = Convert(lv.StreetWalkabilityLookups),
+                    NeighborhoodCodes = Convert(lv.NeighborhoodConditionLookups)
                 };
             }
             return null;
@@ -524,7 +524,7 @@ namespace UtahPlanners.MVC3.Controllers
 
         private SelectList Convert<T>(T[] items)
         {
-            return new SelectList(items.ToList(), "id", "description");
+            return items == null ? null : new SelectList(items.ToList(), "id", "description");
         }
 
         #endregion

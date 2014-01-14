@@ -33,6 +33,7 @@ namespace UtahPlanners.MVC3.Controllers
 
         public void ProcessRequest(HttpContext context)
         {
+            /*
             try
             {
                 var propertyId = Int32.Parse(context.Request["propertyId"]);
@@ -68,7 +69,7 @@ namespace UtahPlanners.MVC3.Controllers
             {
                 context.Response.ContentType = "text/plain";
                 context.Response.Write("Upload Failed");
-            }
+            } */
         }
 
         #endregion

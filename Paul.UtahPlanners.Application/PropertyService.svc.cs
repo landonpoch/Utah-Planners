@@ -2,7 +2,7 @@
 using System.Linq;
 using System.Collections.Generic;
 using UtahPlanners.Domain.Contract.Service;
-using UtahPlanners.Domain.Contract.UnitOfWork;
+using UtahPlanners.Domain.Contract.Persistence;
 using UtahPlanners.Domain.Entity;
 using Paul.UtahPlanners.Application.Contract;
 using UtahPlanners.Domain.DTO;
@@ -11,11 +11,11 @@ namespace Paul.UtahPlanners.Application
 {
     public class PropertyService : IPropertyService
     {
-        private IUnitOfWorkFactory _factory;
+        private IPersistenceFactory _factory;
         private IConfigSettings _settings;
         private ILogger _logger;
 
-        public PropertyService(IUnitOfWorkFactory factory, IConfigSettings settings, ILogger logger)
+        public PropertyService(IPersistenceFactory factory, IConfigSettings settings, ILogger logger)
         {
             _factory = factory;
             _settings = settings;
@@ -116,7 +116,8 @@ namespace Paul.UtahPlanners.Application
             //    var finder = unit.CreatePictureFinder();
             //    return finder.FindPicture(id);
             //}
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
+            return null;
         }
 
         public LookupValues GetAllLookupValues()
@@ -124,69 +125,67 @@ namespace Paul.UtahPlanners.Application
             return _settings.LookupValues;
         }
 
-        public Dictionary<int, string> GetLookupTypes(LookupType lookupType)
+        public Dictionary<Guid, string> GetLookupTypes(LookupType lookupType)
         {
-            //using (var unit = _factory.CreateUnitOfWork())
-            //{
-            //    var result = new Dictionary<int, string>();
-            //    switch (lookupType)
-            //    {
-            //        case LookupType.PropertyType:
-            //            result = GetAllLookupValues<PropertyType>(unit).ToDictionary(l => l.Id, l => l.Description);
-            //            break;
-            //        case LookupType.StreetType:
-            //            result = GetAllLookupValues<StreetType>(unit).ToDictionary(l => l.Id, l => l.Description);
-            //            break;
-            //        case LookupType.SocioEconType:
-            //            result = GetAllLookupValues<SocioEconCode>(unit).ToDictionary(l => l.Id, l => l.Description);
-            //            break;
-            //    }
-            //    return result;
-            //}
-            throw new NotImplementedException();
+            using (var unit = _factory.CreateUnitOfWork())
+            {
+                var result = new Dictionary<Guid, string>();
+                switch (lookupType)
+                {
+                    case LookupType.PropertyType:
+                        result = GetAllLookupValues<PropertyType>(unit).ToDictionary(l => l.Id, l => l.Description);
+                        break;
+                    case LookupType.StreetType:
+                        result = GetAllLookupValues<StreetType>(unit).ToDictionary(l => l.Id, l => l.Description);
+                        break;
+                    case LookupType.SocioEconType:
+                        result = GetAllLookupValues<SocioEcon>(unit).ToDictionary(l => l.Id, l => l.Description);
+                        break;
+                }
+                return result;
+            }
         }
 
-        public Dictionary<int, Tuple<string, int>> GetLookupCodes(LookupCode lookupCode)
+        public Dictionary<Guid, Tuple<string, int>> GetLookupCodes(LookupCode lookupCode)
         {
-            //using (var unit = _factory.CreateUnitOfWork())
-            //{
-            //    var result = new Dictionary<int, Tuple<string, int>>();
-            //    switch (lookupCode)
-            //    {
-            //        case LookupCode.CommonCode:
-            //            result = GetAllLookupValues<CommonCode>(unit)
-            //                .ToDictionary<CommonCode, int, Tuple<string, int>>
-            //                    (cc => cc.id, cc => new Tuple<string, int>(cc.description, cc.weight.Value));
-            //            break;
-            //        case LookupCode.EnclosureCode:
-            //            result = GetAllLookupValues<EnclosureCode>(unit)
-            //                .ToDictionary<EnclosureCode, int, Tuple<string, int>>
-            //                    (cc => cc.id, cc => new Tuple<string, int>(cc.description, cc.weight.Value));
-            //            break;
-            //        case LookupCode.NeighborhoodCode:
-            //            result = GetAllLookupValues<NeighborhoodCode>(unit)
-            //                .ToDictionary<NeighborhoodCode, int, Tuple<string, int>>
-            //                    (cc => cc.id, cc => new Tuple<string, int>(cc.description, cc.weight.Value));
-            //            break;
-            //        case LookupCode.StreetConnCode:
-            //            result = GetAllLookupValues<StreetconnCode>(unit)
-            //                .ToDictionary<StreetconnCode, int, Tuple<string, int>>
-            //                    (cc => cc.id, cc => new Tuple<string, int>(cc.description, cc.weight.Value));
-            //            break;
-            //        case LookupCode.StreetSafetyCode:
-            //            result = GetAllLookupValues<StreetSafteyCode>(unit)
-            //                .ToDictionary<StreetSafteyCode, int, Tuple<string, int>>
-            //                    (cc => cc.id, cc => new Tuple<string, int>(cc.description, cc.weight.Value));
-            //            break;
-            //        case LookupCode.StreetWalkCode:
-            //            result = GetAllLookupValues<StreetwalkCode>(unit)
-            //                .ToDictionary<StreetwalkCode, int, Tuple<string, int>>
-            //                    (cc => cc.id, cc => new Tuple<string, int>(cc.description, cc.weight.Value));
-            //            break;
-            //    }
-            //    return result;
-            //}
-            throw new NotImplementedException();
+            using (var unit = _factory.CreateUnitOfWork())
+            {
+                var result = new Dictionary<Guid, Tuple<string, int>>();
+                switch (lookupCode)
+                {
+                    case LookupCode.CommonCode:
+                        result = GetAllLookupValues<CommonAreas>(unit)
+                            .ToDictionary<CommonAreas, Guid, Tuple<string, int>>
+                                (ca => ca.Id, ca => new Tuple<string, int>(ca.Description, ca.Weight));
+                        break;
+                    case LookupCode.EnclosureCode:
+                        result = GetAllLookupValues<BuildingEnclosure>(unit)
+                            .ToDictionary<BuildingEnclosure, Guid, Tuple<string, int>>
+                                (cc => cc.Id, cc => new Tuple<string, int>(cc.Description, cc.Weight));
+                        break;
+                    case LookupCode.NeighborhoodCode:
+                        result = GetAllLookupValues<NeighborhoodCondition>(unit)
+                            .ToDictionary<NeighborhoodCondition, Guid, Tuple<string, int>>
+                                (nc => nc.Id, nc => new Tuple<string, int>(nc.Description, nc.Weight));
+                        break;
+                    case LookupCode.StreetConnCode:
+                        result = GetAllLookupValues<StreetConnectivity>(unit)
+                            .ToDictionary<StreetConnectivity, Guid, Tuple<string, int>>
+                                (sc => sc.Id, sc => new Tuple<string, int>(sc.Description, sc.Weight));
+                        break;
+                    case LookupCode.StreetSafetyCode:
+                        result = GetAllLookupValues<StreetSafety>(unit)
+                            .ToDictionary<StreetSafety, Guid, Tuple<string, int>>
+                                (ss => ss.Id, ss => new Tuple<string, int>(ss.Description, ss.Weight));
+                        break;
+                    case LookupCode.StreetWalkCode:
+                        result = GetAllLookupValues<StreetWalkability>(unit)
+                            .ToDictionary<StreetWalkability, Guid, Tuple<string, int>>
+                                (sw => sw.Id, sw => new Tuple<string, int>(sw.Description, sw.Weight));
+                        break;
+                }
+                return result;
+            }
         }
 
         public Weights GetWeights()
@@ -245,98 +244,92 @@ namespace Paul.UtahPlanners.Application
 
         public bool CreateLookupType(LookupType lookupType, string value)
         {
-            //string message = "An error occured while trying to create a new lookup type";
-            //return CommandWrapper(message, (IUnitOfWork unit) =>
-            //{
-            //    switch (lookupType)
-            //    {
-            //        case LookupType.PropertyType:
-            //            CreateLookupValue(unit, new PropertyType { description = value });
-            //            break;
-            //        case LookupType.StreetType:
-            //            CreateLookupValue(unit, new StreetType { description = value });
-            //            break;
-            //        case LookupType.SocioEconType:
-            //            CreateLookupValue(unit, new SocioEconCode { description = value });
-            //            break;
-            //    }
-            //});
-            throw new NotImplementedException();
+            string message = "An error occured while trying to create a new lookup type";
+            return CommandWrapper(message, (IUnitOfWork unit) =>
+            {
+                switch (lookupType)
+                {
+                    case LookupType.PropertyType:
+                        CreateLookupValue(unit, new PropertyType(value));
+                        break;
+                    case LookupType.StreetType:
+                        CreateLookupValue(unit, new StreetType(value));
+                        break;
+                    case LookupType.SocioEconType:
+                        CreateLookupValue(unit, new SocioEcon(value));
+                        break;
+                }
+            });
         }
 
-        public bool ModifyLookupType(LookupType lookupType, int id, string value)
+        public bool ModifyLookupType(LookupType lookupType, Guid id, string value)
         {
-            //string message = "An error occured while modifying the lookup type.";
-            //return CommandWrapper(message, (IUnitOfWork unit) =>
-            //{ 
-            //    switch (lookupType)
-            //    {
-            //        case LookupType.PropertyType:
-            //            GetLookupValue<PropertyType>(unit, id).description = value;
-            //            break;
-            //        case LookupType.StreetType:
-            //            GetLookupValue<StreetType>(unit, id).description = value;
-            //            break;
-            //        case LookupType.SocioEconType:
-            //            GetLookupValue<SocioEconCode>(unit, id).description = value;
-            //            break;
-            //    }
-            //});
-            throw new NotImplementedException();
+            bool result = false;
+            switch (lookupType)
+            {
+                case LookupType.PropertyType:
+                    result = UpdateLookupValue(id, new PropertyType(value));
+                    break;
+                case LookupType.StreetType:
+                    result = UpdateLookupValue(id, new StreetType(value));
+                    break;
+                case LookupType.SocioEconType:
+                    result = UpdateLookupValue(id, new SocioEcon(value));
+                    break;
+            }
+            return result;
         }
 
-        public bool DeleteLookupType(LookupType lookupType, int id)
+        public bool DeleteLookupType(LookupType lookupType, Guid id)
         {
-            //string message = "An error occured while trying to delete the lookup type.";
-            //return CommandWrapper(message, (IUnitOfWork unit) =>
-            //{
-            //    switch (lookupType)
-            //    {
-            //        case LookupType.PropertyType:
-            //            RemoveLookupValue<PropertyType>(unit, id);
-            //            break;
-            //        case LookupType.StreetType:
-            //            RemoveLookupValue<StreetType>(unit, id);
-            //            break;
-            //        case LookupType.SocioEconType:
-            //            RemoveLookupValue<SocioEconCode>(unit, id);
-            //            break;
-            //    }
-            //});
-            throw new NotImplementedException();
+            string message = "An error occured while trying to delete the lookup type.";
+            return CommandWrapper(message, (IUnitOfWork unit) =>
+            {
+                switch (lookupType)
+                {
+                    case LookupType.PropertyType:
+                        RemoveLookupValue<PropertyType>(unit, id);
+                        break;
+                    case LookupType.StreetType:
+                        RemoveLookupValue<StreetType>(unit, id);
+                        break;
+                    case LookupType.SocioEconType:
+                        RemoveLookupValue<SocioEcon>(unit, id);
+                        break;
+                }
+            });
         }
 
         public bool CreateLookupCode(LookupCode lookupCode, string value, int weight)
         {
-            //string errorMessage = "An error occured while tring to create the lookup code.";
-            //return CommandWrapper(errorMessage, (IUnitOfWork unit) =>
-            //{
-            //    switch (lookupCode)
-            //    {
-            //        case LookupCode.CommonCode:
-            //            CreateLookupValue(unit, new CommonCode { description = value, weight = weight });
-            //            break;
-            //        case LookupCode.EnclosureCode:
-            //            CreateLookupValue(unit, new EnclosureCode { description = value, weight = weight });
-            //            break;
-            //        case LookupCode.NeighborhoodCode:
-            //            CreateLookupValue(unit, new NeighborhoodCode { description = value, weight = weight });
-            //            break;
-            //        case LookupCode.StreetConnCode:
-            //            CreateLookupValue(unit, new StreetconnCode { description = value, weight = weight });
-            //            break;
-            //        case LookupCode.StreetSafetyCode:
-            //            CreateLookupValue(unit, new StreetSafteyCode { description = value, weight = weight });
-            //            break;
-            //        case LookupCode.StreetWalkCode:
-            //            CreateLookupValue(unit, new StreetwalkCode { description = value, weight = weight });
-            //            break;
-            //    }
-            //});
-            throw new NotImplementedException();
+            string errorMessage = "An error occured while tring to create the lookup code.";
+            return CommandWrapper(errorMessage, (IUnitOfWork unit) =>
+            {
+                switch (lookupCode)
+                {
+                    case LookupCode.CommonCode:
+                        CreateLookupValue(unit, new CommonAreas(value, weight));
+                        break;
+                    case LookupCode.EnclosureCode:
+                        CreateLookupValue(unit, new BuildingEnclosure(value, weight));
+                        break;
+                    case LookupCode.NeighborhoodCode:
+                        CreateLookupValue(unit, new NeighborhoodCondition(value, weight));
+                        break;
+                    case LookupCode.StreetConnCode:
+                        CreateLookupValue(unit, new StreetConnectivity(value, weight));
+                        break;
+                    case LookupCode.StreetSafetyCode:
+                        CreateLookupValue(unit, new StreetSafety(value, weight));
+                        break;
+                    case LookupCode.StreetWalkCode:
+                        CreateLookupValue(unit, new StreetWalkability(value, weight));
+                        break;
+                }
+            });
         }
 
-        public bool ModifyLookupCode(LookupCode lookupCode, int id, string value, int weight)
+        public bool ModifyLookupCode(LookupCode lookupCode, Guid id, string value, int weight)
         {
             //string errorMessage = "An error occured while tring to modify the lookup code.";
             //return CommandWrapper(errorMessage, (IUnitOfWork unit) =>
@@ -378,42 +371,50 @@ namespace Paul.UtahPlanners.Application
             throw new NotImplementedException();
         }
 
-        public bool DeleteLookupCode(LookupCode lookupCode, int id)
+        public bool DeleteLookupCode(LookupCode lookupCode, Guid id)
         {
-            //string errorMessage = "An error occured while tring to delete the lookup code.";
-            //return CommandWrapper(errorMessage, (IUnitOfWork unit) =>
-            //{
-            //    switch (lookupCode)
-            //    {
-            //        case LookupCode.CommonCode:
-            //            RemoveLookupValue<CommonCode>(unit, id);
-            //            break;
-            //        case LookupCode.EnclosureCode:
-            //            RemoveLookupValue<EnclosureCode>(unit, id);
-            //            break;
-            //        case LookupCode.NeighborhoodCode:
-            //            RemoveLookupValue<NeighborhoodCode>(unit, id);
-            //            break;
-            //        case LookupCode.StreetConnCode:
-            //            RemoveLookupValue<StreetconnCode>(unit, id);
-            //            break;
-            //        case LookupCode.StreetSafetyCode:
-            //            RemoveLookupValue<StreetSafteyCode>(unit, id);
-            //            break;
-            //        case LookupCode.StreetWalkCode:
-            //            RemoveLookupValue<StreetwalkCode>(unit, id);
-            //            break;
-            //    }
-            //});
-            throw new NotImplementedException();
+            string errorMessage = "An error occured while tring to delete the lookup code.";
+            return CommandWrapper(errorMessage, (IUnitOfWork unit) =>
+            {
+                switch (lookupCode)
+                {
+                    case LookupCode.CommonCode:
+                        RemoveLookupValue<CommonAreas>(unit, id);
+                        break;
+                    case LookupCode.EnclosureCode:
+                        RemoveLookupValue<BuildingEnclosure>(unit, id);
+                        break;
+                    case LookupCode.NeighborhoodCode:
+                        RemoveLookupValue<NeighborhoodCondition>(unit, id);
+                        break;
+                    case LookupCode.StreetConnCode:
+                        RemoveLookupValue<StreetConnectivity>(unit, id);
+                        break;
+                    case LookupCode.StreetSafetyCode:
+                        RemoveLookupValue<StreetSafety>(unit, id);
+                        break;
+                    case LookupCode.StreetWalkCode:
+                        RemoveLookupValue<StreetWalkability>(unit, id);
+                        break;
+                }
+            });
         }
 
-        public bool UpdateWeights(Weights weights)
+        public bool UpdateWeights(Guid id, Weights weights)
         {
             bool result = false;
             try
             {
-                _settings.Weights = weights;
+                var repo = _factory.CreatePersistentRepository<Weights>();
+                if (id == default(Guid))
+                {
+                    repo.Insert(weights);
+                    result = true;
+                }
+                else
+                {
+                    result = repo.Update(id, weights);
+                }
             }
             catch (Exception e)
             {
@@ -477,31 +478,38 @@ namespace Paul.UtahPlanners.Application
         }
 
         private void CreateLookupValue<T>(IUnitOfWork unit, T lookupValue)
-            where T : class
+            where T : LookupValue
         {
             var repo = unit.CreateLookupValueRepository<T>();
             repo.AddLookupValue(lookupValue);
         }
 
-        private T GetLookupValue<T>(IUnitOfWork unit, int id)
-            where T : class
+        private T GetLookupValue<T>(IUnitOfWork unit, Guid id)
+            where T : LookupValue
         {
             var repo = unit.CreateLookupValueRepository<T>();
             return repo.GetLookupValue(id);
         }
 
-        private void RemoveLookupValue<T>(IUnitOfWork unit, int id)
-            where T : class
+        private void RemoveLookupValue<T>(IUnitOfWork unit, Guid id)
+            where T : LookupValue
         {
             var repo = unit.CreateLookupValueRepository<T>();
             repo.RemoveLookupValue(id);
         }
 
         private List<T> GetAllLookupValues<T>(IUnitOfWork unit)
-            where T : class
+            where T : LookupValue
         {
             var repo = unit.CreateLookupValueRepository<T>();
             return repo.GetAllLookupValues();
+        }
+
+        private bool UpdateLookupValue<T>(Guid id, T lookupValue)
+            where T : LookupValue
+        {
+            var repo = _factory.CreatePersistentRepository<T>();
+            return repo.Update(id, lookupValue);
         }
 
         #endregion

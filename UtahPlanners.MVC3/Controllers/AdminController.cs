@@ -235,23 +235,24 @@ namespace UtahPlanners.MVC3.Controllers
         [HttpPost]
         public string ModifyCode(ReadCodeModel model)
         {
-            var result = "An error occured while submitting your request"; // Default response
-            using (var client = _factory.CreatePropertyServiceProxy())
-            {
-                if (model.SelectedId.HasValue)
-                {
-                    PropertyService.LookupCode lookupCode = (PropertyService.LookupCode)model.SelectedCode;
-                    bool wasSuccessful = client.ModifyLookupCode(
-                        lookupCode, 
-                        model.SelectedId.Value, 
-                        model.CodeData[model.SelectedId.Value].Description,
-                        model.CodeData[model.SelectedId.Value].Weight
-                    );
-                    if (wasSuccessful) // Successful response
-                        result = "Successfully submitted your request";
-                }
-            }
-            return result;
+            //var result = "An error occured while submitting your request"; // Default response
+            //using (var client = _factory.CreatePropertyServiceProxy())
+            //{
+            //    if (model.SelectedId.HasValue)
+            //    {
+            //        PropertyService.LookupCode lookupCode = (PropertyService.LookupCode)model.SelectedCode;
+            //        bool wasSuccessful = client.ModifyLookupCode(
+            //            lookupCode, 
+            //            model.SelectedId.Value, 
+            //            model.CodeData[model.SelectedId.Value].Description,
+            //            model.CodeData[model.SelectedId.Value].Weight
+            //        );
+            //        if (wasSuccessful) // Successful response
+            //            result = "Successfully submitted your request";
+            //    }
+            //}
+            //return result;
+            return null;
         }
 
         [HttpPost]
@@ -285,12 +286,12 @@ namespace UtahPlanners.MVC3.Controllers
         }
 
         [HttpPost]
-        public string Weights(PropertyService.Weight model)
+        public string Weights(PropertyService.Weights model)
         {
             var result = "Could not update the weights at this time";
             using (var client = _factory.CreatePropertyServiceProxy())
             {
-                if (client.UpdateWeights(model))
+                if (client.UpdateWeights(model.Idk__BackingField, model))
                     result = "Successfully updated weights";
                 return result;
             }
@@ -417,20 +418,20 @@ namespace UtahPlanners.MVC3.Controllers
             return result;
         }
 
-        private PropertyService.Address Convert(PropertyService.AddressDTO dto)
-        {
-            return new PropertyService.Address
-            {
-                street1 = dto.Street1,
-                street2 = dto.Street2,
-                city = dto.City,
-                state = dto.State,
-                zip = dto.Zip,
-                country = dto.Country
-            };
-        }
+        //private PropertyService.Address Convert(PropertyService.AddressDTO dto)
+        //{
+        //    return new PropertyService.Address
+        //    {
+        //        street1 = dto.Street1,
+        //        street2 = dto.Street2,
+        //        city = dto.City,
+        //        state = dto.State,
+        //        zip = dto.Zip,
+        //        country = dto.Country
+        //    };
+        //}
 
-        private Dictionary<int, CodeDetails> Convert(Dictionary<int, Tuple<string, int>> codes)
+        private Dictionary<Guid, CodeDetails> Convert(Dictionary<Guid, Tuple<string, int>> codes)
         {
             return codes.ToDictionary(c => c.Key, c => new CodeDetails { Description = c.Value.Item1, Weight = c.Value.Item2 });
         }

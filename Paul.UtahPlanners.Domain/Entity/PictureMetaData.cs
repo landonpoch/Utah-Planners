@@ -8,6 +8,7 @@ namespace UtahPlanners.Domain.Entity
 {
     public class Picture { } // Delete this class in favor of using the good old filesystem
 
+    [Serializable]
     public class PictureMetaData : Aggregate
     {
         public PictureMetaData(Guid propertyId,

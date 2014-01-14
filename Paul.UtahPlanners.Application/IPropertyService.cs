@@ -44,10 +44,10 @@ namespace Paul.UtahPlanners.Application
         LookupValues GetAllLookupValues();
 
         [OperationContract]
-        Dictionary<int, string> GetLookupTypes(LookupType lookupType);
+        Dictionary<Guid, string> GetLookupTypes(LookupType lookupType);
 
         [OperationContract]
-        Dictionary<int, Tuple<string, int>> GetLookupCodes(LookupCode lookupCode);
+        Dictionary<Guid, Tuple<string, int>> GetLookupCodes(LookupCode lookupCode);
 
         [OperationContract]
         Weights GetWeights();
@@ -62,22 +62,22 @@ namespace Paul.UtahPlanners.Application
         bool CreateLookupType(LookupType lookupType, string value);
 
         [OperationContract]
-        bool ModifyLookupType(LookupType lookupType, int id, string value);
+        bool ModifyLookupType(LookupType lookupType, Guid id, string value);
 
         [OperationContract]
-        bool DeleteLookupType(LookupType lookupType, int id);
+        bool DeleteLookupType(LookupType lookupType, Guid id);
 
         [OperationContract]
         bool CreateLookupCode(LookupCode lookupCode, string value, int weight);
 
         [OperationContract]
-        bool ModifyLookupCode(LookupCode lookupCode, int id, string value, int weight);
+        bool ModifyLookupCode(LookupCode lookupCode, Guid id, string value, int weight);
 
         [OperationContract]
-        bool DeleteLookupCode(LookupCode lookupCode, int id);
+        bool DeleteLookupCode(LookupCode lookupCode, Guid id);
 
         [OperationContract]
-        bool UpdateWeights(Weights weights);
+        bool UpdateWeights(Guid id, Weights weights);
 
         [OperationContract]
         bool UploadPicture(Picture pic);

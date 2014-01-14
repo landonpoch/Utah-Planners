@@ -66,7 +66,6 @@
       <HintPath>..\packages\Ninject.MVC3.3.0.0.6\lib\net45-full\Ninject.Web.Mvc.dll</HintPath>
     </Reference>
     <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="System.Data.Entity" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.ServiceModel" />
     <Reference Include="System.Web.Extensions" />
@@ -298,12 +297,15 @@
     <None Include="Service References\PropertyService\UtahPlanners.MVC3.PropertyService.CsvPropertyDTO.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <Content Include="Service References\PropertyService\UtahPlanners.MVC3.PropertyService.PropertyIndexDTO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <None Include="Service References\PropertyService\UtahPlanners.MVC3.PropertyService.UserPropertyDTO.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\PropertyService\UtahPlanners.MVC3.PropertyService.Weight.datasource">
+    <Content Include="Service References\PropertyService\UtahPlanners.MVC3.PropertyService.Weights.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
+    </Content>
     <None Include="Service References\UserService\UserService.disco" />
     <None Include="Service References\UserService\configuration91.svcinfo" />
     <None Include="Service References\UserService\configuration.svcinfo" />
@@ -364,9 +366,6 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\PropertyService\UtahPlanners.MVC3.PropertyService.Picture.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Service References\PropertyService\UtahPlanners.MVC3.PropertyService.PropertiesIndex.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <Content Include="Views\Admin\Admin.cshtml" />

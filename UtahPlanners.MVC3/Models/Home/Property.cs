@@ -7,10 +7,10 @@ namespace UtahPlanners.MVC3.Models.Home
 {
     public class Property
     {
-        public int Id { get; set; }
+        public Guid Id { get; set; }
         public Address Address { get; set; }
-        public List<int> PictureIds { get; set; }
-        public int SecondaryPictureId { get; set; }
+        public List<Guid> PictureIds { get; set; }
+        public Guid SecondaryPictureId { get; set; }
         public string PropertyType { get; set; }
         public int Score { get; set; }
         public string StreetSafety { get; set; }

@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using UtahPlanners.Domain.Contract.Repository;
+using UtahPlanners.Domain.Entity;
 using UtahPlanners.Infrastructure.DAO;
 
 namespace UtahPlanners.Infrastructure.Repository
 {
-    public class LookupValueRepository<TEntity> : ILookupValueRepository<TEntity>
-        where TEntity : class
+    public class LookupValueRepository<T> : ILookupValueRepository<T>
+        where T : LookupValue
     {
         private PropertyContext _context;
 
@@ -19,24 +20,24 @@ namespace UtahPlanners.Infrastructure.Repository
 
         #region ILookupRepository<T> Members
 
-        public TEntity GetLookupValue(int id)
+        public T GetLookupValue(Guid id)
         {
-            return _context.Set<TEntity>().Find(id);
+            return _context.Set<T>().Find(id);
         }
 
-        public List<TEntity> GetAllLookupValues()
+        public List<T> GetAllLookupValues()
         {
-            return _context.Set<TEntity>().ToList();
+            return _context.Set<T>().ToList();
         }
 
-        public void AddLookupValue(TEntity lookupValue)
+        public void AddLookupValue(T lookupValue)
         {
-            _context.Set<TEntity>().Add(lookupValue);
+            _context.Set<T>().Add(lookupValue);
         }
 
-        public void RemoveLookupValue(int id)
+        public void RemoveLookupValue(Guid id)
         {
-            _context.Set<TEntity>().Remove(GetLookupValue(id));
+            _context.Set<T>().Remove(GetLookupValue(id));
         }
 
         #endregion

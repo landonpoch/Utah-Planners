@@ -76,15 +76,24 @@ namespace UtahPlanners.MVC3.PropertyService {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="PropertiesIndex", Namespace="http://schemas.datacontract.org/2004/07/UtahPlanners.Domain.Entity", IsReference=true)]
+    [System.Runtime.Serialization.DataContractAttribute(Name="PropertyIndexDTO", Namespace="http://schemas.datacontract.org/2004/07/UtahPlanners.Domain.DTO")]
     [System.SerializableAttribute()]
-    public partial class PropertiesIndex : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+    public partial class PropertyIndexDTO : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
         [System.NonSerializedAttribute()]
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<int> OverallScoreField;
+        private string CityField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int DensityField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Guid IdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int OverallScoreField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string PropertyTypeDescriptionField;
@@ -99,25 +108,16 @@ namespace UtahPlanners.MVC3.PropertyService {
         private string StreetWalkDescriptionField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string cityField;
+        private int TwoFiftySingleFamilyField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<double> densityField;
+        private int UnitsField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int idField;
+        private int WalkscoreField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<int> twoFiftySingleFamField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<int> unitsField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<int> walkscoreField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<int> yearBuiltField;
+        private int YearBuiltField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -130,7 +130,46 @@ namespace UtahPlanners.MVC3.PropertyService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<int> OverallScore {
+        public string City {
+            get {
+                return this.CityField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CityField, value) != true)) {
+                    this.CityField = value;
+                    this.RaisePropertyChanged("City");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Density {
+            get {
+                return this.DensityField;
+            }
+            set {
+                if ((this.DensityField.Equals(value) != true)) {
+                    this.DensityField = value;
+                    this.RaisePropertyChanged("Density");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Guid Id {
+            get {
+                return this.IdField;
+            }
+            set {
+                if ((this.IdField.Equals(value) != true)) {
+                    this.IdField = value;
+                    this.RaisePropertyChanged("Id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int OverallScore {
             get {
                 return this.OverallScoreField;
             }
@@ -195,92 +234,53 @@ namespace UtahPlanners.MVC3.PropertyService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public string city {
+        public int TwoFiftySingleFamily {
             get {
-                return this.cityField;
+                return this.TwoFiftySingleFamilyField;
             }
             set {
-                if ((object.ReferenceEquals(this.cityField, value) != true)) {
-                    this.cityField = value;
-                    this.RaisePropertyChanged("city");
+                if ((this.TwoFiftySingleFamilyField.Equals(value) != true)) {
+                    this.TwoFiftySingleFamilyField = value;
+                    this.RaisePropertyChanged("TwoFiftySingleFamily");
                 }
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<double> density {
+        public int Units {
             get {
-                return this.densityField;
+                return this.UnitsField;
             }
             set {
-                if ((this.densityField.Equals(value) != true)) {
-                    this.densityField = value;
-                    this.RaisePropertyChanged("density");
+                if ((this.UnitsField.Equals(value) != true)) {
+                    this.UnitsField = value;
+                    this.RaisePropertyChanged("Units");
                 }
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public int id {
+        public int Walkscore {
             get {
-                return this.idField;
+                return this.WalkscoreField;
             }
             set {
-                if ((this.idField.Equals(value) != true)) {
-                    this.idField = value;
-                    this.RaisePropertyChanged("id");
+                if ((this.WalkscoreField.Equals(value) != true)) {
+                    this.WalkscoreField = value;
+                    this.RaisePropertyChanged("Walkscore");
                 }
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<int> twoFiftySingleFam {
+        public int YearBuilt {
             get {
-                return this.twoFiftySingleFamField;
+                return this.YearBuiltField;
             }
             set {
-                if ((this.twoFiftySingleFamField.Equals(value) != true)) {
-                    this.twoFiftySingleFamField = value;
-                    this.RaisePropertyChanged("twoFiftySingleFam");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<int> units {
-            get {
-                return this.unitsField;
-            }
-            set {
-                if ((this.unitsField.Equals(value) != true)) {
-                    this.unitsField = value;
-                    this.RaisePropertyChanged("units");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<int> walkscore {
-            get {
-                return this.walkscoreField;
-            }
-            set {
-                if ((this.walkscoreField.Equals(value) != true)) {
-                    this.walkscoreField = value;
-                    this.RaisePropertyChanged("walkscore");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<int> yearBuilt {
-            get {
-                return this.yearBuiltField;
-            }
-            set {
-                if ((this.yearBuiltField.Equals(value) != true)) {
-                    this.yearBuiltField = value;
-                    this.RaisePropertyChanged("yearBuilt");
+                if ((this.YearBuiltField.Equals(value) != true)) {
+                    this.YearBuiltField = value;
+                    this.RaisePropertyChanged("YearBuilt");
                 }
             }
         }
@@ -297,7 +297,7 @@ namespace UtahPlanners.MVC3.PropertyService {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="IndexFilter", Namespace="http://schemas.datacontract.org/2004/07/UtahPlanners.Domain.Entity")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="IndexFilter", Namespace="http://schemas.datacontract.org/2004/07/UtahPlanners.Domain.DTO")]
     [System.SerializableAttribute()]
     public partial class IndexFilter : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
@@ -630,7 +630,7 @@ namespace UtahPlanners.MVC3.PropertyService {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="RangeOfNullableOfint5F2dSckg", Namespace="http://schemas.datacontract.org/2004/07/UtahPlanners.Domain.Entity", IsReference=true)]
+    [System.Runtime.Serialization.DataContractAttribute(Name="RangeOfNullableOfint5F2dSckg", Namespace="http://schemas.datacontract.org/2004/07/UtahPlanners.Domain.DTO", IsReference=true)]
     [System.SerializableAttribute()]
     public partial class RangeOfNullableOfint5F2dSckg : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
@@ -691,7 +691,7 @@ namespace UtahPlanners.MVC3.PropertyService {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="RangeOfNullableOfdouble5F2dSckg", Namespace="http://schemas.datacontract.org/2004/07/UtahPlanners.Domain.Entity", IsReference=true)]
+    [System.Runtime.Serialization.DataContractAttribute(Name="RangeOfNullableOfdouble5F2dSckg", Namespace="http://schemas.datacontract.org/2004/07/UtahPlanners.Domain.DTO", IsReference=true)]
     [System.SerializableAttribute()]
     public partial class RangeOfNullableOfdouble5F2dSckg : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
@@ -752,7 +752,7 @@ namespace UtahPlanners.MVC3.PropertyService {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="IndexSort", Namespace="http://schemas.datacontract.org/2004/07/UtahPlanners.Domain.Entity")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="IndexSort", Namespace="http://schemas.datacontract.org/2004/07/UtahPlanners.Domain.DTO")]
     [System.SerializableAttribute()]
     public partial class IndexSort : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
@@ -812,7 +812,7 @@ namespace UtahPlanners.MVC3.PropertyService {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="IndexColumn", Namespace="http://schemas.datacontract.org/2004/07/UtahPlanners.Domain.Entity")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="IndexColumn", Namespace="http://schemas.datacontract.org/2004/07/UtahPlanners.Domain.DTO")]
     public enum IndexColumn : int {
         
         [System.Runtime.Serialization.EnumMemberAttribute()]
@@ -853,7 +853,7 @@ namespace UtahPlanners.MVC3.PropertyService {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Direction", Namespace="http://schemas.datacontract.org/2004/07/UtahPlanners.Domain.Entity")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Direction", Namespace="http://schemas.datacontract.org/2004/07/UtahPlanners.Domain.DTO")]
     public enum Direction : int {
         
         [System.Runtime.Serialization.EnumMemberAttribute()]
@@ -865,7 +865,7 @@ namespace UtahPlanners.MVC3.PropertyService {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="PropertySort", Namespace="http://schemas.datacontract.org/2004/07/UtahPlanners.Domain.Entity")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="PropertySort", Namespace="http://schemas.datacontract.org/2004/07/UtahPlanners.Domain.DTO")]
     [System.SerializableAttribute()]
     public partial class PropertySort : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
@@ -925,7 +925,7 @@ namespace UtahPlanners.MVC3.PropertyService {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="PropertyColumn", Namespace="http://schemas.datacontract.org/2004/07/UtahPlanners.Domain.Entity")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="PropertyColumn", Namespace="http://schemas.datacontract.org/2004/07/UtahPlanners.Domain.DTO")]
     public enum PropertyColumn : int {
         
         [System.Runtime.Serialization.EnumMemberAttribute()]
@@ -1132,7 +1132,7 @@ namespace UtahPlanners.MVC3.PropertyService {
         private double DensityField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int IdField;
+        private System.Guid IdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string NotesField;
@@ -1205,7 +1205,7 @@ namespace UtahPlanners.MVC3.PropertyService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public int Id {
+        public System.Guid Id {
             get {
                 return this.IdField;
             }
@@ -1962,30 +1962,124 @@ namespace UtahPlanners.MVC3.PropertyService {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="PictureMetaData", Namespace="http://schemas.datacontract.org/2004/07/UtahPlanners.Domain.Entity", IsReference=true)]
+    [System.Runtime.Serialization.DataContractAttribute(Name="PictureMetaData", Namespace="http://schemas.datacontract.org/2004/07/UtahPlanners.Domain.Entity")]
     [System.SerializableAttribute()]
-    public partial class PictureMetaData : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+    public partial class PictureMetaData : UtahPlanners.MVC3.PropertyService.Aggregate {
+        
+        private bool MainPicturek__BackingFieldField;
+        
+        private string MimeTypek__BackingFieldField;
+        
+        private string Pathk__BackingFieldField;
+        
+        private System.Guid PropertyIdk__BackingFieldField;
+        
+        private bool SecondaryPicturek__BackingFieldField;
+        
+        private bool ShowcasePicturek__BackingFieldField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Name="<MainPicture>k__BackingField", IsRequired=true)]
+        public bool MainPicturek__BackingField {
+            get {
+                return this.MainPicturek__BackingFieldField;
+            }
+            set {
+                if ((this.MainPicturek__BackingFieldField.Equals(value) != true)) {
+                    this.MainPicturek__BackingFieldField = value;
+                    this.RaisePropertyChanged("MainPicturek__BackingField");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Name="<MimeType>k__BackingField", IsRequired=true)]
+        public string MimeTypek__BackingField {
+            get {
+                return this.MimeTypek__BackingFieldField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.MimeTypek__BackingFieldField, value) != true)) {
+                    this.MimeTypek__BackingFieldField = value;
+                    this.RaisePropertyChanged("MimeTypek__BackingField");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Name="<Path>k__BackingField", IsRequired=true)]
+        public string Pathk__BackingField {
+            get {
+                return this.Pathk__BackingFieldField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Pathk__BackingFieldField, value) != true)) {
+                    this.Pathk__BackingFieldField = value;
+                    this.RaisePropertyChanged("Pathk__BackingField");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Name="<PropertyId>k__BackingField", IsRequired=true)]
+        public System.Guid PropertyIdk__BackingField {
+            get {
+                return this.PropertyIdk__BackingFieldField;
+            }
+            set {
+                if ((this.PropertyIdk__BackingFieldField.Equals(value) != true)) {
+                    this.PropertyIdk__BackingFieldField = value;
+                    this.RaisePropertyChanged("PropertyIdk__BackingField");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Name="<SecondaryPicture>k__BackingField", IsRequired=true)]
+        public bool SecondaryPicturek__BackingField {
+            get {
+                return this.SecondaryPicturek__BackingFieldField;
+            }
+            set {
+                if ((this.SecondaryPicturek__BackingFieldField.Equals(value) != true)) {
+                    this.SecondaryPicturek__BackingFieldField = value;
+                    this.RaisePropertyChanged("SecondaryPicturek__BackingField");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Name="<ShowcasePicture>k__BackingField", IsRequired=true)]
+        public bool ShowcasePicturek__BackingField {
+            get {
+                return this.ShowcasePicturek__BackingFieldField;
+            }
+            set {
+                if ((this.ShowcasePicturek__BackingFieldField.Equals(value) != true)) {
+                    this.ShowcasePicturek__BackingFieldField = value;
+                    this.RaisePropertyChanged("ShowcasePicturek__BackingField");
+                }
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Aggregate", Namespace="http://schemas.datacontract.org/2004/07/UtahPlanners.Domain.Entity")]
+    [System.SerializableAttribute()]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(UtahPlanners.MVC3.PropertyService.LookupValue))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(UtahPlanners.MVC3.PropertyService.WeightedLookupValue))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(UtahPlanners.MVC3.PropertyService.BuildingEnclosure))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(UtahPlanners.MVC3.PropertyService.CommonAreas))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(UtahPlanners.MVC3.PropertyService.NeighborhoodCondition))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(UtahPlanners.MVC3.PropertyService.StreetConnectivity))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(UtahPlanners.MVC3.PropertyService.StreetSafety))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(UtahPlanners.MVC3.PropertyService.StreetWalkability))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(UtahPlanners.MVC3.PropertyService.PropertyType))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(UtahPlanners.MVC3.PropertyService.SocioEcon))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(UtahPlanners.MVC3.PropertyService.StreetType))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(UtahPlanners.MVC3.PropertyService.Weights))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(UtahPlanners.MVC3.PropertyService.PictureMetaData))]
+    public partial class Aggregate : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
         [System.NonSerializedAttribute()]
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private bool DeleteField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private bool FrontPageField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int PictureIdField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private bool PrimaryPictureField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int PropertyIdField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private bool SecondaryPictureField;
+        private System.Guid Idk__BackingFieldField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -1997,80 +2091,15 @@ namespace UtahPlanners.MVC3.PropertyService {
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public bool Delete {
+        [System.Runtime.Serialization.DataMemberAttribute(Name="<Id>k__BackingField", IsRequired=true)]
+        public System.Guid Idk__BackingField {
             get {
-                return this.DeleteField;
+                return this.Idk__BackingFieldField;
             }
             set {
-                if ((this.DeleteField.Equals(value) != true)) {
-                    this.DeleteField = value;
-                    this.RaisePropertyChanged("Delete");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public bool FrontPage {
-            get {
-                return this.FrontPageField;
-            }
-            set {
-                if ((this.FrontPageField.Equals(value) != true)) {
-                    this.FrontPageField = value;
-                    this.RaisePropertyChanged("FrontPage");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int PictureId {
-            get {
-                return this.PictureIdField;
-            }
-            set {
-                if ((this.PictureIdField.Equals(value) != true)) {
-                    this.PictureIdField = value;
-                    this.RaisePropertyChanged("PictureId");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public bool PrimaryPicture {
-            get {
-                return this.PrimaryPictureField;
-            }
-            set {
-                if ((this.PrimaryPictureField.Equals(value) != true)) {
-                    this.PrimaryPictureField = value;
-                    this.RaisePropertyChanged("PrimaryPicture");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int PropertyId {
-            get {
-                return this.PropertyIdField;
-            }
-            set {
-                if ((this.PropertyIdField.Equals(value) != true)) {
-                    this.PropertyIdField = value;
-                    this.RaisePropertyChanged("PropertyId");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public bool SecondaryPicture {
-            get {
-                return this.SecondaryPictureField;
-            }
-            set {
-                if ((this.SecondaryPictureField.Equals(value) != true)) {
-                    this.SecondaryPictureField = value;
-                    this.RaisePropertyChanged("SecondaryPicture");
+                if ((this.Idk__BackingFieldField.Equals(value) != true)) {
+                    this.Idk__BackingFieldField = value;
+                    this.RaisePropertyChanged("Idk__BackingField");
                 }
             }
         }
@@ -2087,37 +2116,287 @@ namespace UtahPlanners.MVC3.PropertyService {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Picture", Namespace="http://schemas.datacontract.org/2004/07/UtahPlanners.Domain.Entity", IsReference=true)]
+    [System.Runtime.Serialization.DataContractAttribute(Name="LookupValue", Namespace="http://schemas.datacontract.org/2004/07/UtahPlanners.Domain.Entity")]
+    [System.SerializableAttribute()]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(UtahPlanners.MVC3.PropertyService.WeightedLookupValue))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(UtahPlanners.MVC3.PropertyService.BuildingEnclosure))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(UtahPlanners.MVC3.PropertyService.CommonAreas))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(UtahPlanners.MVC3.PropertyService.NeighborhoodCondition))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(UtahPlanners.MVC3.PropertyService.StreetConnectivity))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(UtahPlanners.MVC3.PropertyService.StreetSafety))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(UtahPlanners.MVC3.PropertyService.StreetWalkability))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(UtahPlanners.MVC3.PropertyService.PropertyType))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(UtahPlanners.MVC3.PropertyService.SocioEcon))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(UtahPlanners.MVC3.PropertyService.StreetType))]
+    public partial class LookupValue : UtahPlanners.MVC3.PropertyService.Aggregate {
+        
+        private string Descriptionk__BackingFieldField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Name="<Description>k__BackingField", IsRequired=true)]
+        public string Descriptionk__BackingField {
+            get {
+                return this.Descriptionk__BackingFieldField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Descriptionk__BackingFieldField, value) != true)) {
+                    this.Descriptionk__BackingFieldField = value;
+                    this.RaisePropertyChanged("Descriptionk__BackingField");
+                }
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="WeightedLookupValue", Namespace="http://schemas.datacontract.org/2004/07/UtahPlanners.Domain.Entity")]
+    [System.SerializableAttribute()]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(UtahPlanners.MVC3.PropertyService.BuildingEnclosure))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(UtahPlanners.MVC3.PropertyService.CommonAreas))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(UtahPlanners.MVC3.PropertyService.NeighborhoodCondition))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(UtahPlanners.MVC3.PropertyService.StreetConnectivity))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(UtahPlanners.MVC3.PropertyService.StreetSafety))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(UtahPlanners.MVC3.PropertyService.StreetWalkability))]
+    public partial class WeightedLookupValue : UtahPlanners.MVC3.PropertyService.LookupValue {
+        
+        private int Weightk__BackingFieldField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Name="<Weight>k__BackingField", IsRequired=true)]
+        public int Weightk__BackingField {
+            get {
+                return this.Weightk__BackingFieldField;
+            }
+            set {
+                if ((this.Weightk__BackingFieldField.Equals(value) != true)) {
+                    this.Weightk__BackingFieldField = value;
+                    this.RaisePropertyChanged("Weightk__BackingField");
+                }
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="BuildingEnclosure", Namespace="http://schemas.datacontract.org/2004/07/UtahPlanners.Domain.Entity")]
+    [System.SerializableAttribute()]
+    public partial class BuildingEnclosure : UtahPlanners.MVC3.PropertyService.WeightedLookupValue {
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="CommonAreas", Namespace="http://schemas.datacontract.org/2004/07/UtahPlanners.Domain.Entity")]
+    [System.SerializableAttribute()]
+    public partial class CommonAreas : UtahPlanners.MVC3.PropertyService.WeightedLookupValue {
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="NeighborhoodCondition", Namespace="http://schemas.datacontract.org/2004/07/UtahPlanners.Domain.Entity")]
+    [System.SerializableAttribute()]
+    public partial class NeighborhoodCondition : UtahPlanners.MVC3.PropertyService.WeightedLookupValue {
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="StreetConnectivity", Namespace="http://schemas.datacontract.org/2004/07/UtahPlanners.Domain.Entity")]
+    [System.SerializableAttribute()]
+    public partial class StreetConnectivity : UtahPlanners.MVC3.PropertyService.WeightedLookupValue {
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="StreetSafety", Namespace="http://schemas.datacontract.org/2004/07/UtahPlanners.Domain.Entity")]
+    [System.SerializableAttribute()]
+    public partial class StreetSafety : UtahPlanners.MVC3.PropertyService.WeightedLookupValue {
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="StreetWalkability", Namespace="http://schemas.datacontract.org/2004/07/UtahPlanners.Domain.Entity")]
+    [System.SerializableAttribute()]
+    public partial class StreetWalkability : UtahPlanners.MVC3.PropertyService.WeightedLookupValue {
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="PropertyType", Namespace="http://schemas.datacontract.org/2004/07/UtahPlanners.Domain.Entity")]
+    [System.SerializableAttribute()]
+    public partial class PropertyType : UtahPlanners.MVC3.PropertyService.LookupValue {
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="SocioEcon", Namespace="http://schemas.datacontract.org/2004/07/UtahPlanners.Domain.Entity")]
+    [System.SerializableAttribute()]
+    public partial class SocioEcon : UtahPlanners.MVC3.PropertyService.LookupValue {
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="StreetType", Namespace="http://schemas.datacontract.org/2004/07/UtahPlanners.Domain.Entity")]
+    [System.SerializableAttribute()]
+    public partial class StreetType : UtahPlanners.MVC3.PropertyService.LookupValue {
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Weights", Namespace="http://schemas.datacontract.org/2004/07/UtahPlanners.Domain.Entity")]
+    [System.SerializableAttribute()]
+    public partial class Weights : UtahPlanners.MVC3.PropertyService.Aggregate {
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int BuildingEnclosureField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int CommonAreasField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int NeighborhoodConditionField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int StreetConnectivityField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int StreetSafetyField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int StreetWalkabilityField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int TwoFiftyApartmentsField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int TwoFiftySingleFamilyField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int WalkscoreField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int BuildingEnclosure {
+            get {
+                return this.BuildingEnclosureField;
+            }
+            set {
+                if ((this.BuildingEnclosureField.Equals(value) != true)) {
+                    this.BuildingEnclosureField = value;
+                    this.RaisePropertyChanged("BuildingEnclosure");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int CommonAreas {
+            get {
+                return this.CommonAreasField;
+            }
+            set {
+                if ((this.CommonAreasField.Equals(value) != true)) {
+                    this.CommonAreasField = value;
+                    this.RaisePropertyChanged("CommonAreas");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int NeighborhoodCondition {
+            get {
+                return this.NeighborhoodConditionField;
+            }
+            set {
+                if ((this.NeighborhoodConditionField.Equals(value) != true)) {
+                    this.NeighborhoodConditionField = value;
+                    this.RaisePropertyChanged("NeighborhoodCondition");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int StreetConnectivity {
+            get {
+                return this.StreetConnectivityField;
+            }
+            set {
+                if ((this.StreetConnectivityField.Equals(value) != true)) {
+                    this.StreetConnectivityField = value;
+                    this.RaisePropertyChanged("StreetConnectivity");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int StreetSafety {
+            get {
+                return this.StreetSafetyField;
+            }
+            set {
+                if ((this.StreetSafetyField.Equals(value) != true)) {
+                    this.StreetSafetyField = value;
+                    this.RaisePropertyChanged("StreetSafety");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int StreetWalkability {
+            get {
+                return this.StreetWalkabilityField;
+            }
+            set {
+                if ((this.StreetWalkabilityField.Equals(value) != true)) {
+                    this.StreetWalkabilityField = value;
+                    this.RaisePropertyChanged("StreetWalkability");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int TwoFiftyApartments {
+            get {
+                return this.TwoFiftyApartmentsField;
+            }
+            set {
+                if ((this.TwoFiftyApartmentsField.Equals(value) != true)) {
+                    this.TwoFiftyApartmentsField = value;
+                    this.RaisePropertyChanged("TwoFiftyApartments");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int TwoFiftySingleFamily {
+            get {
+                return this.TwoFiftySingleFamilyField;
+            }
+            set {
+                if ((this.TwoFiftySingleFamilyField.Equals(value) != true)) {
+                    this.TwoFiftySingleFamilyField = value;
+                    this.RaisePropertyChanged("TwoFiftySingleFamily");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Walkscore {
+            get {
+                return this.WalkscoreField;
+            }
+            set {
+                if ((this.WalkscoreField.Equals(value) != true)) {
+                    this.WalkscoreField = value;
+                    this.RaisePropertyChanged("Walkscore");
+                }
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Picture", Namespace="http://schemas.datacontract.org/2004/07/UtahPlanners.Domain.Entity")]
     [System.SerializableAttribute()]
     public partial class Picture : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
         [System.NonSerializedAttribute()]
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private UtahPlanners.MVC3.PropertyService.Property PropertyField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private byte[] binaryDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<short> frontPageField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int idField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<short> mainPictureField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string mimeTypeField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<int> property_idField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<short> secondaryPictureField;
-        
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
             get {
@@ -2125,1629 +2404,6 @@ namespace UtahPlanners.MVC3.PropertyService {
             }
             set {
                 this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public UtahPlanners.MVC3.PropertyService.Property Property {
-            get {
-                return this.PropertyField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.PropertyField, value) != true)) {
-                    this.PropertyField = value;
-                    this.RaisePropertyChanged("Property");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public byte[] binaryData {
-            get {
-                return this.binaryDataField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.binaryDataField, value) != true)) {
-                    this.binaryDataField = value;
-                    this.RaisePropertyChanged("binaryData");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<short> frontPage {
-            get {
-                return this.frontPageField;
-            }
-            set {
-                if ((this.frontPageField.Equals(value) != true)) {
-                    this.frontPageField = value;
-                    this.RaisePropertyChanged("frontPage");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int id {
-            get {
-                return this.idField;
-            }
-            set {
-                if ((this.idField.Equals(value) != true)) {
-                    this.idField = value;
-                    this.RaisePropertyChanged("id");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<short> mainPicture {
-            get {
-                return this.mainPictureField;
-            }
-            set {
-                if ((this.mainPictureField.Equals(value) != true)) {
-                    this.mainPictureField = value;
-                    this.RaisePropertyChanged("mainPicture");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string mimeType {
-            get {
-                return this.mimeTypeField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.mimeTypeField, value) != true)) {
-                    this.mimeTypeField = value;
-                    this.RaisePropertyChanged("mimeType");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<int> property_id {
-            get {
-                return this.property_idField;
-            }
-            set {
-                if ((this.property_idField.Equals(value) != true)) {
-                    this.property_idField = value;
-                    this.RaisePropertyChanged("property_id");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<short> secondaryPicture {
-            get {
-                return this.secondaryPictureField;
-            }
-            set {
-                if ((this.secondaryPictureField.Equals(value) != true)) {
-                    this.secondaryPictureField = value;
-                    this.RaisePropertyChanged("secondaryPicture");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Property", Namespace="http://schemas.datacontract.org/2004/07/UtahPlanners.Domain.Entity", IsReference=true)]
-    [System.SerializableAttribute()]
-    public partial class Property : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private UtahPlanners.MVC3.PropertyService.Address AddressField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private UtahPlanners.MVC3.PropertyService.CommonCode CommonCodeField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private UtahPlanners.MVC3.PropertyService.EnclosureCode EnclosureCodeField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private UtahPlanners.MVC3.PropertyService.NeighborhoodCode NeighborhoodCodeField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private UtahPlanners.MVC3.PropertyService.Picture[] PicturesField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private UtahPlanners.MVC3.PropertyService.PropertyType PropertyTypeField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private UtahPlanners.MVC3.PropertyService.SocioEconCode SocioEconCodeField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private UtahPlanners.MVC3.PropertyService.StreetSafteyCode StreetSafteyCodeField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private UtahPlanners.MVC3.PropertyService.StreetType StreetTypeField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private UtahPlanners.MVC3.PropertyService.StreetconnCode StreetconnCodeField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private UtahPlanners.MVC3.PropertyService.StreetwalkCode StreetwalkCodeField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string adminNotesField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<int> areaField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<int> buildingEnclosureField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<int> commonAreasField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<double> densityField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int idField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<double> latitudeField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<double> longitudeField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<int> neighConditionField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string notFinishedField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string notesField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<int> socioEconField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<int> streetCodeField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<int> streetConnField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<int> streetSafteyField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<int> streetWalkField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<int> twoFiftyAptsField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<int> twoFiftySingleFamField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<int> typeCodeField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<int> unitsField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<int> walkscoreField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string walkscoreNotesField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<int> yearBuiltField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public UtahPlanners.MVC3.PropertyService.Address Address {
-            get {
-                return this.AddressField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.AddressField, value) != true)) {
-                    this.AddressField = value;
-                    this.RaisePropertyChanged("Address");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public UtahPlanners.MVC3.PropertyService.CommonCode CommonCode {
-            get {
-                return this.CommonCodeField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.CommonCodeField, value) != true)) {
-                    this.CommonCodeField = value;
-                    this.RaisePropertyChanged("CommonCode");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public UtahPlanners.MVC3.PropertyService.EnclosureCode EnclosureCode {
-            get {
-                return this.EnclosureCodeField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.EnclosureCodeField, value) != true)) {
-                    this.EnclosureCodeField = value;
-                    this.RaisePropertyChanged("EnclosureCode");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public UtahPlanners.MVC3.PropertyService.NeighborhoodCode NeighborhoodCode {
-            get {
-                return this.NeighborhoodCodeField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.NeighborhoodCodeField, value) != true)) {
-                    this.NeighborhoodCodeField = value;
-                    this.RaisePropertyChanged("NeighborhoodCode");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public UtahPlanners.MVC3.PropertyService.Picture[] Pictures {
-            get {
-                return this.PicturesField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.PicturesField, value) != true)) {
-                    this.PicturesField = value;
-                    this.RaisePropertyChanged("Pictures");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public UtahPlanners.MVC3.PropertyService.PropertyType PropertyType {
-            get {
-                return this.PropertyTypeField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.PropertyTypeField, value) != true)) {
-                    this.PropertyTypeField = value;
-                    this.RaisePropertyChanged("PropertyType");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public UtahPlanners.MVC3.PropertyService.SocioEconCode SocioEconCode {
-            get {
-                return this.SocioEconCodeField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.SocioEconCodeField, value) != true)) {
-                    this.SocioEconCodeField = value;
-                    this.RaisePropertyChanged("SocioEconCode");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public UtahPlanners.MVC3.PropertyService.StreetSafteyCode StreetSafteyCode {
-            get {
-                return this.StreetSafteyCodeField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.StreetSafteyCodeField, value) != true)) {
-                    this.StreetSafteyCodeField = value;
-                    this.RaisePropertyChanged("StreetSafteyCode");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public UtahPlanners.MVC3.PropertyService.StreetType StreetType {
-            get {
-                return this.StreetTypeField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.StreetTypeField, value) != true)) {
-                    this.StreetTypeField = value;
-                    this.RaisePropertyChanged("StreetType");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public UtahPlanners.MVC3.PropertyService.StreetconnCode StreetconnCode {
-            get {
-                return this.StreetconnCodeField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.StreetconnCodeField, value) != true)) {
-                    this.StreetconnCodeField = value;
-                    this.RaisePropertyChanged("StreetconnCode");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public UtahPlanners.MVC3.PropertyService.StreetwalkCode StreetwalkCode {
-            get {
-                return this.StreetwalkCodeField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.StreetwalkCodeField, value) != true)) {
-                    this.StreetwalkCodeField = value;
-                    this.RaisePropertyChanged("StreetwalkCode");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string adminNotes {
-            get {
-                return this.adminNotesField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.adminNotesField, value) != true)) {
-                    this.adminNotesField = value;
-                    this.RaisePropertyChanged("adminNotes");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<int> area {
-            get {
-                return this.areaField;
-            }
-            set {
-                if ((this.areaField.Equals(value) != true)) {
-                    this.areaField = value;
-                    this.RaisePropertyChanged("area");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<int> buildingEnclosure {
-            get {
-                return this.buildingEnclosureField;
-            }
-            set {
-                if ((this.buildingEnclosureField.Equals(value) != true)) {
-                    this.buildingEnclosureField = value;
-                    this.RaisePropertyChanged("buildingEnclosure");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<int> commonAreas {
-            get {
-                return this.commonAreasField;
-            }
-            set {
-                if ((this.commonAreasField.Equals(value) != true)) {
-                    this.commonAreasField = value;
-                    this.RaisePropertyChanged("commonAreas");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<double> density {
-            get {
-                return this.densityField;
-            }
-            set {
-                if ((this.densityField.Equals(value) != true)) {
-                    this.densityField = value;
-                    this.RaisePropertyChanged("density");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int id {
-            get {
-                return this.idField;
-            }
-            set {
-                if ((this.idField.Equals(value) != true)) {
-                    this.idField = value;
-                    this.RaisePropertyChanged("id");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<double> latitude {
-            get {
-                return this.latitudeField;
-            }
-            set {
-                if ((this.latitudeField.Equals(value) != true)) {
-                    this.latitudeField = value;
-                    this.RaisePropertyChanged("latitude");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<double> longitude {
-            get {
-                return this.longitudeField;
-            }
-            set {
-                if ((this.longitudeField.Equals(value) != true)) {
-                    this.longitudeField = value;
-                    this.RaisePropertyChanged("longitude");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<int> neighCondition {
-            get {
-                return this.neighConditionField;
-            }
-            set {
-                if ((this.neighConditionField.Equals(value) != true)) {
-                    this.neighConditionField = value;
-                    this.RaisePropertyChanged("neighCondition");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string notFinished {
-            get {
-                return this.notFinishedField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.notFinishedField, value) != true)) {
-                    this.notFinishedField = value;
-                    this.RaisePropertyChanged("notFinished");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string notes {
-            get {
-                return this.notesField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.notesField, value) != true)) {
-                    this.notesField = value;
-                    this.RaisePropertyChanged("notes");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<int> socioEcon {
-            get {
-                return this.socioEconField;
-            }
-            set {
-                if ((this.socioEconField.Equals(value) != true)) {
-                    this.socioEconField = value;
-                    this.RaisePropertyChanged("socioEcon");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<int> streetCode {
-            get {
-                return this.streetCodeField;
-            }
-            set {
-                if ((this.streetCodeField.Equals(value) != true)) {
-                    this.streetCodeField = value;
-                    this.RaisePropertyChanged("streetCode");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<int> streetConn {
-            get {
-                return this.streetConnField;
-            }
-            set {
-                if ((this.streetConnField.Equals(value) != true)) {
-                    this.streetConnField = value;
-                    this.RaisePropertyChanged("streetConn");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<int> streetSaftey {
-            get {
-                return this.streetSafteyField;
-            }
-            set {
-                if ((this.streetSafteyField.Equals(value) != true)) {
-                    this.streetSafteyField = value;
-                    this.RaisePropertyChanged("streetSaftey");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<int> streetWalk {
-            get {
-                return this.streetWalkField;
-            }
-            set {
-                if ((this.streetWalkField.Equals(value) != true)) {
-                    this.streetWalkField = value;
-                    this.RaisePropertyChanged("streetWalk");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<int> twoFiftyApts {
-            get {
-                return this.twoFiftyAptsField;
-            }
-            set {
-                if ((this.twoFiftyAptsField.Equals(value) != true)) {
-                    this.twoFiftyAptsField = value;
-                    this.RaisePropertyChanged("twoFiftyApts");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<int> twoFiftySingleFam {
-            get {
-                return this.twoFiftySingleFamField;
-            }
-            set {
-                if ((this.twoFiftySingleFamField.Equals(value) != true)) {
-                    this.twoFiftySingleFamField = value;
-                    this.RaisePropertyChanged("twoFiftySingleFam");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<int> typeCode {
-            get {
-                return this.typeCodeField;
-            }
-            set {
-                if ((this.typeCodeField.Equals(value) != true)) {
-                    this.typeCodeField = value;
-                    this.RaisePropertyChanged("typeCode");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<int> units {
-            get {
-                return this.unitsField;
-            }
-            set {
-                if ((this.unitsField.Equals(value) != true)) {
-                    this.unitsField = value;
-                    this.RaisePropertyChanged("units");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<int> walkscore {
-            get {
-                return this.walkscoreField;
-            }
-            set {
-                if ((this.walkscoreField.Equals(value) != true)) {
-                    this.walkscoreField = value;
-                    this.RaisePropertyChanged("walkscore");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string walkscoreNotes {
-            get {
-                return this.walkscoreNotesField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.walkscoreNotesField, value) != true)) {
-                    this.walkscoreNotesField = value;
-                    this.RaisePropertyChanged("walkscoreNotes");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<int> yearBuilt {
-            get {
-                return this.yearBuiltField;
-            }
-            set {
-                if ((this.yearBuiltField.Equals(value) != true)) {
-                    this.yearBuiltField = value;
-                    this.RaisePropertyChanged("yearBuilt");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Address", Namespace="http://schemas.datacontract.org/2004/07/UtahPlanners.Domain.Entity", IsReference=true)]
-    [System.SerializableAttribute()]
-    public partial class Address : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private UtahPlanners.MVC3.PropertyService.Property PropertyField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string cityField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string countryField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int idField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string stateField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string street1Field;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string street2Field;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string zipField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public UtahPlanners.MVC3.PropertyService.Property Property {
-            get {
-                return this.PropertyField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.PropertyField, value) != true)) {
-                    this.PropertyField = value;
-                    this.RaisePropertyChanged("Property");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string city {
-            get {
-                return this.cityField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.cityField, value) != true)) {
-                    this.cityField = value;
-                    this.RaisePropertyChanged("city");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string country {
-            get {
-                return this.countryField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.countryField, value) != true)) {
-                    this.countryField = value;
-                    this.RaisePropertyChanged("country");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int id {
-            get {
-                return this.idField;
-            }
-            set {
-                if ((this.idField.Equals(value) != true)) {
-                    this.idField = value;
-                    this.RaisePropertyChanged("id");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string state {
-            get {
-                return this.stateField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.stateField, value) != true)) {
-                    this.stateField = value;
-                    this.RaisePropertyChanged("state");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string street1 {
-            get {
-                return this.street1Field;
-            }
-            set {
-                if ((object.ReferenceEquals(this.street1Field, value) != true)) {
-                    this.street1Field = value;
-                    this.RaisePropertyChanged("street1");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string street2 {
-            get {
-                return this.street2Field;
-            }
-            set {
-                if ((object.ReferenceEquals(this.street2Field, value) != true)) {
-                    this.street2Field = value;
-                    this.RaisePropertyChanged("street2");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string zip {
-            get {
-                return this.zipField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.zipField, value) != true)) {
-                    this.zipField = value;
-                    this.RaisePropertyChanged("zip");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="CommonCode", Namespace="http://schemas.datacontract.org/2004/07/UtahPlanners.Domain.Entity", IsReference=true)]
-    [System.SerializableAttribute()]
-    public partial class CommonCode : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private UtahPlanners.MVC3.PropertyService.Property[] PropertiesField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string descriptionField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int idField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<int> weightField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public UtahPlanners.MVC3.PropertyService.Property[] Properties {
-            get {
-                return this.PropertiesField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.PropertiesField, value) != true)) {
-                    this.PropertiesField = value;
-                    this.RaisePropertyChanged("Properties");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string description {
-            get {
-                return this.descriptionField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.descriptionField, value) != true)) {
-                    this.descriptionField = value;
-                    this.RaisePropertyChanged("description");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int id {
-            get {
-                return this.idField;
-            }
-            set {
-                if ((this.idField.Equals(value) != true)) {
-                    this.idField = value;
-                    this.RaisePropertyChanged("id");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<int> weight {
-            get {
-                return this.weightField;
-            }
-            set {
-                if ((this.weightField.Equals(value) != true)) {
-                    this.weightField = value;
-                    this.RaisePropertyChanged("weight");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="EnclosureCode", Namespace="http://schemas.datacontract.org/2004/07/UtahPlanners.Domain.Entity", IsReference=true)]
-    [System.SerializableAttribute()]
-    public partial class EnclosureCode : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private UtahPlanners.MVC3.PropertyService.Property[] PropertiesField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string descriptionField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int idField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<int> weightField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public UtahPlanners.MVC3.PropertyService.Property[] Properties {
-            get {
-                return this.PropertiesField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.PropertiesField, value) != true)) {
-                    this.PropertiesField = value;
-                    this.RaisePropertyChanged("Properties");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string description {
-            get {
-                return this.descriptionField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.descriptionField, value) != true)) {
-                    this.descriptionField = value;
-                    this.RaisePropertyChanged("description");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int id {
-            get {
-                return this.idField;
-            }
-            set {
-                if ((this.idField.Equals(value) != true)) {
-                    this.idField = value;
-                    this.RaisePropertyChanged("id");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<int> weight {
-            get {
-                return this.weightField;
-            }
-            set {
-                if ((this.weightField.Equals(value) != true)) {
-                    this.weightField = value;
-                    this.RaisePropertyChanged("weight");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="NeighborhoodCode", Namespace="http://schemas.datacontract.org/2004/07/UtahPlanners.Domain.Entity", IsReference=true)]
-    [System.SerializableAttribute()]
-    public partial class NeighborhoodCode : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private UtahPlanners.MVC3.PropertyService.Property[] PropertiesField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string descriptionField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int idField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<int> weightField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public UtahPlanners.MVC3.PropertyService.Property[] Properties {
-            get {
-                return this.PropertiesField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.PropertiesField, value) != true)) {
-                    this.PropertiesField = value;
-                    this.RaisePropertyChanged("Properties");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string description {
-            get {
-                return this.descriptionField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.descriptionField, value) != true)) {
-                    this.descriptionField = value;
-                    this.RaisePropertyChanged("description");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int id {
-            get {
-                return this.idField;
-            }
-            set {
-                if ((this.idField.Equals(value) != true)) {
-                    this.idField = value;
-                    this.RaisePropertyChanged("id");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<int> weight {
-            get {
-                return this.weightField;
-            }
-            set {
-                if ((this.weightField.Equals(value) != true)) {
-                    this.weightField = value;
-                    this.RaisePropertyChanged("weight");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="PropertyType", Namespace="http://schemas.datacontract.org/2004/07/UtahPlanners.Domain.Entity", IsReference=true)]
-    [System.SerializableAttribute()]
-    public partial class PropertyType : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private UtahPlanners.MVC3.PropertyService.Property[] PropertiesField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string descriptionField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int idField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public UtahPlanners.MVC3.PropertyService.Property[] Properties {
-            get {
-                return this.PropertiesField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.PropertiesField, value) != true)) {
-                    this.PropertiesField = value;
-                    this.RaisePropertyChanged("Properties");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string description {
-            get {
-                return this.descriptionField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.descriptionField, value) != true)) {
-                    this.descriptionField = value;
-                    this.RaisePropertyChanged("description");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int id {
-            get {
-                return this.idField;
-            }
-            set {
-                if ((this.idField.Equals(value) != true)) {
-                    this.idField = value;
-                    this.RaisePropertyChanged("id");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="SocioEconCode", Namespace="http://schemas.datacontract.org/2004/07/UtahPlanners.Domain.Entity", IsReference=true)]
-    [System.SerializableAttribute()]
-    public partial class SocioEconCode : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private UtahPlanners.MVC3.PropertyService.Property[] PropertiesField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string descriptionField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int idField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public UtahPlanners.MVC3.PropertyService.Property[] Properties {
-            get {
-                return this.PropertiesField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.PropertiesField, value) != true)) {
-                    this.PropertiesField = value;
-                    this.RaisePropertyChanged("Properties");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string description {
-            get {
-                return this.descriptionField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.descriptionField, value) != true)) {
-                    this.descriptionField = value;
-                    this.RaisePropertyChanged("description");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int id {
-            get {
-                return this.idField;
-            }
-            set {
-                if ((this.idField.Equals(value) != true)) {
-                    this.idField = value;
-                    this.RaisePropertyChanged("id");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="StreetSafteyCode", Namespace="http://schemas.datacontract.org/2004/07/UtahPlanners.Domain.Entity", IsReference=true)]
-    [System.SerializableAttribute()]
-    public partial class StreetSafteyCode : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private UtahPlanners.MVC3.PropertyService.Property[] PropertiesField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string descriptionField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int idField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<int> weightField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public UtahPlanners.MVC3.PropertyService.Property[] Properties {
-            get {
-                return this.PropertiesField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.PropertiesField, value) != true)) {
-                    this.PropertiesField = value;
-                    this.RaisePropertyChanged("Properties");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string description {
-            get {
-                return this.descriptionField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.descriptionField, value) != true)) {
-                    this.descriptionField = value;
-                    this.RaisePropertyChanged("description");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int id {
-            get {
-                return this.idField;
-            }
-            set {
-                if ((this.idField.Equals(value) != true)) {
-                    this.idField = value;
-                    this.RaisePropertyChanged("id");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<int> weight {
-            get {
-                return this.weightField;
-            }
-            set {
-                if ((this.weightField.Equals(value) != true)) {
-                    this.weightField = value;
-                    this.RaisePropertyChanged("weight");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="StreetType", Namespace="http://schemas.datacontract.org/2004/07/UtahPlanners.Domain.Entity", IsReference=true)]
-    [System.SerializableAttribute()]
-    public partial class StreetType : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private UtahPlanners.MVC3.PropertyService.Property[] PropertiesField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string descriptionField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int idField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public UtahPlanners.MVC3.PropertyService.Property[] Properties {
-            get {
-                return this.PropertiesField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.PropertiesField, value) != true)) {
-                    this.PropertiesField = value;
-                    this.RaisePropertyChanged("Properties");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string description {
-            get {
-                return this.descriptionField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.descriptionField, value) != true)) {
-                    this.descriptionField = value;
-                    this.RaisePropertyChanged("description");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int id {
-            get {
-                return this.idField;
-            }
-            set {
-                if ((this.idField.Equals(value) != true)) {
-                    this.idField = value;
-                    this.RaisePropertyChanged("id");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="StreetconnCode", Namespace="http://schemas.datacontract.org/2004/07/UtahPlanners.Domain.Entity", IsReference=true)]
-    [System.SerializableAttribute()]
-    public partial class StreetconnCode : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private UtahPlanners.MVC3.PropertyService.Property[] PropertiesField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string descriptionField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int idField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<int> weightField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public UtahPlanners.MVC3.PropertyService.Property[] Properties {
-            get {
-                return this.PropertiesField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.PropertiesField, value) != true)) {
-                    this.PropertiesField = value;
-                    this.RaisePropertyChanged("Properties");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string description {
-            get {
-                return this.descriptionField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.descriptionField, value) != true)) {
-                    this.descriptionField = value;
-                    this.RaisePropertyChanged("description");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int id {
-            get {
-                return this.idField;
-            }
-            set {
-                if ((this.idField.Equals(value) != true)) {
-                    this.idField = value;
-                    this.RaisePropertyChanged("id");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<int> weight {
-            get {
-                return this.weightField;
-            }
-            set {
-                if ((this.weightField.Equals(value) != true)) {
-                    this.weightField = value;
-                    this.RaisePropertyChanged("weight");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="StreetwalkCode", Namespace="http://schemas.datacontract.org/2004/07/UtahPlanners.Domain.Entity", IsReference=true)]
-    [System.SerializableAttribute()]
-    public partial class StreetwalkCode : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private UtahPlanners.MVC3.PropertyService.Property[] PropertiesField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string descriptionField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int idField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<int> weightField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public UtahPlanners.MVC3.PropertyService.Property[] Properties {
-            get {
-                return this.PropertiesField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.PropertiesField, value) != true)) {
-                    this.PropertiesField = value;
-                    this.RaisePropertyChanged("Properties");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string description {
-            get {
-                return this.descriptionField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.descriptionField, value) != true)) {
-                    this.descriptionField = value;
-                    this.RaisePropertyChanged("description");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int id {
-            get {
-                return this.idField;
-            }
-            set {
-                if ((this.idField.Equals(value) != true)) {
-                    this.idField = value;
-                    this.RaisePropertyChanged("id");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<int> weight {
-            get {
-                return this.weightField;
-            }
-            set {
-                if ((this.weightField.Equals(value) != true)) {
-                    this.weightField = value;
-                    this.RaisePropertyChanged("weight");
-                }
             }
         }
         
@@ -3771,31 +2427,31 @@ namespace UtahPlanners.MVC3.PropertyService {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private UtahPlanners.MVC3.PropertyService.CommonCode[] CommonCodesField;
+        private UtahPlanners.MVC3.PropertyService.BuildingEnclosure[] BuildingEnclosureLookupsField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private UtahPlanners.MVC3.PropertyService.EnclosureCode[] EnclosureCodesField;
+        private UtahPlanners.MVC3.PropertyService.CommonAreas[] CommonAreaLookupsField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private UtahPlanners.MVC3.PropertyService.NeighborhoodCode[] NeighborhoodCodesField;
+        private UtahPlanners.MVC3.PropertyService.NeighborhoodCondition[] NeighborhoodConditionLookupsField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private UtahPlanners.MVC3.PropertyService.PropertyType[] PropertyTypesField;
+        private UtahPlanners.MVC3.PropertyService.PropertyType[] PropertyTypeLookupsField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private UtahPlanners.MVC3.PropertyService.SocioEconCode[] SocioEconCodesField;
+        private UtahPlanners.MVC3.PropertyService.SocioEcon[] SocioEconLookupsField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private UtahPlanners.MVC3.PropertyService.StreetSafteyCode[] StreetSafetyCodesField;
+        private UtahPlanners.MVC3.PropertyService.StreetConnectivity[] StreetConnectivityLookupsField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private UtahPlanners.MVC3.PropertyService.StreetType[] StreetTypesField;
+        private UtahPlanners.MVC3.PropertyService.StreetSafety[] StreetSafetyLookupsField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private UtahPlanners.MVC3.PropertyService.StreetconnCode[] StreetconnCodesField;
+        private UtahPlanners.MVC3.PropertyService.StreetType[] StreetTypeLookupsField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private UtahPlanners.MVC3.PropertyService.StreetwalkCode[] StreetwalkCodesField;
+        private UtahPlanners.MVC3.PropertyService.StreetWalkability[] StreetWalkabilityLookupsField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -3808,118 +2464,118 @@ namespace UtahPlanners.MVC3.PropertyService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public UtahPlanners.MVC3.PropertyService.CommonCode[] CommonCodes {
+        public UtahPlanners.MVC3.PropertyService.BuildingEnclosure[] BuildingEnclosureLookups {
             get {
-                return this.CommonCodesField;
+                return this.BuildingEnclosureLookupsField;
             }
             set {
-                if ((object.ReferenceEquals(this.CommonCodesField, value) != true)) {
-                    this.CommonCodesField = value;
-                    this.RaisePropertyChanged("CommonCodes");
+                if ((object.ReferenceEquals(this.BuildingEnclosureLookupsField, value) != true)) {
+                    this.BuildingEnclosureLookupsField = value;
+                    this.RaisePropertyChanged("BuildingEnclosureLookups");
                 }
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public UtahPlanners.MVC3.PropertyService.EnclosureCode[] EnclosureCodes {
+        public UtahPlanners.MVC3.PropertyService.CommonAreas[] CommonAreaLookups {
             get {
-                return this.EnclosureCodesField;
+                return this.CommonAreaLookupsField;
             }
             set {
-                if ((object.ReferenceEquals(this.EnclosureCodesField, value) != true)) {
-                    this.EnclosureCodesField = value;
-                    this.RaisePropertyChanged("EnclosureCodes");
+                if ((object.ReferenceEquals(this.CommonAreaLookupsField, value) != true)) {
+                    this.CommonAreaLookupsField = value;
+                    this.RaisePropertyChanged("CommonAreaLookups");
                 }
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public UtahPlanners.MVC3.PropertyService.NeighborhoodCode[] NeighborhoodCodes {
+        public UtahPlanners.MVC3.PropertyService.NeighborhoodCondition[] NeighborhoodConditionLookups {
             get {
-                return this.NeighborhoodCodesField;
+                return this.NeighborhoodConditionLookupsField;
             }
             set {
-                if ((object.ReferenceEquals(this.NeighborhoodCodesField, value) != true)) {
-                    this.NeighborhoodCodesField = value;
-                    this.RaisePropertyChanged("NeighborhoodCodes");
+                if ((object.ReferenceEquals(this.NeighborhoodConditionLookupsField, value) != true)) {
+                    this.NeighborhoodConditionLookupsField = value;
+                    this.RaisePropertyChanged("NeighborhoodConditionLookups");
                 }
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public UtahPlanners.MVC3.PropertyService.PropertyType[] PropertyTypes {
+        public UtahPlanners.MVC3.PropertyService.PropertyType[] PropertyTypeLookups {
             get {
-                return this.PropertyTypesField;
+                return this.PropertyTypeLookupsField;
             }
             set {
-                if ((object.ReferenceEquals(this.PropertyTypesField, value) != true)) {
-                    this.PropertyTypesField = value;
-                    this.RaisePropertyChanged("PropertyTypes");
+                if ((object.ReferenceEquals(this.PropertyTypeLookupsField, value) != true)) {
+                    this.PropertyTypeLookupsField = value;
+                    this.RaisePropertyChanged("PropertyTypeLookups");
                 }
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public UtahPlanners.MVC3.PropertyService.SocioEconCode[] SocioEconCodes {
+        public UtahPlanners.MVC3.PropertyService.SocioEcon[] SocioEconLookups {
             get {
-                return this.SocioEconCodesField;
+                return this.SocioEconLookupsField;
             }
             set {
-                if ((object.ReferenceEquals(this.SocioEconCodesField, value) != true)) {
-                    this.SocioEconCodesField = value;
-                    this.RaisePropertyChanged("SocioEconCodes");
+                if ((object.ReferenceEquals(this.SocioEconLookupsField, value) != true)) {
+                    this.SocioEconLookupsField = value;
+                    this.RaisePropertyChanged("SocioEconLookups");
                 }
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public UtahPlanners.MVC3.PropertyService.StreetSafteyCode[] StreetSafetyCodes {
+        public UtahPlanners.MVC3.PropertyService.StreetConnectivity[] StreetConnectivityLookups {
             get {
-                return this.StreetSafetyCodesField;
+                return this.StreetConnectivityLookupsField;
             }
             set {
-                if ((object.ReferenceEquals(this.StreetSafetyCodesField, value) != true)) {
-                    this.StreetSafetyCodesField = value;
-                    this.RaisePropertyChanged("StreetSafetyCodes");
+                if ((object.ReferenceEquals(this.StreetConnectivityLookupsField, value) != true)) {
+                    this.StreetConnectivityLookupsField = value;
+                    this.RaisePropertyChanged("StreetConnectivityLookups");
                 }
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public UtahPlanners.MVC3.PropertyService.StreetType[] StreetTypes {
+        public UtahPlanners.MVC3.PropertyService.StreetSafety[] StreetSafetyLookups {
             get {
-                return this.StreetTypesField;
+                return this.StreetSafetyLookupsField;
             }
             set {
-                if ((object.ReferenceEquals(this.StreetTypesField, value) != true)) {
-                    this.StreetTypesField = value;
-                    this.RaisePropertyChanged("StreetTypes");
+                if ((object.ReferenceEquals(this.StreetSafetyLookupsField, value) != true)) {
+                    this.StreetSafetyLookupsField = value;
+                    this.RaisePropertyChanged("StreetSafetyLookups");
                 }
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public UtahPlanners.MVC3.PropertyService.StreetconnCode[] StreetconnCodes {
+        public UtahPlanners.MVC3.PropertyService.StreetType[] StreetTypeLookups {
             get {
-                return this.StreetconnCodesField;
+                return this.StreetTypeLookupsField;
             }
             set {
-                if ((object.ReferenceEquals(this.StreetconnCodesField, value) != true)) {
-                    this.StreetconnCodesField = value;
-                    this.RaisePropertyChanged("StreetconnCodes");
+                if ((object.ReferenceEquals(this.StreetTypeLookupsField, value) != true)) {
+                    this.StreetTypeLookupsField = value;
+                    this.RaisePropertyChanged("StreetTypeLookups");
                 }
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public UtahPlanners.MVC3.PropertyService.StreetwalkCode[] StreetwalkCodes {
+        public UtahPlanners.MVC3.PropertyService.StreetWalkability[] StreetWalkabilityLookups {
             get {
-                return this.StreetwalkCodesField;
+                return this.StreetWalkabilityLookupsField;
             }
             set {
-                if ((object.ReferenceEquals(this.StreetwalkCodesField, value) != true)) {
-                    this.StreetwalkCodesField = value;
-                    this.RaisePropertyChanged("StreetwalkCodes");
+                if ((object.ReferenceEquals(this.StreetWalkabilityLookupsField, value) != true)) {
+                    this.StreetWalkabilityLookupsField = value;
+                    this.RaisePropertyChanged("StreetWalkabilityLookups");
                 }
             }
         }
@@ -3971,195 +2627,6 @@ namespace UtahPlanners.MVC3.PropertyService {
         StreetWalkCode = 5,
     }
     
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Weight", Namespace="http://schemas.datacontract.org/2004/07/UtahPlanners.Domain.Entity", IsReference=true)]
-    [System.SerializableAttribute()]
-    public partial class Weight : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<int> buildingEnclosureField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<int> commonAreasField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int idField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<int> neighConditionField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<int> streetConnField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<int> streetSafteyField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<int> streetWalkField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<int> twoFiftyAptsField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<int> twoFiftySingleFamField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<int> walkscoreField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<int> buildingEnclosure {
-            get {
-                return this.buildingEnclosureField;
-            }
-            set {
-                if ((this.buildingEnclosureField.Equals(value) != true)) {
-                    this.buildingEnclosureField = value;
-                    this.RaisePropertyChanged("buildingEnclosure");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<int> commonAreas {
-            get {
-                return this.commonAreasField;
-            }
-            set {
-                if ((this.commonAreasField.Equals(value) != true)) {
-                    this.commonAreasField = value;
-                    this.RaisePropertyChanged("commonAreas");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int id {
-            get {
-                return this.idField;
-            }
-            set {
-                if ((this.idField.Equals(value) != true)) {
-                    this.idField = value;
-                    this.RaisePropertyChanged("id");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<int> neighCondition {
-            get {
-                return this.neighConditionField;
-            }
-            set {
-                if ((this.neighConditionField.Equals(value) != true)) {
-                    this.neighConditionField = value;
-                    this.RaisePropertyChanged("neighCondition");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<int> streetConn {
-            get {
-                return this.streetConnField;
-            }
-            set {
-                if ((this.streetConnField.Equals(value) != true)) {
-                    this.streetConnField = value;
-                    this.RaisePropertyChanged("streetConn");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<int> streetSaftey {
-            get {
-                return this.streetSafteyField;
-            }
-            set {
-                if ((this.streetSafteyField.Equals(value) != true)) {
-                    this.streetSafteyField = value;
-                    this.RaisePropertyChanged("streetSaftey");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<int> streetWalk {
-            get {
-                return this.streetWalkField;
-            }
-            set {
-                if ((this.streetWalkField.Equals(value) != true)) {
-                    this.streetWalkField = value;
-                    this.RaisePropertyChanged("streetWalk");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<int> twoFiftyApts {
-            get {
-                return this.twoFiftyAptsField;
-            }
-            set {
-                if ((this.twoFiftyAptsField.Equals(value) != true)) {
-                    this.twoFiftyAptsField = value;
-                    this.RaisePropertyChanged("twoFiftyApts");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<int> twoFiftySingleFam {
-            get {
-                return this.twoFiftySingleFamField;
-            }
-            set {
-                if ((this.twoFiftySingleFamField.Equals(value) != true)) {
-                    this.twoFiftySingleFamField = value;
-                    this.RaisePropertyChanged("twoFiftySingleFam");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<int> walkscore {
-            get {
-                return this.walkscoreField;
-            }
-            set {
-                if ((this.walkscoreField.Equals(value) != true)) {
-                    this.walkscoreField = value;
-                    this.RaisePropertyChanged("walkscore");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="PropertyService.IPropertyService")]
     public interface IPropertyService {
@@ -4171,10 +2638,10 @@ namespace UtahPlanners.MVC3.PropertyService {
         UtahPlanners.MVC3.PropertyService.CompositeType GetDataUsingDataContract(UtahPlanners.MVC3.PropertyService.CompositeType composite);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPropertyService/FindAllIndecies", ReplyAction="http://tempuri.org/IPropertyService/FindAllIndeciesResponse")]
-        UtahPlanners.MVC3.PropertyService.PropertiesIndex[] FindAllIndecies();
+        UtahPlanners.MVC3.PropertyService.PropertyIndexDTO[] FindAllIndecies();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPropertyService/FindIndecies", ReplyAction="http://tempuri.org/IPropertyService/FindIndeciesResponse")]
-        UtahPlanners.MVC3.PropertyService.PropertiesIndex[] FindIndecies(UtahPlanners.MVC3.PropertyService.IndexFilter filter, UtahPlanners.MVC3.PropertyService.IndexSort sort);
+        UtahPlanners.MVC3.PropertyService.PropertyIndexDTO[] FindIndecies(UtahPlanners.MVC3.PropertyService.IndexFilter filter, UtahPlanners.MVC3.PropertyService.IndexSort sort);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPropertyService/FindAllAdminIndecies", ReplyAction="http://tempuri.org/IPropertyService/FindAllAdminIndeciesResponse")]
         UtahPlanners.MVC3.PropertyService.AdminPropertyIndexDTO[] FindAllAdminIndecies(UtahPlanners.MVC3.PropertyService.PropertySort sort);
@@ -4198,13 +2665,13 @@ namespace UtahPlanners.MVC3.PropertyService {
         UtahPlanners.MVC3.PropertyService.LookupValues GetAllLookupValues();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPropertyService/GetLookupTypes", ReplyAction="http://tempuri.org/IPropertyService/GetLookupTypesResponse")]
-        System.Collections.Generic.Dictionary<int, string> GetLookupTypes(UtahPlanners.MVC3.PropertyService.LookupType lookupType);
+        System.Collections.Generic.Dictionary<System.Guid, string> GetLookupTypes(UtahPlanners.MVC3.PropertyService.LookupType lookupType);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPropertyService/GetLookupCodes", ReplyAction="http://tempuri.org/IPropertyService/GetLookupCodesResponse")]
-        System.Collections.Generic.Dictionary<int, System.Tuple<string, int>> GetLookupCodes(UtahPlanners.MVC3.PropertyService.LookupCode lookupCode);
+        System.Collections.Generic.Dictionary<System.Guid, System.Tuple<string, int>> GetLookupCodes(UtahPlanners.MVC3.PropertyService.LookupCode lookupCode);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPropertyService/GetWeights", ReplyAction="http://tempuri.org/IPropertyService/GetWeightsResponse")]
-        UtahPlanners.MVC3.PropertyService.Weight GetWeights();
+        UtahPlanners.MVC3.PropertyService.Weights GetWeights();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPropertyService/SaveProperty", ReplyAction="http://tempuri.org/IPropertyService/SavePropertyResponse")]
         int SaveProperty(UtahPlanners.MVC3.PropertyService.AdminPropertyDTO property);
@@ -4216,22 +2683,22 @@ namespace UtahPlanners.MVC3.PropertyService {
         bool CreateLookupType(UtahPlanners.MVC3.PropertyService.LookupType lookupType, string value);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPropertyService/ModifyLookupType", ReplyAction="http://tempuri.org/IPropertyService/ModifyLookupTypeResponse")]
-        bool ModifyLookupType(UtahPlanners.MVC3.PropertyService.LookupType lookupType, int id, string value);
+        bool ModifyLookupType(UtahPlanners.MVC3.PropertyService.LookupType lookupType, System.Guid id, string value);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPropertyService/DeleteLookupType", ReplyAction="http://tempuri.org/IPropertyService/DeleteLookupTypeResponse")]
-        bool DeleteLookupType(UtahPlanners.MVC3.PropertyService.LookupType lookupType, int id);
+        bool DeleteLookupType(UtahPlanners.MVC3.PropertyService.LookupType lookupType, System.Guid id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPropertyService/CreateLookupCode", ReplyAction="http://tempuri.org/IPropertyService/CreateLookupCodeResponse")]
         bool CreateLookupCode(UtahPlanners.MVC3.PropertyService.LookupCode lookupCode, string value, int weight);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPropertyService/ModifyLookupCode", ReplyAction="http://tempuri.org/IPropertyService/ModifyLookupCodeResponse")]
-        bool ModifyLookupCode(UtahPlanners.MVC3.PropertyService.LookupCode lookupCode, int id, string value, int weight);
+        bool ModifyLookupCode(UtahPlanners.MVC3.PropertyService.LookupCode lookupCode, System.Guid id, string value, int weight);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPropertyService/DeleteLookupCode", ReplyAction="http://tempuri.org/IPropertyService/DeleteLookupCodeResponse")]
-        bool DeleteLookupCode(UtahPlanners.MVC3.PropertyService.LookupCode lookupCode, int id);
+        bool DeleteLookupCode(UtahPlanners.MVC3.PropertyService.LookupCode lookupCode, System.Guid id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPropertyService/UpdateWeights", ReplyAction="http://tempuri.org/IPropertyService/UpdateWeightsResponse")]
-        bool UpdateWeights(UtahPlanners.MVC3.PropertyService.Weight weights);
+        bool UpdateWeights(System.Guid id, UtahPlanners.MVC3.PropertyService.Weights weights);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPropertyService/UploadPicture", ReplyAction="http://tempuri.org/IPropertyService/UploadPictureResponse")]
         bool UploadPicture(UtahPlanners.MVC3.PropertyService.Picture pic);
@@ -4272,11 +2739,11 @@ namespace UtahPlanners.MVC3.PropertyService {
             return base.Channel.GetDataUsingDataContract(composite);
         }
         
-        public UtahPlanners.MVC3.PropertyService.PropertiesIndex[] FindAllIndecies() {
+        public UtahPlanners.MVC3.PropertyService.PropertyIndexDTO[] FindAllIndecies() {
             return base.Channel.FindAllIndecies();
         }
         
-        public UtahPlanners.MVC3.PropertyService.PropertiesIndex[] FindIndecies(UtahPlanners.MVC3.PropertyService.IndexFilter filter, UtahPlanners.MVC3.PropertyService.IndexSort sort) {
+        public UtahPlanners.MVC3.PropertyService.PropertyIndexDTO[] FindIndecies(UtahPlanners.MVC3.PropertyService.IndexFilter filter, UtahPlanners.MVC3.PropertyService.IndexSort sort) {
             return base.Channel.FindIndecies(filter, sort);
         }
         
@@ -4308,15 +2775,15 @@ namespace UtahPlanners.MVC3.PropertyService {
             return base.Channel.GetAllLookupValues();
         }
         
-        public System.Collections.Generic.Dictionary<int, string> GetLookupTypes(UtahPlanners.MVC3.PropertyService.LookupType lookupType) {
+        public System.Collections.Generic.Dictionary<System.Guid, string> GetLookupTypes(UtahPlanners.MVC3.PropertyService.LookupType lookupType) {
             return base.Channel.GetLookupTypes(lookupType);
         }
         
-        public System.Collections.Generic.Dictionary<int, System.Tuple<string, int>> GetLookupCodes(UtahPlanners.MVC3.PropertyService.LookupCode lookupCode) {
+        public System.Collections.Generic.Dictionary<System.Guid, System.Tuple<string, int>> GetLookupCodes(UtahPlanners.MVC3.PropertyService.LookupCode lookupCode) {
             return base.Channel.GetLookupCodes(lookupCode);
         }
         
-        public UtahPlanners.MVC3.PropertyService.Weight GetWeights() {
+        public UtahPlanners.MVC3.PropertyService.Weights GetWeights() {
             return base.Channel.GetWeights();
         }
         
@@ -4332,11 +2799,11 @@ namespace UtahPlanners.MVC3.PropertyService {
             return base.Channel.CreateLookupType(lookupType, value);
         }
         
-        public bool ModifyLookupType(UtahPlanners.MVC3.PropertyService.LookupType lookupType, int id, string value) {
+        public bool ModifyLookupType(UtahPlanners.MVC3.PropertyService.LookupType lookupType, System.Guid id, string value) {
             return base.Channel.ModifyLookupType(lookupType, id, value);
         }
         
-        public bool DeleteLookupType(UtahPlanners.MVC3.PropertyService.LookupType lookupType, int id) {
+        public bool DeleteLookupType(UtahPlanners.MVC3.PropertyService.LookupType lookupType, System.Guid id) {
             return base.Channel.DeleteLookupType(lookupType, id);
         }
         
@@ -4344,16 +2811,16 @@ namespace UtahPlanners.MVC3.PropertyService {
             return base.Channel.CreateLookupCode(lookupCode, value, weight);
         }
         
-        public bool ModifyLookupCode(UtahPlanners.MVC3.PropertyService.LookupCode lookupCode, int id, string value, int weight) {
+        public bool ModifyLookupCode(UtahPlanners.MVC3.PropertyService.LookupCode lookupCode, System.Guid id, string value, int weight) {
             return base.Channel.ModifyLookupCode(lookupCode, id, value, weight);
         }
         
-        public bool DeleteLookupCode(UtahPlanners.MVC3.PropertyService.LookupCode lookupCode, int id) {
+        public bool DeleteLookupCode(UtahPlanners.MVC3.PropertyService.LookupCode lookupCode, System.Guid id) {
             return base.Channel.DeleteLookupCode(lookupCode, id);
         }
         
-        public bool UpdateWeights(UtahPlanners.MVC3.PropertyService.Weight weights) {
-            return base.Channel.UpdateWeights(weights);
+        public bool UpdateWeights(System.Guid id, UtahPlanners.MVC3.PropertyService.Weights weights) {
+            return base.Channel.UpdateWeights(id, weights);
         }
         
         public bool UploadPicture(UtahPlanners.MVC3.PropertyService.Picture pic) {
