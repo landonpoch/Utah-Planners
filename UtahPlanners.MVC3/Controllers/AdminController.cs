@@ -100,7 +100,7 @@ namespace UtahPlanners.MVC3.Controllers
         }
 
         [HttpPost]
-        public ActionResult DeleteProperty(int id)
+        public ActionResult DeleteProperty(Guid id)
         {
             using (var wcf = _factory.CreatePropertyServiceWrapper())
             {
@@ -235,23 +235,23 @@ namespace UtahPlanners.MVC3.Controllers
         [HttpPost]
         public string ModifyCode(ReadCodeModel model)
         {
-            //var result = "An error occured while submitting your request"; // Default response
-            //using (var client = _factory.CreatePropertyServiceProxy())
-            //{
-            //    if (model.SelectedId.HasValue)
-            //    {
-            //        PropertyService.LookupCode lookupCode = (PropertyService.LookupCode)model.SelectedCode;
-            //        bool wasSuccessful = client.ModifyLookupCode(
-            //            lookupCode, 
-            //            model.SelectedId.Value, 
-            //            model.CodeData[model.SelectedId.Value].Description,
-            //            model.CodeData[model.SelectedId.Value].Weight
-            //        );
-            //        if (wasSuccessful) // Successful response
-            //            result = "Successfully submitted your request";
-            //    }
-            //}
-            //return result;
+            var result = "An error occured while submitting your request"; // Default response
+            using (var client = _factory.CreatePropertyServiceProxy())
+            {
+                if (model.SelectedId.HasValue)
+                {
+                    PropertyService.LookupCode lookupCode = (PropertyService.LookupCode)model.SelectedCode;
+                    bool wasSuccessful = client.ModifyLookupCode(
+                        lookupCode,
+                        model.SelectedId.Value,
+                        model.CodeData[model.SelectedId.Value].Description,
+                        model.CodeData[model.SelectedId.Value].Weight
+                    );
+                    if (wasSuccessful) // Successful response
+                        result = "Successfully submitted your request";
+                }
+            }
+            return result;
             return null;
         }
 

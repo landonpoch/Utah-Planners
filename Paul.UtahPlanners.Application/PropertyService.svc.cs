@@ -230,16 +230,10 @@ namespace Paul.UtahPlanners.Application
             throw new NotImplementedException();
         }
 
-        public bool DeleteProperty(int propertyId)
+        public bool DeleteProperty(Guid propertyId)
         {
-            //string message = "An error occurred while deleting the property";
-            //return CommandWrapper(message, (IUnitOfWork unit) =>
-            //{
-            //    var repo = unit.CreatePropertyRepository();
-            //    var property = repo.Get(propertyId);
-            //    repo.Remove(property);
-            //});
-            throw new NotImplementedException();
+            var repo = _factory.CreatePersistentRepository<Property>();
+            return repo.Remove(propertyId);
         }
 
         public bool CreateLookupType(LookupType lookupType, string value)
@@ -331,44 +325,29 @@ namespace Paul.UtahPlanners.Application
 
         public bool ModifyLookupCode(LookupCode lookupCode, Guid id, string value, int weight)
         {
-            //string errorMessage = "An error occured while tring to modify the lookup code.";
-            //return CommandWrapper(errorMessage, (IUnitOfWork unit) =>
-            //{
-            //    switch (lookupCode)
-            //    {
-            //        case LookupCode.CommonCode:
-            //            var commonCode = GetLookupValue<CommonCode>(unit, id);
-            //            commonCode.description = value;
-            //            commonCode.weight = weight;
-            //            break;
-            //        case LookupCode.EnclosureCode:
-            //            var enclosureCode = GetLookupValue<EnclosureCode>(unit, id);
-            //            enclosureCode.description = value;
-            //            enclosureCode.weight = weight;
-            //            break;
-            //        case LookupCode.NeighborhoodCode:
-            //            var neighborhoodCode = GetLookupValue<NeighborhoodCode>(unit, id);
-            //            neighborhoodCode.description = value;
-            //            neighborhoodCode.weight = weight;
-            //            break;
-            //        case LookupCode.StreetConnCode:
-            //            var streetConnCode = GetLookupValue<StreetconnCode>(unit, id);
-            //            streetConnCode.description = value;
-            //            streetConnCode.weight = weight;
-            //            break;
-            //        case LookupCode.StreetSafetyCode:
-            //            var streetSafetyCode = GetLookupValue<StreetSafteyCode>(unit, id);
-            //            streetSafetyCode.description = value;
-            //            streetSafetyCode.weight = weight;
-            //            break;
-            //        case LookupCode.StreetWalkCode:
-            //            var streetWalkCode = GetLookupValue<StreetwalkCode>(unit, id);
-            //            streetWalkCode.description = value;
-            //            streetWalkCode.weight = weight;
-            //            break;
-            //    }
-            //});
-            throw new NotImplementedException();
+            bool result = false;
+            switch (lookupCode)
+            {
+                case LookupCode.CommonCode:
+                    result = UpdateLookupValue(id, new CommonAreas(value, weight));
+                    break;
+                case LookupCode.EnclosureCode:
+                    result = UpdateLookupValue(id, new BuildingEnclosure(value, weight));
+                    break;
+                case LookupCode.NeighborhoodCode:
+                    result = UpdateLookupValue(id, new NeighborhoodCondition(value, weight));
+                    break;
+                case LookupCode.StreetConnCode:
+                    result = UpdateLookupValue(id, new StreetConnectivity(value, weight));
+                    break;
+                case LookupCode.StreetSafetyCode:
+                    result = UpdateLookupValue(id, new StreetSafety(value, weight));
+                    break;
+                case LookupCode.StreetWalkCode:
+                    result = UpdateLookupValue(id, new StreetWalkability(value, weight));
+                    break;
+            }
+            return result;
         }
 
         public bool DeleteLookupCode(LookupCode lookupCode, Guid id)
@@ -415,6 +394,7 @@ namespace Paul.UtahPlanners.Application
                 {
                     result = repo.Update(id, weights);
                 }
+                _settings.Weights = weights;
             }
             catch (Exception e)
             {

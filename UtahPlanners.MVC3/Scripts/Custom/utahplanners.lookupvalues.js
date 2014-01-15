@@ -72,6 +72,9 @@ function getModifyUrl() {
     if (window.location.pathname.indexOf('Types') != -1) {
         postUrl = 'ModifyType';
     }
+    if (window.location.pathname.indexOf('Weights') != -1) {
+        postUrl = 'Weights'
+    }
     return postUrl;
 }
 

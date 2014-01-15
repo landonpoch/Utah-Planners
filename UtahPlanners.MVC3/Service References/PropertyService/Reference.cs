@@ -2677,7 +2677,7 @@ namespace UtahPlanners.MVC3.PropertyService {
         int SaveProperty(UtahPlanners.MVC3.PropertyService.AdminPropertyDTO property);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPropertyService/DeleteProperty", ReplyAction="http://tempuri.org/IPropertyService/DeletePropertyResponse")]
-        bool DeleteProperty(int propertyId);
+        bool DeleteProperty(System.Guid propertyId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPropertyService/CreateLookupType", ReplyAction="http://tempuri.org/IPropertyService/CreateLookupTypeResponse")]
         bool CreateLookupType(UtahPlanners.MVC3.PropertyService.LookupType lookupType, string value);
@@ -2791,7 +2791,7 @@ namespace UtahPlanners.MVC3.PropertyService {
             return base.Channel.SaveProperty(property);
         }
         
-        public bool DeleteProperty(int propertyId) {
+        public bool DeleteProperty(System.Guid propertyId) {
             return base.Channel.DeleteProperty(propertyId);
         }
         

@@ -56,7 +56,7 @@ namespace Paul.UtahPlanners.Application
         int SaveProperty(AdminPropertyDTO property);
 
         [OperationContract]
-        bool DeleteProperty(int propertyId);
+        bool DeleteProperty(Guid propertyId);
 
         [OperationContract]
         bool CreateLookupType(LookupType lookupType, string value);

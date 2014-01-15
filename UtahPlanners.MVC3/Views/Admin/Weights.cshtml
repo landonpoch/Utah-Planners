@@ -11,37 +11,27 @@
 @section Scripts
 {
     <script type="text/javascript" src="../../Scripts/Custom/utahplanners.lookupvalues.js"></script>
-    @*<script type="text/javascript">
-        $(document).ready(function () {
-            $('#editLink').click(function (event) {
-                event.preventDefault();
-                modifyWeights();
-            });
-        });
-
-        function modifyWeights() {
-            $.ajax({
-                url: 'Weights',
-                type: 'post',
-                data: '',
-                success: function (response, status, jqXHR) {
-                    $('#result').text(response);
-                    // updateSuccessful(row);
-                },
-                error: function (jqXHR, status, error) {
-                    $('#result').text('An error occured while submitting your request');
-                },
-                complete: function (jqXHR, status, error) {
-                    // toggleRow(row);
-                }
-            });
+    <script type="text/javascript">
+        function updateSuccessful(row) {
+            setColumnValues(row, 'StreetWalkability');
+            setColumnValues(row, 'Walkscore');
+            setColumnValues(row, 'TwoFiftySingleFamily');
+            setColumnValues(row, 'BuildingEnclosure');
+            setColumnValues(row, 'StreetConnectivity');
+            setColumnValues(row, 'CommonAreas');
+            setColumnValues(row, 'StreetSafety');
+            setColumnValues(row, 'NeighborhoodCondition');
+            setColumnValues(row, 'TwoFiftyApartments');
         }
-    </script>*@
+    </script>
 }
 
 <span id="result"></span>
 <h4>Edit these values to change the weighting of the scoring variables:</h4><br />
 <div>
+
+@using (Html.BeginForm("Weights", "Admin", FormMethod.Post))
+{
     <table border="1" style="border-collapse:collapse;">
 		<tbody>
             <tr align="center" valign="middle">
@@ -56,7 +46,8 @@
                 <th>Neighborhood Cond</th>
                 <th>250 Apartments</th>
 		    </tr>
-            <tr align="center" valign="middle" data-key="@Model.Idk__BackingField">
+            @{ var key = Model == null ? String.Empty : Model.Idk__BackingField.ToString(); }
+            <tr align="center" valign="middle" data-key="@key">
             <td>
             <a href="#" data-command="modify">Edit</a>
             <a href="#" data-command="submit" style="display: none;">Update</a>
@@ -64,83 +55,85 @@
             </td>
             @if (Model != null)
             {
-                <td>
+                <input type="hidden" value="@Model.Idk__BackingField" name="Idk__BackingField" />
+                <td data-column="StreetWalkability">
                 <span>@Model.StreetWalkability</span>
-                <input type="text" value="@Model.StreetWalkability" style="display:none" />
+                <input type="text" value="@Model.StreetWalkability" name="StreetWalkability" style="display:none" />
                 </td>
-                <td>
+                <td data-column="Walkscore">
                 <span>@Model.Walkscore</span>
-                <input type="text" value="@Model.Walkscore" style="display:none" />
+                <input type="text" value="@Model.Walkscore" name="Walkscore" style="display:none" />
                 </td>
-                <td>
+                <td data-column="TwoFiftySingleFamily">
                 <span>@Model.TwoFiftySingleFamily</span>
-                <input type="text" value="@Model.TwoFiftySingleFamily" style="display:none" />
+                <input type="text" value="@Model.TwoFiftySingleFamily" name="TwoFiftySingleFamily" style="display:none" />
                 </td>
-                <td>
+                <td data-column="BuildingEnclosure">
                 <span>@Model.BuildingEnclosure</span>
-                <input type="text" value="@Model.BuildingEnclosure" style="display:none" />
+                <input type="text" value="@Model.BuildingEnclosure" name="BuildingEnclosure" style="display:none" />
                 </td>
-                <td>
+                <td data-column="StreetConnectivity">
                 <span>@Model.StreetConnectivity</span>
-                <input type="text" value="@Model.StreetConnectivity" style="display:none" />
+                <input type="text" value="@Model.StreetConnectivity" name="StreetConnectivity" style="display:none" />
                 </td>
-                <td>
+                <td data-column="CommonAreas">
                 <span>@Model.CommonAreas</span>
-                <input type="text" value="@Model.CommonAreas" style="display:none" />
+                <input type="text" value="@Model.CommonAreas" name="CommonAreas" style="display:none" />
                 </td>
-                <td>
+                <td data-column="StreetSafety">
                 <span>@Model.StreetSafety</span>
-                <input type="text" value="@Model.StreetSafety" style="display:none" />
+                <input type="text" value="@Model.StreetSafety" name="StreetSafety" style="display:none" />
                 </td>
-                <td>
+                <td data-column="NeighborhoodCondition">
                 <span>@Model.NeighborhoodCondition</span>
-                <input type="text" value="@Model.NeighborhoodCondition" style="display:none" />
+                <input type="text" value="@Model.NeighborhoodCondition" name="NeighborhoodCondition" style="display:none" />
                 </td>
-                <td>
+                <td data-column="TwoFiftyApartments">
                 <span>@Model.TwoFiftyApartments</span>
-                <input type="text" value="@Model.TwoFiftyApartments" style="display:none" />
+                <input type="text" value="@Model.TwoFiftyApartments" name="TwoFiftyApartments" style="display:none" />
                 </td>
             }
             else
             {
-                <td>
+                <td data-column="StreetWalkability">
                 <span>0</span>
-                <input type="text" value="0" style="display:none" />
+                <input type="text" value="0" name="StreetWalkability" style="display:none" />
                 </td>
-                <td>
+                <td data-column="Walkscore">
                 <span>0</span>
-                <input type="text" value="0" style="display:none" />
+                <input type="text" value="0" name="Walkscore" style="display:none" />
                 </td>
-                <td>
+                <td data-column="TwoFiftySingleFamily">
                 <span>0</span>
-                <input type="text" value="0" style="display:none" />
+                <input type="text" value="0" name="TwoFiftySingleFamily" style="display:none" />
                 </td>
-                <td>
+                <td data-column="BuildingEnclosure">
                 <span>0</span>
-                <input type="text" value="0" style="display:none" />
+                <input type="text" value="0" name="BuildingEnclosure" style="display:none" />
                 </td>
-                <td>
+                <td data-column="StreetConnectivity">
                 <span>0</span>
-                <input type="text" value="0" style="display:none" />
+                <input type="text" value="0" name="StreetConnectivity" style="display:none" />
                 </td>
-                <td>
+                <td data-column="CommonAreas">
                 <span>0</span>
-                <input type="text" value="0" style="display:none" />
+                <input type="text" value="0" name="CommonAreas" style="display:none" />
                 </td>
-                <td>
+                <td data-column="StreetSafety">
                 <span>0</span>
-                <input type="text" value="0" style="display:none" />
+                <input type="text" value="0" name="StreetSafety" style="display:none" />
                 </td>
-                <td>
+                <td data-column="NeighborhoodCondition">
                 <span>0</span>
-                <input type="text" value="0" style="display:none" />
+                <input type="text" value="0" name="NeighborhoodCondition" style="display:none" />
                 </td>
-                <td>
+                <td data-column="TwoFiftyApartments">
                 <span>0</span>
-                <input type="text" value="0" style="display:none" />
+                <input type="text" value="0" name="TwoFiftyApartments" style="display:none" />
                 </td>
             }
             </tr>
 	    </tbody>
     </table>
+}
 </div><br />
